@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>MAXI Affiliate</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * { -webkit-tap-highlight-color: transparent; }
+    /* Perbaikan: Mengubah background dasar body menjadi transisi halus */
+    html, body { 
+      margin: 0; 
+      padding: 0; 
+      width: 100%; 
+      height: 100%; 
+      overflow: hidden; 
+      background-color: #00a6a6; /* Warna default awal mengikuti splash screen */
+      transition: background-color 0.3s ease; 
+    }
+    .app-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      max-width: 430px;
+      margin: 0 auto;
+      overflow: hidden;
+      background: #fff;
+      transition: background-color 0.3s ease;
+    }
+    .screen {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      overflow-y: auto;
+      background: #fff;
+    }
+    .screen.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+    /* Biarkan screen splash transparan agar mengikuti background container/body */
+    #screen-splash1, #screen-splash2 {
+      background: transparent;
+    }
+  </style>
+</head>
+<body class="h-screen w-screen overflow-hidden">
+<div class="app-container" id="main-container">
+
+  <!-- SCREEN 1: Splash Screen 1 -->
+  <div id="screen-splash1" class="screen active">
+    <div class="w-full h-full bg-[#00a6a6] flex flex-col justify-between items-center relative overflow-hidden">
+      <div class="absolute top-0 left-0 w-72 h-72 bg-white/20 rounded-full mix-blend-overlay filter blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+      <div class="absolute bottom-0 right-0 w-96 h-96 bg-orange-500/10 rounded-full mix-blend-overlay filter blur-3xl translate-x-1/3 translate-y-1/3"></div>
+      <div class="flex-1 flex flex-col justify-center items-center z-10 w-full px-8">
+        <div class="relative mb-8">
+          <div class="absolute inset-0 bg-white/30 rounded-full animate-ping opacity-75"></div>
+          <div class="relative w-[11rem] h-[11rem] flex items-center justify-center">
+            <img src="images/logo-login.png" class="w-full h-full object-cover">
+          </div>
+        </div>
+        <h1 class="text-5xl font-black text-white tracking-tight drop-shadow-md text-center">MAXI AFFILIATE</h1>
+        <p class="text-white/90 text-lg font-medium mt-3 tracking-wide drop-shadow-sm">Semua Untung Semua Menang</p>
+      </div>
+      <div class="pb-12 flex flex-col items-center z-10 gap-4">
+        <div class="w-10 h-10 border-4 border-white/30 border-t-white rounded-full animate-spin"></div>
+        <div class="flex flex-col items-center">
+          <span class="text-white/80 text-xs font-bold tracking-[0.2em] uppercase">Version 1.0.0</span>
+          <span class="text-white/50 text-[10px] mt-1 font-medium">© 2026 Maxi Affiliate.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- SCREEN 2: Splash Screen 2 -->
+  <div id="screen-splash2" class="screen">
+    <div class="w-full h-full bg-[#00a6a6] flex flex-col justify-between items-center relative overflow-hidden">
+      <div class="absolute top-0 left-0 w-72 h-72 bg-white/20 rounded-full mix-blend-overlay filter blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+      <div class="absolute bottom-0 right-0 w-96 h-96 bg-orange-500/10 rounded-full mix-blend-overlay filter blur-3xl translate-x-1/3 translate-y-1/3"></div>
+
+      <div class="flex-1 flex flex-col justify-center items-center z-10 w-full px-8">
+        <div class="relative mb-[3.5rem]">
+          <div class="absolute inset-0 bg-white/30 rounded-full animate-ping opacity-75"></div>
+          <div class="relative w-[23rem] h-[11rem] flex items-center justify-center">
+            <img src="images/logo-screan1.png" alt="Batik Shirt" class="w-full h-full object-cover">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCREEN 3: Login Main -->
+  <div id="screen-login-main" class="screen">
+    <div class="w-full min-h-full bg-white font-sans flex flex-col px-6 pt-14 pb-10 relative">
+      <div class="absolute top-12 right-6">
+        <button onClick="showBottomSheet('bs-negara')" class="flex items-center gap-2 border border-gray-200 rounded-full px-3 py-1.5 text-sm font-bold text-gray-700 bg-white shadow-sm">
+          <img id="selected-flag" src="images/logo-bahasa1.png" class="w-5 h-3.5 object-cover rounded-sm" alt="Flag">
+          <span id="selected-code">ID</span>
+          <i class="fa-solid fa-chevron-down text-xs text-gray-400"></i>
+        </button>
+      </div>
+
+      <div class="mt-10 mb-10">
+        <h1 class="text-4xl font-black text-gray-900 leading-tight">Selamat datang<br>di MAXI!</h1>
+        <p class="text-gray-500 mt-2 text-base">Cashback Andalan 100 juta+ Pengguna</p>
+      </div>
+
+      <div class="flex flex-col gap-4">
+        <button class="w-full flex items-center border border-gray-200 rounded-2xl px-5 py-4 text-base font-medium text-gray-800 bg-white hover:bg-gray-50 active:scale-[0.98] transition-all">
+          <svg class="w-6 h-6 mr-3 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.79 1.53V6.77a4.85 4.85 0 01-1.03-.08z"/></svg>
+          <span class="flex-1 text-center font-semibold">Masuk dengan TikTok</span>
+        </button>
+
+        <button onClick="showScreen('login-email')" class="w-full flex items-center border border-gray-200 rounded-2xl px-5 py-4 text-base font-medium text-gray-800 bg-white hover:bg-gray-50 active:scale-[0.98] transition-all">
+          <i class="fa-regular fa-envelope text-xl mr-3 text-gray-700 shrink-0"></i>
+          <span class="flex-1 text-center font-semibold">Masuk dengan Email</span>
+        </button>
+
+        <button onClick="showBottomSheet('bs-opsi-lain')" class="w-full text-center text-gray-700 font-semibold py-2 flex items-center justify-center gap-1">
+          Opsi lain <i class="fa-solid fa-chevron-right text-xs"></i>
+        </button>
+      </div>
+
+      <div class="flex items-start gap-3 mt-8">
+        <div id="tos-check-main" onClick="toggleTos('main')" class="mt-0.5 w-5 h-5 rounded-full border-2 border-gray-300 flex items-center justify-center cursor-pointer shrink-0 transition-all">
+          <div id="tos-dot-main" class="w-2.5 h-2.5 rounded-full bg-[#00a6a6] hidden"></div>
+        </div>
+        <p class="text-sm text-gray-500 leading-relaxed cursor-pointer select-none" onClick="toggleTos('main')">
+          Saya telah membaca dan menyetujui <span class="font-bold text-gray-800">Kebijakan Privasi</span> &amp; <span class="font-bold text-gray-800">Ketentuan Layanan</span> MAXI
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCREEN 4: Login WA -->
+  <div id="screen-login-wa" class="screen">
+    <div class="w-full min-h-full bg-white font-sans flex flex-col px-6 pt-14 pb-10">
+      <button onClick="showScreen('login-main')" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center mb-8 active:scale-95 transition-all">
+        <i class="fa-solid fa-chevron-left text-gray-700"></i>
+      </button>
+
+      <h1 class="text-4xl font-black text-gray-900 leading-tight mb-1">Selamat datang<br>di MAXI!</h1>
+      <p class="text-gray-500 text-base mb-10">Cashback Andalan 100 juta+ Pengguna</p>
+
+      <label class="text-sm font-semibold text-gray-800 mb-2">Nomor WhatsApp<span class="text-[#00a6a6]">*</span></label>
+      <div class="flex items-center border-b-2 border-gray-200 focus-within:border-[#00a6a6] transition-colors pb-2 mb-8">
+        <div class="flex items-center gap-2 pr-3 border-r border-gray-300 mr-3">
+          <img id="wa-flag" src="images/logo-bahasa1.png" class="w-6 h-4 object-cover rounded-sm">
+          <span id="wa-code" class="text-sm font-bold text-gray-700">+62</span>
+        </div>
+        <input id="wa-input" type="tel" placeholder="Nomor WhatsApp" oninput="checkWaInput()" class="flex-1 outline-none text-base text-gray-800 placeholder-gray-400 bg-transparent" />
+      </div>
+
+      <button id="btn-konfirmasi-wa" onClick="showScreen('login-otp')" disabled class="w-full py-4 rounded-2xl text-white font-bold text-base transition-all bg-gray-200 text-gray-400 cursor-not-allowed">
+        Konfirmasi
+      </button>
+
+      <div class="flex items-start gap-3 mt-6">
+        <div id="tos-check-wa" onClick="toggleTos('wa')" class="mt-0.5 w-5 h-5 rounded-full border-2 border-gray-300 flex items-center justify-center cursor-pointer shrink-0 transition-all">
+          <div id="tos-dot-wa" class="w-2.5 h-2.5 rounded-full bg-[#00a6a6] hidden"></div>
+        </div>
+        <p class="text-sm text-gray-500 leading-relaxed cursor-pointer select-none" onClick="toggleTos('wa')">
+          Saya telah membaca dan menyetujui <span class="font-bold text-gray-800">Kebijakan Privasi</span> &amp; <span class="font-bold text-gray-800">Ketentuan Layanan</span> MAXI
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCREEN 5: Login Email -->
+  <div id="screen-login-email" class="screen">
+    <div class="w-full min-h-full bg-white font-sans flex flex-col px-6 pt-14 pb-10">
+      <button onClick="showScreen('login-main')" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center mb-8 active:scale-95 transition-all">
+        <i class="fa-solid fa-chevron-left text-gray-700"></i>
+      </button>
+
+      <h1 class="text-4xl font-black text-gray-900 leading-tight mb-10">Selamat Datang<br>Kembali</h1>
+      <div class="bg-gray-100 rounded-2xl px-4 py-4 mb-4 text-gray-700 font-medium text-base">admin@maxi.com</div>
+
+      <div class="flex items-center border border-gray-200 rounded-2xl px-4 py-4 mb-6 bg-white focus-within:border-[#00a6a6] transition-all">
+        <input id="pw-input" type="password" placeholder="Masukkan kata sandi" class="flex-1 outline-none text-base text-gray-800 placeholder-gray-400 bg-transparent" />
+        <button onClick="togglePw()" class="text-gray-400 px-2">
+          <i id="pw-eye" class="fa-regular fa-eye-slash text-lg"></i>
+        </button>
+        <div class="w-px h-5 bg-gray-200 mx-2"></div>
+        <button class="text-sm font-semibold text-gray-700 hover:text-red-500 shrink-0">Lupa?</button>
+      </div>
+
+      <button onClick="showScreen('login-otp')" class="w-full py-4 rounded-2xl font-bold text-base text-white bg-[#00a6a6] hover:bg-[#009494] active:scale-[0.98] transition-all mb-4">
+        Masuk
+      </button>
+
+      <button onClick="showScreen('login-otp')" class="w-full text-center text-[#00a6a6] font-bold text-base py-2">
+        Masuk dengan kode OTP
+      </button>
+    </div>
+  </div>
+
+  <!-- SCREEN 6: Login OTP -->
+  <div id="screen-login-otp" class="screen">
+    <div class="w-full min-h-full bg-white font-sans flex flex-col px-6 pt-14 pb-10">
+      <button onClick="showScreen('login-main')" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center mb-8 active:scale-95 transition-all">
+        <i class="fa-solid fa-chevron-left text-gray-700"></i>
+      </button>
+
+      <h1 class="text-4xl font-black text-gray-900 leading-tight mb-3">Masukkan kode OTP</h1>
+      <p class="text-gray-500 text-base mb-8">
+        Kode OTP telah dikirim ke nomor Anda, silakan cek
+        <span class="inline-flex items-center gap-1 text-[#25D366] font-semibold">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </span>
+      </p>
+
+      <label class="text-sm font-semibold text-gray-800 mb-3">OTP<span class="text-[#00a6a6]">*</span></label>
+      <div class="flex items-center gap-3 mb-1">
+        <div class="flex gap-4" id="otp-dots">
+          <div class="w-3 h-3 rounded-full bg-gray-300 transition-all"></div>
+          <div class="w-3 h-3 rounded-full bg-gray-300 transition-all"></div>
+          <div class="w-3 h-3 rounded-full bg-gray-300 transition-all"></div>
+          <div class="w-3 h-3 rounded-full bg-gray-300 transition-all"></div>
+          <div class="w-3 h-3 rounded-full bg-gray-300 transition-all"></div>
+          <div class="w-3 h-3 rounded-full bg-gray-300 transition-all"></div>
+        </div>
+        <div class="ml-auto text-sm text-gray-400">Kirim ulang <span class="font-bold text-gray-700" id="otp-timer">58s</span></div>
+      </div>
+      <div class="w-full h-px bg-gray-300 mb-6"></div>
+
+      <input id="otp-hidden" type="tel" maxlength="6" oninput="handleOtp(this.value)" class="absolute opacity-0 pointer-events-none" />
+      <button onClick="focusOtpInput()" class="w-full py-4 rounded-2xl font-bold text-base text-white bg-[#00a6a6] hover:bg-[#009494] active:scale-[0.98] transition-all mt-4">
+        Ketuk untuk memasukkan OTP
+      </button>
+    </div>
+  </div>
+
+  <!-- BOTTOM SHEET: Negara -->
+  <div id="bs-negara" class="fixed inset-0 z-50 hidden" onClick="hideBottomSheet('bs-negara')">
+    <div class="absolute inset-0 bg-black/40"></div>
+    <div class="absolute bottom-0 left-0 right-0 max-w-[430px] mx-auto bg-white rounded-t-3xl pt-4 pb-10 px-6" onClick="event.stopPropagation()">
+      <div class="w-12 h-1.5 bg-gray-200 rounded-full mx-auto mb-5"></div>
+      <h2 class="text-xl font-black text-gray-900 text-center mb-6">Pilih Negara/Wilayah</h2>
+
+      <div id="negara-id" onClick="selectNegara('ID')" class="flex items-center justify-between py-4 cursor-pointer border-b border-gray-100">
+        <div class="flex items-center gap-3">
+          <img src="images/logo-bahasa1.png" class="w-7 h-5 object-cover rounded-sm shadow-sm" alt="Indonesia">
+          <span class="text-base font-semibold text-gray-800">Indonesia</span>
+        </div>
+        <div id="radio-id" class="w-5 h-5 rounded-full border-2 border-[#00a6a6] flex items-center justify-center">
+          <div class="w-2.5 h-2.5 rounded-full bg-[#00a6a6]"></div>
+        </div>
+      </div>
+
+      <div id="negara-my" onClick="selectNegara('MY')" class="flex items-center justify-between py-4 cursor-pointer">
+        <div class="flex items-center gap-3">
+          <img src="images/logo-bahasa2.png" class="w-7 h-5 object-cover rounded-sm shadow-sm" alt="Malaysia">
+          <span class="text-base font-semibold text-gray-800">Malaysia</span>
+        </div>
+        <div id="radio-my" class="w-5 h-5 rounded-full border-2 border-gray-300 flex items-center justify-center">
+          <div class="w-2.5 h-2.5 rounded-full bg-transparent"></div>
+        </div>
+      </div>
+
+      <button onClick="hideBottomSheet('bs-negara')" class="w-full mt-6 py-4 rounded-2xl font-bold text-base text-white bg-[#00a6a6] active:scale-[0.98] transition-all">
+        Konfirmasi
+      </button>
+    </div>
+  </div>
+
+  <!-- BOTTOM SHEET: Opsi Lain -->
+  <div id="bs-opsi-lain" class="fixed inset-0 z-50 hidden" onClick="hideBottomSheet('bs-opsi-lain')">
+    <div class="absolute inset-0 bg-black/40"></div>
+    <div class="absolute bottom-0 left-0 right-0 max-w-[430px] mx-auto bg-white rounded-t-3xl pt-4 pb-10 px-6" onClick="event.stopPropagation()">
+      <div class="w-12 h-1.5 bg-gray-200 rounded-full mx-auto mb-5"></div>
+      <h2 class="text-xl font-black text-gray-900 text-center mb-6">Masuk dengan nomor telepon</h2>
+      <div class="flex justify-center mb-8">
+        <div class="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center">
+          <i class="fa-solid fa-mobile-screen-button text-4xl text-gray-600"></i>
+        </div>
+      </div>
+      <button onClick="hideBottomSheet('bs-opsi-lain'); showScreen('login-wa')" class="w-full py-4 rounded-2xl font-bold text-base text-white bg-[#00a6a6] active:scale-[0.98] transition-all">
+        Masuk via WhatsApp
+      </button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // ─── State ──────────────────────────────────────────────
+  let currentScreen = 'splash1';
+  let isTosAccepted = { main: false, wa: false };
+
+  // ─── Screen Transitions & Dinamis Latar Belakang ────────
+  function showScreen(id) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    const el = document.getElementById('screen-' + id);
+    if (el) {
+      el.classList.add('active');
+      el.scrollTop = 0;
+    }
+    currentScreen = id;
+
+    // Perbaikan: Menyesuaikan warna luar kontainer untuk splash1 dan splash2
+    const container = document.getElementById('main-container');
+    if (id === 'splash1' || id === 'splash2') {
+      document.body.style.backgroundColor = '#00a6a6';
+      if(container) container.style.backgroundColor = '#00a6a6';
+    } else {
+      document.body.style.backgroundColor = '#ffffff';
+      if(container) container.style.backgroundColor = '#ffffff';
+    }
+
+    if (id === 'login-otp') {
+      startOtpTimer();
+      setTimeout(focusOtpInput, 400);
+    }
+  }
+
+  // ─── Perbaikan Alur Splash Auto-advance ───────────────────
+  window.addEventListener('DOMContentLoaded', () => {
+    // 1. Setelah 2 detik di Splash 1, pindah ke Splash 2
+    setTimeout(() => {
+      showScreen('splash2');
+      
+      // 2. Setelah 2 detik di Splash 2, baru pindah ke Login Main
+      setTimeout(() => {
+        showScreen('login-main');
+      }, 2000);
+
+    }, 2000);
+  });
+
+  // ─── Bottom Sheet Logic ───────────────────────────────────
+  function showBottomSheet(id) {
+    const el = document.getElementById(id);
+    if(!el) return;
+    el.classList.remove('hidden');
+    const sheet = el.querySelector('.absolute.bottom-0');
+    if (sheet) {
+      sheet.style.transform = 'translateY(100%)';
+      sheet.style.transition = 'transform 0.3s cubic-bezier(0.4,0,0.2,1)';
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => { 
+          sheet.style.transform = 'translateY(0)'; 
+        });
+      });
+    }
+  }
+
+  function hideBottomSheet(id) {
+    const el = document.getElementById(id);
+    if(!el) return;
+    const sheet = el.querySelector('.absolute.bottom-0');
+    if (sheet) {
+      sheet.style.transform = 'translateY(100%)';
+      setTimeout(() => el.classList.add('hidden'), 300);
+    } else { 
+      el.classList.add('hidden'); 
+    }
+  }
+
+  // ─── ToS Toggle ───────────────────────────────────────────
+  function toggleTos(suffix) {
+    const dot = document.getElementById('tos-dot-' + suffix);
+    const ring = document.getElementById('tos-check-' + suffix);
+    if(!dot || !ring) return;
+
+    isTosAccepted[suffix] = !isTosAccepted[suffix];
+    
+    if (isTosAccepted[suffix]) {
+      dot.classList.remove('hidden');
+      ring.classList.add('border-[#00a6a6]');
+      ring.classList.remove('border-gray-300');
+    } else {
+      dot.classList.add('hidden');
+      ring.classList.remove('border-[#00a6a6]');
+      ring.classList.add('border-gray-300');
+    }
+    if(suffix === 'wa') checkWaInput();
+  }
+
+  // ─── WA Input Validation ──────────────────────────────────
+  function checkWaInput() {
+    const val = document.getElementById('wa-input').value;
+    const btn = document.getElementById('btn-konfirmasi-wa');
+    if(!btn) return;
+
+    if (val.length >= 8 && isTosAccepted.wa) {
+      btn.disabled = false;
+      btn.className = 'w-full py-4 rounded-2xl text-white font-bold text-base transition-all bg-[#00a6a6] hover:bg-[#009494] active:scale-[0.98] cursor-pointer';
+    } else {
+      btn.disabled = true;
+      btn.className = 'w-full py-4 rounded-2xl font-bold text-base transition-all bg-gray-200 text-gray-400 cursor-not-allowed';
+    }
+  }
+
+  // ─── Password Visibility Toggle ───────────────────────────
+  function togglePw() {
+    const inp = document.getElementById('pw-input');
+    const ico = document.getElementById('pw-eye');
+    if (!inp || !ico) return;
+
+    if (inp.type === 'password') { 
+      inp.type = 'text'; 
+      ico.className = 'fa-regular fa-eye text-lg'; 
+    } else { 
+      inp.type = 'password'; 
+      ico.className = 'fa-regular fa-eye-slash text-lg'; 
+    }
+  }
+
+  // ─── Negara Selector (Logika Gambar Dinamis) ──────────────
+  function selectNegara(code) {
+    const countries = ['id', 'my'];
+    countries.forEach(c => {
+      const r = document.getElementById('radio-' + c);
+      if(!r) return;
+      if (c === code.toLowerCase()) {
+        r.className = 'w-5 h-5 rounded-full border-2 border-[#00a6a6] flex items-center justify-center';
+        r.innerHTML = '<div class="w-2.5 h-2.5 rounded-full bg-[#00a6a6]"></div>';
+      } else {
+        r.className = 'w-5 h-5 rounded-full border-2 border-gray-300 flex items-center justify-center';
+        r.innerHTML = '<div class="w-2.5 h-2.5 rounded-full bg-transparent"></div>';
+      }
+    });
+
+    const flagEl = document.getElementById('selected-flag');
+    const codeEl = document.getElementById('selected-code');
+    const waFlag = document.getElementById('wa-flag');
+    const waCode = document.getElementById('wa-code');
+
+    if(code === 'ID') {
+      if(flagEl) flagEl.src = 'images/logo-bahasa1.png';
+      if(codeEl) codeEl.textContent = 'ID';
+      if(waFlag) waFlag.src = 'images/logo-bahasa1.png';
+      if(waCode) waCode.textContent = '+62';
+    } else if(code === 'MY') {
+      if(flagEl) flagEl.src = 'images/logo-bahasa2.png';
+      if(codeEl) codeEl.textContent = 'MY';
+      if(waFlag) waFlag.src = 'images/logo-bahasa2.png';
+      if(waCode) waCode.textContent = '+60';
+    }
+  }
+
+  // ─── OTP Logic ────────────────────────────────────────────
+  function focusOtpInput() {
+    const input = document.getElementById('otp-hidden');
+    if(input) input.focus();
+  }
+
+  function handleOtp(val) {
+    const dots = document.querySelectorAll('#otp-dots div');
+    dots.forEach((d, i) => {
+      if(i < val.length) {
+        d.className = 'w-3 h-3 rounded-full bg-[#00a6a6]';
+      } else {
+        d.className = 'w-3 h-3 rounded-full bg-gray-300';
+      }
+    });
+    
+    if (val.length === 6) {
+      setTimeout(() => {
+        alert('Login Berhasil!');
+        if (otpInterval) clearInterval(otpInterval);
+        showScreen('login-main');
+        document.getElementById('otp-hidden').value = '';
+        handleOtp('');
+      }, 350);
+    }
+  }
+
+  let otpInterval = null;
+  function startOtpTimer() {
+    if (otpInterval) clearInterval(otpInterval);
+    let secs = 58;
+    const el = document.getElementById('otp-timer');
+    if (el) el.textContent = secs + 's';
+    
+    otpInterval = setInterval(() => {
+      secs--;
+      if (el) el.textContent = secs > 0 ? secs + 's' : 'Kirim ulang';
+      if (secs <= 0) clearInterval(otpInterval);
+    }, 1000);
+  }
+</script>
+</body>
+</html>

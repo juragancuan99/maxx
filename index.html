@@ -1,0 +1,844 @@
+<html lang="id"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght=300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; margin: 0; padding: 0; }
+        ::-webkit-scrollbar { display: none; } /* Menyembunyikan scrollbar agar tampak bersih layaknya aplikasi mobile */
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#D4FF00',
+                    },
+                    animation: {
+                        'pop': 'pop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards',
+                    },
+                    keyframes: {
+                        pop: {
+                            '0%': { transform: 'scale(0.8)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+	  <style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+	
+	 <style>
+    * { -webkit-tap-highlight-color: transparent; }
+    html, body { 
+      margin: 0; 
+      padding: 0; 
+      width: 100%; 
+      height: 100%; 
+      overflow: hidden; 
+      background-color: #00a6a6; 
+      transition: background-color 0.3s ease; 
+    }
+    .app-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      max-width: 430px;
+      margin: 0 auto;
+      overflow: hidden;
+      background: #fff;
+      transition: background-color 0.3s ease;
+    }
+    .screen {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+      overflow-y: auto;
+      background: #00a6a6;
+      z-index: 100;
+    }
+    .screen.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+    #screen-splash1, #screen-splash2 {
+      background: #00a6a6;
+    }
+
+    /* Animasi CSS Kebawah untuk Serpihan Confetti */
+    @keyframes confetti-fall {
+        0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+        100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+    }
+    .confetti-piece {
+        position: absolute;
+        top: -20px;
+        animation: confetti-fall 3s linear forwards;
+    }
+  </style>
+
+
+</head>
+
+<body class="h-screen w-screen overflow-hidden bg-gray-900 flex items-center justify-center" style="background-color: rgb(255, 255, 255);">
+
+    <div class="w-full h-full max-w-[430px] bg-gray-50 overflow-y-auto relative font-sans text-gray-800 pb-24 shadow-2xl no-scrollbar">
+	  <!--<div class="w-full h-full max-w-[430px] bg-gray-50 overflow-y-auto relative font-sans text-gray-800 pb-24 shadow-2xl no-scrollbar"> -->
+	
+	
+	<div id="screen-splash2" class="screen active">
+    <div class="w-full h-full bg-[#00a6a6] flex flex-col justify-between items-center relative overflow-hidden">
+      <div class="absolute top-0 left-0 w-72 h-72 bg-white/20 rounded-full mix-blend-overlay filter blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+      <div class="absolute bottom-0 right-0 w-96 h-96 bg-orange-500/10 rounded-full mix-blend-overlay filter blur-3xl translate-x-1/3 translate-y-1/3"></div>
+
+      <div class="flex-1 flex flex-col justify-center items-center z-10 w-full px-8">
+        <div class="relative mb-[3.5rem]">
+          <div class="absolute inset-0 bg-white/30 rounded-full animate-ping opacity-75"></div>
+          <div class="relative w-[23rem] h-[11rem] flex items-center justify-center">
+            <img src="images/logo-screan1.png" alt="Batik Shirt" class="w-full h-full object-cover">
+          </div>
+        </div>
+      </div>
+    </div>
+	</div>
+	
+	
+	
+	
+		<div id="modal-reward" class="absolute inset-0 z-40 flex items-center justify-center px-4 bg-gray-900/60 backdrop-blur-sm hidden">
+            <div id="confetti-container" class="absolute inset-0 overflow-hidden pointer-events-none"></div>
+            <div class="absolute w-full max-w-[12rem] bg-transparent rounded-3xl overflow-hidden animate-pop flex flex-col items-center text-center p-0">
+              <img src="images/searching.gif" class="w-[9rem] h-auto cursor-pointer" id="btn-close-modal" title="Klik gif untuk menutup">
+              <p class="text-white text-xs font-bold mt-2 tracking-wide animate-pulse" style="text-shadow: 1px 1px 4px rgba(0,0,0,0.8);">
+                  Sedang Melacak Mohon Tunggu....
+              </p>
+            </div>
+        </div>
+
+        <div class="bg-[#00a6a6] pt-[0.8rem] pb-6 px-5 rounded-b-[2rem] shadow-lg relative z-10">
+
+            <div class="mt-[0rem] flex items-center gap-[0rem]">
+                <div>
+                    <div class="flex items-center gap-3 justify-between mb-[1rem]">
+                        <div class="flex flex-col">
+                            <div class="flex items-center gap-[0.2rem]">
+                                <img class="w-[8rem] h-[3.88rem] mx-[0.3rem]" alt="User" src="images/logo-beranda.png"><span class="text-[#fffaef] text-[0.8rem]">Platform Komunitas Belanja Terpercaya No.1 Indonesia</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-[-1rem] relative flex items-center w-full rounded-2xl bg-white/100 backdrop-blur-md border border-[#ffb553] shadow-xl transition-all duration-300">
+                <div class="pl-4 pr-3 text-gray-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                </div>
+                <input type="url" placeholder="Tempelkan tautan disini . . ." class="w-full bg-transparent py-[0.5rem] pr-4 text-gray-800 placeholder-gray-800 outline-none text-[0.8rem] font-regular">
+                <div class="pr-4">
+                    <button id="btn-tempel" type="button" class="text-xs bg-[#ffffff] hover:bg-orange-50 px-2 py-1 rounded text-gray-700 transition-colors border border-cyan-500">Tempel</button>
+                </div>
+            </div>
+
+            <div class="flex items-center bg-transparent p-1 rounded-2xl mb-6">
+                <div class="ml-[0rem] flex-1">
+                    <h2 class="font-bold text-gray-100">Belanja produk dapat kupon undian &amp; reward puluhan juta?</h2>
+                    <p class="text-sm text-gray-100">
+                        <a href="panduanmisi.html" class="inline-flex items-center gap-1 hover:underline">
+                            Lihat panduanya
+                            <button class="text-gray-100 hover:text-[#FF5722] transition-colors active:scale-95 transition duration-200">
+                                <i class="fa-solid fa-chevron-right text-xs text-gray-100"></i>
+                            </button>
+                        </a>
+                    </p>
+                </div>
+                <div class="relative">
+                    <img class="w-[3.5rem] h-[5.5rem] rounded-full object-cover" alt="User" src="images/icon-human.png">
+                </div>
+            </div>
+        </div>
+
+        <main class="flex flex-col gap-2">
+            <div class="px-4 -mt-[3.5rem] relative z-10">
+                <div class="bg-[#ffffff] rounded-2xl p-[1rem] shadow-xl text-white border border-[#72dddd] relative overflow-hidden">
+                    <div class="absolute -right-6 -top-6 w-32 h-32 bg-[#FFD700] rounded-full opacity-10 blur-2xl"></div>
+                    <div class="flex justify-between items-start relative z-10">
+                        <div>
+                            <div class="flex items-center gap-2 mb-2">
+          <div class="w-7 h-7 rounded-full bg-gradient-to-br from-yellow-300 to-amber-500 flex items-center justify-center text-xs text-white shadow-md">
+            <i class="fa-solid fa-coins"></i>
+          </div>
+          <span class="text-xs font-bold text-teal-600 uppercase tracking-widest">Maxi Poin Nasional</span>
+        </div>
+                            <div class="flex items-baseline gap-1">
+                                <span class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-800">78.595.568,60</span>
+                            </div>
+                        </div>
+                        <a href="#" onClick="openModal(); return false;" class="group w-14 h-14 flex items-center justify-center bg-slate-50 border-2 border-slate-100 rounded-full shadow-inner hover:bg-teal-500 hover:border-teal-500 transition-all duration-300">
+        <div class="text-center">
+          <span class="text-[0.6rem] font-black uppercase text-slate-400 group-hover:text-white leading-none block">Info</span>
+          <span class="text-[0.5rem] font-bold text-slate-600 group-hover:text-white leading-none">M-Poin</span>
+        </div>
+      </a>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-gray-300 flex justify-between items-center">
+                        <p class="text-[10px] text-gray-700">Conversion Rate: <span class="font-bold text-[#0ba9a9]">1 MAXIPOIN = 750.000,-</span></p>
+                    </div>
+                </div>
+            </div> 
+
+            <div class="px-[1rem] mt-[0.5rem] relative z-10">
+                <div class="bg-white p-[0.6rem] rounded-2xl shadow-sm border border-[#72dddd]">
+                    <div class="flex justify-between items-center mb-3">
+                        <h3 class="text-[0.8rem] font-semibold text-gray-700">Belanja produk dapat Cashback </h3>
+                        <div class="flex items-center gap-1 active:scale-95 transition duration-200">
+                            <a href="tutorial-cashback.html" class="inline-block no-underline">
+    <button class="mt-[0.3rem] w-[2.5rem] h-[1rem] text-[0.8rem] bg-white backdrop-blur-sm rounded-full flex items-center justify-center text-gray-700 hover:bg-white transition gap-[0.3rem]">
+        <span class="mt-[-0.5rem] text-[0.8rem] text-gray-700 font-regular">Lihat</span>
+        <i class="mt-[-0.3rem] fa-solid fa-arrow-right"></i>
+    </button>
+</a>
+                        </div>
+                    </div>
+                    <div class="flex justify-between gap-2">
+                        <div class="flex-1 flex flex-col items-center text-center">
+                            <div class="w-[2rem] h-[2rem] rounded-full bg-blue-50 text-blue-500 flex items-center justify-center mb-2 text-lg">
+                                <img src="images/tutorialslide1a.png" alt="User" class="w-[2rem] h-[2rem] rounded-full border-[1px] border-[#72dddd] shadow-sm mx-3">
+                            </div>
+                            <p class="text-[0.56rem] font-regular text-gray-700">Salin tautan produk</p>
+                        </div>
+                        <i class="fa-solid fa-angles-right text-gray-700 text-[0.6rem] mt-[0.8rem]"></i>
+                        <div class="flex-1 flex flex-col items-center text-center">
+                            <div class="w-[2rem] h-[2rem] rounded-full bg-indigo-700 text-blue-500 flex items-center justify-center mb-2 text-lg">
+                                <img src="images/tutorialslide1b.png" alt="User" class="w-[2rem] h-[2rem] rounded-full border-[1px] border-[#72dddd] shadow-sm mx-3">
+                            </div>
+                            <p class="text-[0.56rem] font-regular text-gray-700">Tempel di MAXI</p>
+                        </div>
+                        <i class="fa-solid fa-angles-right text-gray-700 text-[0.6rem] mt-[0.8rem]"></i>
+                        <div class="flex-1 flex flex-col items-center text-center">
+                            <div class="w-[2rem] h-[2rem] rounded-full bg-blue-50 text-blue-500 flex items-center justify-center mb-2 text-lg">
+                                <img src="images/tutorialslide1a.png" alt="User" class="w-[2rem] h-[2rem] rounded-full border-[1px] border-[#72dddd] shadow-sm mx-3">
+                            </div>
+                            <p class="text-[0.56rem] font-regular text-gray-700">Lakukan pemesanan</p>
+                        </div>
+                        <i class="fa-solid fa-angles-right text-gray-700 text-[0.6rem] mt-[0.8rem]"></i>
+                        <div class="flex-1 flex flex-col items-center text-center">
+                            <div class="w-[2rem] h-[2rem] rounded-full bg-blue-50 text-blue-500 flex items-center justify-center mb-2 text-lg">
+                                <img src="images/tutorialslide1b.png" alt="User" class="w-[2rem] h-[2rem] rounded-full border-[1px] border-[#72dddd] shadow-sm mx-3">
+                            </div>
+                            <p class="text-[0.56rem] font-regular text-gray-700">Tarik Cashback di MAXI</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white py-4 px-4">
+                <div class="grid grid-cols-4 gap-y-6 gap-x-2">
+                    <div class="flex flex-col items-center gap-2 cursor-pointer group">
+                        <a href="misireward.html" class="group block">
+    <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center text-[#FF5722] group-hover:bg-[#FF5722] group-hover:text-white transition-colors">
+        <i class="fa-solid fa-list-check text-lg"></i>
+    </div>
+</a>
+                        <span class="text-xs text-gray-600 font-medium text-center">Misi Reward</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-2 cursor-pointer group">
+                        <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center text-[#FF5722] group-hover:bg-[#FF5722] group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-store text-lg"></i>
+                        </div>
+                        <span class="text-xs text-gray-600 font-medium text-center">Brands</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-2 cursor-pointer group">
+                        <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center text-[#FF5722] group-hover:bg-[#FF5722] group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-bolt text-lg"></i>
+                        </div>
+                        <span class="text-xs text-gray-600 font-medium text-center">Flash Sale 9.9</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-2 cursor-pointer group">
+                        <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center text-[#FF5722] group-hover:bg-[#FF5722] group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-star text-lg"></i>
+                        </div>
+                        <span class="text-xs text-gray-600 font-medium text-center">List Daftar Sultan</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-2 cursor-pointer group">
+                        <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center text-[#FF5722] group-hover:bg-[#FF5722] group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-users text-lg"></i>
+                        </div>
+                        <span class="text-xs text-gray-600 font-medium text-center">Team</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-2 cursor-pointer group">
+                        <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center text-[#FF5722] group-hover:bg-[#FF5722] group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-shopping-bag text-lg"></i>
+                        </div>
+                        <span class="text-xs text-gray-600 font-medium text-center">R.O Pribadi</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-2 cursor-pointer group">
+                        <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center text-[#FF5722] group-hover:bg-[#FF5722] group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-ticket text-lg"></i>
+                        </div>
+                        <span class="text-xs text-gray-600 font-medium text-center">Kupon Undian</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-2 cursor-pointer group">
+                        <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center text-[#FF5722] group-hover:bg-[#FF5722] group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-user text-lg"></i>
+                        </div>
+                        <span class="text-xs text-gray-600 font-medium text-center">Undang Teman</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="px-5 mb-[0rem] mt-[1rem] relative select-none">
+                <div id="carousel-container" class="flex overflow-x-hidden rounded-[0.5rem] relative w-full h-[8rem] shadow-md touch-pan-y cursor-grab active:cursor-grabbing bg-transparent">
+                    <div class="carousel-slide flex-shrink-0 w-full h-full active:scale-95" style="transform: translateX(-300%); position: absolute; top: 0px; width: 100%; height: 100%; transition: transform 0.5s ease-in-out;">
+                        <img src="images/banner-beranda2.png" class="w-full h-full object-cover" draggable="false">
+                    </div><div class="carousel-slide flex-shrink-0 w-full h-full active:scale-95" style="transform: translateX(-200%); position: absolute; top: 0px; width: 100%; height: 100%; transition: transform 0.5s ease-in-out;">
+                        <img src="images/banner-beranda1.png" class="w-full h-full object-cover" draggable="false">
+                    </div><div class="carousel-slide flex-shrink-0 w-full h-full active:scale-95" style="transform: translateX(-100%); position: absolute; top: 0px; width: 100%; height: 100%; transition: transform 0.5s ease-in-out;">
+                        <img src="images/banner-beranda2.png" class="w-full h-full object-cover" draggable="false">
+                    </div><div class="carousel-slide flex-shrink-0 w-full h-full active:scale-95" style="transform: translateX(0%); position: absolute; top: 0px; width: 100%; height: 100%; transition: transform 0.5s ease-in-out;">
+                        <img src="images/banner-beranda1.png" class="w-full h-full object-cover" draggable="false">
+                    </div>
+                    <div class="carousel-slide flex-shrink-0 w-full h-full active:scale-95" style="transform: translateX(100%); position: absolute; top: 0px; width: 100%; height: 100%; transition: transform 0.5s ease-in-out;">
+                        <img src="images/banner-beranda2.png" class="w-full h-full object-cover" draggable="false">
+                    </div>
+                <div class="carousel-slide flex-shrink-0 w-full h-full active:scale-95" style="transform: translateX(200%); position: absolute; top: 0px; width: 100%; height: 100%; transition: transform 0.5s ease-in-out;">
+                        <img src="images/banner-beranda1.png" class="w-full h-full object-cover" draggable="false">
+                    </div><div class="carousel-slide flex-shrink-0 w-full h-full active:scale-95" style="transform: translateX(300%); position: absolute; top: 0px; width: 100%; height: 100%; transition: transform 0.5s ease-in-out;">
+                        <img src="images/banner-beranda2.png" class="w-full h-full object-cover" draggable="false">
+                    </div><div class="carousel-slide flex-shrink-0 w-full h-full active:scale-95" style="transform: translateX(400%); position: absolute; top: 0px; width: 100%; height: 100%; transition: transform 0.5s ease-in-out;">
+                        <img src="images/banner-beranda1.png" class="w-full h-full object-cover" draggable="false">
+                    </div></div>
+
+                <div class="flex justify-center gap-1.5 mt-2">
+                    <div class="dot w-2 h-2 rounded-full border border-cyan-500 transition-colors duration-300 cursor-pointer bg-transparent"></div>
+                    <div class="dot w-2 h-2 rounded-full border border-cyan-500 transition-colors duration-300 cursor-pointer bg-transparent"></div>
+                </div>
+            </div>
+
+            <div class="bg-white py-4 pl-4 mb-2">
+                <div class="flex items-center justify-between pr-4 mb-3">
+                    <div class="flex items-center gap-2">
+                        <h3 class="text-lg font-bold text-gray-800">Flash Sale 9.9</h3>
+                        <div class="flex items-center gap-1 text-xs font-bold text-white">
+                            <span class="bg-gray-800 px-1.5 py-0.5 rounded">00</span>
+                            <span class="text-gray-800">:</span>
+                            <span class="bg-gray-800 px-1.5 py-0.5 rounded">00</span>
+                            <span class="text-gray-800">:</span>
+                            <span class="bg-[#FF5722] px-1.5 py-0.5 rounded">00</span>
+                        </div>
+                    </div>
+                    <a href="info-flashsale.html" class="text-[#FF5722] text-sm font-semibold">See All</a>
+                </div>
+
+                <div class="flex overflow-x-auto gap-3 pb-2 no-scrollbar pr-4">
+                    <a href="flashsale1.html" class="w-32 shrink-0 flex flex-col gap-2 active:scale-95 transition duration-200 no-underline">
+    <div class="relative w-32 h-32 bg-gray-100 rounded-lg overflow-hidden">
+        <img src="images/flashsale1.jpg" class="w-full h-full object-cover">
+    </div>
+    <div>
+        <div class="text-[#FF5722] font-bold text-sm">Rp 9.000</div>
+        <div class="text-gray-400 text-[10px] line-through">Rp 155.000.000</div>
+        <div class="mt-1 w-full bg-gray-200 rounded-full h-1.5">
+            <div class="bg-[#FF5722] h-1.5 rounded-full" style="width: 3%"></div>
+        </div>
+        <div class="text-[10px] text-gray-500 mt-0.5">1 Unit Honda Brio</div>
+    </div>
+</a>
+
+                    <a href="URL_TUJUAN_DISINI" class="w-32 shrink-0 flex flex-col gap-2 active:scale-95 transition duration-200 no-underline">
+    <div class="relative w-32 h-32 bg-gray-100 rounded-lg overflow-hidden">
+        <img src="images/flashsale2.jpg" class="w-full h-full object-cover">
+    </div>
+    <div>
+        <div class="text-[#FF5722] font-bold text-sm">Rp 9.000</div>
+        <div class="text-gray-400 text-[10px] line-through">Rp 155.000.000</div>
+        <div class="mt-1 w-full bg-gray-200 rounded-full h-1.5">
+            <div class="bg-[#FF5722] h-1.5 rounded-full" style="width: 3%"></div>
+        </div>
+        <div class="text-[10px] text-gray-500 mt-0.5">1 Unit Honda Brio</div>
+    </div>
+</a>
+
+                    <a href="URL_TUJUAN_DISINI" class="w-32 shrink-0 flex flex-col gap-2 active:scale-95 transition duration-200 no-underline">
+    <div class="relative w-32 h-32 bg-gray-100 rounded-lg overflow-hidden">
+        <img src="images/flashsale3.jpg" class="w-full h-full object-cover">
+    </div>
+    <div>
+        <div class="text-[#FF5722] font-bold text-sm">Rp 9.000</div>
+        <div class="text-gray-400 text-[10px] line-through">Rp 155.000.000</div>
+        <div class="mt-1 w-full bg-gray-200 rounded-full h-1.5">
+            <div class="bg-[#FF5722] h-1.5 rounded-full" style="width: 3%"></div>
+        </div>
+        <div class="text-[10px] text-gray-500 mt-0.5">1 Unit Honda Brio</div>
+    </div>
+</a>
+
+                    <a href="URL_TUJUAN_DISINI" class="w-32 shrink-0 flex flex-col gap-2 active:scale-95 transition duration-200 no-underline">
+    <div class="relative w-32 h-32 bg-gray-100 rounded-lg overflow-hidden">
+        <img src="images/flashsale4.jpg" class="w-full h-full object-cover">
+    </div>
+    <div>
+        <div class="text-[#FF5722] font-bold text-sm">Rp 9.000</div>
+        <div class="text-gray-400 text-[10px] line-through">Rp 155.000.000</div>
+        <div class="mt-1 w-full bg-gray-200 rounded-full h-1.5">
+            <div class="bg-[#FF5722] h-1.5 rounded-full" style="width: 3%"></div>
+        </div>
+        <div class="text-[10px] text-gray-500 mt-0.5">1 Unit Honda Brio</div>
+    </div>
+</a>
+                </div>
+            </div>
+
+            <div class="px-4 pb-4">
+                <h3 class="text-lg font-bold text-gray-800 mb-3">E-Commerce</h3>
+                <div class="grid grid-cols-2 gap-3">
+                    <a href="ecommerce-shopee.html" class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col active:scale-95 transition duration-200 no-underline text-inherit">
+    <div class="relative aspect-square bg-gray-100">
+        <img src="images/ecommerce1.jpg" class="w-full h-full object-cover">
+        <div class="absolute top-0 right-0 bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-bl-lg">Subsidi</div>
+    </div>
+    <div class="p-3 flex flex-col flex-1">
+        <h4 class="text-[0.7rem] text-gray-700 line-clamp-2 mb-1">Sanken Mesin Cuci 2 Dua Tabung TW-882GY Twin Tub 9Kg Silver</h4>
+        <div class="mt-auto">
+            <div class="flex items-center gap-1 mb-1">
+                <span class="bg-orange-600 text-[#FFFFFF] text-[10px] px-1 rounded">Shopee</span>
+            </div>
+            <div class="text-[12px] text-gray-600 mt-1">Rp4.526.135</div> 
+            <div class="relative overflow-hidden rounded-xl bg-gradient-to-r from-orange-50 to-white border border-[#FF5722]/30 shadow-sm p-[0rem]">
+                <div class="flex items-center justify-between relative z-10">
+                    <div class="flex items-center gap-[0.3rem]">
+                        <div class="w-[1.5rem] h-[1.5rem] rounded-full bg-[#FF5722] flex items-center justify-center shadow-md text-white">
+                            <img src="images/icon-shopee.jpg" alt="User" class="w-[1.5rem] h-[1.5rem] rounded-full border-2 border-white shadow-sm mx-3">
+                        </div>
+                        <div>
+                            <p class="text-[0.5rem] font-sm text-gray-700 tracking-wide">Est. Cashback</p>
+                            <p class="text-sm font-bold text-[#FF5722]">Rp358.568</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</a>
+
+                    <a href="ecommerce-tiktok.html" class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col active:scale-95 transition duration-200 no-underline text-inherit">
+    <div class="relative aspect-square bg-gray-100">
+        <img class="w-full h-full object-cover" src="images/ecommerce2.jpg">
+        <div class="absolute top-0 right-0 bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-bl-lg">Subsidi</div>
+    </div>
+    <div class="p-3 flex flex-col flex-1">
+        <h4 class="text-[0.7rem] text-gray-700 line-clamp-2 mb-1">Soundcore R60i NC (R50i NC Upgrade) by Anker, Real-Time Adaptive Noise Cancellation, Hi-Res Sound, AI Translation Earbuds, 50H</h4>
+        <div class="mt-auto">
+            <div class="flex items-center gap-1 mb-1">
+                <span class="bg-[#000000] text-[#FFFFFF] text-[10px] px-1 rounded">Tiktok</span>
+            </div>
+            <div class="text-[12px] text-gray-600 mt-1">Rp4.526.135</div> 
+            <div class="relative overflow-hidden rounded-xl bg-gradient-to-r from-orange-50 to-white border border-[#FF5722]/30 shadow-sm p-[0rem]">
+                <div class="flex items-center justify-between relative z-10">
+                    <div class="flex items-center gap-[0.3rem]">
+                        <div class="w-[1.5rem] h-[1.5rem] rounded-full bg-[#FF5722] flex items-center justify-center shadow-md text-white">
+                            <img src="images/icon-tiktok.png" alt="User" class="w-[1.5rem] h-[1.5rem] rounded-full border-2 border-white shadow-sm mx-3">
+                        </div>
+                        <div>
+                            <p class="text-[0.5rem] font-sm text-gray-700 tracking-wide">Est. Cashback</p>
+                            <p class="text-sm font-bold text-[#FF5722]">Rp358.568</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</a>
+
+                    <a href="URL_PRODUK_SHOPEE_DISINI" class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col active:scale-95 transition duration-200 no-underline text-inherit">
+    <div class="relative aspect-square bg-gray-100">
+        <img class="w-full h-full object-cover" src="images/ecommerce3.jpg">         
+        <div class="absolute top-0 right-0 bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-bl-lg">Subsidi</div>
+    </div>
+    <div class="p-3 flex flex-col flex-1">
+        <h4 class="text-[0.7rem] text-gray-700 line-clamp-2 mb-1">KAMIFA - Sandal Selop Beruang Terbuka Terbaru</h4>
+        <div class="mt-auto">
+            <div class="flex items-center gap-1 mb-1">
+                <span class="bg-orange-600 text-[#FFFFFF] text-[10px] px-1 rounded">Shopee</span>
+            </div>
+            <div class="text-[12px] text-gray-600 mt-1">Rp4.526.135</div> 
+            <div class="relative overflow-hidden rounded-xl bg-gradient-to-r from-orange-50 to-white border border-[#FF5722]/30 shadow-sm p-[0rem]">
+                <div class="flex items-center justify-between relative z-10">
+                    <div class="flex items-center gap-[0.3rem]">
+                        <div class="w-[1.5rem] h-[1.5rem] rounded-full bg-[#FF5722] flex items-center justify-center shadow-md text-white">
+                            <img src="images/icon-shopee.jpg" alt="User" class="w-[1.5rem] h-[1.5rem] rounded-full border-2 border-white shadow-sm mx-3">
+                        </div>
+                        <div>
+                            <p class="text-[0.5rem] font-sm text-gray-700 tracking-wide">Est. Cashback</p>
+                            <p class="text-sm font-bold text-[#FF5722]">Rp358.568</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</a>
+
+                    <a href="URL_PRODUK_TIKTOK_DISINI" class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col active:scale-95 transition duration-200 no-underline text-inherit">
+    <div class="relative aspect-square bg-gray-100">
+        <img src="images/ecommerce4.jpg" class="w-full h-full object-cover">
+        <div class="absolute top-0 right-0 bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-bl-lg">Subsidi</div>
+    </div>
+    <div class="p-3 flex flex-col flex-1">
+        <h4 class="text-[0.7rem] text-gray-700 line-clamp-2 mb-1">Samsung A26 5G 8/256GB, Exynos 1380 (5 nm) 6.7 inches Super AMOLED 120Hz 5000 mAh | Garansi Resmi SEIN 1 Tahun</h4>
+        <div class="mt-auto">
+            <div class="flex items-center gap-1 mb-1">
+                <span class="bg-[#000000] text-[#FFFFFF] text-[10px] px-1 rounded">Tiktok</span>
+            </div>
+            <div class="text-[12px] text-gray-600 mt-1">Rp4.526.135</div> 
+            <div class="relative overflow-hidden rounded-xl bg-gradient-to-r from-orange-50 to-white border border-[#FF5722]/30 shadow-sm p-[0rem]">
+                <div class="flex items-center justify-between relative z-10">
+                    <div class="flex items-center gap-[0.3rem]">
+                        <div class="w-[1.5rem] h-[1.5rem] rounded-full bg-[#FF5722] flex items-center justify-center shadow-md text-white">
+                            <img src="images/icon-tiktok.png" alt="User" class="w-[1.5rem] h-[1.5rem] rounded-full border-2 border-white shadow-sm mx-3">
+                        </div>
+                        <div>
+                            <p class="text-[0.5rem] font-sm text-gray-700 tracking-wide">Est. Cashback</p>
+                            <p class="text-sm font-bold text-[#FF5722]">Rp358.568</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</a>
+
+                    <a href="URL_PRODUK_SHOPEE_DISINI" class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col active:scale-95 transition duration-200 no-underline text-inherit">
+    <div class="relative aspect-square bg-gray-100">
+        <img src="images/ecommerce5.jpg" class="w-full h-full object-cover">
+        <div class="absolute top-0 right-0 bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-bl-lg">Subsidi</div>
+    </div>
+    <div class="p-3 flex flex-col flex-1">
+        <h4 class="text-[0.7rem] text-gray-700 line-clamp-2 mb-1">TCL HD QLED Google TV 32 inch V4C - HDR 10 - Dolby Audio - Google Play/Netflix/Youtube/Disney+Hotstar - Smart Android 24 LED</h4>
+        <div class="mt-auto">
+            <div class="flex items-center gap-1 mb-1">
+                <span class="bg-orange-600 text-[#FFFFFF] text-[10px] px-1 rounded">Shopee</span>
+            </div>
+            <div class="text-[12px] text-gray-600 mt-1">Rp4.526.135</div> 
+            <div class="relative overflow-hidden rounded-xl bg-gradient-to-r from-orange-50 to-white border border-[#FF5722]/30 shadow-sm p-[0rem]">
+                <div class="flex items-center justify-between relative z-10">
+                    <div class="flex items-center gap-[0.3rem]">
+                        <div class="w-[1.5rem] h-[1.5rem] rounded-full bg-[#FF5722] flex items-center justify-center shadow-md text-white">
+                            <img src="images/icon-shopee.jpg" alt="User" class="w-[1.5rem] h-[1.5rem] rounded-full border-2 border-white shadow-sm mx-3">
+                        </div>
+                        <div>
+                            <p class="text-[0.5rem] font-sm text-gray-700 tracking-wide">Est. Cashback</p>
+                            <p class="text-sm font-bold text-[#FF5722]">Rp358.568</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</a>
+
+                    <a href="URL_PRODUK_TIKTOK_DISINI" class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col active:scale-95 transition duration-200 no-underline text-inherit">
+    <div class="relative aspect-square bg-gray-100">
+        <img src="images/ecommerce6.jpg" class="w-full h-full object-cover">
+        <div class="absolute top-0 right-0 bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-bl-lg">Subsidi</div>
+    </div>
+    <div class="p-3 flex flex-col flex-1">
+        <h4 class="text-[0.7rem] text-gray-700 line-clamp-2 mb-1">Kompor gas Rinnai Kompor Gas 2 Tungku Teflon Kuningan Kompor Rinnai RI522C RI 522C RI-522C</h4>
+        <div class="mt-auto">
+            <div class="flex items-center gap-1 mb-1">
+                <span class="bg-[#000000] text-[#FFFFFF] text-[10px] px-1 rounded">Tiktok</span>
+            </div>
+            <div class="text-[12px] text-gray-600 mt-1">Rp4.526.135</div> 
+            <div class="relative overflow-hidden rounded-xl bg-gradient-to-r from-orange-50 to-white border border-[#FF5722]/30 shadow-sm p-[0rem]">
+                <div class="flex items-center justify-between relative z-10">
+                    <div class="flex items-center gap-[0.3rem]">
+                        <div class="w-[1.5rem] h-[1.5rem] rounded-full bg-[#FF5722] flex items-center justify-center shadow-md text-white">
+                            <img src="images/icon-shopee.jpg" alt="User" class="w-[1.5rem] h-[1.5rem] rounded-full border-2 border-white shadow-sm mx-3">
+                        </div>
+                        <div>
+                            <p class="text-[0.5rem] font-sm text-gray-700 tracking-wide">Est. Cashback</p>
+                            <p class="text-sm font-bold text-[#FF5722]">Rp358.568</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</a>
+                </div>
+                
+                <div class="py-6 flex justify-center">
+                    <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-[#FF5722]"></div>
+                </div>
+            </div>
+        </main>
+
+        <div class="fixed bottom-0 left-0 right-0 mx-auto w-full max-w-[430px] bg-white border-t border-gray-100 px-6 py-[0.5rem] flex justify-between items-end z-40 pb-3 shadow-lg">
+    <a href="index.html" class="flex flex-col items-center gap-0 text-[#00a6a6] transition-colors no-underline">
+        <i class="fa-solid fa-house text-xl mb-[-0.1rem]"></i>
+        <span class="text-[10px] font-medium">Beranda</span>
+    </a>
+    <a href="misireward.html" class="flex flex-col items-center gap-0 text-gray-500 hover:text-[#00a6a6] transition-colors no-underline">
+        <i class="fa-solid fa-gift text-xl mb-[-0.1rem]"></i>
+        <span class="text-[10px] font-medium">Misi Reward</span>
+    </a>
+    <a href="team.html" class="flex flex-col items-center gap-0 text-gray-500 hover:text-[#00a6a6] transition-colors no-underline">
+        <i class="fa-solid fa-users text-xl mb-[-0.1rem]"></i>
+        <span class="text-[10px] font-medium">Team</span>
+    </a>
+    <a href="pendapatan.html" class="flex flex-col items-center gap-0 text-gray-500 hover:text-[#00a6a6] transition-colors no-underline">
+        <i class="fa-solid fa-wallet text-xl mb-[-0.1rem]"></i>
+        <span class="text-[10px] font-medium">Pendapatan</span>
+    </a>
+    <a href="saya.html" class="flex flex-col items-center gap-0 text-gray-500 hover:text-[#00a6a6] transition-colors no-underline">
+        <i class="fa-solid fa-user text-xl mb-[-0.1rem]"></i>
+        <span class="text-[10px] font-bold">Saya</span>
+    </a>
+</div>
+</div>
+	
+	<div id="info-modal" class="absolute inset-0 z-50 items-center justify-center px-4 bg-[#0000005c] backdrop-blur-[2.3px] hidden">
+        <div class="zoom-in relative w-full max-w-sm bg-[#000000b0] rounded-3xl overflow-hidden flex flex-col items-center text-center p-[1.3rem] border border-[#ffd8916b] shadow-2xl">
+          <div class="absolute top-0 left-0 w-full h-48 bg-gradient-to-b from-transparent to-transparent -z-10"></div>
+          <div class="absolute -top-10 left-1/2 transform -translate-x-1/2 w-64 h-64 bg-[#00000099] rounded-full blur-3xl -z-10"></div>
+
+          <button onClick="closeModal()" class="absolute top-4 right-4 text-orange-300 hover:text-white transition-colors w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10 cursor-pointer">
+            <i class="fa-solid fa-xmark text-lg"></i>
+          </button>
+
+          <h2 class="text-2xl font-extrabold text-gray-100 mb-2 mt-4">Info</h2>
+          <p class="text-gray-100 text-sm leading-relaxed mb-6 px-[0rem]"><span class="font-semibold text-yellow-200"> Maxi Poin </span>adalah program loyalitas dan penghargaan (reward system) dalam ekosistem MAXI yang dirancang berbasis komunitas gotong-royong. Di sistem ini, kesuksesan mendapatkan reward tidak hanya bergantung pada transaksi individu, melainkan didorong oleh pertumbuhan dan aktivitas seluruh pengguna MAXI secara nasional.</p>
+
+          <a href="maxipoin-info.html" class="w-full block">
+            <button onClick="closeModal()" class="w-full bg-[#b7993e] hover:bg-[#a38531] text-white font-bold py-4 rounded-xl shadow-lg transition-all transform active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer">
+                <span>Detail Maxipoin</span>
+            </button>
+          </a>
+        </div>
+    </div>
+
+<script>
+document.getElementById('btn-tempel').addEventListener('click', () => {
+    const modal = document.getElementById('modal-reward');
+    const container = document.getElementById('confetti-container');
+    
+    modal.classList.remove('hidden');
+    container.innerHTML = ''; 
+
+    const colors = ['#00a6a6', '#FF5722', '#D4FF00', '#FFD700', '#3b82f6', '#ec4899'];
+    
+    for (let i = 0; i < 45; i++) {
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti-piece');
+        
+        const randomLeft = Math.random() * 100; 
+        const randomSizeW = Math.random() * 8 + 6; 
+        const randomSizeH = Math.random() * 12 + 6; 
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        const randomDelay = Math.random() * 0.4; 
+        const randomDuration = Math.random() * 1.5 + 1.5; 
+        
+        confetti.style.left = randomLeft + '%';
+        confetti.style.width = randomSizeW + 'px';
+        confetti.style.height = randomSizeH + 'px';
+        confetti.style.backgroundColor = randomColor;
+        confetti.style.animationDelay = randomDelay + 's';
+        confetti.style.animationDuration = randomDuration + 's';
+        
+        container.appendChild(confetti);
+        
+        setTimeout(() => {
+            confetti.remove();
+        }, (randomDuration + randomDelay) * 1000);
+    }
+});
+
+document.getElementById('btn-close-modal').addEventListener('click', () => {
+    document.getElementById('modal-reward').classList.add('hidden');
+});
+</script>
+
+<script>
+// --- LOGIKA SPLASH SCREEN ---
+window.addEventListener('DOMContentLoaded', () => {
+  const splash2 = document.getElementById('screen-splash2');
+  if (splash2) {
+    setTimeout(() => {
+      splash2.classList.remove('active'); 
+      document.body.style.backgroundColor = '#ffffff'; 
+      setTimeout(() => {
+        splash2.remove();
+      }, 500);
+    }, 2500);
+  }
+});
+</script>
+
+ <script>
+    const modal = document.getElementById('info-modal');
+
+    function openModal() {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+    }
+
+    function closeModal() {
+        modal.classList.remove('flex');
+        modal.classList.add('hidden');
+    }
+    
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('carousel-container');
+    const originalSlides = Array.from(container.children);
+    const dots = document.querySelectorAll('.dot');
+    const totalOriginals = originalSlides.length;
+
+    // 1. Prosedur Kloning demi menghindari ruang hampa (warna putih) saat perputaran index
+    const firstClone = originalSlides[0].cloneNode(true);
+    const lastClone = originalSlides[totalOriginals - 1].cloneNode(true);
+
+    container.appendChild(firstClone);
+    container.insertBefore(lastClone, originalSlides[0]);
+
+    const allSlides = Array.from(container.children);
+    
+    // Index real dimulai dari 1 karena index 0 diisi oleh kloningan slide terakhir
+    let currentIndex = 1; 
+    let startX = 0;
+    let isSwiping = false;
+    let autoPlayTimer;
+    const threshold = 40;
+
+    // Pasang posisi awal sejajar secara horizontal
+    allSlides.forEach((slide, index) => {
+        slide.style.position = 'absolute';
+        slide.style.top = '0';
+        slide.style.width = '100%';
+        slide.style.height = '100%';
+        slide.style.transform = `translateX(${(index - currentIndex) * 100}%)`;
+    });
+
+    function updateCarouselPosition(animated = true) {
+        allSlides.forEach((slide, index) => {
+            if (animated) {
+                slide.style.transition = 'transform 0.5s ease-in-out';
+            } else {
+                slide.style.transition = 'none';
+            }
+            slide.style.transform = `translateX(${(index - currentIndex) * 100}%)`;
+        });
+        updateDots();
+    }
+
+    function updateDots() {
+        // Dot index aktif disesuaikan dengan posisi index asli gambar
+        let activeDotIndex = currentIndex - 1;
+        if (currentIndex === 0) activeDotIndex = totalOriginals - 1;
+        if (currentIndex === totalOriginals + 1) activeDotIndex = 0;
+
+        dots.forEach((dot, idx) => {
+            if (idx === activeDotIndex) {
+                dot.classList.replace('bg-transparent', 'bg-cyan-500');
+            } else {
+                dot.classList.replace('bg-cyan-500', 'bg-transparent');
+            }
+        });
+    }
+
+    // Fungsi reset instan di latar belakang saat mentok di slide kloningan
+    function handleLoopBoundary() {
+        if (currentIndex === totalOriginals + 1) {
+            currentIndex = 1;
+            updateCarouselPosition(false); // Lompat instan tanpa animasi ke awal
+        } else if (currentIndex === 0) {
+            currentIndex = totalOriginals;
+            updateCarouselPosition(false); // Lompat instan tanpa animasi ke akhir
+        }
+    }
+
+    function nextSlide() {
+        currentIndex++;
+        updateCarouselPosition(true);
+        setTimeout(handleLoopBoundary, 500); // Tunggu animasi selesai baru reset index
+    }
+
+    function prevSlide() {
+        currentIndex--;
+        updateCarouselPosition(true);
+        setTimeout(handleLoopBoundary, 500);
+    }
+
+    function startAutoPlay() {
+        stopAutoPlay();
+        autoPlayTimer = setInterval(nextSlide, 3000);
+    }
+
+    function stopAutoPlay() {
+        clearInterval(autoPlayTimer);
+    }
+
+    // Klik manual pada Dots
+    dots.forEach((dot, idx) => {
+        dot.addEventListener('click', () => {
+            stopAutoPlay();
+            currentIndex = idx + 1;
+            updateCarouselPosition(true);
+            startAutoPlay();
+        });
+    });
+
+    // --- INPUT EVENT DETECTION (TOUCH & MOUSE DRAG) ---
+    const startDrag = (x) => {
+        startX = x;
+        isSwiping = true;
+        stopAutoPlay();
+    };
+
+    const endDrag = (endX) => {
+        if (!isSwiping) return;
+        let diffX = startX - endX;
+
+        if (diffX > threshold) {
+            nextSlide();
+        } else if (diffX < -threshold) {
+            prevSlide();
+        } else {
+            updateCarouselPosition(true); // Kembalikan posisi jika tidak lewati batas threshold
+        }
+        isSwiping = false;
+        startAutoPlay();
+    };
+
+    container.addEventListener('touchstart', (e) => startDrag(e.touches[0].clientX), { passive: true });
+    container.addEventListener('touchend', (e) => endDrag(e.changedTouches[0].clientX), { passive: true });
+
+    container.addEventListener('mousedown', (e) => startDrag(e.clientX));
+    window.addEventListener('mouseup', (e) => endDrag(e.clientX));
+
+    // Eksekusi inisialisasi awal
+    updateCarouselPosition(false);
+    startAutoPlay();
+});
+</script>
+
+
+</body></html>

@@ -1,0 +1,255 @@
+<html lang="id"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+	
+	<style>
+.payment-option{
+    transition: all .25s ease;
+}
+.payment-option:hover{
+    border-color:#60a5fa;
+}
+.peer:checked + .payment-option{
+    border:2px solid #2563EB;
+    background:#EFF6FF;
+    box-shadow:0 0 0 1px rgba(37,99,235,.08);
+}
+.peer:checked + .payment-option .payment-fee{
+    color:#22c55e;
+    font-weight:700;
+}
+.peer:checked + .payment-option .payment-check{
+    opacity:1;
+    transform:scale(1);
+}
+.payment-check{
+    opacity:0;
+    transform:scale(.5);
+    transition:.2s;
+}
+</style>
+
+</head>
+<body class="h-screen w-screen overflow-hidden bg-white">
+          <div class="w-full h-full bg-gray-50 overflow-y-auto relative font-sans text-gray-800">
+    <!-- FontAwesome CDN (Included here for standalone functionality) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Background Header Accent -->
+    <div class="absolute top-0 left-0 w-full h-72 bg-[#00a6a6] rounded-b-[40px] shadow-md"></div>
+
+    <!-- Main Content Container -->
+    <div class="relative z-10 flex flex-col items-center w-full px-5 pt-10 pb-8">
+        
+        <!-- Success Animation/Icon -->
+        
+
+        <!-- Success Message -->
+        <h1 class="text-white text-2xl font-bold mb-1">Belanja Produk</h1>
+        <p class="text-blue-100 text-sm mb-8">Invoice Belanja Produk Misi Reward</p>
+
+        <!-- Invoice Card -->
+        <div class="w-full bg-white rounded-2xl shadow-xl overflow-hidden relative">
+            <!-- Top Decoration (Receipt holes illusion) -->
+            <div class="absolute -top-2 left-0 w-full h-4 bg-transparent flex justify-between px-2">
+                <!-- Decorative circles could go here, but keeping it clean -->
+            </div>
+
+            <div class="p-6">
+                <!-- Invoice Header -->
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <p class="text-xs text-gray-400 uppercase tracking-wider font-semibold">Invoice No.</p>
+                        <p class="text-gray-800 font-bold">#INV-849201</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-xs text-gray-400 uppercase tracking-wider font-semibold">Date</p>
+                        <p class="text-gray-800 font-medium text-sm">Feb 16, 2026</p>
+                        <p class="text-gray-500 text-xs">10:42 AM</p>
+                    </div>
+                </div>
+
+                <!-- Product Section -->
+                <div class="bg-gray-50 rounded-xl p-4 mb-6 flex items-center gap-4 border border-gray-100">
+                    <!-- <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-[#2563EB]">
+                        <i class="fa-solid fa-box-open text-xl"></i>
+                    </div> -->
+                    <div class="flex-1">
+                        <p class="text-xs text-gray-400 uppercase tracking-wider font-semibold">EKSPEDISI :</p>
+                        <h3 class="text-sm font-bold text-gray-900">Jalur Nugraha Ekakurir (JNE)</h3><p class="text-xs text-gray-500">Layanan - Reguler</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-sm font-bold text-gray-900">Rp.75.000</p>
+                    </div>
+                </div>
+
+                <!-- Payment Details Grid -->
+                <div class="space-y-3 mb-6">
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-500">Quantity</span>
+                        <span class="font-medium text-gray-800">175 pcs</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-500">Limugfreen Healthy Drink</span>
+                        <span class="font-medium text-gray-800">Rp.25.000.000</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-500">Bio Ocean Salt</span>
+                        <span class="font-medium text-gray-800">Rp.5.000.000</span>
+                    </div><div class="space-y-3">
+                
+                <!-- Option 1: Selected -->
+               <h2 class="text-[0.9rem] text-gray-500 mb-2">
+    Metode Pembayaran :
+</h2>
+
+<!-- QRIS -->
+<label class="block cursor-pointer mb-3">
+    
+	
+	<input type="radio" name="payment" value="qris" data-fee="0.007" class="peer sr-only">
+
+    <div class="payment-option flex items-center justify-between p-4 border border-gray-200 rounded-xl bg-white">
+
+        <span class="text-sm text-gray-600">
+            QRIS + Admin
+        </span>
+
+        <div class="flex items-center gap-3">
+            <span class="payment-fee text-sm text-gray-700">
+                0.7%
+            </span>
+
+            <div class="payment-check w-5 h-5 rounded-full bg-[#2563EB] flex items-center justify-center">
+                <i class="fa-solid fa-check text-white text-[10px]"></i>
+            </div>
+        </div>
+
+    </div>
+</label>
+
+<!-- Virtual Account -->
+<label class="block cursor-pointer">
+    
+	
+	<input type="radio" name="payment" value="va" data-fee="4400" class="peer sr-only" checked>
+
+    <div class="payment-option flex items-center justify-between p-4 border border-gray-200 rounded-xl bg-white">
+
+        <span class="text-sm text-gray-600">
+            Virtual Account + Admin
+        </span>
+
+        <div class="flex items-center gap-3">
+            <span class="payment-fee text-sm">
+                Rp 4.400
+            </span>
+
+            <div class="payment-check w-5 h-5 rounded-full bg-[#2563EB] flex items-center justify-center">
+                <i class="fa-solid fa-check text-white text-[10px]"></i>
+            </div>
+        </div>
+
+    </div>
+</label>
+                <!-- Option 3 -->
+                
+
+            </div>
+                    <!-- <div class="flex justify-between text-sm">
+                        <span class="text-gray-500">Pajak (11%)</span>
+                        <span class="font-medium text-green-600">Free</span>
+                    </div> -->
+                </div>
+
+                <!-- Divider -->
+                <div class="border-t-2 border-dashed border-gray-200 my-6 relative">
+                    <!-- Cutout circles for receipt look -->
+                    <div class="absolute -left-8 -top-3 w-6 h-6 bg-gray-50 rounded-full"></div>
+                    <div class="absolute -right-8 -top-3 w-6 h-6 bg-gray-50 rounded-full"></div>
+                </div>
+
+                <!-- Total -->
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-gray-500 font-medium">Total Bayar</span>
+                    <span id="totalDisplay" class="text-2xl font-bold text-[#2563EB]" data-base="30075000">Rp. 30.075.000</span>
+                </div>
+				
+			              
+				<div class="flex justify-end mb-6">
+    				<span id="paymentBadge" class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded font-medium transition-all duration-300">Pembayaran melalui Virtual Account</span>
+				</div>
+
+                <!-- Barcode (Visual) -->
+                <div class="flex flex-col items-center justify-center opacity-60 mt-4">
+                    <svg class="w-full h-12" preserveAspectRatio="none" viewBox="0 0 100 20">
+                        <path fill="#000" d="M0 0h2v20H0zm4 0h1v20H4zm3 0h3v20H7zm5 0h1v20h-1zm3 0h2v20h-2zm4 0h1v20h-1zm3 0h3v20h-3zm5 0h1v20h-1zm2 0h2v20h-2zm4 0h1v20h-1zm2 0h3v20h-3zm5 0h1v20h-1zm2 0h1v20h-1zm3 0h2v20h-2zm4 0h1v20h-1zm2 0h3v20h-3zm5 0h1v20h-1zm2 0h1v20h-1zm3 0h2v20h-2zm4 0h1v20h-1zm2 0h3v20h-3z"></path>
+                    </svg>
+                    <!-- CATATAN GAMBAR SCAN-LOG ANGKANYA AKAN BERUBAH- UBAH BERDASARKAN URUTAN INVOICE --> 
+<span class="text-[10px] tracking-[0.3em] mt-1">849201-SCAN-LOG</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="w-full mt-8 space-y-3">
+            <button class="w-full bg-[#00a6a6] hover:bg-[#00a6a6] text-white font-semibold py-4 rounded-xl shadow-lg shadow-blue-200 transition duration-200 flex items-center transform transition-transform active:scale-[0.98] justify-center gap-2">
+                <span>Bayar Sekarang</span>
+                
+            </button>
+            
+            <button class="w-full bg-gray-300 border border-gray-200 text-gray-700 font-semibold py-4 rounded-xl hover:bg-gray-75 transition duration-200 flex items-center justify-center gap-2">
+                <!-- <i class="fa-solid fa-download"></i> -->
+                <span>Cancel</span>
+            </button>
+        </div>
+
+    </div>
+</div>
+    <script>
+const paymentBadge = document.getElementById('paymentBadge');
+const paymentMethods = document.querySelectorAll('input[name="payment"]');
+const totalDisplay = document.getElementById('totalDisplay');
+const baseAmount = parseFloat(totalDisplay.getAttribute('data-base')); // Rp 30.000.000
+
+function updatePayment(selectedInput) {
+    const value = selectedInput.value;
+    const fee = parseFloat(selectedInput.getAttribute('data-fee'));
+    
+    // Hitung Total
+    let finalTotal = baseAmount;
+    if (value === "qris") {
+        finalTotal = baseAmount + (baseAmount * fee);
+        paymentBadge.textContent = "Pembayaran melalui QRIS";
+        paymentBadge.className = "bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-medium";
+    } else {
+        finalTotal = baseAmount + fee;
+        paymentBadge.textContent = "Pembayaran melalui Virtual Account";
+        paymentBadge.className = "bg-green-100 text-green-700 text-xs px-2 py-1 rounded font-medium";
+    }
+
+    // Format ke Rupiah
+    totalDisplay.textContent = "Rp. " + finalTotal.toLocaleString('id-ID');
+}
+
+paymentMethods.forEach(item => {
+    item.addEventListener('change', function () {
+        updatePayment(this);
+    });
+});
+
+// Inisialisasi saat load
+const initialSelected = document.querySelector('input[name="payment"]:checked');
+if (initialSelected) {
+    updatePayment(initialSelected);
+}
+</script>
+	
+	</body></html>

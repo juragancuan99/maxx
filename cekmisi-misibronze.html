@@ -1,0 +1,489 @@
+<html lang="id"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Misi Reward Bronze - Maxi Ecosystem</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght=300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; margin: 0; padding: 0; }
+        ::-webkit-scrollbar { display: none; } 
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Animasi Zoom In untuk Pop-Up Modal Info */
+        @keyframes zoomIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .zoom-in { animation: zoomIn 0.2s ease-out forwards; }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#D4FF00',
+                    }
+                }
+            }
+        }
+    </script>
+
+</head>
+
+<body class="bg-gray-800 flex justify-center min-h-screen overflow-x-hidden">
+    
+    <div class="w-full max-w-md min-h-screen bg-white relative shadow-2xl flex flex-col justify-between overflow-hidden">
+        
+        <div class="w-full h-full bg-gray-50 overflow-y-auto relative font-sans text-gray-800 pb-6">
+            
+            <div class="sticky top-0 z-30 bg-[#00a6a6] shadow-sm">
+                <div class="px-4 py-[0.5rem] flex items-center justify-between">
+                    <button onClick="history.back()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-black/10 transition-colors text-gray-100">
+                        <div class="w-full h-full flex items-center justify-center">
+                            <i class="fa-solid fa-arrow-left text-lg"></i>
+                        </div>
+                    </button>
+                    <h1 id="page-title" class="text-lg font-bold text-gray-100">Misi Reward Bronze</h1>
+                    
+                    <button onClick="openInfoMisiModal()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-black/10 transition-colors text-gray-100">
+                        <i class="fa-regular fa-circle-question text-lg"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="relative w-full h-[10rem] bg-gray-200">
+                <img src="images/banner-misibronze1.png" alt="Affiliate News" class="w-full h-full object-cover">
+            </div>
+
+            <div class="mt-[-0.5rem] relative w-full h-[3rem] bg-gray-200">
+                <img src="https://i.ibb.co.com/yF26cKf4/PROMOTION-EDIT-2.png" alt="Affiliate News" class="w-full h-full object-cover">
+            </div>
+
+            <div class="px-4 my-4">
+                <div class="flex bg-white p-1 rounded-xl shadow-sm">
+                    <button id="btn-misi" onClick="switchTab('misi')" class="flex-1 py-2 text-sm font-bold rounded-lg bg-[#FFD700] text-black shadow-sm transition-all duration-200">
+                        Misi Bronze
+                    </button>
+                    <button id="btn-kuota" onClick="switchTab('kuota')" class="flex-1 py-2 text-sm font-medium rounded-lg text-gray-500 hover:bg-gray-50 transition-all duration-200">
+                        Kuota Peserta Misi Bronze
+                    </button>
+                </div>
+            </div>
+
+            <div id="content-misi" class="block">
+                <div class="px-4 mt-2">
+                    <div class="bg-yellow-50 border border-[#FFD700]/30 rounded-lg p-3 flex items-center gap-3 shadow-sm">
+                        <div class="w-8 h-8 rounded-full bg-[#FFD700]/20 flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-bullhorn text-yellow-700 text-sm"></i>
+                        </div>
+                        <p class="text-sm text-slate-700 font-medium leading-snug">Perhitungan Reward dimulai dari omset maxipoin di angka 500k mp selanjutnya perkelipatan 100k mp. Mp Nasional Saat ini : 500.000,68</p>
+                    </div>
+                </div>
+
+                <main class="flex flex-col gap-2 mt-4">
+                    <div class="bg-white py-4 pl-4 mb-2">
+                        <div class="flex items-center justify-between pr-4 mb-3">
+                            <div class="flex items-center gap-2">
+                                <h3 class="text-lg font-bold text-gray-800">Flash Sale 9.9</h3>
+                                <div class="flex items-center gap-1 text-xs font-bold text-white">
+                                    <span class="bg-gray-800 px-1.5 py-0.5 rounded">00</span>
+                                    <span class="text-gray-800">:</span>
+                                    <span class="bg-gray-800 px-1.5 py-0.5 rounded">00</span>
+                                    <span class="text-gray-800">:</span>
+                                    <span class="bg-[#FF5722] px-1.5 py-0.5 rounded">00</span>
+                                    <button onClick="openFlashSaleModal()" class="w-[0.7rem] h-10 flex items-center justify-center text-gray-100 active:text-[#FF5722] transition-colors">
+                                        <i class="fa-regular fa-circle-question text-[#ff0000] text-xs"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex overflow-x-auto gap-3 pb-2 no-scrollbar pr-4">
+                            <!-- Flash Sale Item 1 -->
+                            <a href="flashsale1.html" tabindex="0" class="w-32 shrink-0 flex flex-col gap-2 active:scale-95 focus:outline-none cursor-pointer transition duration-200">
+                                <div class="relative w-32 h-32 bg-gray-100 rounded-lg overflow-hidden">
+                                    <img src="images/flashsale1.jpg" class="w-full h-full object-cover">
+                                </div>
+                                <div>
+                                    <div class="text-[#FF5722] font-bold text-sm">Rp9.000</div>
+                                    <div class="text-gray-400 text-[10px] line-through">Rp 180.000.000</div>
+                                    <div class="mt-1 w-full bg-gray-200 rounded-full h-1.5">
+                                        <div class="bg-[#FF5722] h-1.5 rounded-full" style="width: 3%"></div>
+                                    </div>
+                                    <div class="text-[10px] text-gray-500 mt-0.5 truncate">5 Unit Honda Brio</div>
+                                </div>
+                            </a>
+
+                            <!-- Flash Sale Item 2 -->
+                            <a href="detail-toyota-avanza.html" tabindex="0" class="w-32 shrink-0 flex flex-col gap-2 active:scale-95 focus:outline-none cursor-pointer transition duration-200">
+                                <div class="relative w-32 h-32 bg-gray-100 rounded-lg overflow-hidden">
+                                    <img src="images/flashsale2.jpg" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/300x300?text=Toyota+Avanza'">
+                                </div>
+                                <div>
+                                    <div class="text-[#FF5722] font-bold text-sm">Rp9.000</div>
+                                    <div class="text-gray-400 text-[10px] line-through">Rp 243.700.000</div>
+                                    <div class="mt-1 w-full bg-gray-200 rounded-full h-1.5">
+                                        <div class="bg-[#FF5722] h-1.5 rounded-full" style="width: 3%"></div>
+                                    </div>
+                                    <div class="text-[10px] text-gray-500 mt-0.5 truncate">5 Unit Toyota Avanza</div>
+                                </div>
+                            </a>
+
+                            <!-- Flash Sale Item 3 -->
+                            <a href="detail-xpander.html" tabindex="0" class="w-32 shrink-0 flex flex-col gap-2 active:scale-95 focus:outline-none cursor-pointer transition duration-200">
+                                <div class="relative w-32 h-32 bg-gray-100 rounded-lg overflow-hidden">
+                                    <img src="images/flashsale3.jpg" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/300x300?text=Xpander'">
+                                </div>
+                                <div>
+                                    <div class="text-[#FF5722] font-bold text-sm">Rp9.000</div>
+                                    <div class="text-gray-400 text-[10px] line-through">Rp 270.100.000</div>
+                                    <div class="mt-1 w-full bg-gray-200 rounded-full h-1.5">
+                                        <div class="bg-[#FF5722] h-1.5 rounded-full" style="width: 3%"></div>
+                                    </div>
+                                    <div class="text-[10px] text-gray-500 mt-0.5 truncate">2 Unit Xpander</div>
+                                </div>
+                            </a>
+                            
+                            <!-- Flash Sale Item 4 -->
+                            <a href="detail-stargazer.html" tabindex="0" class="w-32 shrink-0 flex flex-col gap-2 active:scale-95 focus:outline-none cursor-pointer transition duration-200">
+                                <div class="relative w-32 h-32 bg-gray-100 rounded-lg overflow-hidden">
+                                    <img src="images/flashsale4.jpg" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/300x300?text=Xpander'">
+                                </div>
+                                <div>
+                                    <div class="text-[#FF5722] font-bold text-sm">Rp9.000</div>
+                                    <div class="text-gray-400 text-[10px] line-through">Rp 370.000.000</div>
+                                    <div class="mt-1 w-full bg-gray-200 rounded-full h-1.5">
+                                        <div class="bg-[#FF5722] h-1.5 rounded-full" style="width: 3%"></div>
+                                    </div>
+                                    <div class="text-[10px] text-gray-500 mt-0.5 truncate">2 Unit Hyundai STARGAZER</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="px-4 mt-[0rem] pb-[1rem]">
+                        <div class="flex justify-between items-end mb-4">
+                            <h3 class="font-bold text-lg text-slate-800">Misi Lainnya</h3>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <!-- Misi Lainnya 1 -->
+                            <a href="flashsale2.html" tabindex="0" class="bg-white rounded-xl shadow-sm overflow-hidden active:scale-95 focus:outline-none cursor-pointer transition duration-200 border border-gray-100 flex flex-col">
+                                <div class="relative h-32 bg-gray-100">
+                                    <img src="images/flashsale5.jpg" alt="Umroh" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/400x300?text=Umroh+VIP'">
+                                </div>
+                                <div class="p-3 flex flex-col flex-grow">
+                                    <h4 class="text-sm font-bold text-slate-800 line-clamp-2 mb-1">Tiket Umroh VIP</h4>
+                                    <div class="text-[#FF5722] font-bold text-sm">Rp9.000</div>
+                                    <div class="text-gray-400 text-[10px] line-through">Rp 35.000.000</div>
+                                    <div class="mt-auto pt-2">
+                                        <div class="mt-1 w-full bg-gray-200 rounded-full h-1.5">
+                                            <div class="bg-[#FF5722] h-1.5 rounded-full" style="width: 5%"></div>
+                                        </div>
+                                        <div class="text-[10px] text-gray-500 mt-0.5">5 Tiket Umroh</div>
+                                        <div class="w-full text-center mt-2 bg-[#FFD700] text-slate-900 text-xs font-bold py-2 rounded-lg shadow-sm">Info Misi</div>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <!-- Misi Lainnya 2 -->
+                            <a href="infomisi-beat.html" tabindex="0" class="bg-white rounded-xl shadow-sm overflow-hidden active:scale-95 focus:outline-none cursor-pointer transition duration-200 border border-gray-100 flex flex-col">
+                                <div class="relative h-32 bg-gray-100">
+                                    <img src="images/flashsale6.jpg" alt="Honda Beat" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/400x300?text=Honda+Beat'">
+                                </div>
+                                <div class="p-3 flex flex-col flex-grow">
+                                    <h4 class="text-sm font-bold text-slate-800 line-clamp-2 mb-1">Honda Beat New</h4>
+                                    <div class="text-[#FF5722] font-bold text-sm">Rp9.000</div>
+                                    <div class="text-gray-400 text-[10px] line-through">Rp 20.000.000</div>
+                                    <div class="mt-auto pt-2">
+                                        <div class="mt-1 w-full bg-gray-200 rounded-full h-1.5">
+                                            <div class="bg-[#FF5722] h-1.5 rounded-full" style="width: 5%"></div>
+                                        </div>
+                                        <div class="text-[10px] text-gray-500 mt-0.5">6 Unit Honda Beat</div>
+                                        <div class="w-full text-center mt-2 bg-[#FFD700] text-slate-900 text-xs font-bold py-2 rounded-lg shadow-sm">Info Misi</div>
+                                    </div>
+                                </div>
+                            </a>
+                            
+                            <!-- Misi Lainnya 3 -->
+                            <a href="infomisi-iphone.html" tabindex="0" class="bg-white rounded-xl shadow-sm overflow-hidden active:scale-95 focus:outline-none cursor-pointer transition duration-200 border border-gray-100 flex flex-col">
+                                <div class="relative h-32 bg-gray-100">
+                                    <img src="images/flashsale7.jpg" alt="Iphone" class="w-full h-full object-cover" onerror="this.src='images/flashsale7.jpg'">
+                                </div>
+                                <div class="p-3 flex flex-col flex-grow">
+                                    <h4 class="text-sm font-bold text-slate-800 line-clamp-2 mb-1">Iphone 17 Promax</h4>
+                                    <div class="text-[#FF5722] font-bold text-sm">Rp9.000</div>
+                                    <div class="text-gray-400 text-[10px] line-through">Rp 25.000.000</div>
+                                    <div class="mt-auto pt-2">
+                                        <div class="mt-1 w-full bg-gray-200 rounded-full h-1.5">
+                                            <div class="bg-[#FF5722] h-1.5 rounded-full" style="width: 5%"></div>
+                                        </div>
+                                        <div class="text-[10px] text-gray-500 mt-0.5">6 Unit Iphone 17 Promax</div>
+                                        <div class="w-full text-center mt-2 bg-[#FFD700] text-slate-900 text-xs font-bold py-2 rounded-lg shadow-sm">Info Misi</div>
+                                    </div>
+                                </div>
+                            </a>
+                            
+                            <!-- Misi Lainnya 4 -->
+                            <a href="infomisi-kulkas.html" tabindex="0" class="bg-white rounded-xl shadow-sm overflow-hidden active:scale-95 focus:outline-none cursor-pointer transition duration-200 border border-gray-100 flex flex-col">
+                                <div class="relative h-32 bg-gray-100">
+                                    <img src="images/flashsale8.jpg" alt="Kulkas 2 Pintu" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/400x300?text=Honda+Beat'">
+                                </div>
+                                <div class="p-3 flex flex-col flex-grow">
+                                    <h4 class="text-sm font-bold text-slate-800 line-clamp-2 mb-1">Kulkas 2 Pintu</h4>
+                                    <div class="text-[#FF5722] font-bold text-sm">Rp9.000</div>
+                                    <div class="text-gray-400 text-[10px] line-through">Rp 2.500.000</div>
+                                    <div class="mt-auto pt-2">
+                                        <div class="mt-1 w-full bg-gray-200 rounded-full h-1.5">
+                                            <div class="bg-[#FF5722] h-1.5 rounded-full" style="width: 5%"></div>
+                                        </div>
+                                        <div class="text-[10px] text-gray-500 mt-0.5">10 Unit Kulkas 2 Pintu</div>
+                                        <div class="w-full text-center mt-2 bg-[#FFD700] text-slate-900 text-xs font-bold py-2 rounded-lg shadow-sm">Info Misi</div>
+                                    </div>
+                                </div>
+                            </a>
+                            
+                            <!-- Misi Lainnya 5 -->
+                            <a href="infomisi-tv.html" tabindex="0" class="bg-white rounded-xl shadow-sm overflow-hidden active:scale-95 focus:outline-none cursor-pointer transition duration-200 border border-gray-100 flex flex-col">
+                                <div class="relative h-32 bg-gray-100">
+                                    <img src="images/flashsale9.jpg" alt="Smart TV" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/400x300?text=Honda+Beat'">
+                                </div>
+                                <div class="p-3 flex flex-col flex-grow">
+                                    <h4 class="text-sm font-bold text-slate-800 line-clamp-2 mb-1">Smart TV "32</h4>
+                                    <div class="text-[#FF5722] font-bold text-sm">Rp9.000</div>
+                                    <div class="text-gray-400 text-[10px] line-through">Rp 2.500.000</div>
+                                    <div class="mt-auto pt-2">
+                                        <div class="mt-1 w-full bg-gray-200 rounded-full h-1.5">
+                                            <div class="bg-[#FF5722] h-1.5 rounded-full" style="width: 5%"></div>
+                                        </div>
+                                        <div class="text-[10px] text-gray-500 mt-0.5">17 Unit TV Smart "32 Inchi</div>
+                                        <div class="w-full text-center mt-2 bg-[#FFD700] text-slate-900 text-xs font-bold py-2 rounded-lg shadow-sm">Info Misi</div>
+                                    </div>
+                                </div>
+                            </a>
+                            
+                            <!-- Misi Lainnya 6 -->
+                            <a href="infomisi-mesincuci.html" tabindex="0" class="bg-white rounded-xl shadow-sm overflow-hidden active:scale-95 focus:outline-none cursor-pointer transition duration-200 border border-gray-100 flex flex-col">
+                                <div class="relative h-32 bg-gray-100">
+                                    <img src="images/flashsale10.jpg" alt="Mesin Cuci" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/400x300?text=Honda+Beat'">
+                                </div>
+                                <div class="p-3 flex flex-col flex-grow">
+                                    <h4 class="text-sm font-bold text-slate-800 line-clamp-2 mb-1">Mesin Cuci</h4>
+                                    <div class="text-[#FF5722] font-bold text-sm">Rp9.000</div>
+                                    <div class="text-gray-400 text-[10px] line-through">Rp 5.000.000</div>
+                                    <div class="mt-auto pt-2">
+                                        <div class="mt-1 w-full bg-gray-200 rounded-full h-1.5">
+                                            <div class="bg-[#FF5722] h-1.5 rounded-full" style="width: 5%"></div>
+                                        </div>
+                                        <div class="text-[10px] text-gray-500 mt-0.5">18 Unit Mesin Cuci</div>
+                                        <div class="w-full text-center mt-2 bg-[#FFD700] text-slate-900 text-xs font-bold py-2 rounded-lg shadow-sm">Info Misi</div>
+                                    </div>
+                                </div>
+                            </a>
+                            
+                            <!-- Misi Lainnya 7 -->
+                            <a href="infomisi-ac.html" tabindex="0" class="bg-white rounded-xl shadow-sm overflow-hidden active:scale-95 focus:outline-none cursor-pointer transition duration-200 border border-gray-100 flex flex-col">
+                                <div class="relative h-32 bg-gray-100">
+                                    <img src="images/flashsale11.jpg" alt="Air Conditioner - Ac Smart" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/400x300?text=Honda+Beat'">
+                                </div>
+                                <div class="p-3 flex flex-col flex-grow">
+                                    <h4 class="text-sm font-bold text-slate-800 line-clamp-2 mb-1">Air Conditioner - Ac Smart</h4>
+                                    <div class="text-[#FF5722] font-bold text-sm">Rp9.000</div>
+                                    <div class="text-gray-400 text-[10px] line-through">Rp 5.000.000</div>
+                                    <div class="mt-auto pt-2">
+                                        <div class="mt-1 w-full bg-gray-200 rounded-full h-1.5">
+                                            <div class="bg-[#FF5722] h-1.5 rounded-full" style="width: 5%"></div>
+                                        </div>
+                                        <div class="text-[10px] text-gray-500 mt-0.5">11 Unit AC Smart</div>
+                                        <div class="w-full text-center mt-2 bg-[#FFD700] text-slate-900 text-xs font-bold py-2 rounded-lg shadow-sm">Info Misi</div>
+                                    </div>
+                                </div>
+                            </a>
+                            
+                            <!-- Misi Lainnya 8 -->
+                            <a href="infomisi-sepedalistrik.html" tabindex="0" class="bg-white rounded-xl shadow-sm overflow-hidden active:scale-95 focus:outline-none cursor-pointer transition duration-200 border border-gray-100 flex flex-col">
+                                <div class="relative h-32 bg-gray-100">
+                                    <img src="images/flashsale12.jpg" alt="Sepeda Listrik" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/400x300?text=Honda+Beat'">
+                                </div>
+                                <div class="p-3 flex flex-col flex-grow">
+                                    <h4 class="text-sm font-bold text-slate-800 line-clamp-2 mb-1">Sepeda Listrik</h4>
+                                    <div class="text-[#FF5722] font-bold text-sm">Rp9.000</div>
+                                    <div class="text-gray-400 text-[10px] line-through">Rp 5.000.000</div>
+                                    <div class="mt-auto pt-2">
+                                        <div class="mt-1 w-full bg-gray-200 rounded-full h-1.5">
+                                            <div class="bg-[#FF5722] h-1.5 rounded-full" style="width: 5%"></div>
+                                        </div>
+                                        <div class="text-[10px] text-gray-500 mt-0.5">9 Unit Sepeda Listrik</div>
+                                        <div class="w-full text-center mt-2 bg-[#FFD700] text-slate-900 text-xs font-bold py-2 rounded-lg shadow-sm">Info Misi</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </main>
+                
+               <div class="w-full px-5 mt-6 mb-4 flex justify-center">
+    			<a href="cekmisi-misiplatinum.html" class="block">
+       				 <button class="bg-[#00a6a6] text-white px-6 py-3.5 rounded-full shadow-lg font-bold flex items-center gap-2 active:scale-95 transition duration-200">
+          				  Cek Misi Reward Platinum
+       					 </button>
+   								 </a>
+								</div>
+        					    </div>
+
+            <div id="content-kuota" class="hidden">
+                <div class="px-4 mt-2">
+                    <div class="bg-yellow-50 border border-[#FFD700]/30 rounded-lg p-3 flex items-center gap-3 shadow-sm">
+                        <div class="w-8 h-8 rounded-full bg-[#FFD700]/20 flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-bullhorn text-yellow-700 text-sm"></i>
+                        </div>
+                        <p class="text-sm text-slate-700 font-medium leading-snug">Perhitungan kuota misi pembobotanya : 10% dari E-commerce seperti TikTok, Shopee, Lazada dll, dan 90% dari transaksi Merchant Partner</p>
+                    </div>
+                </div>
+
+                <div class="mt-6 px-4">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-[0.9rem] font-bold text-gray-800">100 Slot Kuota Misi</h3>
+                        <a class="text-[#FF5722] text-sm font-medium">Persentase</a>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden mb-8">
+                        <div class="flex items-center p-4 border-b border-gray-50 bg-yellow-50/50">
+                            <div class="w-[1.5rem] text-center font-bold text-gray-500 text-lg">1</div>
+                            <img class="w-[2.5rem] h-[2.5rem] rounded-full border-2 border-white shadow-sm mx-3" src="images/icono-human.png">
+                            <div class="flex-1">
+                                <p class="text-sm font-bold text-gray-800">Siti Aminah</p>
+                                <p class="text-xs text-gray-500">Jakarta Selatan</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-sm font-bold text-[#FF5722]">1,250%</p>
+                                <p class="text-[10px] text-green-600">Persentase Misi </p>
+                            </div>
+                        </div>
+                        <div class="flex items-center p-4 border-b border-gray-50">
+                            <div class="w-[1.5rem] text-center font-bold text-gray-500 text-lg">2</div>
+                            <img src="images/icono-human.png" alt="User" class="w-[2.5rem] h-[2.5rem] rounded-full border-2 border-white shadow-sm mx-3">
+                            <div class="flex-1">
+                                <p class="text-sm font-bold text-gray-800">Budi Santoso</p>
+                                <p class="text-xs text-gray-500">Surabaya</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-sm font-bold text-gray-700">950%</p>
+                                <p class="text-[10px] text-green-600">Persentase Misi</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center p-4 border-b border-gray-50">
+                            <div class="w-[1.5rem] text-center font-bold text-gray-500 text-lg">3</div>
+                            <img src="images/icono-human.png" alt="User" class="w-[2.5rem] h-[2.5rem] rounded-full border-2 border-white shadow-sm mx-3">
+                            <div class="flex-1">
+                                <p class="text-sm font-bold text-gray-800">Dewi Lestari</p>
+                                <p class="text-xs text-gray-500">Bandung</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-sm font-bold text-gray-700">800%</p>
+                                <p class="text-[10px] text-green-600">Persentase Misi</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center p-4 border-b border-gray-50">
+                            <div class="flex-1">
+                                <p class="text-sm font-bold text-center text-gray-300">Data Partisipant Tidak Ada</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="absolute bottom-0 left-0 w-full bg-white border-t border-gray-200 shadow-[0_-4px_20px_rgba(0,0,0,0.1)] z-30 pb-safe">
+                    <div class="h-1 w-full bg-[#00a6a6]"></div>
+                    <div class="flex items-center p-4 max-w-md mx-auto">
+                        <div class="flex flex-col items-center justify-center w-10 mr-2">
+                            <span class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Posisi</span>
+                            <span class="text-xl font-black text-[#00a6a6]">850</span>
+                        </div>
+                        <div class="relative">
+                            <div class="w-12 h-12 rounded-full p-0.5 bg-gradient-to-tr from-cyan-600 to-cyan-600">
+                                <img src="images/icono-human.png" class="w-full h-full rounded-full object-cover border-2 border-white">
+                            </div>
+                            <div class="absolute -bottom-1 -right-1 bg-[#00a6a6] text-white text-[10px] p-1 rounded-full border border-white">
+                                <i class="fa-solid fa-user"></i>
+                            </div>
+                        </div>
+                        <div class="ml-3 flex-1">
+                            <h3 class="font-bold text-slate-800">Anda</h3>
+                            <p class="text-xs text-gray-500">Naikan Terus Transaksimu</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="font-black text-2xl text-slate-800">32%</p>
+                            <p class="text-[10px] text-gray-400 font-bold uppercase">Persentase Misi </p>
+                        </div>
+                    </div>
+                    <div class="h-4 w-full bg-white"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="info-misi-modal" class="fixed inset-0 z-[60] items-center justify-center px-4 bg-[#0000005c] backdrop-blur-[2.3px] hidden">
+        <div class="zoom-in relative w-full max-w-sm bg-[#000000c9] rounded-3xl p-[1.3rem] text-center border border-[#ffd8916b] shadow-2xl">
+          <button onClick="closeInfoMisiModal()" class="absolute top-4 right-4 text-orange-300 w-8 h-8 flex items-center justify-center"><i class="fa-solid fa-xmark text-lg"></i></button>
+          <h2 class="text-2xl font-extrabold text-gray-100 mb-2 mt-4">Info Misi</h2>
+          <p class="text-gray-200 text-sm leading-relaxed mb-6 px-2">
+            Persentase kuota misi reward BRONZE didasarkan pada : 10% Transaksi dari Ecommerce dan
+            <span class="font-semibold text-yellow-300"> 90% dari Merchant Partner.</span> 
+            Semakin sering anda bertransaksi maka semakin besar peluang Anda untuk masuk kuota misi!
+          </p>
+          <button onClick="closeInfoMisiModal()" class="w-full bg-[#b7993e] text-white font-bold py-4 rounded-xl">OK</button>
+        </div>
+    </div>
+
+    <div id="flashsale-modal" class="fixed inset-0 z-[60] items-center justify-center px-4 bg-[#0000005c] backdrop-blur-[2.3px] hidden">
+        <div class="zoom-in relative w-full max-w-sm bg-[#000000c9] rounded-3xl p-[1.3rem] text-center border border-yellow-100 shadow-2xl">
+          <button onClick="closeFlashSaleModal()" class="absolute top-4 right-4 text-orange-300 w-8 h-8 flex items-center justify-center"><i class="fa-solid fa-xmark text-lg"></i></button>
+          <h2 class="text-2xl font-extrabold text-gray-100 mb-2 mt-4">Flash Sale!</h2>
+          <p class="text-gray-100 text-sm leading-relaxed mb-6 px-[0rem]">Flash Sale akan dibuka pada saat omset nasional<span class="font-semibold text-yellow-200"> Maxi Poin </span>Tercapai setiap periode, kuota misi dibuka maksimal 100 Slot/ Periode, dan yang bisa klaim misi adalah affiliate yang masuk daftar kuota. Semakin sering anda bertransaksi maka semakin besar peluang masuk kuota.!</p>
+          <button onClick="closeFlashSaleModal()" class="w-full bg-[#b7993e] text-white font-bold py-4 rounded-xl">OK</button>
+        </div>
+    </div>
+
+    <script>
+        // --- Sistem Pengendali Tab Halaman Utama ---
+        function switchTab(tab) {
+            const btnMisi = document.getElementById('btn-misi');
+            const btnKuota = document.getElementById('btn-kuota');
+            const contentMisi = document.getElementById('content-misi');
+            const contentKuota = document.getElementById('content-kuota');
+            const pageTitle = document.getElementById('page-title');
+
+            if (tab === 'misi') {
+                btnMisi.className = "flex-1 py-2 text-sm font-bold rounded-lg bg-[#FFD700] text-black shadow-sm transition-all duration-200";
+                btnKuota.className = "flex-1 py-2 text-sm font-medium rounded-lg text-gray-500 hover:bg-gray-50 transition-all duration-200";
+                contentMisi.classList.replace('hidden', 'block');
+                contentKuota.classList.replace('block', 'hidden');
+                pageTitle.innerText = "Misi Reward Bronze";
+            } else if (tab === 'kuota') {
+                btnKuota.className = "flex-1 py-2 text-sm font-bold rounded-lg bg-[#FFD700] text-black shadow-sm transition-all duration-200";
+                btnMisi.className = "flex-1 py-2 text-sm font-medium rounded-lg text-gray-500 hover:bg-gray-50 transition-all duration-200";
+                contentKuota.classList.replace('hidden', 'block');
+                contentMisi.classList.replace('block', 'hidden');
+                pageTitle.innerText = "Kuota Misi Bronze";
+            }
+        }
+
+        // --- Handler Manajemen Modals ---
+        function openInfoMisiModal() { document.getElementById('info-misi-modal').classList.replace('hidden', 'flex'); }
+        function closeInfoMisiModal() { document.getElementById('info-misi-modal').classList.replace('flex', 'hidden'); }
+        
+        function openFlashSaleModal() { document.getElementById('flashsale-modal').classList.replace('hidden', 'flex'); }
+        function closeFlashSaleModal() { document.getElementById('flashsale-modal').classList.replace('flex', 'hidden'); }
+
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('info-misi-modal')) closeInfoMisiModal();
+            if (event.target == document.getElementById('flashsale-modal')) closeFlashSaleModal();
+        }
+    </script>
+
+
+
+
+</body></html>

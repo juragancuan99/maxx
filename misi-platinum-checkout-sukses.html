@@ -1,0 +1,175 @@
+<html lang="id"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+	
+	<style>
+.payment-option{
+    transition: all .25s ease;
+}
+.payment-option:hover{
+    border-color:#60a5fa;
+}
+.peer:checked + .payment-option{
+    border:2px solid #2563EB;
+    background:#EFF6FF;
+    box-shadow:0 0 0 1px rgba(37,99,235,.08);
+}
+.peer:checked + .payment-option .payment-fee{
+    color:#22c55e;
+    font-weight:700;
+}
+.peer:checked + .payment-option .payment-check{
+    opacity:1;
+    transform:scale(1);
+}
+.payment-check{
+    opacity:0;
+    transform:scale(.5);
+    transition:.2s;
+}
+</style>
+
+</head>
+<body class="h-screen w-screen overflow-hidden bg-white">
+          <div class="w-full h-full bg-gray-50 overflow-y-auto relative font-sans text-gray-800">
+  <!-- FontAwesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Top Navigation / Close -->
+  
+
+  <!-- Success Animation Section -->
+  <div class="pt-16 pb-8 flex flex-col items-center justify-center text-center px-6">
+    <div class="relative mb-6">
+      <!-- Pulse Effect -->
+      <div class="absolute inset-0 bg-green-400 rounded-full opacity-20 animate-ping"></div>
+      <!-- Icon Container -->
+      <div class="relative w-24 h-24 bg-green-100 rounded-full flex items-center justify-center shadow-sm">
+        <i class="fas fa-check text-4xl text-green-500"></i>
+      </div>
+    </div>
+    <h1 class="text-2xl font-bold text-[#2D3436] mb-2">Pembayaran Sukses!</h1>
+    <p class="text-gray-500 text-sm">Pembayaran Produk Misi Reward Berhasil dan pesanan Anda akan segera diproses.</p>
+  </div>
+
+  <!-- Receipt Card -->
+  <div class="mx-5 mb-32 relative drop-shadow-xl">
+    <!-- Receipt Top (Theme Color) -->
+    <div class="bg-[#00a6a6] rounded-t-2xl p-6 text-white relative overflow-hidden">
+      <!-- Decorative circles for visual texture -->
+      <div class="absolute -top-6 -right-6 w-24 h-24 bg-white opacity-5 rounded-full"></div>
+      <div class="absolute top-10 -left-6 w-16 h-16 bg-white opacity-5 rounded-full"></div>
+      
+      <div class="flex justify-between items-end">
+        <div>
+          <p class="text-xs text-gray-300 uppercase tracking-wider mb-1">TOTAL BAYAR</p>
+          <p class="text-[1.7rem] font-bold">Rp.30.079.000</p>
+        </div>
+        <div class="text-right">
+          <p class="text-xs text-gray-300 uppercase tracking-wider mb-1">Metode
+</p>
+          <div class="flex items-center gap-2 justify-end">
+            <i class="fa-solid fa-barcode text-xl"></i>
+            <!-- <span class="text-sm font-medium">•••• 4829</span> -->
+
+<!-- <span class="text-sm font-medium">VA</span> -->
+
+          <span class="text-sm font-medium">VA</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Receipt Body (White) -->
+    <div class="bg-white rounded-b-2xl p-6 relative">
+      <!-- Perforated Line Effect -->
+      <div class="absolute top-0 left-0 w-full -mt-3 h-6 flex justify-between items-center px-2 overflow-hidden">
+        <!-- Using a pseudo-element approach via simple divs for the 'cut' look -->
+        <div class="w-4 h-4 bg-gray-50 rounded-full -ml-2"></div>
+        <div class="flex-1 border-b-2 border-dashed border-gray-300 mx-2 opacity-50"></div>
+        <div class="w-4 h-4 bg-gray-50 rounded-full -mr-2"></div>
+      </div>
+
+      <!-- Invoice Meta -->
+      <div class="grid grid-cols-2 gap-4 mb-6 mt-2">
+        <div>
+          <p class="text-xs text-gray-400 uppercase mb-1">Invoice No.</p>
+          <p class="text-sm font-semibold text-[#2D3436]">#INV-892301</p>
+        </div>
+        <div class="text-right">
+          <p class="text-xs text-gray-400 uppercase mb-1">Date &amp; Time</p>
+          <p class="text-sm font-semibold text-[#2D3436]">Feb 16 2026,</p>
+        <p class="text-[0.8rem] text-gray-500">10:30 AM</p></div>
+      </div>
+
+      <!-- Product Item -->
+      <div class="flex gap-4 py-4 border-t border-gray-100">
+        <!-- <div class="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">
+          <i class="fas fa-headphones-alt text-gray-400 text-2xl"></i>
+        </div> -->
+
+<div class="w-[3rem] h-[3rem] bg-gray-100 rounded-xl overflow-hidden flex-shrink-0 relative">
+                    <img src="https://imgcdn.oto.com/large/gallery/exterior/28/1635/mitsubishi-xpander-front-angle-low-view-561872.jpg" alt="Product" class="w-full h-full object-cover">
+                    <!-- <span class="absolute bottom-1 right-1 bg-black/70 text-white text-xs px-2 py-0.5 rounded-md">x2</span> -->
+                </div>
+        <div class="flex-1">
+          <div class="flex justify-between items-start">
+            <div>
+              <span class="text-[10px] font-bold text-white bg-cyan-500 px-2 py-0.5 rounded-full mb-1 inline-block">Misi Reward Platinum</span>
+              <h3 class="text-[0.7rem] font-bold text-gray-800 leading-tight">Belanja Produk Misi Reward</h3>
+            </div>
+            <p class="text-sm font-bold text-gray-800">Rp30.075.000</p>
+          </div>
+          <div class="flex justify-between items-center mt-2">
+            <p class="text-xs text-gray-500">Qty: 175 Pcs</p>
+            
+          </div>
+        </div>
+      </div>
+
+      <!-- Cost Breakdown -->
+      <div class="space-y-3 pt-4 border-t border-dashed border-gray-200 mt-2">
+        <div class="flex justify-between text-sm">
+          <span class="text-gray-500">Subtotal</span>
+          <span class="font-medium text-gray-800">Rp30.075.000</span>
+        </div>
+        <div class="flex justify-between text-sm">
+          <span class="text-gray-500">Pembayaran melalui : VA</span>
+          <span class="font-medium text-green-600">4.400</span>
+        </div>
+        
+      </div>
+
+      <!-- Grand Total -->
+      <div class="flex justify-between items-center mt-6 pt-4 border-t border-gray-200">
+        <span class="text-base font-bold text-gray-800">Grand Total</span>
+        <span class="text-xl font-bold text-[#2D3436]">Rp 30.079.000</span>
+      </div>
+      
+      <!-- Download PDF Link -->
+      <div class="mt-6 text-center">
+        <button class="text-xs font-medium text-gray-400 hover:text-[#2D3436] flex items-center justify-center gap-2 mx-auto transition">
+          <i class="fas fa-download"></i> Download PDF Receipt
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fixed Bottom Actions -->
+  <div class="fixed bottom-0 left-0 w-full bg-white px-6 py-4 border-t border-gray-100 shadow-[0_-4px_20px_rgba(0,0,0,0.05)] z-20">
+    <div class="flex flex-col gap-3">
+      <button class="w-full bg-[#00a6a6] text-white font-semibold py-4 rounded-xl shadow-lg shadow-gray-300 hover:bg-opacity-90 active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+        <i class="fas fa-box-open"></i>Lacak Pesanan</button>
+      <button class="w-full bg-transparent border border-[0rem] text-gray-600 font-semibold py-3.5-[0rem] rounded-xl hover:bg-gray-50 active:scale-[0.98] transition-all">Beranda</button>
+    </div>
+  </div>
+</div>
+        
+      
+    </body></html>

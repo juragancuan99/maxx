@@ -1,0 +1,311 @@
+<html lang="id"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desain Flash Sale</title>
+    <!-- Menggunakan Tailwind v4 -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+	
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom scrollbar tersembunyi untuk menu kategori horizontal */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Animasi Efek Zoom Masuk (Page Load) */
+        @keyframes pageZoomIn {
+            0% {
+                transform: scale(1.15); /* Mulai dari ukuran agak besar */
+                opacity: 0;            /* Mulai dari transparan */
+            }
+            100% {
+                transform: scale(1);    /* Kembali ke ukuran normal */
+                opacity: 1;            /* Terlihat sepenuhnya */
+            }
+        }
+
+        /* Class khusus untuk memicu animasi */
+        .animate-page-zoom {
+            animation: pageZoomIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            will-change: transform, opacity;
+        }
+    </style>
+</head>
+
+<!-- Menambahkan class 'animate-page-zoom' dan 'overflow-x-hidden' agar pas saat zoom -->
+<body class="bg-gray-100 max-w-md mx-auto min-h-screen shadow-lg flex flex-col font-sans animate-page-zoom overflow-x-hidden">
+
+    <header class="bg-white px-4 py-[0.3rem] grid grid-cols-3 items-center border-b border-gray-200 sticky top-0 z-50">
+        <button onclick="history.back()" class="w-8 h-8 flex items-center justify-center bg-orange-600 rounded-full shadow-lg text-white text-[1.3rem] justify-self-start cursor-pointer hover:bg-red-600 transition-colors">
+            <i class="fa-solid fa-arrow-left"></i>
+        </button>
+        
+        <img src="images/flashsale_aa.png" alt="Flash Sale" class="h-[1.7rem] justify-self-center">
+        
+        <a href="#" onclick="openModal(); return false;" class="w-13 h-13 flex flex-col items-center justify-center border-4 border-gray-300 rounded-full shadow-xl justify-self-end text-center no-underline hover:border-gray-400 transition-all">
+            <div class="w-10 h-10 flex flex-col items-center justify-center rounded-full border border-gray-200 p-2">
+                <span class="text-gray-600 text-[0.7rem] font-bold leading-tight">info<br>sale</span>
+            </div>
+        </a>
+    </header>
+
+    <div class="bg-white flex border-b border-gray-200 text-center">
+        <div class="w-1/3 py-2 text-gray-500">
+            <div class="font-bold text-base">00:00</div>
+            <div class="text-xs">Sedang Berjalan</div>
+        </div>
+        <div class="w-1/3 py-2 text-gray-500">
+            <div class="font-bold text-base">00:00</div>
+            <div class="text-xs">Akan Datang</div>
+        </div>
+        <div class="w-1/3 py-2 border-b-2 border-red-500 text-red-500 font-semibold">
+            <div class="font-bold text-base">00:00</div>
+            <div class="text-xs">Akan Datang</div>
+        </div>
+    </div>
+
+    <!-- Efek Zoom pada Banner -->
+    <div class="w-full h-[115px] overflow-hidden relative group cursor-pointer">
+        <img src="images/banner-flashsale.jpg" alt="Infinix Super Brand Day" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+    </div>
+
+    <div class="bg-gray-50 px-4 py-2 flex justify-end items-center text-xs text-gray-600 border-b border-gray-100">
+        <span class="mr-2 uppercase font-bold tracking-wider text-gray-500">Mulai Dalam</span>
+        <div class="flex items-center gap-1 font-bold text-white">
+            <span class="bg-black px-1.5 py-0.5 rounded">00</span> :
+            <span class="bg-black px-1.5 py-0.5 rounded">00</span> :
+            <span class="bg-black px-1.5 py-0.5 rounded">00</span>
+        </div>
+    </div>
+
+    <main class="bg-white flex-1 p-3 space-y-4">
+        <!-- Produk 1 -->
+        <div class="flex gap-3 border-b border-gray-100 pb-4 group cursor-pointer">
+            <div class="w-28 h-28 bg-emerald-50 rounded-md border border-emerald-100 flex items-center justify-center relative flex-shrink-0 overflow-hidden">
+                <img src="images/flashsale1.jpg" class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110" alt="Honda Brio">
+            </div>
+            <div class="flex flex-col justify-between flex-1">
+                <div>
+                    <h3 class="text-sm font-medium text-gray-800 line-clamp-2 leading-tight group-hover:text-red-500 transition-colors">
+                        <span class="bg-red-600 text-white font-bold text-[10px] px-1 py-0.5 rounded-sm mr-1">HOT</span>Honda Brio E / M / T
+                    </h3> 
+                    <div class="flex items-center gap-2 mb-2 mt-1">
+                        <div class="flex text-[#fb660c] text-xs">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <span class="font-sm text-[10px] text-gray-400 leading-tight">Pembelian produk hanya dapat dilakukan saat Flash Sale berlangsung dan terbatas untuk 100 peserta yang memenuhi syarat mengikuti program Flash Sale.</span>
+                    </div>
+                </div>
+                <div class="flex justify-between items-end">
+                    <div>
+                        <p class="text-xs text-gray-400 line-through">Rp180.000.000</p>
+                        <p class="text-base font-bold text-red-500"><span class="text-lg">Rp.9.000</span></p>
+                    </div>
+                    <button class="border border-red-500 text-red-500 text-xs font-semibold px-2 py-1.5 rounded bg-red-50 hover:bg-red-100 transition cursor-pointer">
+                        Tampilkan Rincian
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Produk 2 -->
+        <div class="flex gap-3 border-b border-gray-100 pb-4 group cursor-pointer">
+            <div class="w-28 h-28 bg-emerald-50 rounded-md border border-emerald-100 flex items-center justify-center relative flex-shrink-0 overflow-hidden">
+                <img src="images/flashsale2.jpg" class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110" alt="Toyota Avanza">
+            </div>
+            <div class="flex flex-col justify-between flex-1">
+                <div>
+                    <h3 class="text-sm font-medium text-gray-800 line-clamp-2 leading-tight group-hover:text-red-500 transition-colors">
+                        <span class="bg-red-600 text-white font-bold text-[10px] px-1 py-0.5 rounded-sm mr-1">HOT</span>Toyota Avanza 1.3 E MT</h3> 
+                    <div class="flex items-center gap-2 mb-2 mt-1">
+                        <div class="flex text-[#fb660c] text-xs">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <span class="font-sm text-[10px] text-gray-400 leading-tight">Pembelian produk hanya dapat dilakukan saat Flash Sale berlangsung dan terbatas untuk 100 peserta yang memenuhi syarat mengikuti program Flash Sale.</span>
+                    </div>
+                </div>
+                <div class="flex justify-between items-end">
+                    <div>
+                        <p class="text-xs text-gray-400 line-through">Rp243.700.000</p>
+                        <p class="text-base font-bold text-red-500"><span class="text-lg">Rp.9.000</span></p>
+                    </div>
+                    <button class="border border-red-500 text-red-500 text-xs font-semibold px-2 py-1.5 rounded bg-red-50 hover:bg-red-100 transition cursor-pointer">
+                        Tampilkan Rincian
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Produk 3 -->
+        <div class="flex gap-3 border-b border-gray-100 pb-4 group cursor-pointer">
+            <div class="w-28 h-28 bg-emerald-50 rounded-md border border-emerald-100 flex items-center justify-center relative flex-shrink-0 overflow-hidden">
+                <img src="images/flashsale3.jpg" class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110" alt="Mitsubishi Xpander">
+            </div>
+            <div class="flex flex-col justify-between flex-1">
+                <div>
+                    <h3 class="text-sm font-medium text-gray-800 line-clamp-2 leading-tight group-hover:text-red-500 transition-colors">
+                        <span class="bg-red-600 text-white font-bold text-[10px] px-1 py-0.5 rounded-sm mr-1">HOT</span>Mitsubishi Xpander Exceed M/T</h3> 
+                    <div class="flex items-center gap-2 mb-2 mt-1">
+                        <div class="flex text-[#fb660c] text-xs">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <span class="font-sm text-[10px] text-gray-400 leading-tight">Pembelian produk hanya dapat dilakukan saat Flash Sale berlangsung dan terbatas untuk 100 peserta yang memenuhi syarat mengikuti program Flash Sale.</span>
+                    </div>
+                </div>
+                <div class="flex justify-between items-end">
+                    <div>
+                        <p class="text-xs text-gray-400 line-through">Rp285.000.000</p>
+                        <p class="text-base font-bold text-red-500"><span class="text-lg">Rp.9.000</span></p>
+                    </div>
+                    <button class="border border-red-500 text-red-500 text-xs font-semibold px-2 py-1.5 rounded bg-red-50 hover:bg-red-100 transition cursor-pointer">
+                        Tampilkan Rincian
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Produk 4 -->
+        <div class="flex gap-3 border-b border-gray-100 pb-4 group cursor-pointer">
+            <div class="w-28 h-28 bg-emerald-50 rounded-md border border-emerald-100 flex items-center justify-center relative flex-shrink-0 overflow-hidden">
+                <img src="images/flashsale4.jpg" class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110" alt="Hyundai Stargazer">
+            </div>
+            <div class="flex flex-col justify-between flex-1">
+                <div>
+                    <h3 class="text-sm font-medium text-gray-800 line-clamp-2 leading-tight group-hover:text-red-500 transition-colors">
+                        <span class="bg-red-600 text-white font-bold text-[10px] px-1 py-0.5 rounded-sm mr-1">HOT</span>Hyundai Stargazer Cartenz X</h3> 
+                    <div class="flex items-center gap-2 mb-2 mt-1">
+                        <div class="flex text-[#fb660c] text-xs">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <span class="font-sm text-[10px] text-gray-400 leading-tight">Pembelian produk hanya dapat dilakukan saat Flash Sale berlangsung dan terbatas untuk 100 peserta yang memenuhi syarat mengikuti program Flash Sale.</span>
+                    </div>
+                </div>
+                <div class="flex justify-between items-end">
+                    <div>
+                        <p class="text-xs text-gray-400 line-through">Rp371.000.000</p>
+                        <p class="text-base font-bold text-red-500"><span class="text-lg">Rp.9.000</span></p>
+                    </div>
+                    <button class="border border-red-500 text-red-500 text-xs font-semibold px-2 py-1.5 rounded bg-red-50 hover:bg-red-100 transition cursor-pointer">
+                        Tampilkan Rincian
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Section Maxi Flash Sale dengan Efek Zoom pada Kartu Pop-up -->
+    <section class="bg-cyan-600 p-3 text-white">
+        <div class="flex justify-between items-center mb-3">
+            <h2 class="text-sm font-black tracking-wide italic flex items-center">
+                MAXI<i class="fa-solid fa-bolt text-xs mx-0.5 text-yellow-300"></i>FLASH SALE
+            </h2>
+            <a href="cekmisi-misibronze.html" class="text-[11px] font-semibold flex items-center gap-1 hover:underline">
+                Lihat Lainnya <i class="fa-solid fa-circle-arrow-right"></i>
+            </a>
+        </div>
+        
+        <div class="grid grid-cols-3 gap-2 text-black">
+            <!-- Kartu 1 -->
+            <div class="bg-white p-2 rounded flex flex-col justify-between text-left min-h-[160px] relative transition-transform duration-300 hover:scale-105 hover:shadow-xl cursor-pointer">
+                <span class="absolute top-1 left-1 bg-yellow-400 text-red-600 text-[9px] font-extrabold px-1 rounded-sm z-10">Hot</span>
+                <div class="w-full h-16 flex items-center justify-center mb-1 overflow-hidden">
+                    <img src="images/flashsale5.jpg" alt="Wisata religi" class="h-full object-contain">
+                </div>
+                <div class="flex flex-col justify-end flex-1 w-full">
+                    <p class="text-[10px] text-gray-700 line-clamp-1 leading-tight mb-0.5">Wisata religi</p>
+                    <p class="text-[9px] text-gray-400 line-through leading-none">Rp35.000.000</p>
+                    <p class="text-xs font-bold text-red-500 leading-tight">Rp9.000</p>
+                    <div class="w-full bg-gray-200 rounded-full h-1.5 mt-1 overflow-hidden relative">
+                        <div class="bg-red-500 h-1.5 rounded-full" style="width: 70%"></div>
+                    </div>
+                    <span class="text-[8px] text-gray-500 mt-0.5 block text-center font-medium">target 100k mp</span>
+                </div>
+            </div>
+            
+            <!-- Kartu 2 -->
+            <div class="bg-white p-2 rounded flex flex-col justify-between text-left min-h-[160px] relative transition-transform duration-300 hover:scale-105 hover:shadow-xl cursor-pointer">
+                <span class="absolute top-1 left-1 bg-yellow-400 text-red-600 text-[9px] font-extrabold px-1 rounded-sm z-10">Hot</span>
+                <div class="w-full h-16 flex items-center justify-center mb-1 overflow-hidden">
+                    <img src="images/flashsale6.jpg" alt="Honda Beat" class="h-full object-contain">
+                </div>
+                <div class="flex flex-col justify-end flex-1 w-full">
+                    <p class="text-[10px] text-gray-700 line-clamp-1 leading-tight mb-0.5">Honda Beat</p>
+                    <p class="text-[9px] text-gray-400 line-through leading-none">Rp20.000.000</p>
+                    <p class="text-xs font-bold text-red-500 leading-tight">Rp9.000</p>
+                    <div class="w-full bg-gray-200 rounded-full h-1.5 mt-1 overflow-hidden relative">
+                        <div class="bg-red-500 h-1.5 rounded-full" style="width: 70%"></div>
+                    </div>
+                    <span class="text-[8px] text-gray-500 mt-0.5 block text-center font-medium">target 100k mp</span>
+                </div>
+            </div>
+
+            <!-- Kartu 3 -->
+            <div class="bg-white p-2 rounded flex flex-col justify-between text-left min-h-[160px] relative transition-transform duration-300 hover:scale-105 hover:shadow-xl cursor-pointer">
+                <span class="absolute top-1 left-1 bg-yellow-400 text-red-600 text-[9px] font-extrabold px-1 rounded-sm z-10">Hot</span>
+                <div class="w-full h-16 flex items-center justify-center mb-1 overflow-hidden">
+                    <img src="images/flashsale11.jpg" alt="Ac Smart" class="h-full object-contain">
+                </div>
+                <div class="flex flex-col justify-end flex-1 w-full">
+                    <p class="text-[10px] text-gray-700 line-clamp-1 leading-tight mb-0.5">Ac Smart</p>
+                    <p class="text-[9px] text-gray-400 line-through leading-none">Rp5.000.000</p>
+                    <p class="text-xs font-bold text-red-500 leading-tight">Rp9.000</p>
+                    <div class="w-full bg-gray-200 rounded-full h-1.5 mt-1 overflow-hidden relative">
+                        <div class="bg-red-500 h-1.5 rounded-full" style="width: 70%"></div>
+                    </div>
+                    <span class="text-[8px] text-gray-500 mt-0.5 block text-center font-medium">target 100k mp</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-white border-t border-gray-200 flex justify-around py-2 text-center text-xs text-gray-500 sticky bottom-0 z-50">
+        <div class="text-red-500 font-semibold cursor-pointer">
+            <i class="fa-solid fa-bolt text-lg block mb-0.5"></i>
+            <span>Misi Bronze</span>
+        </div>
+        <div class="cursor-pointer hover:text-red-500 transition">
+            <i class="fa-solid fa-bag-shopping text-lg block mb-0.5"></i>
+            <span>Misi Platinum</span>
+        </div>
+    </footer>
+
+    <!-- Modal Info Sale -->
+    <div id="info-modal" class="fixed inset-0 z-50 items-center justify-center px-4 bg-[#0000005c] backdrop-blur-[2.3px] hidden">
+        <div class="zoom-in relative w-full max-w-sm bg-[#000000b0] rounded-3xl overflow-hidden flex flex-col items-center text-center p-[1.3rem] border border-[#ffd8916b] shadow-2xl">
+          
+          <div class="absolute top-0 left-0 w-full h-48 bg-gradient-to-b from-transparent to-transparent -z-10"></div>
+          <div class="absolute -top-10 left-1/2 transform -translate-x-1/2 w-64 h-64 bg-[#00000099] rounded-full blur-3xl -z-10"></div>
+
+          <button onclick="closeModal()" class="absolute top-4 right-4 text-orange-300 hover:text-white transition-colors w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10 cursor-pointer">
+            <i class="fa-solid fa-xmark text-lg"></i>
+          </button>
+
+          <h2 class="text-2xl font-extrabold text-gray-100 mb-2 mt-4">Flash Sale</h2>
+          <p class="text-gray-100 text-sm leading-relaxed mb-6 px-[0rem]">Flash Sale akan dibuka pada saat omset nasional<span class="font-semibold text-yellow-200"> Maxi Poin </span>Tercapai 500k mp selanjutnya 100k mp setiap periode, kuota misi dibuka maksimal 100 slot dan yang bisa klaim misi adalah affiliate yang masuk daftar kuota. Semakin sering anda bertransaksi maka semakin besar peluang masuk kuota.!</p>
+
+          <button onclick="closeModal()" class="w-full bg-[#b7993e] hover:bg-[#a38531] text-white font-bold py-4 rounded-xl shadow-lg transition-all transform active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer">
+              <span>OK</span>
+          </button>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('info-modal');
+
+        function openModal() {
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeModal() {
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+        }
+        
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+    </script>
+
+</body></html>
