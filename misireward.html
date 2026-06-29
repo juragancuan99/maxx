@@ -291,20 +291,21 @@
                         </div>
                     </div>
 					
-					<div class="px-4 mt-6 space-y-6 text-center animate-fade-in">
-					<div class="bg-white rounded-3xl shadow-md border border-gray-100 overflow-hidden relative">
-					
-            <div class="w-20 h-20 bg-gray-100 text-gray-400 rounded-full flex items-center justify-center mx-auto mb-4">
-                <i class="fa-solid fa-list-check text-3xl"></i>
-            </div>
-            <h4 class="font-bold text-gray-800 text-sm">Belum Ada Misi Aktif</h4>
-            <p class="text-xs text-gray-500 mt-2 max-w-xs mx-auto">Anda belum mengikuti misi apapun. Pilih dan ambil misi reward yang tersedia untuk mulai mendapatkan bonus spektakuler!</p>
-            <button onclick="switchMisiTab('all')" class="mt-4 px-4 py-2 bg-[#00a6a6] text-white text-xs font-semibold rounded-lg shadow">
-                Lihat Semua Misi
-            </button>
+					<div id="content-misi-aktif" class="hidden">
+    <div class="px-4 mt-10 space-y-6 text-center animate-fade-in">
+        <div class="w-20 h-20 bg-gray-100 text-gray-400 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fa-solid fa-list-check text-3xl"></i>
         </div>
-		</div>
-		</div></div>
+        <h4 class="font-bold text-gray-800 text-sm">Belum Ada Misi Aktif</h4>
+        <p class="text-xs text-gray-500 mt-2 max-w-xs mx-auto">
+            Anda belum mengikuti misi apapun. Pilih dan ambil misi reward yang tersedia untuk mulai mendapatkan bonus spektakuler!
+        </p>
+        <button onclick="switchTab('semua-misi')" class="mt-4 px-6 py-2.5 bg-[#00a6a6] text-white text-xs font-semibold rounded-xl shadow-md">
+            Lihat Semua Misi
+        </button>
+    </div>
+
+    </div>
 
                                       
             </div>
