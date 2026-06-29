@@ -1,41 +1,91 @@
-<html lang="id"><head>
-    <meta charset="UTF-8">
+<html><head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Desain Flash Sale</title>
-    <!-- Menggunakan Tailwind v4 -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-	
-		
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
     <style>
-        /* Custom scrollbar tersembunyi untuk menu kategori horizontal */
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-
-        /* Animasi Efek Zoom Masuk (Page Load) */
-        @keyframes pageZoomIn {
-            0% {
-                transform: scale(1.15); /* Mulai dari ukuran agak besar */
-                opacity: 0;            /* Mulai dari transparan */
-            }
-            100% {
-                transform: scale(1);    /* Kembali ke ukuran normal */
-                opacity: 1;            /* Terlihat sepenuhnya */
+        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; margin: 0; padding: 0; }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF5722',
+                    }
+                }
             }
         }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400&display=swap');
 
-        /* Class khusus untuk memicu animasi */
-        .animate-page-zoom {
-            animation: pageZoomIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-            will-change: transform, opacity;
+        .liquid-text {
+            background-image: linear-gradient(to top, #ff0000 100%);
+            background-size: 100% 0%;
+            background-repeat: no-repeat;
+            background-position: bottom;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: rgba(212, 175, 55, 0.1);
+            animation: fillUp 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            position: relative;
+        }
+
+        .liquid-text::after {
+            content: 'Rp39.000';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent 0%, transparent 40%, rgba(255, 255, 255, 0.6) 50%, transparent 60%, transparent 100%);
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            opacity: 0;
+            animation: shimmer 3s infinite linear;
+            animation-delay: 2.2s;
+        }
+
+        @keyframes fillUp {
+            0% { background-size: 100% 0%; filter: drop-shadow(0 0 0px rgba(212, 175, 55, 0)); }
+            100% { background-size: 100% 100%; color: transparent; filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.3)); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 150% 0; opacity: 0; }
+            10% { opacity: 1; }
+            50% { background-position: -150% 0; opacity: 1; }
+            100% { background-position: -150% 0; opacity: 0; }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 1.5s ease-out forwards;
+            animation-delay: 1.8s;
+            opacity: 0;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
+
+
 </head>
 
-<!-- Menambahkan class 'animate-page-zoom' dan 'overflow-x-hidden' agar pas saat zoom -->
-<body class="bg-gray-100 max-w-md mx-auto min-h-screen shadow-lg flex flex-col font-sans animate-page-zoom overflow-x-hidden">
+<body class="h-screen w-screen bg-gray-200 flex justify-center items-center overflow-hidden">
 
-    <header class="bg-white px-4 py-[0.3rem] grid grid-cols-3 items-center border-b border-gray-200 sticky top-0 z-50">
+    <div class="w-full max-w-md h-full bg-gray-100 overflow-y-auto relative font-sans text-gray-800 shadow-2xl flex flex-col">
+        
+        <div class="flex-1 pb-[0rem] overflow-y-auto relative">
+            
+            <header class="bg-white px-4 py-[0.3rem] grid grid-cols-3 items-center border-b border-gray-200 sticky top-0 z-50">
         <button onclick="history.back()" class="w-8 h-8 flex items-center justify-center bg-orange-600 rounded-full shadow-lg text-white text-[1.3rem] justify-self-start cursor-pointer hover:bg-red-600 transition-colors">
             <i class="fa-solid fa-arrow-left"></i>
         </button>
@@ -49,7 +99,7 @@
         </a>
     </header>
 
-    <div class="bg-white flex border-b border-gray-200 text-center">
+            <div class="bg-white flex border-b border-gray-200 text-center">
         <div class="w-1/3 py-2 text-gray-500">
             <div class="font-bold text-base">00:00</div>
             <div class="text-xs">Sedang Berjalan</div>
@@ -64,12 +114,11 @@
         </div>
     </div>
 
-    <!-- Efek Zoom pada Banner -->
-    <div class="w-full h-[115px] overflow-hidden relative group cursor-pointer">
+            <div class="w-full h-[115px] overflow-hidden relative group cursor-pointer">
         <img src="images/banner-flashsale.jpg" alt="Infinix Super Brand Day" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
     </div>
 
-    <div class="bg-gray-50 px-4 py-2 flex justify-end items-center text-xs text-gray-600 border-b border-gray-100">
+            <div class="bg-gray-50 px-4 py-2 flex justify-end items-center text-xs text-gray-600 border-b border-gray-100">
         <span class="mr-2 uppercase font-bold tracking-wider text-gray-500">Mulai Dalam</span>
         <div class="flex items-center gap-1 font-bold text-white">
             <span class="bg-black px-1.5 py-0.5 rounded">00</span> :
@@ -78,7 +127,7 @@
         </div>
     </div>
 
-    <main class="bg-white flex-1 p-3 space-y-4">
+            <main class="bg-white flex-1 p-3 space-y-4">
         <!-- Produk 1 -->
         <div class="flex gap-3 border-b border-gray-100 pb-4 group cursor-pointer">
             <div class="w-28 h-28 bg-emerald-50 rounded-md border border-emerald-100 flex items-center justify-center relative flex-shrink-0 overflow-hidden">
@@ -193,8 +242,7 @@
         </div>
     </main>
 
-    <!-- Section Maxi Flash Sale dengan Efek Zoom pada Kartu Pop-up -->
-    <section class="bg-cyan-600 p-3 text-white">
+<section class="bg-cyan-600 p-3 text-white">
         <div class="flex justify-between items-center mb-3">
             <h2 class="text-sm font-black tracking-wide italic flex items-center">
                 MAXI<i class="fa-solid fa-bolt text-xs mx-0.5 text-yellow-300"></i>FLASH SALE
@@ -258,7 +306,13 @@
         </div>
     </section>
 
-    <footer class="bg-white border-t border-gray-200 flex justify-around py-2 text-center text-xs text-gray-500 sticky bottom-0 z-50">
+            
+
+            
+
+        </div>
+
+        <footer class="bg-white border-t border-gray-200 flex justify-around py-2 text-center text-xs text-gray-500 sticky bottom-0 z-50">
         <div class="text-red-500 font-semibold cursor-pointer">
             <i class="fa-solid fa-bolt text-lg block mb-0.5"></i>
             <span>Misi Bronze</span>
@@ -269,47 +323,39 @@
         </div>
     </footer>
 
-    <!-- Modal Info Sale -->
-   <div class="fixed inset-0 z-[9999] items-center justify-center px-4 bg-black/60 backdrop-blur-[2.3px] hidden" id="info-modal">
-    <div class="relative w-full max-w-sm bg-[#000000b0] rounded-3xl overflow-hidden flex flex-col items-center text-center p-[1.3rem] border border-[#ffd8916b] shadow-2xl">
-        <button onclick="closeModal()" class="absolute top-4 right-4 text-orange-300 hover:text-white transition-colors w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10 cursor-pointer">
+	<div class="fixed inset-0 z-50 items-center justify-center px-4 bg-[#0000005c] backdrop-blur-[2.3px] hidden" id="info-modal">
+        <div class="zoom-in relative w-full max-w-sm bg-[#000000b0] rounded-3xl overflow-hidden flex flex-col items-center text-center p-[1.3rem] border border-[#ffd8916b] shadow-2xl">
+          
+          <div class="absolute top-0 left-0 w-full h-48 bg-gradient-to-b from-transparent to-transparent -z-10"></div>
+          <div class="absolute -top-10 left-1/2 transform -translate-x-1/2 w-64 h-64 bg-[#00000099] rounded-full blur-3xl -z-10"></div>
+
+          <button onclick="closeModal()" class="absolute top-4 right-4 text-orange-300 hover:text-white transition-colors w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10 cursor-pointer">
             <i class="fa-solid fa-xmark text-lg"></i>
-        </button>
+          </button>
 
-        <h2 class="text-2xl font-extrabold text-gray-100 mb-2 mt-4">Flash Sale</h2>
-        <p class="text-gray-100 text-sm leading-relaxed mb-6">
-            Flash Sale akan dibuka pada saat omset nasional <span class="font-semibold text-yellow-200">Maxi Poin</span> Tercapai...
-        </p>
+          <h2 class="text-2xl font-extrabold text-gray-100 mb-2 mt-4">Flash Sale</h2>
+          <p class="text-gray-100 text-sm leading-relaxed mb-6 px-[0rem]">Flash Sale akan dibuka pada saat omset nasional<span class="font-semibold text-yellow-200"> Maxi Poin </span>Tercapai 500k mp selanjutnya 100k mp setiap periode, kuota misi dibuka maksimal 100 slot dan yang bisa klaim misi adalah affiliate yang masuk daftar kuota. Semakin sering anda bertransaksi maka semakin besar peluang masuk kuota.!</p>
 
-        <button onclick="closeModal()" class="w-full bg-[#b7993e] hover:bg-[#a38531] text-white font-bold py-4 rounded-xl shadow-lg transition-all transform active:scale-[0.98]">
-            <span>OK</span>
-        </button>
+          <button onclick="closeModal()" class="w-full bg-[#b7993e] hover:bg-[#a38531] text-white font-bold py-4 rounded-xl shadow-lg transition-all transform active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer">
+              <span>OK</span>
+          </button>
+        </div>
     </div>
-</div>
 
-   <script>
-    const modal = document.getElementById('info-modal');
-
-    function openModal() {
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-        // Mencegah scroll pada body saat modal terbuka
-        document.body.style.overflow = 'hidden';
-    }
-
-    function closeModal() {
-        modal.classList.remove('flex');
-        modal.classList.add('hidden');
-        // Mengembalikan scroll pada body
-        document.body.style.overflow = '';
-    }
     
-    // Klik di luar modal untuk menutup
-    modal.addEventListener('click', function(e) {
-        if (e.target === modal) {
-            closeModal();
-        }
-    });
+	<script>
+    // Fungsi untuk membuka modal
+    function openModal() {
+        document.getElementById('info-modal').classList.remove('hidden');
+        document.getElementById('info-modal').classList.add('flex');
+    }
+
+    // Fungsi untuk menutup modal
+    function closeModal() {
+        document.getElementById('info-modal').classList.add('hidden');
+        document.getElementById('info-modal').classList.remove('flex');
+    }
 </script>
 
-</body></html>
+
+</div></body></html>
