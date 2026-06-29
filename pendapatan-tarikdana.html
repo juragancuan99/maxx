@@ -65,13 +65,13 @@
             <button onclick="showPage('pageMain')" class="mr-4"><i class="fa-solid fa-arrow-left"></i></button>
             <h1 class="text-lg font-bold">Metode Penarikan</h1>
         </header>
+		
         <main class="p-5">
+		
             <div class="mb-6">
             <div class="flex justify-between items-end mb-3">
-                
-                
             </div>
-
+			
             <div class="w-full bg-gray-100 rounded-2xl p-4 border border-gray-100 mb-10 flex flex-col items-center shadow-sm">
             <div class="relative -top-[0.5rem]">
                 <button onclick="showPage('pageInfo')" class="w-14 h-14 bg-[#00a6a6] rounded-full flex items-center justify-center text-white shadow-lg shadow-blue-500/40 active:scale-95 transition-transform">
@@ -86,10 +86,9 @@
             </div>
         </div>
         </div>
+		
         <div class="mb-6">
             <div class="flex justify-between items-end mb-3">
-                
-                
             </div>
 
             <div class="w-full bg-gray-100 rounded-2xl p-4 border border-gray-100 mb-10 flex flex-col items-center shadow-sm">
@@ -105,17 +104,41 @@
                 <i class="fa-solid fa-building-columns"></i>
             <span><span class="font-semibold">DANA, OVO, SHOPEEPAY, GOPAY</span></span></div>
         </div>
-        </div></main>
+        </div>
+		
+		</main>
     </div>
 
+		<!-- Informasi Akun Bank -->
     <div id="pageInfo" class="page w-full h-full bg-gray-50 overflow-y-auto">
         <header class="sticky top-0 bg-white px-4 py-4 flex items-center shadow-sm">
             <button onclick="showPage('pageMethod')" class="mr-4"><i class="fa-solid fa-arrow-left"></i></button>
             <h1 class="text-lg font-bold">Informasi Akun</h1>
         </header>
+		
         <main class="p-5">
-            </main>
-    </div>
+        <form class="space-y-5" onsubmit="event.preventDefault();">
+            <div><label class="block text-[1rem] font-semibold text-gray-700 tracking-wider ml-1 mb-1.5">Nama</label>
+                <div class="relative group">
+                    <input type="text" placeholder="Nama Anda" class="pl-[1rem] w-full bg-gray-50 border border-gray-200 text-gray-900 text-[1rem] rounded-xl focus:ring-2 focus:ring-[#00A5A6]/20 focus:border-[#00A5A6] block p-3.5 outline-none transition-all placeholder-gray-400">
+                </div>
+            </div>
+
+            <div><label class="block text-[1rem] font-semibold text-gray-700 tracking-wider ml-1 mb-[-0.5rem]">Nama Bank</label>
+                <button class="w-full bg-gray-50 border border-gray-200 text-gray-400 font-regular py-4 rounded-xl transition-all focus:ring-2 focus:ring-[#00A5A6]/20 focus:border-[#00A5A6] transform active:scale-[0.98] mt-4 flex items-center justify-center gap-[11rem]">
+                <span>Pilihan Bank</span>
+                <i class="text-gray-105 fa-solid fa-arrow-right text-sm"></i>
+            </button>
+            </div>
+			
+			<div><label class="block text-[1rem] font-semibold text-gray-700 tracking-wider ml-1 mb-1.5">Nomor Rekening Bank</label>
+                <div class="relative group">
+                    <input type="text" placeholder="Nomor Rekening" class="pl-[1rem] w-full bg-gray-50 border border-gray-200 text-gray-900 text-[1rem] rounded-xl focus:ring-2 focus:ring-[#00A5A6]/20 focus:border-[#00A5A6] block p-3.5 outline-none transition-all placeholder-gray-400">
+                </div>
+            </div>
+        </form>
+    </main>
+    	</div>
 
     <script>
         function showPage(pageId) {
