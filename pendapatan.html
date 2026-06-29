@@ -1,0 +1,295 @@
+<html lang="id"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Misi Reward Bronze - Maxi Ecosystem</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght=300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; margin: 0; padding: 0; }
+        ::-webkit-scrollbar { display: none; } 
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Animasi Zoom In untuk Pop-Up Modal Info */
+        @keyframes zoomIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .zoom-in { animation: zoomIn 0.2s ease-out forwards; }
+    </style>
+<script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#D4FF00',
+                    }
+                }
+            }
+        }
+    </script>
+
+
+</head>
+<body class="h-screen w-screen overflow-hidden bg-white">
+          <div class="w-full h-full bg-white overflow-y-auto relative font-sans text-slate-900">
+  <!-- External Resources -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .hide-scrollbar::-webkit-scrollbar { display: none; }
+    .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+
+  <!-- Header Section -->
+  <div class="px-6 pt-12 pb-4 flex items-center justify-between bg-white sticky top-0 z-20">
+    <div class="flex items-center gap-3">
+      <div class="relative">
+        <img src="https://akcdn.detik.net.id/community/media/visual/2020/03/05/5588366a-a6ca-46a1-8b9e-f1fdeea17617.jpeg?q=90&amp;w=480" alt="Profile" class="w-12 h-12 rounded-full object-cover border-2 border-indigo-100">
+        <div class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></div>
+      </div>
+      <div>
+        <h2 class="text-lg font-bold text-slate-900 leading-tight">Maxi_001</h2>
+        <div class="flex items-center gap-1 mt-0.5">
+          <i class="fa-solid fa-medal text-indigo-500 text-[10px]"></i>
+          <span class="text-xs font-semibold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-full">Partner Affiliasi Diamond</span>
+        </div>
+      </div>
+    </div>
+    <!-- NOTIF AKAN MENUNJUKAN ANGKA JIKA ADA PENAMBAHAN PESANAN >> -->
+<button class="relative text-gray-500 hover:text-[#2563EB]">
+                <i class="fas fa-bell text-lg"></i>
+                <span class="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-[10px] font-bold h-4 w-4 flex items-center justify-center rounded-full border-2 border-white">2</span>
+            </button>
+  </div>
+
+  <!-- Main Content Scrollable Area -->
+  <div class="pb-24">
+    
+    <!-- Main Stats Card (MAXI) -->
+    <!--<div class="px-6 mt-2"> -->
+    <div class="px-4 mt-3">
+      <div class="bg-[#00a6a6] rounded-2xl p-5 text-white shadow-lg shadow-indigo-200 relative overflow-hidden">
+            <!-- Decorative circles -->
+            <div class="absolute top-0 right-0 -mr-4 -mt-4 w-24 h-24 rounded-full bg-white opacity-10"></div>
+            <div class="absolute bottom-0 left-0 -ml-4 -mb-4 w-20 h-20 rounded-full bg-white opacity-10"></div>
+
+        <!-- Card Header -->
+        <div class="flex justify-between items-center mb-6 relative z-10">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-white/20 backdrop-blur-md rounded-lg flex items-center justify-center">
+              <div class="relative w-full max-w-[25px] aspect-square">
+            <img src="https://images.unsplash.com/photo-1770262710803-7f1326aa444b?q=80&amp;w=880&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Happy man holding smartphone" class="w-full h-full object-cover rounded-3xl shadow-sm mask-image-gradient" style="-webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%); mask-image: linear-gradient(to bottom, black 80%, transparent 100%);">
+        </div>
+            </div>
+            <span class="font-bold tracking-wider text-gray-100">MAXI</span>
+          </div>
+          <button class="text-xs font-medium text-gray-100 hover:text-white flex items-center gap-1 transition-colors">
+            Lihat Detail <i class="fa-solid fa-chevron-right text-[10px]"></i>
+          </button>
+        </div>
+
+        <!-- Card Balance -->
+        <div class="relative z-10">
+          <p class="text-gray-100 text-sm font-medium mb-1">Est. Total Pendapatan</p>
+          <div class="flex items-baseline gap-0 mt-[-0.5rem]">
+    <span class="text-[#FFFFFF] font-bold text-lg">Rp</span>
+    <span id="counter" class="text-gray-100 font-bold text-[2.1rem]" data-target="10168000000">0</span>
+</div>
+          
+          <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-lg border border-white/10">
+            <div class="w-4 h-4 rounded-full bg-yellow-400/20 flex items-center justify-center">
+              <i class="fa-solid fa-arrow-trend-up text-yellow-300 text-[10px]"></i>
+            </div>
+            <span class="text-yellow-300 text-xs font-semibold">Hari ini +Rp15.785.000</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Withdrawal Card -->
+    <div class="px-4 mt-6">
+      <div class="bg-white rounded-2xl p-5 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] border border-slate-100 flex justify-between items-center">
+        <div>
+          <p class="text-slate-500 text-xs font-medium mb-1">Saldo yang bisa dicairkan</p>
+          <p class="text-xl font-bold text-slate-900">Rp38.000.000</p>
+        </div>
+        <button class="bg-[#00a6a6] hover:bg-Cyan-700 active:scale-95 transition-all text-white px-5 py-2.5 rounded-xl text-sm font-semibold shadow-lg shadow-indigo-200">
+          Tarik Saldo
+        </button>
+      </div>
+    </div>
+
+    <!-- Quick Actions Grid -->
+    <div class="px-4 mt-8">
+        
+        <div class="bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100">
+            
+            <!-- Order History -->
+            <button class="w-full flex items-center justify-between p-2 border-b border-[#ededed] hover:bg-gray-50 transition active:bg-gray-100">
+                <div class="flex items-center gap-[0.5rem]">
+                    <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-[#331515]">
+                        <i class="fa-solid fa-coins"></i>
+                    </div>
+                    <span class="text-gray-700 font-medium text-sm">Detail Pendapatan</span>
+                </div>
+                <i class="fas fa-chevron-right text-gray-600 text-xs"></i>
+            </button>
+
+            <button class="w-full flex items-center justify-between p-2 border-b border-[#ededed] hover:bg-gray-50 transition active:bg-gray-100">
+                <div class="flex items-center gap-[0.5rem]">
+                    <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-[#331515]">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <span class="text-gray-700 font-medium text-sm">Nomination</span>
+                </div>
+                <div class="flex items-center gap-[0rem]">
+                <span class="bg-red-100 text-red-600 text-[10px] font-bold px-2 py-0.5 rounded-full">HOT</span>
+                <i class="fa-solid fa-chevron-right text-gray-600 text-xs"></i>
+            </div>
+            </button><!-- Address -->
+            <button class="w-full flex items-center justify-between p-2 border-b border-[#ededed] hover:bg-gray-50 transition active:bg-gray-100">
+                <div class="flex items-center gap-[0.5rem]">
+                    <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-[#331515]">
+                        <i class="fa-solid fa-shop"></i>
+                    </div>
+                    <span class="text-gray-700 font-medium text-sm">Pesanan saya</span>
+                </div>
+                <i class="fas fa-chevron-right text-gray-600 text-xs"></i>
+            </button>
+
+            <button class="w-full flex items-center justify-between p-2 border-b border-gray-50 hover:bg-gray-50 transition active:bg-gray-100">
+                <div class="flex items-center gap-[0.5rem]">
+                    <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-[#331515]">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <span class="text-gray-700 font-medium text-sm">Team Saya</span>
+                </div>
+                
+<!-- ICON TEAM AKAN MUNCUL JIKA SUDAH ADA TEAM DOWNLINE DAN MAKSIMAL YANG BISA DITAMPILKAN HANYA 3 FOTO LAINYA BERUPA ANGKA SESUAI JUMLAH BANYAKNYA TEAM >>>>>>> -->
+<div class="flex items-center gap-[0rem]">
+                <div class="flex -space-x-3">
+                    <img class="w-8 h-8 rounded-full border-2 border-white object-cover" src="https://i.pravatar.cc/150?img=32" alt="User">
+                    <img class="w-8 h-8 rounded-full border-2 border-white object-cover" src="https://i.pravatar.cc/150?img=12" alt="User">
+                    <img class="w-8 h-8 rounded-full border-2 border-white object-cover" src="https://i.pravatar.cc/150?img=59" alt="User">
+                    <div class="w-8 h-8 rounded-full border-2 border-white bg-gray-100 flex items-center justify-center text-xs font-bold text-gray-500">
+                        +2
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-right text-gray-600 text-xs"></i>
+            </div>
+            </button><!-- Payment Methods -->
+            
+        </div>
+    </div>
+
+    <!-- Recent Transactions -->
+    
+  <div class="px-4 mt-8">
+<div class="flex items-center bg-white p-1 rounded-2xl shadow-sm border border-gray-100 mb-6">
+      <div class="ml-4 flex-1">
+        <h2 class="font-bold text-gray-900">Gabung chanel resmi kami</h2>
+        <p class="text-sm text-gray-500">Maxi Milyarder Club
+<i class="fa-solid fa-chevron-right text-xs text-red-500"></i><i class="fas fa-chevron-right text-xs text-gray-400 group-hover:text-[#ff0000] transition-colors mt-0.5"></i>
+
+</p>
+      </div><div class="relative">
+        <img class="w-14 h-14 rounded-full object-cover border-2 border-white shadow-sm" alt="User" src="https://image2url.com/r2/default/images/1770453818791-70556410-4f2d-46ca-951f-782546910011.blob">
+        
+      </div>
+      
+      
+    </div></div><div class="px-4 mt-4">
+<div class="flex items-center bg-white p-1 rounded-2xl shadow-sm border border-gray-100 mb-6">
+      <div class="ml-4 flex-1">
+        <h2 class="font-bold text-gray-900">Cashback tidak masuk?</h2>
+        <p class="text-sm text-gray-500">Berikut tipsnya
+<i class="fa-solid fa-chevron-right text-xs text-red-500"></i><i class="fas fa-chevron-right text-xs text-gray-400 group-hover:text-[#ff0000] transition-colors mt-0.5"></i>
+
+</p>
+      </div><div class="relative">
+        <img class="w-14 h-14 rounded-full object-cover border-2 border-white shadow-sm" alt="User" src="https://image2url.com/r2/default/images/1770454274328-6dc673e5-7eb1-4be0-a2e4-bf2cc3ac308c.png">
+        
+      </div>
+      
+      
+    </div></div></div>
+
+  <!-- Bottom Navigation -->
+     <!-- Bottom Navigation -->
+   <div class="fixed bottom-0 w-full bg-white border-t border-gray-100 px-6 py-3 flex justify-between items-end z-50 pb-3">
+        <!-- BUTTON AKTIF ubah WARNA menjadi [#00a6a6] >> -->
+
+<button class="flex flex-col items-center gap-0 text-gray-500 hover:text-[#00a6a6] transition-colors">
+            <i class="fa-solid fa-house text-xl mb-0.5"></i>
+            <span class="text-[10px] font-medium">Beranda</span>
+        </button>
+        <!-- BUTTON AKTIF ubah WARNA menjadi [#00a6a6] >> -->
+
+<button class="flex flex-col items-center gap-0 text-gray-500 hover:text-[#00a6a6] transition-colors">
+            <i class="fa-solid fa-gift text-xl mb-0.5"></i>
+            <span class="text-[10px] font-medium">Misi Reward</span>
+        </button>
+        <!-- BUTTON AKTIF ubah WARNA menjadi [#00a6a6] >> -->
+
+<button class="flex flex-col items-center gap-0 text-gray-500 hover:text-[#00a6a6] transition-colors">
+            <i class="fa-solid fa-users text-xl mb-0.5"></i>
+            <span class="text-[10px] font-medium">Team</span>
+        </button><!-- Floating Action Button for Scan -->
+        
+        <!-- BUTTON AKTIF ubah WARNA menjadi [#00a6a6] >> -->
+
+<button class="flex flex-col items-center gap-0 text-gray-500 hover:text-[#00a6a6] transition-colors">
+            <i class="fa-solid fa-wallet text-xl mb-0.5"></i>
+            <span class="text-[10px] font-medium">Pendapatan</span>
+        </button>
+
+
+        <button class="flex flex-col items-center gap-0 text-[#00a6a6]">
+            <!-- <i class="fa-solid fa-user text-xl mb-0.5"></i> -->
+
+<!-- FOTO INI BISA DI UBAH DI HALAMAN GANTI FOTO >> -->
+<img class="w-[1.5rem] h-[1.5rem] rounded-full border-[0px] border-pirple-shadow-sm mx-[0rem]" alt="User" src="https://i.pravatar.cc/150?img=32">
+            <span class="text-[10px] font-bold">Saya</span>
+        </button>
+    </div>
+
+
+
+
+
+
+</div>
+      
+
+<script>
+    function animateCounter() {
+        const counter = document.getElementById('counter');
+        const target = parseInt(counter.getAttribute('data-target'));
+        const duration = 2000; // Durasi animasi dalam milidetik (2 detik)
+        const frameRate = 60; // Frame per detik
+        const totalFrames = Math.round(duration / 1000 * frameRate);
+        const increment = target / totalFrames;
+
+        let current = 0;
+        
+        const update = () => {
+            current += increment;
+            if (current < target) {
+                // Memformat angka dengan pemisah ribuan
+                counter.innerText = Math.floor(current).toLocaleString('id-ID');
+                requestAnimationFrame(update);
+            } else {
+                counter.innerText = target.toLocaleString('id-ID');
+            }
+        };
+        
+        update();
+    }
+
+    // Jalankan fungsi saat halaman selesai dimuat
+    window.addEventListener('DOMContentLoaded', animateCounter);
+</script>  
+      
+    </body></html>
