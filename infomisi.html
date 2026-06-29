@@ -1,0 +1,237 @@
+<html lang="id"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; margin: 0; padding: 0; }
+        ::-webkit-scrollbar { display: none; } 
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#D4FF00',
+                    }
+                }
+            }
+        }
+    </script>
+
+
+</head>
+
+<body class="min-h-screen w-full bg-gray-100 flex justify-center items-center">
+    
+    <div class="w-full max-w-[440px] h-screen bg-white overflow-y-auto relative font-sans pb-24 shadow-2xl border-x border-gray-200">
+
+        <div class="sticky top-0 z-30 bg-cyan-600 shadow-sm max-w-[440px] w-full mx-auto">
+            <div class="flex items-center justify-between px-4 py-[0.8rem]">
+                <div class="flex items-center gap-3">
+                    <a href="beranda.html" class="inline-block">
+                        <button class="text-gray-100 hover:text-gray-100 transition-colors">
+                            <i class="fa-solid fa-arrow-left text-xl"></i>
+                        </button>
+                    </a>
+                    <h1 class="text-lg font-bold text-gray-100">Misi Reward</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="relative w-full h-[586px]">
+            <img src="images/banner-misireward1.png" alt="Toyota Alphard" class="w-full h-full object-cover">
+            <div class="absolute inset-0"></div>
+        </div>
+
+        <div class="relative w-full h-[3rem] bg-gray-200">
+            <img src="images/banner-misireward2.png" alt="Affiliate News" class="w-full h-full object-cover">
+            <div class="absolute"></div>
+        </div>
+
+        <div class="px-4 mt-6">
+            <h3 class="text-center text-gray-900 font-bold text-lg mb-4">Program Misi Reward</h3>
+            <div class="px-5 mt-6">
+                <div class="bg-indigo-900 p-1.5 rounded-xl flex relative">
+                    <button id="btn-bronze" class="flex-1 py-2.5 text-sm font-bold text-blue-900 bg-white rounded-lg shadow-sm text-center flex items-center justify-center gap-2 transition-all">
+                        BRONZE
+                    </button>
+                    <button id="btn-platinum" class="flex-1 py-2.5 text-sm font-semibold text-gray-100 rounded-lg text-center transition-all">
+                        PLATINUM
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="content-bronze" class="block">
+            <div class="px-4 mt-6 mb-8">
+                <div class="flex items-center justify-between mb-2">
+                    <h3 class="text-[0.9rem] text-gray-900 font-bold text-md">Presentase kuota misi reward BRONZE</h3>
+                </div>
+                <p class="text-sm text-gray-500 leading-relaxed">Penentuan persentase bagi Affiliate yang berhasil masuk kuota didasarkan pada skema pembobotan: </p>
+            </div>
+
+            <div class="px-4 mt-[-2rem]">
+                <h3 class="text-center text-gray-700 font-bold text-[3rem] mb-4">10%</h3>
+                <h3 class="mt-[-1.5rem] text-center text-gray-900 font-regular text-[0.8rem] mb-4">Presentase 10% dihitung dari pencapaian transaksi di platform e-commerce seperti TikTok, Shopee, Lazada, &amp; Traveloka. </h3>
+            </div>
+            
+            <div class="px-4 mt-[-1rem]">
+                <h3 class="text-center text-yellow-500 font-bold text-[3rem] mb-4">90%</h3>
+                <h3 class="mt-[-1.5rem] text-center text-gray-900 font-regular text-[0.8rem] mb-4">Presentase 90% berasal dari aktivitas repeat order di Merchant Partner.</h3>
+            </div>
+
+            <div class="px-5 space-y-6 mt-[3rem]">
+                <div class="bg-white rounded-2xl p-1 relative transform scale-105 z-10 shadow-[0_20px_50px_-12px_rgba(41,98,255,0.25)]">
+                    <div class="absolute inset-0 bg-gradient-to-br from-yellow-300 via-orange-400 to-yellow-500 rounded-2xl -z-10"></div>
+                    <div class="bg-white rounded-xl p-6 h-[62%] relative overflow-hidden">
+                        <div class="absolute -top-10 -right-10 w-32 h-32 bg-yellow-100 rounded-full blur-3xl opacity-50"></div>
+                        <div class="absolute top-[6px] left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                            <span class="bg-gradient-to-r from-yellow-500 to-orange-600 text-white text-[10px] font-bold px-4 py-1.5 rounded-full shadow-md tracking-wide uppercase">
+                                <i class="fa-solid fa-star mr-1 text-yellow-200"></i>BRONZE
+                            </span>
+                        </div>
+                        <div class="flex justify-between items-start mb-4 mt-3">
+                            <div>
+                                <h3 class="font-bold text-gray-900 text-xl">MISI BRONZE</h3>
+                                <p class="text-yellow-600 text-xs mt-1 font-medium">Syarat Misi Reward Bronze</p>
+                            </div>
+                            <div class="w-12 h-12 bg-gradient-to-br from-yellow-100 to-orange-50 rounded-full flex items-center justify-center text-yellow-600 text-xl border border-yellow-200 shadow-sm">
+                                <i class="fa-solid fa-trophy"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-3.5">
+                            <div class="flex items-start text-sm text-gray-800 font-medium">
+                                <div class="min-w-[24px] pt-0.5"><i class="fa-solid fa-circle-check text-yellow-500"></i></div>
+                                <span>Omset Maxipoin <b>100.000 </b>/Periode - setelah tercapai MP 500K pertama</span>
+                            </div>
+                            <div class="flex items-start text-sm text-gray-800 font-medium">
+                                <div class="min-w-[24px] pt-0.5"><i class="fa-solid fa-circle-check text-yellow-500"></i></div>
+                                <span>Upgrade akun ke <b>AGENT </b>atau <b>PARTNER</b></span>
+                            </div>
+                            <div class="flex items-start text-sm text-gray-800 font-medium">
+                                <div class="min-w-[24px] pt-0.5"><i class="fa-solid fa-circle-check text-yellow-500"></i></div>
+                                <span>Aktif belanja di Ecommerce atau Merchant Partner</span>
+                            </div>
+                            <div class="flex items-start text-sm text-gray-800 font-medium">
+                                <div class="min-w-[24px] pt-0.5"><i class="fa-solid fa-circle-check text-yellow-500"></i></div>
+                                <span>Minimal Belanja 10 item produk dari masing-masing platform - Ecommerce 10% dan Merchant 90%</span>
+                            </div>
+                            <div class="flex items-start text-sm text-gray-800 font-medium">
+                                <div class="min-w-[24px] pt-0.5"><i class="fa-solid fa-circle-check text-yellow-500"></i></div>
+                                <span>Undang 10 Teman dan lakukan upgrade minimal ke Agent mendapatkan bobot 90%</span>
+                            </div>
+                            <div class="flex items-start text-sm text-gray-800 font-medium">
+                                <div class="min-w-[24px] pt-0.5"><i class="fa-solid fa-circle-check text-yellow-500"></i></div>
+                                <span>Omset belanja R.O minimal 10 item produk merchant mendapatkan bobot 90%</span>
+                            </div>
+                            <h3 class="mt-[1rem] text-center text-gray-900 font-regular text-[0.7rem] mb-4">Semakin tinggi transaksi Anda, semakin besar peluang dan persentase untuk masuk kuota peserta misi reward.</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[440px] bg-white border-t border-gray-100 p-[0.7rem] shadow-[0_-4px_20px_rgba(0,0,0,0.05)] z-50">
+                <div class="flex flex-col gap-2">
+                    <a href="cekmisi-misibronze.html" class="w-full block">
+                        <button class="w-full bg-[#00a6a6] hover:bg-[#007d7d] text-white font-bold py-4 rounded-xl shadow-lg active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+                            <span>Cek Misi BRONZE</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="content-platinum" class="hidden">
+            <div class="px-4 mt-6 mb-8">
+                <div class="flex items-center justify-between mb-2">
+                    <h3 class="text-[0.9rem] text-gray-900 font-bold text-md">Presentase kuota misi reward PLATINUM</h3>
+                </div>
+                <p class="text-sm text-gray-500 leading-relaxed">Affiliate yang masuk kuota reward platinum cukup membeli produk untuk misi reward tersebut sesuai dengan ketentuan dibawah ini :</p>
+            </div>
+
+            <div class="px-5 space-y-6 mt-[3rem]">
+                <div class="bg-white rounded-2xl p-1 relative transform scale-105 z-10 shadow-[0_20px_50px_-12px_rgba(41,98,255,0.25)]">
+                    <div class="absolute inset-0 bg-gradient-to-br from-[#ffbc00] via-[#000000] to-[#ffcb2a] rounded-2xl -z-10"></div>
+                    <div class="bg-white rounded-xl p-6 h-[45%] relative overflow-hidden">
+                        <div class="absolute -top-10 -right-10 w-32 h-32 bg-yellow-100 rounded-full blur-3xl opacity-50"></div>
+                        <div class="absolute top-[6px] left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                            <span class="bg-gradient-to-r from-[#000000] to-[#c99e00] text-white text-[10px] font-bold px-4 py-1.5 rounded-full shadow-md tracking-wide uppercase">
+                                <i class="fa-solid fa-star mr-1 text-yellow-200"></i>PLATINUM
+                            </span>
+                        </div>
+                        <div class="flex justify-between items-start mb-4 mt-3">
+                            <div>
+                                <h3 class="font-bold text-gray-900 text-xl">MISI PLATINUM</h3>
+                                <p class="text-yellow-600 text-xs mt-1 font-medium">Syarat Misi Reward Platinum</p>
+                            </div>
+                            <div class="w-12 h-12 bg-gradient-to-br from-yellow-100 to-orange-50 rounded-full flex items-center justify-center text-yellow-600 text-xl border border-yellow-200 shadow-sm">
+                                <i class="fa-solid fa-trophy"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-3.5">
+                            <div class="flex items-start text-sm text-gray-800 font-medium">
+                                <div class="min-w-[24px] pt-0.5"><i class="fa-solid fa-circle-check text-yellow-500"></i></div>
+                                <span>Omset <b>Maxipoin </b>Tercapai Sesuai Misi Yang Diambil</span>
+                            </div>
+                            <div class="flex items-start text-sm text-gray-800 font-medium">
+                                <div class="min-w-[24px] pt-0.5"><i class="fa-solid fa-circle-check text-yellow-500"></i></div>
+                                <span>Upgrade akun ke <b>AGENT </b>atau <b>PARTNER</b></span>
+                            </div>
+                            <div class="flex items-start text-sm text-gray-800 font-medium">
+                                <div class="min-w-[24px] pt-0.5"><i class="fa-solid fa-circle-check text-yellow-500"></i></div>
+                                <span>Cukup dengan belanja produk misi reward sudah bisa masuk kuota</span>
+                            </div>
+                            <h3 class="mt-[1rem] text-center text-gray-900 font-regular text-[0.7rem] mb-4">Semakin aktif komunitas bergerak, semakin besar MAXI POIN bertumbuh! MAXIPOIN Didapat dari : aktivasi, belanja produk misi reward, repeat order di merchant partner dan belanja di ecommerce : Shopee, Tiktok, Lazada, Traveloka oleh seluruh pengguna MAXI Affiliate </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[440px] bg-white border-t border-gray-100 p-[0.7rem] shadow-[0_-4px_20px_rgba(0,0,0,0.05)] z-50">
+                <div class="flex flex-col gap-2">
+                    <a href="cekmisi-misibronze.html" class="w-full block">
+                        <button class="w-full bg-[#00a6a6] hover:bg-[#007d7d] text-white font-bold py-4 rounded-xl shadow-lg active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+                            <span>Cek Misi PLATINUM</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const btnBronze = document.getElementById('btn-bronze');
+        const btnPlatinum = document.getElementById('btn-platinum');
+        const contentBronze = document.getElementById('content-bronze');
+        const contentPlatinum = document.getElementById('content-platinum');
+
+        btnBronze.addEventListener('click', () => {
+            contentBronze.classList.remove('hidden');
+            contentBronze.classList.add('block');
+            contentPlatinum.classList.remove('block');
+            contentPlatinum.classList.add('hidden');
+
+            btnBronze.className = "flex-1 py-2.5 text-sm font-bold text-blue-900 bg-white rounded-lg shadow-sm text-center flex items-center justify-center gap-2 transition-all";
+            btnPlatinum.className = "flex-1 py-2.5 text-sm font-semibold text-gray-100 rounded-lg text-center transition-all";
+        });
+
+        btnPlatinum.addEventListener('click', () => {
+            contentPlatinum.classList.remove('hidden');
+            contentPlatinum.classList.add('block');
+            contentBronze.classList.remove('block');
+            contentBronze.classList.add('hidden');
+
+            btnPlatinum.className = "flex-1 py-2.5 text-sm font-bold text-blue-900 bg-white rounded-lg shadow-sm text-center flex items-center justify-center gap-2 transition-all";
+            btnBronze.className = "flex-1 py-2.5 text-sm font-semibold text-gray-100 rounded-lg text-center transition-all";
+        });
+    </script>
+
+
+
+</body></html>
