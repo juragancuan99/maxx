@@ -446,44 +446,44 @@
         </div>
     </div>
 
-   <script>
-    // --- Sistem Pengendali Tab Halaman Utama ---
-    function switchTab(tab) {
-        const btnMisi = document.getElementById('btn-misi');
-        const btnKuota = document.getElementById('btn-kuota');
-        const contentMisi = document.getElementById('content-misi');
-        const contentKuota = document.getElementById('content-kuota');
-        const pageTitle = document.getElementById('page-title');
+    <script>
+        // --- Sistem Pengendali Tab Halaman Utama ---
+        function switchTab(tab) {
+            const btnMisi = document.getElementById('btn-misi');
+            const btnKuota = document.getElementById('btn-kuota');
+            const contentMisi = document.getElementById('content-misi');
+            const contentKuota = document.getElementById('content-kuota');
+            const pageTitle = document.getElementById('page-title');
 
-        if (tab === 'misi') {
-            // Style Button
-            btnMisi.className = "flex-1 py-2 text-sm font-bold rounded-lg bg-[#FFD700] text-black shadow-sm transition-all duration-200";
-            btnKuota.className = "flex-1 py-2 text-sm font-medium rounded-lg text-gray-500 hover:bg-gray-50 transition-all duration-200";
-            
-            // Konten: Tampilkan Misi, Sembunyikan Kuota
-            contentMisi.classList.remove('hidden');
-            contentMisi.classList.add('block');
-            
-            contentKuota.classList.remove('block');
-            contentKuota.classList.add('hidden');
-            
-            pageTitle.innerText = "Misi Reward Bronze";
-        } else if (tab === 'kuota') {
-            // Style Button
-            btnKuota.className = "flex-1 py-2 text-sm font-bold rounded-lg bg-[#FFD700] text-black shadow-sm transition-all duration-200";
-            btnMisi.className = "flex-1 py-2 text-sm font-medium rounded-lg text-gray-500 hover:bg-gray-50 transition-all duration-200";
-            
-            // Konten: Sembunyikan Misi, Tampilkan Kuota
-            contentMisi.classList.remove('block');
-            contentMisi.classList.add('hidden');
-            
-            contentKuota.classList.remove('hidden');
-            contentKuota.classList.add('block');
-            
-            pageTitle.innerText = "Kuota Misi Bronze";
+            if (tab === 'misi') {
+                btnMisi.className = "flex-1 py-2 text-sm font-bold rounded-lg bg-[#FFD700] text-black shadow-sm transition-all duration-200";
+                btnKuota.className = "flex-1 py-2 text-sm font-medium rounded-lg text-gray-500 hover:bg-gray-50 transition-all duration-200";
+                contentMisi.classList.replace('hidden', 'block');
+                contentKuota.classList.replace('block', 'hidden');
+                pageTitle.innerText = "Misi Reward Bronze";
+            } else if (tab === 'kuota') {
+                btnKuota.className = "flex-1 py-2 text-sm font-bold rounded-lg bg-[#FFD700] text-black shadow-sm transition-all duration-200";
+                btnMisi.className = "flex-1 py-2 text-sm font-medium rounded-lg text-gray-500 hover:bg-gray-50 transition-all duration-200";
+                contentKuota.classList.replace('hidden', 'block');
+                contentMisi.classList.replace('block', 'hidden');
+                pageTitle.innerText = "Kuota Misi Bronze";
+            }
         }
-    }
-</script>
+
+        // --- Handler Manajemen Modals ---
+        function openInfoMisiModal() { document.getElementById('info-misi-modal').classList.replace('hidden', 'flex'); }
+        function closeInfoMisiModal() { document.getElementById('info-misi-modal').classList.replace('flex', 'hidden'); }
+        
+        function openFlashSaleModal() { document.getElementById('flashsale-modal').classList.replace('hidden', 'flex'); }
+        function closeFlashSaleModal() { document.getElementById('flashsale-modal').classList.replace('flex', 'hidden'); }
+
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('info-misi-modal')) closeInfoMisiModal();
+            if (event.target == document.getElementById('flashsale-modal')) closeFlashSaleModal();
+        }
+    </script>
+
+
 
 
 </body></html>
