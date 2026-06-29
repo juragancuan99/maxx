@@ -1,156 +1,100 @@
 <html lang="id">
 <head>
     <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Penarikan Dana - Maxi Ecosystem</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maxi Ecosystem - Tarik Dana</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .page { display: none; }
+        .page.active { display: block; }
+    </style>
 </head>
-<body class="h-screen w-screen overflow-hidden bg-white font-sans text-slate-900">
+<body class="h-screen w-screen bg-white font-sans text-slate-900">
 
-    <div id="pageMain" class="w-full h-full bg-gray-50 overflow-y-auto relative">
-        <header class="sticky top-0 z-20 bg-white px-4 py-[0.5rem] flex items-center justify-between shadow-sm">
-            <button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 text-slate-600 transition-colors">
-                <i class="fa-solid fa-arrow-left text-lg"></i>
-            </button>
-            <h1 class="text-lg font-bold text-slate-800">Penarikan Dana</h1>
-            <button class="w-[3.8rem] h-[1.5rem] flex items-center justify-center rounded-full hover:bg-gray-100 text-slate-600 transition-colors">
-                <h1 class="text-[.8rem] font-semibold text-gray-900">History</h1>
-            </button>
-        </header>
-
-        <main class="p-5 pb-48">
-            <div class="bg-gradient-to-br from-[#00A5A6] to-[#00a6a6] rounded-2xl p-6 text-white shadow-lg shadow-indigo-200 mb-6 relative overflow-hidden">
-                <p class="text-indigo-100 text-sm font-medium mb-1">Saldo yang bisa dicairkan</p>
-                <h2 class="text-3xl font-bold tracking-tight">Rp. 650.000</h2>
-            </div>
-
-            <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 mb-6">
-                <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Jumlah Penarikan</label>
-                <div class="relative flex items-center border-b-2 border-indigo-100 focus-within:border-[#00A5A6] transition-colors py-2">
-                    <span class="text-3xl font-bold text-slate-800 mr-2">Rp</span>
-                    <input type="number" id="amountInput" placeholder="000" class="w-full text-3xl font-bold text-slate-800 placeholder-gray-300 outline-none bg-transparent" value="650000">
-                    <button type="button" id="maxBtn" class="absolute right-0 top-1/2 -translate-y-1/2 text-[#015a5a] font-semibold text-sm bg-indigo-50 px-3 py-1.5 rounded-full hover:bg-indigo-100 transition-colors">Max</button>
-                </div>
-            </div>
-
-            <div class="mb-6">
-                <div class="flex justify-between items-end mb-3">
-                    <label class="text-sm font-bold text-slate-800">Akun Penarikan</label>
-                    <button onclick="showPage('pageAdd')" class="text-xs font-semibold text-[#032c2c] hover:text-indigo-700">Add New</button>
-                </div>
-                <div class="space-y-3">
-                <!-- Option 1: Selected -->
-                <div class="relative flex items-center p-4 bg-white border-2 border-[#00A5A6] rounded-xl shadow-sm cursor-pointer transition-all">
-                    <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-[#00A5A6] mr-4 flex-shrink-0">
-                        <i class="fa-solid fa-building-columns"></i>
-                    </div>
-                    <div class="flex-1">
-                        <p class="font-bold text-slate-800 text-sm">DANA</p>
-                        <p class="text-xs text-gray-500">6288***8949</p>
-                    </div>
-                    <div class="w-5 h-5 rounded-full border-2 border-[#00A5A6] flex items-center justify-center">
-                        <div class="w-2.5 h-2.5 rounded-full bg-[#00A5A6]"></div>
-                    </div>
-                </div>
-            </div>
-        </main>
-
-        <div class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-100 p-5 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] z-30">
-            <div class="space-y-2 mb-5">
-                <div class="flex justify-between text-sm">
-                    <span class="text-gray-500">Biaya Adm</span>
-                    <span class="font-medium text-slate-800">Rp. 6.500</span>
-                </div>
-                <div class="flex justify-between text-base font-bold">
-                    <span class="text-slate-800">Total Penarikan</span>
-                    <span id="totalDisplay" class="text-gray-700">Rp. 656.500</span>
-                </div>
-            </div>
-            <button class="w-full bg-[#00A5A6] hover:bg-[#009292] text-white font-bold py-4 rounded-xl shadow-lg shadow-indigo-200 active:scale-[0.98] transition-all">
-                Tarik Dana
-            </button>
-        </div>
-    </div>
-
-    <div id="pageAdd" class="hidden w-full h-full bg-gray-50 overflow-y-auto absolute top-0 left-0 z-50">
-        <header class="sticky top-0 bg-white px-4 py-4 flex items-center shadow-sm">
-            <button onclick="showPage('pageMain')" class="w-10 h-10 hover:bg-gray-100 rounded-full"><i class="fa-solid fa-arrow-left"></i></button>
-            <h1 class="ml-4 text-lg px-[2rem] font-bold text-gray-800">Metode Penarikan Dana</h1>
+    <div id="pageMain" class="page active w-full h-full bg-gray-50 overflow-y-auto">
+        <header class="sticky top-0 bg-white px-4 py-4 flex items-center justify-between shadow-sm">
+            <button class="w-10 h-10 flex items-center justify-center hover:bg-gray-100 rounded-full"><i class="fa-solid fa-arrow-left"></i></button>
+            <h1 class="text-lg font-bold">Penarikan Dana</h1>
+            <div class="w-10"></div>
         </header>
         <main class="p-5">
-            <div class="mb-6">
-            <div class="flex justify-between items-end mb-3">
+            <div class="bg-gradient-to-br from-[#00A5A6] to-[#00a6a6] rounded-2xl p-6 text-white mb-6">
+                <p class="text-indigo-100 text-sm">Saldo yang bisa dicairkan</p>
+                <h2 class="text-3xl font-bold">Rp. 650.000</h2>
+            </div>
+            
+            <div class="bg-white p-5 rounded-2xl shadow-sm mb-6">
+                <label class="text-xs font-bold text-gray-400 uppercase">Jumlah Penarikan</label>
+                <div class="flex items-center border-b-2 py-2">
+                    <span class="text-3xl font-bold mr-2">Rp</span>
+                    <input type="number" id="amountInput" value="650000" class="w-full text-3xl font-bold outline-none bg-transparent">
+                    <button id="maxBtn" class="bg-indigo-50 text-[#015a5a] px-3 py-1.5 rounded-full text-sm font-bold">Max</button>
+                </div>
             </div>
 
-            <div class="w-full bg-gray-100 rounded-2xl p-4 border border-gray-100 mb-10 flex flex-col items-center shadow-sm">
-            <div class="relative -top-[0.5rem]">
-                <button class="w-14 h-14 bg-[#00a6a6] rounded-full flex items-center justify-center text-white shadow-lg shadow-blue-500/40 active:scale-95 transition-transform">
-                    <i class="fa-solid fa-plus text-xl"></i>
-                </button>
-            </div>
-            <span class="text-xl font-mono font-bold text-gray-800 tracking-wide">Tambahkan Kartu Bank</span>
-            <div class="w-full h-px bg-gray-200 my-3"></div>
-            <div class="flex items-center justify-center space-x-2 text-sm text-gray-600">
-                <i class="fa-solid fa-building-columns"></i>
-                <span>Pilihan Bank : <span class="font-semibold">BCA, BNI, BRI, MANDIRI</span></span>
-            </div>
-        </div>
-        </div>
-		
-		<div class="mb-6">
-            <div class="flex justify-between items-end mb-3">
-                
-                
-            </div>
+            <button onclick="showPage('pageMethod')" class="w-full p-4 bg-white rounded-xl border-2 border-dashed border-[#00A5A6] text-[#00A5A6] font-bold">
+                + Tambahkan Metode Penarikan
+            </button>
+        </main>
+    </div>
 
-            <div class="w-full bg-gray-100 rounded-2xl p-4 border border-gray-100 mb-10 flex flex-col items-center shadow-sm">
-            <div class="relative -top-[0.5rem]">
-                <button class="w-14 h-14 bg-[#00a6a6] rounded-full flex items-center justify-center text-white shadow-lg shadow-blue-500/40 active:scale-95 transition-transform">
+    <div id="pageMethod" class="page w-full h-full bg-gray-50 overflow-y-auto">
+        <header class="sticky top-0 bg-white px-4 py-4 flex items-center shadow-sm">
+            <button onclick="showPage('pageMain')" class="mr-4"><i class="fa-solid fa-arrow-left"></i></button>
+            <h1 class="text-lg font-bold">Metode Penarikan</h1>
+        </header>
+        <main class="p-5">
+            <div class="bg-gray-100 rounded-2xl p-6 text-center shadow-sm mb-6">
+                <button onclick="showPage('pageInfo')" class="w-14 h-14 bg-[#00a6a6] rounded-full mx-auto flex items-center justify-center text-white mb-3">
                     <i class="fa-solid fa-plus text-xl"></i>
                 </button>
+                <p class="font-bold">Tambahkan Kartu Bank</p>
             </div>
-            <span class="text-xl font-mono font-bold text-gray-800 tracking-wide">Tambahkan E-wallet</span>
-            <div class="w-full h-px bg-gray-200 my-3"></div>
-            <div class="flex items-center justify-center space-x-2 text-sm text-gray-600">
-                
-                <i class="fa-solid fa-building-columns"></i>
-            <span><span class="font-semibold">DANA, OVO, SHOPEEPAY, GOPAY</span></span></div>
-        </div>
-        </div>
-		
-		
+            <div class="bg-gray-100 rounded-2xl p-6 text-center shadow-sm">
+                <button onclick="showPage('pageInfo')" class="w-14 h-14 bg-[#00a6a6] rounded-full mx-auto flex items-center justify-center text-white mb-3">
+                    <i class="fa-solid fa-plus text-xl"></i>
+                </button>
+                <p class="font-bold">Tambahkan E-wallet</p>
+            </div>
+        </main>
+    </div>
+
+    <div id="pageInfo" class="page w-full h-full bg-gray-50 overflow-y-auto">
+        <header class="sticky top-0 bg-white px-4 py-4 flex items-center shadow-sm">
+            <button onclick="showPage('pageMethod')" class="mr-4"><i class="fa-solid fa-arrow-left"></i></button>
+            <h1 class="text-lg font-bold">Informasi Akun</h1>
+        </header>
+        <main class="p-5">
+            <form class="space-y-5" onsubmit="event.preventDefault();">
+                <div>
+                    <label class="block font-semibold text-gray-700 ml-1 mb-1.5">Nama</label>
+                    <input type="text" placeholder="Nama Anda" class="w-full bg-gray-50 border p-3.5 rounded-xl outline-none">
+                </div>
+                <div>
+                    <label class="block font-semibold text-gray-700 ml-1 mb-1.5">Nama Bank</label>
+                    <button class="w-full bg-gray-50 border p-4 rounded-xl flex items-center justify-between px-4">
+                        <span>Pilihan Bank</span><i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+                <div>
+                    <label class="block font-semibold text-gray-700 ml-1 mb-1.5">Nomor Rekening</label>
+                    <input type="text" placeholder="Nomor Rekening" class="w-full bg-gray-50 border p-3.5 rounded-xl outline-none">
+                </div>
+                <button class="w-full bg-[#00A5A6] text-white py-4 rounded-xl font-bold">Simpan Akun</button>
+            </form>
         </main>
     </div>
 
     <script>
-        const adminFee = 6500;
-        const amountInput = document.getElementById('amountInput');
-        const totalDisplay = document.getElementById('totalDisplay');
-
-        function updateTotal() {
-            const val = parseFloat(amountInput.value) || 0;
-            const total = val + adminFee;
-            totalDisplay.innerText = "Rp. " + total.toLocaleString('id-ID');
-        }
-
-        amountInput.addEventListener('input', updateTotal);
-        
-        document.getElementById('maxBtn').addEventListener('click', () => {
-            amountInput.value = 650000;
-            updateTotal();
-        });
-
         function showPage(pageId) {
-            if (pageId === 'pageAdd') {
-                document.getElementById('pageMain').classList.add('hidden');
-                document.getElementById('pageAdd').classList.remove('hidden');
-            } else {
-                document.getElementById('pageAdd').classList.add('hidden');
-                document.getElementById('pageMain').classList.remove('hidden');
-            }
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
         }
+
+        document.getElementById('maxBtn').addEventListener('click', () => {
+            document.getElementById('amountInput').value = 650000;
+        });
     </script>
 </body>
 </html>
