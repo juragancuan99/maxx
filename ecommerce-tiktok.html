@@ -521,6 +521,7 @@
         </div>
     </div>
 
+  <!-- JAVASCRIPT LOGIC -->
     <script>
         const backdrop = document.getElementById('modal-backdrop');
         const modalContent = document.getElementById('modal-content');
@@ -528,9 +529,8 @@
         const contentPrice = document.getElementById('content-price');
         const contentShareTop = document.getElementById('content-share-top');
         const contentShareBottom = document.getElementById('content-share-bottom');
-        const contentShopeePay = document.getElementById('content-shopee-pay');
+        const contentTiktokPay = document.getElementById('content-tiktok-pay');
 
-        // Fungsi Buka Utama
         function showBottomSheet() {
             backdrop.classList.remove('hidden');
             setTimeout(() => {
@@ -539,7 +539,6 @@
             }, 10);
         }
 
-        // Fungsi Tutup Utama
         function closeModal() {
             if (backdrop.classList.contains('opacity-100')) {
                 backdrop.classList.remove('opacity-100');
@@ -551,13 +550,12 @@
                 contentPrice.classList.add('hidden');
                 contentShareTop.classList.add('hidden'); 
                 contentShareBottom.classList.add('hidden'); 
-                contentShopeePay.classList.add('hidden'); // Reset konten Shopee Pay
+                contentTiktokPay.classList.add('hidden'); 
             }, 300);
         }
 
-        // Pemicu Klik: Bayar di Shopee
-        document.getElementById('pay-shopee-btn').addEventListener('click', () => {
-            contentShopeePay.classList.remove('hidden');
+        document.getElementById('pay-tiktok-btn').addEventListener('click', () => {
+            contentTiktokPay.classList.remove('hidden');
             contentCashback.classList.add('hidden'); 
             contentPrice.classList.add('hidden');       
             contentShareTop.classList.add('hidden');
@@ -565,51 +563,44 @@
             showBottomSheet();
         });
 
-        // Pemicu Klik 1: Info Cashback
         document.getElementById('open-cb-btn').addEventListener('click', () => {
             contentCashback.classList.remove('hidden'); 
             contentPrice.classList.add('hidden');       
             contentShareTop.classList.add('hidden');
             contentShareBottom.classList.add('hidden');
-            contentShopeePay.classList.add('hidden');
+            contentTiktokPay.classList.add('hidden');
             showBottomSheet();
         });
 
-        // Pemicu Klik 2: Info Harga
         document.getElementById('open-price-btn').addEventListener('click', () => {
             contentPrice.classList.remove('hidden');       
             contentCashback.classList.add('hidden');    
             contentShareTop.classList.add('hidden');
             contentShareBottom.classList.add('hidden');
-            contentShopeePay.classList.add('hidden');
+            contentTiktokPay.classList.add('hidden');
             showBottomSheet();
         });
 
-        // Pemicu Klik 3: Tombol Share Atas
         document.getElementById('open-share-top-btn').addEventListener('click', () => {
             contentShareTop.classList.remove('hidden');
             contentShareBottom.classList.add('hidden');
             contentCashback.classList.add('hidden');
             contentPrice.classList.add('hidden');
-            contentShopeePay.classList.add('hidden');
+            contentTiktokPay.classList.add('hidden');
             showBottomSheet();
         });
 
-        // Pemicu Klik 4: Tombol Bagi & Cuan
         document.getElementById('open-share-btn').addEventListener('click', () => {
             contentShareBottom.classList.remove('hidden');
             contentShareTop.classList.add('hidden');
             contentCashback.classList.add('hidden');
             contentPrice.classList.add('hidden');
-            contentShopeePay.classList.add('hidden');
+            contentTiktokPay.classList.add('hidden');
             showBottomSheet();
         });
 
-        // Tutup jika area luar (backdrop) di-klik
         backdrop.addEventListener('click', (e) => {
             if (e.target === backdrop) closeModal();
         });
     </script>
-
-
 </body></html>
