@@ -1,4 +1,5 @@
-<html lang="id"><head>
+<html lang="id">
+<head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Penarikan Dana - Maxi Ecosystem</title>
@@ -10,11 +11,10 @@
         .page.active { display: block; }
         body { font-family: 'Inter', sans-serif; }
     </style>
-
 </head>
 <body class="h-screen w-screen overflow-hidden bg-white">
 
-    <div id="pageMain" class="page w-full h-full bg-gray-50 overflow-y-auto relative">
+    <div id="pageMain" class="page active w-full h-full bg-gray-50 overflow-y-auto relative">
         <header class="sticky top-0 z-20 bg-white px-4 py-4 flex items-center justify-between shadow-sm">
             <button class="w-10 h-10 flex items-center justify-center hover:bg-gray-100 rounded-full text-slate-600"><i class="fa-solid fa-arrow-left"></i></button>
             <h1 class="text-lg font-bold">Penarikan Dana</h1>
@@ -60,54 +60,17 @@
         </div>
     </div>
 
-    <div id="pageMethod" class="page w-full h-full bg-gray-50 overflow-y-auto active">
+    <div id="pageMethod" class="page w-full h-full bg-gray-50 overflow-y-auto">
         <header class="sticky top-0 bg-white px-4 py-4 flex items-center shadow-sm">
             <button onclick="showPage('pageMain')" class="mr-4"><i class="fa-solid fa-arrow-left"></i></button>
             <h1 class="text-lg font-bold">Metode Penarikan</h1>
         </header>
         <main class="p-5">
-            <div class="mb-6">
-            <div class="flex justify-between items-end mb-3">
-                
-                
+            <div class="w-full bg-gray-100 rounded-2xl p-4 border mb-10 flex flex-col items-center shadow-sm">
+                <button onclick="showPage('pageInfo')" class="w-14 h-14 bg-[#00a6a6] rounded-full flex items-center justify-center text-white"><i class="fa-solid fa-plus"></i></button>
+                <span class="text-xl font-bold mt-2">Tambahkan Kartu Bank</span>
             </div>
-
-            <div class="w-full bg-gray-100 rounded-2xl p-4 border border-gray-100 mb-10 flex flex-col items-center shadow-sm">
-            <div class="relative -top-[0.5rem]">
-                <button onclick="showPage('pageInfo')" class="w-14 h-14 bg-[#00a6a6] rounded-full flex items-center justify-center text-white shadow-lg shadow-blue-500/40 active:scale-95 transition-transform">
-                    <i class="fa-solid fa-plus text-xl"></i>
-                </button>
-
-            </div>
-            <span class="text-xl font-mono font-bold text-gray-800 tracking-wide">Tambahkan Kartu Bank</span>
-            <div class="w-full h-px bg-gray-200 my-3"></div>
-            <div class="flex items-center justify-center space-x-2 text-sm text-gray-600">
-                <i class="fa-solid fa-building-columns"></i>
-                <span>Pilihan Bank : <span class="font-semibold">BCA, BNI, BRI, MANDIRI</span></span>
-            </div>
-        </div>
-        </div>
-        <div class="mb-6">
-            <div class="flex justify-between items-end mb-3">
-                
-                
-            </div>
-
-            <div class="w-full bg-gray-100 rounded-2xl p-4 border border-gray-100 mb-10 flex flex-col items-center shadow-sm">
-            <div class="relative -top-[0.5rem]">
-                <button onclick="showPage('pageInfo')" class="w-14 h-14 bg-[#00a6a6] rounded-full flex items-center justify-center text-white shadow-lg shadow-blue-500/40 active:scale-95 transition-transform">
-                    <i class="fa-solid fa-plus text-xl"></i>
-                </button>
-
-            </div>
-            <span class="text-xl font-mono font-bold text-gray-800 tracking-wide">Tambahkan E-wallet</span>
-            <div class="w-full h-px bg-gray-200 my-3"></div>
-            <div class="flex items-center justify-center space-x-2 text-sm text-gray-600">
-                
-                <i class="fa-solid fa-building-columns"></i>
-            <span><span class="font-semibold">DANA, OVO, SHOPEEPAY, GOPAY</span></span></div>
-        </div>
-        </div></main>
+        </main>
     </div>
 
     <div id="pageInfo" class="page w-full h-full bg-gray-50 overflow-y-auto">
@@ -116,21 +79,7 @@
             <h1 class="text-lg font-bold">Informasi Akun</h1>
         </header>
         <main class="p-5">
-            <form class="space-y-5" onsubmit="event.preventDefault();">
-                <div>
-                    <label class="block font-bold text-gray-700 mb-2">Nama</label>
-                    <input type="text" placeholder="Nama Anda" class="w-full bg-gray-50 border p-4 rounded-xl outline-none">
-                </div>
-                <button class="w-full bg-gray-50 border p-4 rounded-xl flex items-center justify-between">
-                    <span>Pilihan Bank</span><i class="fa-solid fa-arrow-right"></i>
-                </button>
-                <div>
-                    <label class="block font-bold text-gray-700 mb-2">Nomor Rekening</label>
-                    <input type="text" placeholder="Nomor Rekening" class="w-full bg-gray-50 border p-4 rounded-xl outline-none">
-                </div>
-                <button class="w-full bg-[#00A5A6] text-white py-4 rounded-xl font-bold">Simpan Akun</button>
-            </form>
-        </main>
+            </main>
     </div>
 
     <script>
@@ -139,6 +88,7 @@
             document.getElementById(pageId).classList.add('active');
         }
 
+        // Fungsi Kalkulasi
         function updateTotal() {
             const adminFee = 6500;
             const val = parseFloat(document.getElementById('amountInput').value) || 0;
@@ -152,7 +102,5 @@
             updateTotal();
         });
     </script>
-
-
-
-</body></html>
+</body>
+</html>
