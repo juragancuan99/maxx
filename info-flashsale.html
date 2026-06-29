@@ -5,6 +5,7 @@
     <!-- Menggunakan Tailwind v4 -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 	
+		
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Custom scrollbar tersembunyi untuk menu kategori horizontal */
@@ -269,44 +270,43 @@
     </footer>
 
     <!-- Modal Info Sale -->
-    <div id="info-modal" class="fixed inset-0 z-50 items-center justify-center px-4 bg-[#0000005c] backdrop-blur-[2.3px] flex">
-    <div class="relative w-full max-w-sm mt-[-15rem] bg-[#000000b0] rounded-3xl overflow-hidden flex flex-col items-center text-center p-[1.3rem] border border-[#ffd8916b] shadow-2xl">
-      
-      <button onclick="closeModal()" class="absolute top-4 right-4 text-orange-300 hover:text-white transition-colors w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10 cursor-pointer">
-        <i class="fa-solid fa-xmark text-lg"></i>
-      </button>
+    <div class="fixed inset-0 z-50 items-center justify-center px-4 bg-[#0000005c] backdrop-blur-[2.3px] flex" id="info-modal">
+        <div class="zoom-in relative w-full max-w-sm bg-[#000000b0] rounded-3xl overflow-hidden flex flex-col items-center text-center p-[1.3rem] border border-[#ffd8916b] shadow-2xl">
+          
+          <div class="absolute top-0 left-0 w-full h-48 bg-gradient-to-b from-transparent to-transparent -z-10"></div>
+          <div class="absolute -top-10 left-1/2 transform -translate-x-1/2 w-64 h-64 bg-[#00000099] rounded-full blur-3xl -z-10"></div>
 
-      <h2 class="text-2xl font-extrabold text-gray-100 mb-2 mt-4">Flash Sale</h2>
-      <p class="text-gray-100 text-sm leading-relaxed mb-6 px-[0rem]">Flash Sale akan dibuka pada saat omset nasional<span class="font-semibold text-yellow-200"> Maxi Poin </span>Tercapai 500k mp selanjutnya 100k mp setiap periode, kuota misi dibuka maksimal 100 slot dan yang bisa klaim misi adalah affiliate yang masuk daftar kuota. Semakin sering anda bertransaksi maka semakin besar peluang masuk kuota.!</p>
+          <button onclick="closeModal()" class="absolute top-4 right-4 text-orange-300 hover:text-white transition-colors w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10 cursor-pointer">
+            <i class="fa-solid fa-xmark text-lg"></i>
+          </button>
 
-      <button onclick="closeModal()" class="w-full bg-[#b7993e] hover:bg-[#a38531] text-white font-bold py-4 rounded-xl shadow-lg transition-all transform active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer">
-          <span>OK</span>
-      </button>
+          <h2 class="text-2xl font-extrabold text-gray-100 mb-2 mt-4">Flash Sale</h2>
+          <p class="text-gray-100 text-sm leading-relaxed mb-6 px-[0rem]">Flash Sale akan dibuka pada saat omset nasional<span class="font-semibold text-yellow-200"> Maxi Poin </span>Tercapai 500k mp selanjutnya 100k mp setiap periode, kuota misi dibuka maksimal 100 slot dan yang bisa klaim misi adalah affiliate yang masuk daftar kuota. Semakin sering anda bertransaksi maka semakin besar peluang masuk kuota.!</p>
+
+          <button onclick="closeModal()" class="w-full bg-[#b7993e] hover:bg-[#a38531] text-white font-bold py-4 rounded-xl shadow-lg transition-all transform active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer">
+              <span>OK</span>
+          </button>
+        </div>
     </div>
-</div>
 
     <script>
-    const modal = document.getElementById('info-modal');
+        const modal = document.getElementById('info-modal');
 
-    function openModal() {
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-        // Kunci scroll layar
-        document.body.classList.add('overflow-hidden');
-    }
-
-    function closeModal() {
-        modal.classList.remove('flex');
-        modal.classList.add('hidden');
-        // Kembalikan scroll layar
-        document.body.classList.remove('overflow-hidden');
-    }
-    
-    modal.addEventListener('click', function(e) {
-        if (e.target === modal) {
-            closeModal();
+        function openModal() {
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
         }
-    });
-</script>
+
+        function closeModal() {
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+        }
+        
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+    </script>
 
 </body></html>
