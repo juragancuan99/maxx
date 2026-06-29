@@ -1,0 +1,75 @@
+<html lang="id"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Lacak Pesanan</title>
+
+</head>
+<body class="bg-gray-100 flex justify-center items-center min-h-screen">
+
+    <div class="w-full max-w-md h-screen bg-white shadow-xl flex flex-col p-6 overflow-y-auto">
+        <div class="flex items-center gap-3 mb-8">
+            <a href="beranda.html" class="text-gray-600 hover:text-gray-800">
+                <i class="fas fa-arrow-left text-xl"></i>
+            </a>
+            <h1 class="text-xl font-bold text-gray-800">Lacak Pesanan</h1>
+        </div>
+
+        <div class="bg-gray-50 p-4 rounded-xl border border-gray-100 mb-6">
+            <p class="text-xs text-gray-400 uppercase font-bold">No. Referensi</p>
+            <p class="font-mono font-bold text-gray-800">TRX-982410475</p>
+        </div>
+
+        <div class="relative pl-4 border-l-2 border-gray-200 space-y-10 ml-2">
+            <div class="relative">
+                <div class="absolute -left-[29px] w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white text-xs">
+                    <i class="fas fa-check"></i>
+                </div>
+                <h4 class="font-bold text-gray-800">Pembayaran Berhasil</h4>
+                <p class="text-xs text-gray-400">17 Jun 2026, 22:31</p>
+            </div>
+
+            <div class="relative">
+    <div class="absolute -left-[29px] w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center text-white text-xs">
+        <i class="fas fa-box-open"></i>
+    </div>
+    <h4 class="font-bold text-[#FF5722]">
+        Pesanan Sedang Diproses
+        <span class="inline-flex gap-[2px]">
+            <span class="w-1 h-1 bg-[#FF5722] rounded-full animate-bounce" style="animation-delay: 0s;"></span>
+            <span class="w-1 h-1 bg-[#FF5722] rounded-full animate-bounce" style="animation-delay: 0.2s;"></span>
+            <span class="w-1 h-1 bg-[#FF5722] rounded-full animate-bounce" style="animation-delay: 0.4s;"></span>
+        </span>
+    </h4>
+    <p class="text-xs text-gray-500 mt-1">Tim kami sedang menyiapkan hadiah Anda.</p>
+</div>
+
+            <div class="relative">
+                <div class="absolute -left-[29px] w-6 h-6 bg-gray-200 rounded-full flex items-center justify-center text-gray-400 text-xs">
+                    <i class="fas fa-truck"></i>
+                </div>
+                <h4 class="font-bold text-gray-400">Dalam Pengiriman</h4>
+                <p class="text-xs text-gray-400">Menunggu antrean pengiriman</p>
+            </div>
+        </div>
+
+        <div class="mt-10 bg-blue-50 p-4 rounded-xl text-blue-800 text-xs">
+            <i class="fas fa-info-circle mr-2"></i> Hadiah akan dikirimkan maksimal 7 hari kerja setelah status berubah menjadi "Dalam Pengiriman".
+        </div>
+
+        <div class="mt-auto pt-6">
+            <button onclick="window.location.href='beranda.html'" class="w-full bg-[#FF5722] text-white font-bold py-3.5 rounded-xl shadow-lg shadow-orange-500/10">
+                Kembali ke Beranda
+            </button>
+        </div>
+    </div>
+
+<!-- Floating CS Button -->
+    <a href="#" class="fixed top-[35rem] right-0 -translate-y-1/2 z-50 flex items-center gap-2 bg-white pl-4 pr-3 py-3 rounded-l-full shadow-lg border border-gray-200 border-r-0 transition-all hover:scale-105 active:scale-95">
+        <div class="bg-green-500 text-white w-8 h-8 rounded-full flex items-center justify-center">
+            <i class="fas fa-headset"></i>
+        </div>
+        <span class="text-sm font-bold text-gray-700 pr-2">Hubungi CS</span>
+    </a>
+
+</body></html>
