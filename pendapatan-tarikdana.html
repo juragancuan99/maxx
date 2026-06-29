@@ -5,70 +5,104 @@
     <title>Penarikan Dana - Maxi Ecosystem</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="h-screen w-screen overflow-hidden bg-white font-sans text-slate-900">
 
     <div id="pageMain" class="w-full h-full bg-gray-50 overflow-y-auto relative">
-        <header class="sticky top-0 z-20 bg-white px-4 py-3 flex items-center shadow-sm">
-            <h1 class="text-lg font-bold">Penarikan Dana</h1>
+        <header class="sticky top-0 z-20 bg-white px-4 py-[0.5rem] flex items-center justify-between shadow-sm">
+            <button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 text-slate-600 transition-colors">
+                <i class="fa-solid fa-arrow-left text-lg"></i>
+            </button>
+            <h1 class="text-lg font-bold text-slate-800">Penarikan Dana</h1>
+            <button class="w-[3.8rem] h-[1.5rem] flex items-center justify-center rounded-full hover:bg-gray-100 text-slate-600 transition-colors">
+                <h1 class="text-[.8rem] font-semibold text-gray-900">History</h1>
+            </button>
         </header>
 
         <main class="p-5 pb-48">
-            <div class="bg-gradient-to-br from-[#00A5A6] to-[#00a6a6] rounded-2xl p-6 text-white mb-6">
-                <p class="text-indigo-100 text-sm">Saldo yang bisa dicairkan</p>
-                <h2 class="text-3xl font-bold">Rp. 650.000</h2>
+            <div class="bg-gradient-to-br from-[#00A5A6] to-[#00a6a6] rounded-2xl p-6 text-white shadow-lg shadow-indigo-200 mb-6 relative overflow-hidden">
+                <div class="absolute top-0 right-0 -mr-4 -mt-4 w-24 h-24 rounded-full bg-white opacity-10"></div>
+                <div class="absolute bottom-0 left-0 -ml-4 -mb-4 w-16 h-16 rounded-full bg-white opacity-10"></div>
+                <p class="text-indigo-100 text-sm font-medium mb-1">Saldo yang bisa dicairkan</p>
+                <h2 class="text-3xl font-bold tracking-tight">Rp. 650.000</h2>
+                <div class="mt-4 flex items-center text-xs text-gray-800 bg-orange-200 w-fit px-2 py-1 rounded-lg backdrop-blur-sm">
+                    <i class="fa-solid fa-arrow-trend-up mr-1.5"></i>
+                    <span>Total Penarikan Rp. 18.000.000</span>
+                </div>
             </div>
 
             <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 mb-6">
-                <label class="block text-xs font-semibold text-gray-400 uppercase mb-2">Jumlah Penarikan</label>
-                <div class="relative flex items-center border-b-2 border-indigo-100 py-2">
+                <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Jumlah Penarikan</label>
+                <div class="relative flex items-center border-b-2 border-indigo-100 focus-within:border-[#00A5A6] transition-colors py-2">
                     <span class="text-3xl font-bold text-slate-800 mr-2">Rp</span>
-                    <input type="number" id="amountInput" value="650000" class="w-full text-3xl font-bold outline-none bg-transparent">
-                    <button type="button" id="maxBtn" class="text-[#015a5a] font-semibold text-sm bg-indigo-50 px-3 py-1.5 rounded-full">Max</button>
+                    <input type="number" id="amountInput" placeholder="000" class="w-full text-3xl font-bold text-slate-800 placeholder-gray-300 outline-none bg-transparent" value="650000">
+                    <button type="button" id="maxBtn" class="absolute right-0 top-1/2 -translate-y-1/2 text-[#015a5a] font-semibold text-sm bg-indigo-50 px-3 py-1.5 rounded-full hover:bg-indigo-100 transition-colors">Max</button>
                 </div>
             </div>
 
             <div class="mb-6">
-                <button onclick="showPage('pageAdd')" class="w-full text-xs font-bold text-[#032c2c] bg-white p-3 rounded-lg border shadow-sm">Tambah Metode Penarikan</button>
+                <div class="flex justify-between items-end mb-3">
+                    <label class="text-sm font-bold text-slate-800">Akun Penarikan</label>
+                    <button onclick="showPage('pageAdd')" class="text-xs font-semibold text-[#032c2c] hover:text-indigo-700">Add New</button>
+                </div>
+                <div class="relative flex items-center p-4 bg-white border-2 border-[#00A5A6] rounded-xl shadow-sm cursor-pointer transition-all">
+                    <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-[#00A5A6] mr-4 flex-shrink-0">
+                        <i class="fa-solid fa-building-columns"></i>
+                    </div>
+                    <div class="flex-1">
+                        <p class="font-bold text-slate-800 text-sm">DANA</p>
+                        <p class="text-xs text-gray-500">6288***8949</p>
+                    </div>
+                </div>
             </div>
         </main>
 
-        <div class="fixed bottom-0 left-0 w-full bg-white border-t p-5 shadow-lg z-30">
+        <div class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-100 p-5 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] z-30">
             <div class="space-y-2 mb-5">
-                <div class="flex justify-between text-sm"><span>Biaya Adm</span><span>Rp. 6.500</span></div>
+                <div class="flex justify-between text-sm">
+                    <span class="text-gray-500">Biaya Adm</span>
+                    <span class="font-medium text-slate-800">Rp. 6.500</span>
+                </div>
                 <div class="flex justify-between text-base font-bold">
-                    <span>Total Penarikan</span>
-                    <span id="totalDisplay">Rp. 656.500</span>
+                    <span class="text-slate-800">Total Penarikan</span>
+                    <span id="totalDisplay" class="text-gray-700">Rp. 656.500</span>
                 </div>
             </div>
-            <button class="w-full bg-[#00A5A6] text-white font-bold py-4 rounded-xl">Tarik Dana</button>
+            <button class="w-full bg-[#00A5A6] hover:bg-[#009292] text-white font-bold py-4 rounded-xl shadow-lg shadow-indigo-200 active:scale-[0.98] transition-all">
+                Tarik Dana
+            </button>
         </div>
     </div>
 
     <div id="pageAdd" class="hidden w-full h-full bg-gray-50 overflow-y-auto absolute top-0 left-0 z-50">
         <header class="sticky top-0 bg-white px-4 py-4 flex items-center shadow-sm">
-            <button onclick="showPage('pageMain')" class="mr-4"><i class="fa-solid fa-arrow-left"></i></button>
-            <h1 class="text-lg font-bold">Metode Penarikan</h1>
+            <button onclick="showPage('pageMain')" class="w-10 h-10 hover:bg-gray-100 rounded-full"><i class="fa-solid fa-arrow-left"></i></button>
+            <h1 class="ml-4 text-lg font-bold text-gray-800">Metode Penarikan Dana</h1>
         </header>
         <main class="p-5">
-            <div class="bg-gray-100 rounded-2xl p-6 text-center shadow-sm">
-                <p class="font-bold">Tambahkan Kartu Bank/E-Wallet</p>
-                <button class="mt-4 bg-[#00a6a6] text-white px-6 py-2 rounded-full">Tambah</button>
+            <div class="w-full bg-gray-100 rounded-2xl p-4 border border-gray-100 mb-10 flex flex-col items-center shadow-sm">
+                <button class="w-14 h-14 bg-[#00a6a6] rounded-full flex items-center justify-center text-white shadow-lg mb-2"><i class="fa-solid fa-plus text-xl"></i></button>
+                <span class="text-xl font-bold text-gray-800">Tambahkan Kartu Bank</span>
             </div>
         </main>
     </div>
 
     <script>
+        const adminFee = 6500;
+        const amountInput = document.getElementById('amountInput');
+        const totalDisplay = document.getElementById('totalDisplay');
+
         function updateTotal() {
-            const adminFee = 6500;
-            const inputAmount = parseFloat(document.getElementById('amountInput').value) || 0;
-            const total = inputAmount + adminFee;
-            document.getElementById('totalDisplay').innerText = "Rp. " + total.toLocaleString('id-ID');
+            const val = parseFloat(amountInput.value) || 0;
+            const total = val + adminFee;
+            totalDisplay.innerText = "Rp. " + total.toLocaleString('id-ID');
         }
 
-        document.getElementById('amountInput').addEventListener('input', updateTotal);
+        amountInput.addEventListener('input', updateTotal);
+        
         document.getElementById('maxBtn').addEventListener('click', () => {
-            document.getElementById('amountInput').value = 650000;
+            amountInput.value = 650000;
             updateTotal();
         });
 
