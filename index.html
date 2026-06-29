@@ -840,13 +840,13 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+
+			<!-- Set Navigasi Menu Bawah Aktif Berwarna -->
+			<!-- Set Navigasi Menu Bawah Aktif Berwarna -->
 		<script>
-    // Fungsi untuk menandai menu aktif
     function setActiveMenu() {
-        // Ambil nama file dari URL (contoh: 'misireward.html')
         const path = window.location.pathname.split("/").pop() || 'index.html';
         
-        // Pemetaan path ke ID menu
         const menuMap = {
             'index.html': 'nav-beranda',
             'misireward.html': 'nav-misi',
@@ -857,20 +857,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const activeId = menuMap[path];
         
+        // 1. Reset semua menu ke default (gray)
+        document.querySelectorAll('a[id^="nav-"]').forEach(el => {
+            el.classList.remove('text-[#00a6a6]');
+            el.classList.add('text-gray-500');
+            el.querySelector('span').classList.remove('font-bold');
+        });
+
+        // 2. Berikan style aktif ke menu yang benar
         if (activeId) {
             const activeElement = document.getElementById(activeId);
             if (activeElement) {
-                // Hapus warna default dari semua link (gray-500)
-                // Tambahkan warna aktif (text-[#00a6a6])
                 activeElement.classList.remove('text-gray-500');
                 activeElement.classList.add('text-[#00a6a6]');
-                // Opsional: tambah font-bold
                 activeElement.querySelector('span').classList.add('font-bold');
             }
         }
     }
 
-    // Jalankan fungsi saat halaman dimuat
     window.onload = setActiveMenu;
 </script>
 
