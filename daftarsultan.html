@@ -1,0 +1,264 @@
+<html lang="id"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; margin: 0; padding: 0; }
+        ::-webkit-scrollbar { display: none; } 
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#D4FF00',
+                    }
+                }
+            }
+        }
+    </script>
+
+</head>
+
+<body class="min-h-screen w-full bg-gray-100 flex justify-center items-center">
+    
+    
+          <div class="w-full h-full bg-slate-900 overflow-y-auto relative font-sans text-white selection:bg-yellow-500 selection:text-black">
+    
+    <!-- Custom Styles for Confetti Animation -->
+    <style>
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+        .confetti {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background-color: #FFD700;
+            animation: fall 4s linear infinite;
+            opacity: 0;
+        }
+        .confetti:nth-child(odd) { background-color: #FFF; }
+        .confetti:nth-child(2n) { animation-duration: 3.5s; animation-delay: 0.5s; }
+        .confetti:nth-child(3n) { animation-duration: 4.2s; animation-delay: 1.2s; left: 20%; }
+        .confetti:nth-child(4n) { animation-duration: 3.8s; animation-delay: 2.5s; left: 80%; }
+        .confetti:nth-child(5n) { animation-duration: 4.5s; animation-delay: 0.8s; left: 50%; }
+    </style>
+
+    <!-- Confetti Layer -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <div class="confetti left-[10%]"></div>
+        <div class="confetti left-[30%]"></div>
+        <div class="confetti left-[60%]"></div>
+        <div class="confetti left-[90%]"></div>
+        <div class="confetti left-[15%]"></div>
+        <div class="confetti left-[45%]"></div>
+        <div class="confetti left-[75%]"></div>
+    </div>
+
+    <!-- Header & Tabs -->
+    <div class="relative z-10 px-6 pt-12 pb-4">
+        <div class="flex justify-between items-center mb-6 text-white">
+            <button class="w-10 h-10 flex items-center justify-center bg-white/20 rounded-full backdrop-blur-sm hover:bg-white/30 transition">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <h1 class="text-lg font-bold tracking-wide">DAFTAR SULTAN MAXI</h1>
+            <button class="w-10 h-10 flex items-center justify-center bg-white/20 rounded-full backdrop-blur-sm hover:bg-white/30 transition">
+                <i class="fa-solid fa-circle-info"></i>
+            </button>
+        </div>
+
+        <!-- Time Filter Tabs -->
+        <div class="text-center text-white mb-6">
+            <h2 class="text-2xl font-black uppercase italic tracking-tighter">PERAIH MISI REWARD</h2>
+            <p class="text-white/80 text-sm font-medium">List Nominasi Para Sultan Peraih Misi Reward</p>
+        </div><!-- Time Filter Tabs --><div class="bg-white/10 p-1 rounded-2xl flex backdrop-blur-md border border-white/5">
+             <button class="flex-1 py-2 text-sm font-bold text-slate-900 bg-[#FFD700] rounded-xl shadow-lg shadow-yellow-500/20">Nominasi Peraih Misi Reward<!-- 100K Ke 2 ( Omset Nasional Maxipoin )
+                100K Ke 3 ( Omset Nasional Maxipoin )
+                100K Ke 4 ( Omset Nasional Maxipoin )
+                100K Ke 5 ( Omset Nasional Maxipoin )
+                100K Ke 6 ( Omset Nasional Maxipoin )
+                100K Ke 7 ( Omset Nasional Maxipoin )
+                100K Ke 8 ( Omset Nasional Maxipoin )
+                100K Ke 9 ( Omset Nasional Maxipoin )
+                100K Ke 10 ( Omset Nasional Maxipoin ) -->
+                
+            
+    
+            
+       </button></div>
+    </div>
+
+    <!-- Spotlight Effect -->
+    <!-- <div class="relative z-10 px-6 pt-3 pb-6">
+<div class="bg-yellow-50 border border-[#FFD700]/30 rounded-lg p-3 flex items-center gap-3 shadow-sm">
+            <div class="w-8 h-8 rounded-full bg-[#FFD700]/20 flex items-center justify-center flex-shrink-0">
+                <i class="fa-solid fa-bullhorn text-yellow-700 text-sm"></i>
+            </div>
+            <p class="text-sm text-slate-700 font-medium leading-snug">Syarat kualifikasi  sponsor 100 mitra</p>
+        </div></div> --><!-- Spotlight Effect --><div class="absolute top-40 left-1/2 -translate-x-1/2 w-80 h-80 bg-[#FFD700] opacity-20 blur-[100px] rounded-full pointer-events-none z-0"></div>
+
+    <!-- The Podium Section -->
+    
+
+    <!-- Leaderboard List -->
+    <div class="relative z-10 bg-slate-800/50 rounded-t-3xl min-h-[400px] backdrop-blur-lg border-t border-white/5 pb-24">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-4">
+            <h3 class="text-lg font-bold text-gray-300">Nama Sultan</h3>
+            <select class="w-[48%] appearance-none bg-gray-800/50 border border-gray-700 rounded-xl py-4 px-4 text-white outline-none focus:border-[#FFD700] focus:ring-1 focus:ring-orange-300 transition-all text-sm font-bold">
+                        <!-- <option value="" disabled="" selected="">All Reward</option> -->
+                        <!-- <option selected="" disabled="" value="">All Reward</option> -->
+						<option value="all">Semua Reward</option>
+                        <option value="voucherbelanja">Voucher Belanja</option>
+						<option value="emas">Logam Mulia</option>
+						<option value="ac">Air Conditioner</option>
+						<option value="kulkas">Kulkas</option>
+                        <option value="mesincuci">Mesin Cuci</option>
+                        <option value="tv">TV</option>
+                        <option value="samsung">Hp Samsung</option>
+						<option value="iphone">Iphone 17 Pro Max</option>
+                    	<option value="bali">Trip Bali</option>
+						<option value="thailand">Trip Thailand</option>
+						<option value="asia">Trip 3 Negara</option>
+						<option value="umroh">Umroh</option>
+						<option value="motorlistrik">Motor Listrik</option>
+						<option value="hondabeat">Honda Beat</option>
+						<option value="nmax">Yamaha Nmax</option>
+						<option value="hondapcx">Honda Pcx</option>
+						<option value="brio">Honda Brio</option>
+						<option value="calya">Toyota Calya</option>
+						<option value="veloz">Toyota Veloz</option>
+						<option value="xpander">Mitsubishi Xpander</option>
+						<option value="hyundai">Hyundai Stargazer</option>
+						
+											
+					</select>
+        </div>
+
+    
+            
+            <!-- List Item 4 -->
+            <div class="flex items-center p-3 mb-3 bg-white/5 rounded-2xl border border-white/5 hover:bg-white/10 transition-colors">
+                <span class="w-8 text-center font-bold text-gray-400">1</span>
+                <!-- <img src="https://i.pravatar.cc/150?img=44" class="w-10 h-10 rounded-full border border-white/10 ml-2"> -->
+                <!-- <div class="flex-1 ml-4">
+                    <p class="font-semibold text-sm">Jessica T.</p>
+                    <p class="text-xs text-gray-400">@jess_t</p>
+                </div> -->
+
+                <div class="flex-1 ml-4">
+                    <p class="font-semibold text-sm text-gray-400">- No Participants</p>
+
+                    
+                </div>
+                <!-- <div class="text-right">
+                <p class="text-[#FFD700] font-bold text-sm">5.000.000</p>
+                <p class="text-[10px] text-green-300 font-bold">Done</p>
+            </div> -->
+            </div>
+
+            <!-- List Item 5 -->
+            <div class="flex items-center p-3 mb-3 bg-white/5 rounded-2xl border border-white/5 hover:bg-white/10 transition-colors">
+                <span class="w-8 text-center font-bold text-gray-400">2</span>
+                <img src="https://i.pravatar.cc/150?img=68" class="w-10 h-10 rounded-full border border-white/10 ml-2">
+                <div class="flex-1 ml-4">
+                    <p class="font-semibold text-sm">David K.</p>
+                    <p class="text-xs text-gray-400">Surabaya</p>
+                </div>
+                <div class="text-right">
+                <p class="text-[#FFD700] font-bold text-sm">Rp300.000.000</p>
+                <p class="text-[10px] text-gray-100 font-bold">Mobil XPANDER</p>
+            </div>
+            </div>
+
+            <!-- List Item 6 -->
+            <div class="flex items-center p-3 mb-3 bg-white/5 rounded-2xl border border-white/5 hover:bg-white/10 transition-colors">
+                <span class="w-8 text-center font-bold text-gray-400">3</span>
+                <img src="https://i.pravatar.cc/150?img=11" class="w-10 h-10 rounded-full border border-white/10 ml-2">
+                <div class="flex-1 ml-4">
+                    <p class="font-semibold text-sm">Emily W.</p>
+                    <p class="text-xs text-gray-400">Bandung</p>
+                </div>
+                <div class="text-right">
+                <p class="text-[#FFD700] font-bold text-sm">Rp20.000.000</p>
+                <p class="text-[10px] text-gray-100 font-bold">Honda Beat</p>
+            </div>
+            </div>
+
+            <div class="flex items-center p-3 mb-3 bg-white/5 rounded-2xl border border-white/5 hover:bg-white/10 transition-colors">
+                <span class="w-8 text-center font-bold text-gray-400">4</span>
+                <img src="https://i.pravatar.cc/150?img=11" class="w-10 h-10 rounded-full border border-white/10 ml-2">
+                <div class="flex-1 ml-4">
+                    <p class="font-semibold text-sm">Emily W.</p>
+                    <p class="text-xs text-gray-400">Bandung</p>
+                </div>
+                <div class="text-right">
+                <p class="text-[#FFD700] font-bold text-sm">Rp30.000.000</p>
+                <p class="text-[10px] text-gray-100 font-bold">Yamaha NMAX</p>
+            </div>
+            </div><div class="flex items-center p-3 mb-3 bg-white/5 rounded-2xl border border-white/5 hover:bg-white/10 transition-colors">
+                <span class="w-8 text-center font-bold text-gray-400">5</span>
+                <img src="https://i.pravatar.cc/150?img=11" class="w-10 h-10 rounded-full border border-white/10 ml-2">
+                <div class="flex-1 ml-4">
+                    <p class="font-semibold text-sm">Emily W.</p>
+                    <p class="text-xs text-gray-400">Bandung</p>
+                </div>
+                <div class="text-right">
+                <p class="text-[#FFD700] font-bold text-sm">Rp15.000.000</p>
+                <p class="text-[10px] text-gray-100 font-bold">Trip Beijing Cina</p>
+            </div>
+            </div><div class="flex items-center p-3 mb-3 bg-white/5 rounded-2xl border border-white/5 hover:bg-white/10 transition-colors">
+                <span class="w-8 text-center font-bold text-gray-400">6</span>
+                <img src="https://i.pravatar.cc/150?img=11" class="w-10 h-10 rounded-full border border-white/10 ml-2">
+                <div class="flex-1 ml-4">
+                    <p class="font-semibold text-sm">Emily W.</p>
+                    <p class="text-xs text-gray-400">Bandung</p>
+                </div>
+                <div class="text-right">
+                <p class="text-[#FFD700] font-bold text-sm">Rp9.000.000</p>
+                <p class="text-[10px] text-gray-100 font-bold">Hp Samsung A77</p>
+            </div>
+            </div><!-- List Item 7 -->
+            
+            
+            <!-- List Item 8 -->
+            
+        </div>
+    </div>
+
+    <!-- Floating Bottom Navigation -->
+     <div class="fixed bottom-6 left-6 right-6 bg-slate-900/90 backdrop-blur-xl border border-white/10 rounded-2xl p-4 shadow-2xl z-50">
+        <div class="flex justify-between items-center px-2">
+             <button class="flex flex-col items-center gap-1 text-gray-400 hover:text-[#D4AF37] transition-colors">
+            <i class="fa-solid fa-house text-xl mb-0.5"></i>
+            <span class="text-[10px] font-medium">Beranda</span>
+        </button>
+            <button class="flex flex-col items-center gap-1 text-gray-400 hover:text-[#D4AF37] transition-colors">
+            <i class="fa-solid fa-gift text-xl mb-0.5"></i>
+            <span class="text-[10px] font-medium">Misi Reward</span>
+        </button>
+            
+              <button class="flex flex-col items-center gap-1 text-gray-400 hover:text-[#D4AF37] transition-colors">
+            <i class="fa-solid fa-users text-xl mb-0.5"></i>
+            <span class="text-[10px] font-medium">Team</span>
+        </button><button class="flex flex-col items-center gap-1 text-gray-400 hover:text-[#D4AF37] transition-colors">
+            <i class="fa-solid fa-wallet text-xl mb-0.5"></i>
+            <span class="text-[10px] font-medium">Pendapatan</span>
+        </button>
+            <button class="flex flex-col items-center gap-1 text-[#D4AF37]">
+            <i class="fa-solid fa-user text-xl mb-0.5"></i>
+            <span class="text-[10px] font-bold">Saya</span>
+        </button>
+        </div>
+    </div>
+
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</div>
+        
+      
+    </body></html>
