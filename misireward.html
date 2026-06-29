@@ -352,26 +352,28 @@
 </div>
     
     <div class="fixed bottom-0 left-0 right-0 mx-auto w-full max-w-[430px] bg-white border-t border-gray-100 px-6 py-[0.5rem] flex justify-between items-end z-40 pb-3 shadow-lg">
-    <a href="index.html" class="flex flex-col items-center gap-0 text-[#00a6a6] transition-colors no-underline">
+    <a id="nav-beranda" href="index.html" class="flex flex-col items-center gap-0 text-[#00a6a6] transition-colors no-underline">
         <i class="fa-solid fa-house text-xl mb-[-0.1rem]"></i>
         <span class="text-[10px] font-medium">Beranda</span>
     </a>
-    <a href="misireward.html" class="flex flex-col items-center gap-0 text-gray-500 hover:text-[#00a6a6] transition-colors no-underline">
+     <a id="nav-misi" href="misireward.html" class="flex flex-col items-center gap-0 text-gray-500 hover:text-[#00a6a6] transition-colors no-underline">
         <i class="fa-solid fa-gift text-xl mb-[-0.1rem]"></i>
         <span class="text-[10px] font-medium">Misi Reward</span>
     </a>
-    <a href="team.html" class="flex flex-col items-center gap-0 text-gray-500 hover:text-[#00a6a6] transition-colors no-underline">
+    <a id="nav-team" href="team.html" class="flex flex-col items-center gap-0 text-gray-500 hover:text-[#00a6a6] transition-colors no-underline">
         <i class="fa-solid fa-users text-xl mb-[-0.1rem]"></i>
         <span class="text-[10px] font-medium">Team</span>
     </a>
-    <a href="pendapatan.html" class="flex flex-col items-center gap-0 text-gray-500 hover:text-[#00a6a6] transition-colors no-underline">
+     <a id="nav-pendapatan" href="pendapatan.html" class="flex flex-col items-center gap-0 text-gray-500 hover:text-[#00a6a6] transition-colors no-underline">
         <i class="fa-solid fa-wallet text-xl mb-[-0.1rem]"></i>
         <span class="text-[10px] font-medium">Pendapatan</span>
     </a>
-    <a href="saya.html" class="flex flex-col items-center gap-0 text-gray-500 hover:text-[#00a6a6] transition-colors no-underline">
+    <a id="nav-saya" href="saya.html" class="flex flex-col items-center gap-0 text-gray-500 hover:text-[#00a6a6] transition-colors no-underline">
         <i class="fa-solid fa-user text-xl mb-[-0.1rem]"></i>
         <span class="text-[10px] font-bold">Saya</span>
     </a>
+	
+	
 </div>
     
   </div>
@@ -396,5 +398,41 @@
         }
     }
   </script>
+  
+  <script>
+    // Fungsi untuk menandai menu aktif
+    function setActiveMenu() {
+        // Ambil nama file dari URL (contoh: 'misireward.html')
+        const path = window.location.pathname.split("/").pop() || 'index.html';
+        
+        // Pemetaan path ke ID menu
+        const menuMap = {
+            'index.html': 'nav-beranda',
+            'misireward.html': 'nav-misi',
+            'team.html': 'nav-team',
+            'pendapatan.html': 'nav-pendapatan',
+            'saya.html': 'nav-saya'
+        };
+
+        const activeId = menuMap[path];
+        
+        if (activeId) {
+            const activeElement = document.getElementById(activeId);
+            if (activeElement) {
+                // Hapus warna default dari semua link (gray-500)
+                // Tambahkan warna aktif (text-[#00a6a6])
+                activeElement.classList.remove('text-gray-500');
+                activeElement.classList.add('text-[#00a6a6]');
+                // Opsional: tambah font-bold
+                activeElement.querySelector('span').classList.add('font-bold');
+            }
+        }
+    }
+
+    // Jalankan fungsi saat halaman dimuat
+    window.onload = setActiveMenu;
+</script>
+
+
 
 </body></html>
