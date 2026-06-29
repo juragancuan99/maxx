@@ -1,0 +1,440 @@
+<html class="h-full"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; margin: 0; padding: 0; }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in { animation: fadeIn 0.25s ease-out forwards; }
+  </style>
+
+
+</head>
+<body class="h-full w-full bg-gray-100 flex justify-center items-start m-0 p-0">
+  
+  <div class="w-full h-screen max-w-md bg-gray-50 flex flex-col relative overflow-hidden shadow-xl">
+    
+    <div class="flex-1 overflow-y-auto pb-24">
+        
+        <div class="bg-[#00a6a6] pb-6 rounded-b-[2.5rem] shadow-lg relative z-0">
+            <div class="px-6 pt-6 pb-6 flex justify-between items-center">
+                <button onclick="history.back()" class="text-white hover:bg-white/20 p-2 rounded-full transition">
+                    <i class="fas fa-arrow-left text-xl"></i>
+                </button>
+                <h1 class="text-white text-lg font-bold tracking-wide">Team Saya</h1>
+                <button id="btn-share" class="text-white hover:bg-white/20 p-2 rounded-full transition">
+    <i class="fas fa-share text-xl"></i>
+</button>
+            </div>
+            
+            <div class="px-6 mb-4">
+                <div class="relative">
+                    <input type="text" placeholder="Cari nama or username..." class="w-full py-3 pl-10 pr-4 bg-white/10 text-white placeholder-white/70 rounded-xl border border-white/20 focus:outline-none focus:bg-white/20 backdrop-blur-sm transition">
+                </div>
+            </div>
+        </div>
+
+        <div class="px-4 -mt-8 relative z-10 w-full">
+            <div class="bg-white rounded-2xl shadow-xl p-5 border border-gray-100">
+                <div class="flex justify-between items-center mb-4 border-b border-gray-100 pb-2">
+                    <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wider">DETAIL</h2>
+                    <span class="text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full font-medium">Maxi Poin Group</span>
+                </div>
+                <div class="grid grid-cols-2 gap-4 divide-x divide-gray-100">
+                    <div class="text-center pr-2">
+                        <div class="text-gray-400 text-xs mb-1">Total Team</div>
+                        <div class="text-2xl font-bold text-gray-800">1,428</div>
+                        <div class="text-[10px] text-gray-400 mt-1"><i class="fas fa-users text-[#2962FF] mr-1"></i> Active Users</div>
+                    </div>
+                    <div class="text-center pl-2">
+                        <div class="text-gray-400 text-xs mb-1">Total Omset Team</div>
+                        <div class="text-xl font-bold text-blue-800">2,026</div>
+                        <div class="text-[10px] text-gray-400 mt-1"><i class="fas fa-chart-line text-green-500 mr-1"></i>Maxi Poin</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="px-4 mt-6">
+            <div class="bg-[#00a6a6] p-1.5 rounded-xl flex relative">
+                <button id="btn-referral" onclick="switchTab('referral')" class="flex-1 py-2.5 text-sm font-bold text-blue-900 bg-white rounded-lg shadow-sm text-center flex items-center justify-center gap-2 transition-all">
+                    Refferal
+                </button>
+                <button id="btn-genealogy" onclick="switchTab('genealogy')" class="flex-1 py-2.5 text-sm font-semibold text-white rounded-lg text-center transition-all">
+                    Genelogy
+                </button>
+            </div>
+        </div>
+
+        <div id="content-referral" class="block animate-fade-in">
+            <div class="px-4 mt-6">
+                <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center">
+                    <i class="fa-solid fa-users text-[#3d3407] mr-2"></i>Refferal Anda
+                </h3>
+            </div>
+
+            <div class="sticky top-0 bg-gray-50 z-20 pt-3 pb-2 px-4">
+                <div class="flex bg-white p-1 rounded-xl shadow-sm border border-gray-200">
+                    <button id="btn-free" onclick="switchReferralType('free')" class="flex-1 py-2 text-sm font-semibold rounded-lg bg-[#00a6a6] text-white shadow-md active:scale-95 transition-all">Free</button>
+                    <button id="btn-agent" onclick="switchReferralType('agent')" class="flex-1 py-2 text-sm font-medium rounded-lg text-gray-500 hover:bg-gray-50 active:scale-95 transition-all">Agent</button>
+                    <button id="btn-partner" onclick="switchReferralType('partner')" class="flex-1 py-2 text-sm font-medium rounded-lg text-gray-500 hover:bg-gray-50 active:scale-95 transition-all">Partner</button>
+                </div>
+                <div class="flex justify-between items-center mt-4 px-1">
+                    <span id="referral-info-text" class="text-xs font-semibold text-gray-500">Showing 4 Direct References (Free)</span>
+                    <button class="text-[#2962FF] text-xs font-semibold flex items-center">
+                        Filter <i class="fas fa-filter ml-1"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="px-4 space-y-3 mt-2">
+                <div id="list-free" class="space-y-3 block animate-fade-in">
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <img src="https://cdn-icons-png.flaticon.com/512/6543/6543006.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm">Siti Aminah</h3>
+                                <p class="text-xs text-gray-500">Joined Mar 2023</p>
+                                <span class="bg-gray-100 text-gray-600 text-[10px] px-2 py-0.5 rounded-md font-medium">Free Affiliate</span>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-[10px] text-gray-400 uppercase">Omset</p>
+                            <p class="font-bold text-gray-800 text-sm">0</p>
+                            <p class="text-[10px] text-green-500 font-medium">MAXIPOIN</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <img src="https://i.pravatar.cc/150?img=33" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm">Rizky Pratama</h3>
+                                <p class="text-xs text-gray-500">Joined Apr 2023</p>
+                                <span class="bg-gray-100 text-gray-600 text-[10px] px-2 py-0.5 rounded-md font-medium">Free Affiliate</span>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-[10px] text-gray-400 uppercase">Omset</p>
+                            <p class="font-bold text-gray-800 text-sm">0</p>
+                            <p class="text-[10px] text-green-500 font-medium">MAXIPOIN</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="list-agent" class="hidden">
+                    <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 text-center text-gray-400 text-xs">
+                        Tidak ada data Referral berstatus Agent.
+                    </div>
+                </div>
+
+                <div id="list-partner" class="hidden">
+                    <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 text-center text-gray-400 text-xs">
+                        Tidak ada data Referral berstatus Partner.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="content-genealogy" class="hidden">
+            <div class="px-4 mt-6">
+                <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center">
+                    <i class="fa-solid fa-network-wired text-[#3d3407] mr-2"></i>Genelogy
+                </h3>
+            </div>
+
+            <div class="sticky top-0 bg-gray-50 z-20 pt-3 pb-2 px-4">
+                <div class="flex bg-white p-1 rounded-xl shadow-sm border border-gray-200">
+                    <button id="btn-gen1" onclick="switchGeneration(1)" class="flex-1 py-2 text-sm font-medium rounded-lg text-gray-500 hover:bg-gray-50 active:scale-95 transition-all">
+                        Generasi 1
+                    </button>
+                    <button id="btn-gen2" onclick="switchGeneration(2)" class="flex-1 py-2 text-sm font-medium rounded-lg text-gray-500 hover:bg-gray-50 active:scale-95 transition-all">
+                        Generasi 2
+                    </button>
+                    <button id="btn-gen3" onclick="switchGeneration(3)" class="flex-1 py-2 text-sm font-semibold rounded-lg bg-[#00a6a6] text-white shadow-md active:scale-95 transition-all">
+                        Generasi 3
+                    </button>
+                </div>
+                <div class="flex justify-between items-center mt-4 px-1">
+                    <span id="gen-info-text" class="text-xs font-semibold text-gray-500">Showing Generasi 3 users</span>
+                    <button class="text-[#2962FF] text-xs font-semibold flex items-center">
+                        Filter <i class="fas fa-filter ml-1"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="px-4 space-y-3 mt-2">
+                
+                <div id="list-gen1" class="hidden">
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-yellow-400 w-16 h-16 transform translate-x-8 -translate-y-8 rotate-45 opacity-20"></div>
+                        <div class="flex items-center gap-4 z-10">
+                            <div class="relative">
+                                <img src="https://cdn-icons-png.flaticon.com/512/6543/6543006.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                                <div class="absolute -bottom-1 -right-1 bg-[#00a6a6] text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full border-2 border-white">
+                                    <i class="fas fa-crown text-[8px]"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm">Budi Santoso</h3>
+                                <p class="text-xs text-gray-500">Generasi 1 ? Jan 2023</p>
+                                <span class="bg-blue-50 text-[#2962FF] text-[10px] px-2 py-0.5 rounded-md font-medium">Infinity Star</span>
+                            </div>
+                        </div>
+                        <div class="text-right z-10">
+                            <p class="text-[10px] text-gray-400 uppercase">Omset</p>
+                            <p class="font-bold text-[#2962FF] text-sm">250.000</p>
+                            <p class="text-[10px] text-green-500 font-medium">MAXIPOIN</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between relative overflow-hidden">
+                        <div class="flex items-center gap-4">
+                            <img src="https://cdn-icons-png.flaticon.com/512/6543/6543006.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm">Ahmad Rafi</h3>
+                                <p class="text-xs text-gray-500">Generasi 1 ? Jan 2023</p>
+                                <span class="bg-blue-50 text-[#2962FF] text-[10px] px-2 py-0.5 rounded-md font-medium">Diamond</span>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-[10px] text-gray-400 uppercase">Omset</p>
+                            <p class="font-bold text-[#2962FF] text-sm">150.000</p>
+                            <p class="text-[10px] text-green-500 font-medium">MAXIPOIN</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="list-gen2" class="hidden">
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <img src="https://i.pravatar.cc/150?img=5" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm">Siti Aminah</h3>
+                                <p class="text-xs text-gray-500">Generasi 2 ? Mar 2023</p>
+                                <span class="bg-gray-100 text-gray-600 text-[10px] px-2 py-0.5 rounded-md font-medium">Gold</span>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-[10px] text-gray-400 uppercase">Omset</p>
+                            <p class="font-bold text-gray-800 text-sm">75.000</p>
+                            <p class="text-[10px] text-green-500 font-medium">MAXIPOIN</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <img src="https://i.pravatar.cc/150?img=33" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm">Rizky Pratama</h3>
+                                <p class="text-xs text-gray-500">Generasi 2 ? Apr 2023</p>
+                                <span class="bg-gray-100 text-gray-600 text-[10px] px-2 py-0.5 rounded-md font-medium">Silver</span>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-[10px] text-gray-400 uppercase">Omset</p>
+                            <p class="font-bold text-gray-800 text-sm">1.500</p>
+                            <p class="text-[10px] text-green-500 font-medium">MAXIPOIN</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="list-gen3" class="space-y-3 block animate-fade-in">
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <img src="https://i.pravatar.cc/150?img=68" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm">Andi Wijaya</h3>
+                                <p class="text-xs text-gray-500">Generasi 3 ? Jul 2023</p>
+                                <span class="bg-gray-100 text-gray-600 text-[10px] px-2 py-0.5 rounded-md font-medium">Null Rank</span>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-[10px] text-gray-400 uppercase">Omset</p>
+                            <p class="font-bold text-gray-800 text-sm">750</p>
+                            <p class="text-[10px] text-green-500 font-medium">MAXIPOIN</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between opacity-90">
+                        <div class="flex items-center gap-4">
+                            <div class="relative">
+                                <img src="https://cdn-icons-png.flaticon.com/512/6543/6543006.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm grayscale">
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-600 text-sm">Dewi Lestari</h3>
+                                <p class="text-xs text-gray-500">Generasi 3 ? Jun 2023</p>
+                                <span class="bg-gray-100 text-gray-400 text-[10px] px-2 py-0.5 rounded-md font-medium">Inactive</span>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-[10px] text-gray-400 uppercase">Omset</p>
+                            <p class="font-bold text-gray-500 text-sm">Rp 0</p>
+                            <p class="text-[10px] text-gray-400 font-medium">-</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div> 
+    
+    <div class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-md bg-white border-t border-gray-100 px-6 py-3 flex justify-between items-center z-50 shadow-[0_-4px_16px_rgba(0,0,0,0.06)]">
+        <a href="beranda.html" class="flex flex-col items-center gap-0 text-gray-500 hover:text-[#00a6a6] transition-colors no-underline">
+            <i class="fa-solid fa-house text-xl mb-0.5"></i>
+            <span class="text-[10px] font-medium">Beranda</span>
+        </a>
+        <a href="misireward.html" class="flex flex-col items-center gap-0 text-gray-500 hover:text-[#00a6a6] transition-colors no-underline">
+            <i class="fa-solid fa-gift text-xl mb-0.5"></i>
+            <span class="text-[10px] font-medium">Misi Reward</span>
+        </a>
+        <a href="team.html" class="flex flex-col items-center gap-0 text-[#00a6a6] transition-colors no-underline">
+            <i class="fa-solid fa-users text-xl mb-0.5"></i>
+            <span class="text-[10px] font-bold">Team</span>
+        </a>
+        <a href="pendapatan.html" class="flex flex-col items-center gap-0 text-gray-500 hover:text-[#00a6a6] transition-colors no-underline">
+            <i class="fa-solid fa-wallet text-xl mb-0.5"></i>
+            <span class="text-[10px] font-medium">Pendapatan</span>
+        </a>
+        <a href="saya.html" class="flex flex-col items-center gap-0 text-gray-500 hover:text-[#00a6a6] transition-colors no-underline">
+            <img src="https://i.pravatar.cc/150?img=32" alt="User" class="w-[1.5rem] h-[1.5rem] rounded-full mx-[0rem]">
+            <span class="text-[10px] font-medium">Saya</span>
+        </a>
+    </div>
+    
+  </div>
+
+  <script>
+    // Fungsi untuk Tab Utama (Referral vs Genealogy)
+    function switchTab(tab) {
+        const btnReferral = document.getElementById('btn-referral');
+        const btnGenealogy = document.getElementById('btn-genealogy');
+        const contentReferral = document.getElementById('content-referral');
+        const contentGenealogy = document.getElementById('content-genealogy');
+
+        if (tab === 'referral') {
+            btnReferral.className = "flex-1 py-2.5 text-sm font-bold text-blue-900 bg-white rounded-lg shadow-sm text-center flex items-center justify-center gap-2 transition-all";
+            btnGenealogy.className = "flex-1 py-2.5 text-sm font-semibold text-white rounded-lg text-center transition-all";
+            contentReferral.className = "block animate-fade-in";
+            contentGenealogy.className = "hidden";
+        } else if (tab === 'genealogy') {
+            btnReferral.className = "flex-1 py-2.5 text-sm font-semibold text-white rounded-lg text-center transition-all";
+            btnGenealogy.className = "flex-1 py-2.5 text-sm font-bold text-blue-900 bg-white rounded-lg shadow-sm text-center flex items-center justify-center gap-2 transition-all";
+            contentReferral.className = "hidden";
+            contentGenealogy.className = "block animate-fade-in";
+        }
+    }
+
+    // Fungsi untuk Sub-Tab Referral (Free, Agent, Partner)
+    function switchReferralType(type) {
+        const btnFree = document.getElementById('btn-free');
+        const btnAgent = document.getElementById('btn-agent');
+        const btnPartner = document.getElementById('btn-partner');
+        
+        const listFree = document.getElementById('list-free');
+        const listAgent = document.getElementById('list-agent');
+        const listPartner = document.getElementById('list-partner');
+        
+        const infoText = document.getElementById('referral-info-text');
+
+        // Style reset untuk tombol tidak aktif
+        const inactiveStyle = "flex-1 py-2 text-sm font-medium rounded-lg text-gray-500 hover:bg-gray-50 active:scale-95 transition-all";
+        btnFree.className = inactiveStyle;
+        btnAgent.className = inactiveStyle;
+        btnPartner.className = inactiveStyle;
+
+        // Sembunyikan semua list data
+        listFree.className = "hidden";
+        listAgent.className = "hidden";
+        listPartner.className = "hidden";
+
+        // Style untuk tombol aktif
+        const activeStyle = "flex-1 py-2 text-sm font-semibold rounded-lg bg-[#00a6a6] text-white shadow-md active:scale-95 transition-all";
+
+        if (type === 'free') {
+            btnFree.className = activeStyle;
+            listFree.className = "space-y-3 block animate-fade-in";
+            infoText.innerText = "Showing 4 Direct References (Free)";
+        } else if (type === 'agent') {
+            btnAgent.className = activeStyle;
+            listAgent.className = "space-y-3 block animate-fade-in";
+            infoText.innerText = "Showing 0 Direct References (Agent)";
+        } else if (type === 'partner') {
+            btnPartner.className = activeStyle;
+            listPartner.className = "space-y-3 block animate-fade-in";
+            infoText.innerText = "Showing 0 Direct References (Partner)";
+        }
+    }
+	
+	// Fungsi Fitur Share Link Aplikasi
+document.getElementById('btn-share').addEventListener('click', async () => {
+    const shareData = {
+        title: 'Belanja Dapat Cashback dan Reward',
+        text: 'Gabung bersama tim saya di Maxi Affiliate!',
+        url: window.location.href // Otomatis mengambil URL halaman saat ini
+    };
+
+    try {
+        // Jika browser mendukung Web Share API (Mobile/Modern Browser)
+        if (navigator.share) {
+            await navigator.share(shareData);
+        } else {
+            // Fallback: Jika di PC/Laptop yang tidak mendukung Web Share, otomatis salin link ke clipboard
+            await navigator.clipboard.writeText(shareData.url);
+            alert('Link berhasil disalin ke clipboard!');
+        }
+    } catch (err) {
+        console.log('Gagal membagikan:', err);
+    }
+});
+
+    // Fungsi Baru untuk Sub-Tab Genealogy (Generasi 1, 2, 3)
+    function switchGeneration(genNumber) {
+        const btnGen1 = document.getElementById('btn-gen1');
+        const btnGen2 = document.getElementById('btn-gen2');
+        const btnGen3 = document.getElementById('btn-gen3');
+        
+        const listGen1 = document.getElementById('list-gen1');
+        const listGen2 = document.getElementById('list-gen2');
+        const listGen3 = document.getElementById('list-gen3');
+        
+        const infoText = document.getElementById('gen-info-text');
+
+        // Reset semua tombol ke status tidak aktif
+        const inactiveStyle = "flex-1 py-2 text-sm font-medium rounded-lg text-gray-500 hover:bg-gray-50 active:scale-95 transition-all";
+        btnGen1.className = inactiveStyle;
+        btnGen2.className = inactiveStyle;
+        btnGen3.className = inactiveStyle;
+
+        // Sembunyikan semua list data
+        listGen1.className = "hidden";
+        listGen2.className = "hidden";
+        listGen3.className = "hidden";
+
+        // Aktifkan tombol dan list yang dipilih
+        const activeStyle = "flex-1 py-2 text-sm font-semibold rounded-lg bg-[#00a6a6] text-white shadow-md active:scale-95 transition-all";
+        
+        if (genNumber === 1) {
+            btnGen1.className = activeStyle;
+            listGen1.className = "space-y-3 block animate-fade-in";
+            infoText.innerText = "Showing Generasi 1 users";
+        } else if (genNumber === 2) {
+            btnGen2.className = activeStyle;
+            listGen2.className = "space-y-3 block animate-fade-in";
+            infoText.innerText = "Showing Generasi 2 users";
+        } else if (genNumber === 3) {
+            btnGen3.className = activeStyle;
+            listGen3.className = "space-y-3 block animate-fade-in";
+            infoText.innerText = "Showing Generasi 3 users";
+        }
+    }
+  </script>
+  
+
+</body></html>
