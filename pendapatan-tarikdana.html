@@ -1,20 +1,20 @@
-<html lang="id">
-<head>
+<html lang="id"><head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Penarikan Dana - Maxi Ecosystem</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
     <style>
         .page { display: none; }
         .page.active { display: block; }
         body { font-family: 'Inter', sans-serif; }
     </style>
+
 </head>
 <body class="h-screen w-screen overflow-hidden bg-white">
 
-    <div id="pageMain" class="page active w-full h-full bg-gray-50 overflow-y-auto relative">
+    <div id="pageMain" class="page w-full h-full bg-gray-50 overflow-y-auto relative">
         <header class="sticky top-0 z-20 bg-white px-4 py-4 flex items-center justify-between shadow-sm">
             <button class="w-10 h-10 flex items-center justify-center hover:bg-gray-100 rounded-full text-slate-600"><i class="fa-solid fa-arrow-left"></i></button>
             <h1 class="text-lg font-bold">Penarikan Dana</h1>
@@ -60,19 +60,52 @@
         </div>
     </div>
 
-    <div id="pageMethod" class="page w-full h-full bg-gray-50 overflow-y-auto">
+    <div id="pageMethod" class="page w-full h-full bg-gray-50 overflow-y-auto active">
         <header class="sticky top-0 bg-white px-4 py-4 flex items-center shadow-sm">
             <button onclick="showPage('pageMain')" class="mr-4"><i class="fa-solid fa-arrow-left"></i></button>
             <h1 class="text-lg font-bold">Metode Penarikan</h1>
         </header>
         <main class="p-5">
-            <div class="bg-gray-100 rounded-2xl p-6 text-center border mb-6">
-                <button onclick="showPage('pageInfo')" class="w-14 h-14 bg-[#00a6a6] rounded-full mx-auto flex items-center justify-center text-white mb-3">
+            <div class="mb-6">
+            <div class="flex justify-between items-end mb-3">
+                
+                
+            </div>
+
+            <div class="w-full bg-gray-100 rounded-2xl p-4 border border-gray-100 mb-10 flex flex-col items-center shadow-sm">
+            <div class="relative -top-[0.5rem]">
+                <button class="w-14 h-14 bg-[#00a6a6] rounded-full flex items-center justify-center text-white shadow-lg shadow-blue-500/40 active:scale-95 transition-transform">
                     <i class="fa-solid fa-plus text-xl"></i>
                 </button>
-                <p class="font-bold text-gray-800">Tambahkan Kartu Bank</p>
             </div>
-        </main>
+            <span class="text-xl font-mono font-bold text-gray-800 tracking-wide">Tambahkan Kartu Bank</span>
+            <div class="w-full h-px bg-gray-200 my-3"></div>
+            <div class="flex items-center justify-center space-x-2 text-sm text-gray-600">
+                <i class="fa-solid fa-building-columns"></i>
+                <span>Pilihan Bank : <span class="font-semibold">BCA, BNI, BRI, MANDIRI</span></span>
+            </div>
+        </div>
+        </div>
+        <div class="mb-6">
+            <div class="flex justify-between items-end mb-3">
+                
+                
+            </div>
+
+            <div class="w-full bg-gray-100 rounded-2xl p-4 border border-gray-100 mb-10 flex flex-col items-center shadow-sm">
+            <div class="relative -top-[0.5rem]">
+                <button class="w-14 h-14 bg-[#00a6a6] rounded-full flex items-center justify-center text-white shadow-lg shadow-blue-500/40 active:scale-95 transition-transform">
+                    <i class="fa-solid fa-plus text-xl"></i>
+                </button>
+            </div>
+            <span class="text-xl font-mono font-bold text-gray-800 tracking-wide">Tambahkan E-wallet</span>
+            <div class="w-full h-px bg-gray-200 my-3"></div>
+            <div class="flex items-center justify-center space-x-2 text-sm text-gray-600">
+                
+                <i class="fa-solid fa-building-columns"></i>
+            <span><span class="font-semibold">DANA, OVO, SHOPEEPAY, GOPAY</span></span></div>
+        </div>
+        </div></main>
     </div>
 
     <div id="pageInfo" class="page w-full h-full bg-gray-50 overflow-y-auto">
@@ -117,5 +150,7 @@
             updateTotal();
         });
     </script>
-</body>
-</html>
+
+
+
+</body></html>
