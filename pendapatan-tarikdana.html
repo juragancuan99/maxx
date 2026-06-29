@@ -60,28 +60,23 @@
         </div>
     </div>
 
-   <div id="pageMethod" class="page w-full h-full bg-gray-50 overflow-y-auto">
+    <div id="pageMethod" class="page w-full h-full bg-gray-50 overflow-y-auto active">
         <header class="sticky top-0 bg-white px-4 py-4 flex items-center shadow-sm">
             <button onclick="showPage('pageMain')" class="mr-4"><i class="fa-solid fa-arrow-left"></i></button>
             <h1 class="text-lg font-bold">Metode Penarikan</h1>
         </header>
-		
         <main class="p-5 pb-32">
     <div class="mb-6">
-            <div class="flex justify-between items-end mb-3">\                
+            <div class="flex justify-between items-end mb-3">
+                
+                
             </div>
-			
-			 <main class="p-5">
-            <button onclick="showPage('pageInfo')" class="w-full bg-gray-100 p-6 rounded-2xl mb-4">Bank Transfer</button>
-            <button onclick="showPage('pageInfo2')" class="w-full bg-gray-100 p-6 rounded-2xl">E-Wallet</button>
-        </main>
-    </div>
 
-            <div id="pageInfo" class="w-full bg-gray-100 rounded-2xl p-4 border border-gray-100 mb-10 flex flex-col items-center shadow-sm">
+            <div class="w-full bg-gray-100 rounded-2xl p-4 border border-gray-100 mb-10 flex flex-col items-center shadow-sm">
             <div class="relative -top-[0.5rem]">
-                <button onclick="showPage('pageMethod')" class="w-14 h-14 bg-[#00a6a6] rounded-full flex items-center justify-center text-white shadow-lg shadow-blue-500/40 active:scale-95 transition-transform">
+                <button onclick="showPage('pageInfo')" class="w-14 h-14 bg-[#00a6a6] rounded-full flex items-center justify-center text-white shadow-lg shadow-blue-500/40 active:scale-95 transition-transform">
                     <i class="fa-solid fa-plus text-xl"></i>
-                </button>			
+                </button>
             </div>
             <span class="text-xl font-mono font-bold text-gray-800 tracking-wide">Tambahkan Kartu Bank</span>
             <div class="w-full h-px bg-gray-200 my-3"></div>
@@ -99,9 +94,9 @@
                 
             </div>
 
-            <div id="pageInfo2" class="w-full bg-gray-100 rounded-2xl p-4 border border-gray-100 mb-10 flex flex-col items-center shadow-sm">
+            <div class="w-full bg-gray-100 rounded-2xl p-4 border border-gray-100 mb-10 flex flex-col items-center shadow-sm">
             <div class="relative -top-[0.5rem]">
-                <button onclick="showPage('pageMethod')" class="w-14 h-14 bg-[#00a6a6] rounded-full flex items-center justify-center text-white shadow-lg shadow-blue-500/40 active:scale-95 transition-transform">
+                <button onclick="showPage('pageInfo2')" class="w-14 h-14 bg-[#00a6a6] rounded-full flex items-center justify-center text-white shadow-lg shadow-blue-500/40 active:scale-95 transition-transform">
                     <i class="fa-solid fa-plus text-xl"></i>
                 </button>
             </div>
