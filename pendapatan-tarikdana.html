@@ -1,16 +1,15 @@
-<html lang="id"><head>
+<html lang="id">
+<head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Penarikan Dana - Maxi Ecosystem</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
-
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="h-screen w-screen overflow-hidden bg-white font-sans text-slate-900">
 
-    <div id="pageMain" class="w-full h-full bg-gray-50 overflow-y-auto relative hidden">
+    <div id="pageMain" class="w-full h-full bg-gray-50 overflow-y-auto relative">
         <header class="sticky top-0 z-20 bg-white px-4 py-[0.5rem] flex items-center justify-between shadow-sm">
             <button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 text-slate-600 transition-colors">
                 <i class="fa-solid fa-arrow-left text-lg"></i>
@@ -23,14 +22,8 @@
 
         <main class="p-5 pb-48">
             <div class="bg-gradient-to-br from-[#00A5A6] to-[#00a6a6] rounded-2xl p-6 text-white shadow-lg shadow-indigo-200 mb-6 relative overflow-hidden">
-                <div class="absolute top-0 right-0 -mr-4 -mt-4 w-24 h-24 rounded-full bg-white opacity-10"></div>
-                <div class="absolute bottom-0 left-0 -ml-4 -mb-4 w-16 h-16 rounded-full bg-white opacity-10"></div>
                 <p class="text-indigo-100 text-sm font-medium mb-1">Saldo yang bisa dicairkan</p>
                 <h2 class="text-3xl font-bold tracking-tight">Rp. 650.000</h2>
-                <div class="mt-4 flex items-center text-xs text-gray-800 bg-orange-200 w-fit px-2 py-1 rounded-lg backdrop-blur-sm">
-                    <i class="fa-solid fa-arrow-trend-up mr-1.5"></i>
-                    <span>Total Penarikan Rp. 18.000.000</span>
-                </div>
             </div>
 
             <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 mb-6">
@@ -76,133 +69,17 @@
         </div>
     </div>
 
-    <div id="pageAdd" class="w-full h-full bg-gray-50 overflow-y-auto absolute top-0 left-0 z-50">
+    <div id="pageAdd" class="hidden w-full h-full bg-gray-50 overflow-y-auto absolute top-0 left-0 z-50">
         <header class="sticky top-0 bg-white px-4 py-4 flex items-center shadow-sm">
             <button onclick="showPage('pageMain')" class="w-10 h-10 hover:bg-gray-100 rounded-full"><i class="fa-solid fa-arrow-left"></i></button>
             <h1 class="ml-4 text-lg font-bold text-gray-800">Metode Penarikan Dana</h1>
         </header>
-        <main class="p-5 pb-32">
-        
-        <!-- Balance Card -->
-        
-
-        <!-- Amount Input Section -->
-        
-
-        <!-- Destination Selector -->
-        <!-- EWALET - DANA, OVO, SHOPEEPAY, GOPAY --><!-- EWALET - DANA, OVO, SHOPEEPAY, GOPAY --><div class="mb-6">
-            <div class="flex justify-between items-end mb-3">
-                
-                
-            </div>
-
+        <main class="p-5">
             <div class="w-full bg-gray-100 rounded-2xl p-4 border border-gray-100 mb-10 flex flex-col items-center shadow-sm">
-            <div class="relative -top-[0.5rem]">
-                <button class="w-14 h-14 bg-[#00a6a6] rounded-full flex items-center justify-center text-white shadow-lg shadow-blue-500/40 active:scale-95 transition-transform">
-                    <i class="fa-solid fa-plus text-xl"></i>
-                </button>
+                <button class="w-14 h-14 bg-[#00a6a6] rounded-full flex items-center justify-center text-white shadow-lg mb-2"><i class="fa-solid fa-plus text-xl"></i></button>
+                <span class="text-xl font-bold text-gray-800">Tambahkan Kartu Bank</span>
             </div>
-            <span class="text-xl font-mono font-bold text-gray-800 tracking-wide">Tambahkan Kartu Bank</span>
-            <div class="w-full h-px bg-gray-200 my-3"></div>
-            <div class="flex items-center justify-center space-x-2 text-sm text-gray-600">
-                <i class="fa-solid fa-building-columns"></i>
-                <span>Pilihan Bank : <span class="font-semibold">BCA, BNI, BRI, MANDIRI</span></span>
-            </div>
-        </div>
-        </div>
-
-        
-        <div class="mb-6">
-            <div class="flex justify-between items-end mb-3">
-                
-                
-            </div>
-
-            <div class="w-full bg-gray-100 rounded-2xl p-4 border border-gray-100 mb-10 flex flex-col items-center shadow-sm">
-            <div class="relative -top-[0.5rem]">
-                <button class="w-14 h-14 bg-[#00a6a6] rounded-full flex items-center justify-center text-white shadow-lg shadow-blue-500/40 active:scale-95 transition-transform">
-                    <i class="fa-solid fa-plus text-xl"></i>
-                </button>
-            </div>
-            <span class="text-xl font-mono font-bold text-gray-800 tracking-wide">Tambahkan E-wallet</span>
-            <div class="w-full h-px bg-gray-200 my-3"></div>
-            <div class="flex items-center justify-center space-x-2 text-sm text-gray-600">
-                
-                <i class="fa-solid fa-building-columns"></i>
-            <span><span class="font-semibold">DANA, OVO, SHOPEEPAY, GOPAY</span></span></div>
-        </div>
-        </div><!-- REKENING BANK : BCA, BRI, BNI, MANDIRI --><!-- REKENING BANK : BCA, BRI, BNI, MANDIRI --><!-- REKENING BANK : BCA, BRI, BNI, MANDIRI --><!-- <div class="mb-6">
-            <div class="flex justify-between items-end mb-3">
-                <label class="text-sm font-bold text-slate-800">Akun Penarikan</label>
-                <button class="text-xs font-semibold text-[#032c2c] hover:text-indigo-700">Add New</button>
-            </div>
-
-            <div class="space-y-3">
-                <!-- Option 1: Selected -->
-             <!--    <div class="relative flex items-center p-4 bg-white border-2 border-[#00A5A6] rounded-xl shadow-sm cursor-pointer transition-all">
-                    <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-[#00A5A6] mr-4 flex-shrink-0">
-                        <i class="fa-solid fa-building-columns"></i>
-                    </div>
-                    <div class="flex-1">
-                        <p class="font-bold text-slate-800 text-sm">BCA</p>
-                        <p class="text-xs text-gray-500">797***369</p>
-                    </div>
-                    <div class="w-5 h-5 rounded-full border-2 border-[#00A5A6] flex items-center justify-center">
-                        <div class="w-2.5 h-2.5 rounded-full bg-[#00A5A6]"></div>
-                    </div>
-                </div>
-
-                <!-- Option 2: Unselected -->
-                <!-- <div class="relative flex items-center p-4 bg-white border border-gray-200 rounded-xl shadow-sm cursor-pointer hover:border-indigo-200 transition-all">
-                    <div class="w-10 h-10 rounded-full bg-sky-50 flex items-center justify-center text-sky-600 mr-4 flex-shrink-0">
-                        <i class="fa-brands fa-paypal"></i>
-                    </div>
-                    <div class="flex-1">
-                        <p class="font-bold text-slate-800 text-sm">PayPal</p>
-                        <p class="text-xs text-gray-500">alex.morgan@example.com</p>
-                    </div>
-                    <div class="w-5 h-5 rounded-full border-2 border-gray-300"></div>
-                </div> -->
-          <!--   </div>
-        </div> --><!-- REKENING BANK : BCA, BRI, BNI, MANDIRI --><!-- REKENING BANK : BCA, BRI, BNI, MANDIRI --><!-- REKENING BANK : BCA, BRI, BNI, MANDIRI --><!-- CATATAN PENTING --><!-- CATATAN PENTING --><!-- CATATAN PENTING --><!-- CATATAN PENTING --><!-- CATATAN JIKA BELUM MENGISI AKUN BANK ATAU EWALET MAKA BUTTON INI DI AKTIFKAN--><!-- <div class="mb-6">
-            <div class="flex justify-between items-end mb-3">
-                <label class="text-sm font-bold text-slate-800">Akun Penarikan</label>
-                <button class="text-xs font-semibold text-[#032c2c] hover:text-indigo-700">Add New</button>
-            </div>
-
-            <div class="space-y-3">
-                <!-- Option 1: Selected -->
-           <!--     <div class="relative flex items-center p-4 bg-white border-2 border-[#00A5A6] rounded-xl shadow-sm cursor-pointer transition-all gap-[0.5rem]">
-                    
-                        <i class="text-[2rem] fa-solid fa-plus-square text-[#00A5A6]"></i>
- 
-                    <div class="flex-1">
-                        <p class="font-bold text-slate-800 text-sm">Tambah Metode Penarikan</p>
-                        <p class="text-xs text-gray-500">Input Akun Bank atau Ewalet Anda</p>
-                    </div>
-                    <div class="w-5 h-5 rounded-full border-2 border-[#00A5A6] flex items-center justify-center">
-                        <div class="w-2.5 h-2.5 rounded-full bg-[#00A5A6]"></div>
-                    </div>
-                </div>
-
-                <!-- Option 2: Unselected -->
-                <!-- <div class="relative flex items-center p-4 bg-white border border-gray-200 rounded-xl shadow-sm cursor-pointer hover:border-indigo-200 transition-all">
-                    <div class="w-10 h-10 rounded-full bg-sky-50 flex items-center justify-center text-sky-600 mr-4 flex-shrink-0">
-                        <i class="fa-brands fa-paypal"></i>
-                    </div>
-                    <div class="flex-1">
-                        <p class="font-bold text-slate-800 text-sm">PayPal</p>
-                        <p class="text-xs text-gray-500">alex.morgan@example.com</p>
-                    </div>
-                    <div class="w-5 h-5 rounded-full border-2 border-gray-300"></div>
-                </div> -->
-           <!-- </div>
-        </div> --><!-- <div class="flex items-start gap-3 p-3 bg-blue-50 rounded-lg border border-blue-100 mb-6">
-            <i class="fa-solid fa-circle-info text-blue-500 mt-0.5 text-sm"></i>
-            <p class="text-xs text-blue-700 leading-relaxed">Penarikan dana diperkirakan akan diterima dalam waktu 1 hari kerja.Transfer instan tersedia dengan biaya 1,5%. Proses akan tertunda jika jtuh pada hari Sabtu, Minggu atau hari libur.</p>
-        </div> -->
-
-    </main>
+        </main>
     </div>
 
     <script>
@@ -224,10 +101,14 @@
         });
 
         function showPage(pageId) {
-            document.getElementById('pageMain').classList.toggle('hidden', pageId === 'pageAdd');
-            document.getElementById('pageAdd').classList.toggle('hidden', pageId === 'pageMain');
+            if (pageId === 'pageAdd') {
+                document.getElementById('pageMain').classList.add('hidden');
+                document.getElementById('pageAdd').classList.remove('hidden');
+            } else {
+                document.getElementById('pageAdd').classList.add('hidden');
+                document.getElementById('pageMain').classList.remove('hidden');
+            }
         }
     </script>
-
-
-</body></html>
+</body>
+</html>
