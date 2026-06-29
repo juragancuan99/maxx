@@ -23,23 +23,6 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400&display=swap');
 
-        /* ANIMASI ZOOM UNTUK HALAMAN UTAMA */
-        .page-zoom-in {
-            animation: zoomInEffect 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-            opacity: 0;
-        }
-
-        @keyframes zoomInEffect {
-            from {
-                opacity: 0;
-                transform: scale(0.92); /* Mulai dari ukuran agak mengecil */
-            }
-            to {
-                opacity: 1;
-                transform: scale(1); /* Kembali ke ukuran asli */
-            }
-        }
-
         .liquid-text {
             background-image: linear-gradient(to top, #ff0000 100%);
             background-size: 100% 0%;
@@ -93,18 +76,17 @@
         }
     </style>
 
+
 </head>
 
 <body class="h-screen w-screen bg-gray-200 flex justify-center items-center overflow-hidden">
 
-    <!-- DITAMBAHKAN KELAS 'page-zoom-in' PADA CONTAINER DI BAWAH INI -->
-    <div class="page-zoom-in w-full max-w-md h-full bg-gray-100 overflow-y-auto relative font-sans text-gray-800 shadow-2xl flex flex-col">
+    <div class="w-full max-w-md h-full bg-gray-100 overflow-y-auto relative font-sans text-gray-800 shadow-2xl flex flex-col">
         
         <div class="flex-1 pb-24 overflow-y-auto relative">
             
-            <!-- TOP NAVBAR -->
             <div class="absolute top-0 left-0 w-full z-20 p-4 flex justify-between items-center">
-                <button onclick="history.back()" class="w-10 h-10 bg-black/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-black/50 transition">
+                <button onClick="history.back()" class="w-10 h-10 bg-black/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-black/50 transition">
                     <i class="fa-solid fa-arrow-left"></i>
                 </button>
                 <div class="flex gap-3">
@@ -114,12 +96,10 @@
                 </div>
             </div>
 
-            <!-- PRODUCT IMAGE -->
             <div class="relative w-full h-[443px] bg-gray-200">
-                <img src="images/ecommerce2.jpg" alt="Product Image" class="w-full h-full object-cover">
+                <img src="images/ecommerce1.jpg" alt="Product Image" class="w-full h-full object-cover">
             </div>
 
-            <!-- MAIN INFO -->
             <div class="bg-white p-4 mb-2 shadow-sm rounded-b-2xl">
                
                 <div class="mb-6 relative animate-fade-in-up bg-gradient-to-r from-red-50 to-white text-white px-3 py-2 rounded-xl flex items-center justify-start gap-2 shadow-sm border border-red-500/30">
@@ -132,12 +112,12 @@
                 <div class="bg-white flex items-start gap-[0.1rem]">
                     <div class="mt-[-1rem] text-green-600">
                         <div class="w-[1.5rem] h-[1.5rem] bg-transparent flex items-center justify-center">
-                            <img src="images/icon-tiktok.png" alt="User" class="w-[1.5rem] h-[1.5rem] rounded-full border-2 border-white shadow-sm mx-3">
+                            <img src="images/icon-shopee.jpg" alt="User" class="w-[1.5rem] h-[1.5rem] rounded-full border-2 border-white shadow-sm mx-3">
                         </div>
                     </div>
                     <div class="flex-1 mt-[-1rem]">
                         <div class="flex justify-between items-center">
-                            <span class="font-regular text-[0.8rem] text-gray-500">Lenovo ERAZER XT80PRO Original True Wireless Bluetooth V5.4 In-Ear TWS Headset terjemahan AI Earphone IPX5 Waterproof Sport Handset</span>
+                            <span class="font-regular text-[0.8rem] text-gray-500">Sanken Mesin Cuci 2 Dua Tabung TW-882GY Twin Tub 9Kg Silver</span>
                         </div>
                     </div>
                 </div>
@@ -159,7 +139,6 @@
                 </div>
             </div>
 
-            <!-- PROCESS CASHBACK -->
             <div class="bg-white p-4 mb-2 shadow-sm">
                 <div class="flex justify-between items-center mb-3">
                     <h3 class="font-semibold text-gray-700">Proses Cashback</h3>
@@ -178,9 +157,9 @@
                     <i class="fa-solid fa-angles-right text-gray-700 text-[0.9rem] mt-6"></i>
                     <div class="flex-1 flex flex-col items-center text-center">
                         <div class="w-12 h-12 rounded-full bg-purple-50 text-[#6C5CE7] flex items-center justify-center mb-2 text-lg">
-                            <img src="images/icon-tiktok.png" alt="User" class="w-[2.5rem] h-[2.5rem] rounded-full border-[0px] border-white shadow-sm mx-3">
+                            <img src="images/icon-shopee.jpg" alt="User" class="w-[2.5rem] h-[2.5rem] rounded-full border-[0px] border-white shadow-sm mx-3">
                         </div>
-                        <p class="text-[0.6rem] font-regular text-gray-700">Bayar di TikTok</p>
+                        <p class="text-[0.6rem] font-regular text-gray-700">Bayar di Shopee</p>
                     </div>
                     <i class="fa-solid fa-angles-right text-gray-700 text-[0.9rem] mt-6"></i>
                     <div class="flex-1 flex flex-col items-center text-center">
@@ -192,7 +171,6 @@
                 </div>
             </div>
 
-            <!-- STORE PRODUCTS -->
             <div class="bg-white p-4 mb-2 shadow-sm">
                 <div class="flex justify-between items-center mb-3">
                     <div class="flex items-center gap-2">
@@ -215,14 +193,14 @@
                             <h4 class="text-[0.7rem] text-gray-700 line-clamp-2 mb-1">Sanken Mesin Cuci 2 Dua Tabung TW-882GY Twin Tub 9Kg Silver</h4>
                             <div class="mt-auto">
                                 <div class="flex items-center gap-1 mb-1">
-                                    <span class="bg-[#000000] text-[#FFFFFF] text-[10px] px-1 rounded">Tiktok</span>
-                                end Transaksi</div>
+                                    <span class="bg-orange-600 text-[#FFFFFF] text-[10px] px-1 rounded">Shopee</span>
+                                </div>
                                 <div class="text-[12px] text-gray-600 mt-1">Rp4.526.135</div>
                                 <div class="relative overflow-hidden rounded-xl bg-gradient-to-r from-orange-50 to-white border border-[#ff0000]/30 shadow-sm p-1">
                                     <div class="flex items-center justify-between relative z-10">
                                         <div class="flex items-center gap-[0.3rem]">
                                             <div class="w-[1.5rem] h-[1.5rem] rounded-full bg-[#ff0000] flex items-center justify-center shadow-md text-white">
-                                                <img src="images/icon-tiktok.png" alt="User" class="w-[1.5rem] h-[1.5rem] rounded-full border-2 border-white shadow-sm">
+                                                <img src="images/icon-shopee.jpg" alt="User" class="w-[1.5rem] h-[1.5rem] rounded-full border-2 border-white shadow-sm">
                                             </div>
                                             <div>
                                                 <p class="text-[0.5rem] text-gray-700 tracking-wide">Est. Cashback</p>
@@ -244,14 +222,14 @@
                             <h4 class="text-[0.7rem] text-gray-700 line-clamp-2 mb-1">Soundcore R60i NC (R50i NC Upgrade) by Anker, Real-Time Adaptive Noise Cancellation...</h4>
                             <div class="mt-auto">
                                 <div class="flex items-center gap-1 mb-1">
-                                    <span class="bg-[#000000] text-[#FFFFFF] text-[10px] px-1 rounded">Tiktok</span>
+                                    <span class="bg-orange-600 text-[#FFFFFF] text-[10px] px-1 rounded">Shopee</span>
                                 </div>
                                 <div class="text-[12px] text-gray-600 mt-1">Rp4.526.135</div>
                                 <div class="relative overflow-hidden rounded-xl bg-gradient-to-r from-orange-50 to-white border border-[#ff0000]/30 shadow-sm p-1">
                                     <div class="flex items-center justify-between relative z-10">
                                         <div class="flex items-center gap-[0.3rem]">
                                             <div class="w-[1.5rem] h-[1.5rem] rounded-full bg-[#ff0000] flex items-center justify-center shadow-md text-white">
-                                                <img src="images/icon-tiktok.png" alt="User" class="w-[1.5rem] h-[1.5rem] rounded-full border-2 border-white shadow-sm">
+                                                <img src="images/icon-shopee.jpg" alt="User" class="w-[1.5rem] h-[1.5rem] rounded-full border-2 border-white shadow-sm">
                                             </div>
                                             <div>
                                                 <p class="text-[0.5rem] text-gray-700 tracking-wide">Est. Cashback</p>
@@ -266,7 +244,6 @@
                 </div>
             </div>
 
-            <!-- RELATED PRODUCTS -->
             <div class="bg-white p-4 mb-2 shadow-sm">
                 <div class="flex justify-between items-center mb-3">
                     <h3 class="font-semibold text-gray-700">Produk Terkait</h3>
@@ -281,14 +258,14 @@
                             <h4 class="text-[0.7rem] text-gray-700 line-clamp-2 mb-1">KAMIFA - Sandal Selop Beruang Terbuka Terbaru</h4>
                             <div class="mt-auto">
                                 <div class="flex items-center gap-1 mb-1">
-                                    <span class="bg-[#000000] text-[#FFFFFF] text-[10px] px-1 rounded">Tiktok</span>
+                                    <span class="bg-orange-600 text-[#FFFFFF] text-[10px] px-1 rounded">Shopee</span>
                                 </div>
                                 <div class="text-[12px] text-gray-600 mt-1">Rp4.526.135</div> 
                                 <div class="relative overflow-hidden rounded-xl bg-gradient-to-r from-orange-50 to-white border border-[#ff0000]/30 shadow-sm p-0">
                                     <div class="flex items-center justify-between relative z-10">
                                         <div class="flex items-center gap-[0.3rem]">
                                             <div class="w-[1.5rem] h-[1.5rem] rounded-full bg-[#ff0000] flex items-center justify-center shadow-md text-white">
-                                                <img src="images/icon-tiktok.png" alt="User" class="w-[1.5rem] h-[1.5rem] rounded-full border-2 border-white shadow-sm">
+                                                <img src="images/icon-shopee.jpg" alt="User" class="w-[1.5rem] h-[1.5rem] rounded-full border-2 border-white shadow-sm mx-3">
                                             </div>
                                             <div>
                                                 <p class="text-[0.5rem] text-gray-700 tracking-wide">Est. Cashback</p>
@@ -310,15 +287,14 @@
                             <h4 class="text-[0.7rem] text-gray-700 line-clamp-2 mb-1">TCL HD QLED Google TV 32 inch V4C - HDR 10 - Dolby Audio...</h4>
                             <div class="mt-auto">
                                 <div class="flex items-center gap-1 mb-1">
-                                    <span class="bg-[#000000] text-[#FFFFFF] text-[10px] px-1 rounded">Tiktok</span>
+                                    <span class="bg-orange-600 text-[#FFFFFF] text-[10px] px-1 rounded">Shopee</span>
                                 </div>
                                 <div class="text-[12px] text-gray-600 mt-1">Rp4.526.135</div> 
                                 <div class="relative overflow-hidden rounded-xl bg-gradient-to-r from-orange-50 to-white border border-[#ff0000]/30 shadow-sm p-0">
                                     <div class="flex items-center justify-between relative z-10">
                                         <div class="flex items-center gap-[0.3rem]">
                                             <div class="w-[1.5rem] h-[1.5rem] rounded-full bg-[#ff0000] flex items-center justify-center shadow-md text-white">
-                                                <img src="images/icon-tiktok.png" alt="User" class="w-[1.5rem] h-[1.5rem] rounded-full border-2 border-white shadow-sm">
-
+                                                <img src="images/icon-shopee.jpg" alt="User" class="w-[1.5rem] h-[1.5rem] rounded-full border-2 border-white shadow-sm mx-3">
                                             </div>
                                             <div>
                                                 <p class="text-[0.5rem] text-gray-700 tracking-wide">Est. Cashback</p>
@@ -333,14 +309,12 @@
                 </div>
             </div>
 
-            <!-- LOADER -->
             <div class="py-6 flex justify-center">
                 <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-[#ff0000]"></div>
             </div>
 
         </div>
 
-        <!-- BOTTOM ACTIONS -->
         <div class="fixed bottom-0 left-0 right-0 mx-auto w-full max-w-[430px] bg-white border-t border-gray-100 px-6 py-[0.5rem] flex justify-between items-end z-40 pb-3 shadow-lg">
     
     
@@ -348,33 +322,31 @@
     
     <div class="flex-1 flex gap-3">
                 <button id="open-share-btn" class="flex-1 border border-[#00a6a6] text-[#00a6a6] font-medium text-[0.8rem] py-2.5 rounded-lg hover:bg-neutral-50 active:scale-[0.98] transition-transform">Bagi &amp; Cuan</button>
-                <button id="pay-tiktok-btn" class="flex-1 bg-[#00a6a6] text-white font-bold text-sm py-2.5 rounded-lg shadow-md shadow-yellow-300 hover:bg-[#008c8c] active:scale-[0.98] transition-transform">Bayar di Tiktok</button>
+                <button id="pay-shopee-btn" class="flex-1 bg-[#00a6a6] text-white font-bold text-sm py-2.5 rounded-lg shadow-md shadow-yellow-300 hover:bg-[#008c8c] active:scale-[0.98] transition-transform">Bayar di Shopee</button>
             </div>
 </div>
 
     </div>
 
-    <!-- GLOBAL MODAL BACKDROP -->
     <div id="modal-backdrop" class="fixed inset-0 bg-black/50 z-[100] opacity-0 transition-opacity duration-300 flex justify-center items-end hidden">
         
         <div id="modal-content" class="w-full max-w-md bg-white rounded-t-2xl p-5 transform transition-transform duration-300 relative shadow-2xl translate-y-full">
             
-            <div class="w-12 h-1.5 bg-gray-300 rounded-full mx-auto mb-4 cursor-pointer" onclick="closeModal()"></div>
+            <div class="w-12 h-1.5 bg-gray-300 rounded-full mx-auto mb-4 cursor-pointer" onClick="closeModal()"></div>
             
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-lg p-1">
+            <button onClick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-lg p-1">
                 <i class="fa-solid fa-xmark"></i>
             </button>
 
-            <!-- NOTIFIKASI BARU: PROSES MENDAPATKAN CASHBACK (TIKTOK) -->
-            <div id="content-tiktok-pay" class="hidden">
-               <div class="text-center mb-5">
+            <div id="content-shopee-pay" class="hidden">
+                <div class="text-center mb-5">
                     <h3 class="text-lg font-bold text-gray-900">Proses Mendapatkan Cashback</h3>
                 </div>
                 
                 <div class="bg-gradient-to-b from-[#ff0000] to-[#ff3a3a] rounded-2xl p-[14px] pb-5 shadow-inner relative border border-red-400/20 mb-6">
                     <div class="flex items-center gap-2 mb-3 text-white">
                         <div class="w-10 h-10 flex items-center justify-center">
-                            <img src="images/3d-tiktok.png" alt="TikTok 3D" class="w-full h-full object-contain">
+                            <img src="images/3d-shopee.png" alt="Shopee 3D" class="w-full h-full object-contain">
                         </div>
                         <p class="text-xs font-medium leading-tight">Terima Cashback hanya<br><span class="font-bold">dalam 3 Langkah</span></p>
                     </div>
@@ -382,9 +354,9 @@
                     <div class="bg-white rounded-xl mt-[-0.8rem] p-4 flex justify-between items-center shadow-md">
                         <div class="flex flex-col items-center text-center flex-1">
                             <div class="w-10 h-10 flex items-center justify-center mb-2">
-                                <img src="images/icon-tiktok.png" alt="TikTok" class="w-full h-full object-contain rounded-full shadow-sm">
+                                <img src="images/icon-shopee.jpg" alt="Shopee" class="w-full h-full object-contain rounded-full shadow-sm">
                             </div>
-                            <p class="text-[10px] font-semibold text-gray-800 leading-tight">Bayar di<br>TikTok</p>
+                            <p class="text-[10px] font-semibold text-gray-800 leading-tight">Bayar di<br>Shopee</p>
                         </div>
                         
                         <div class="text-gray-300 text-[10px] font-bold px-1">
@@ -411,12 +383,10 @@
                     </div>
                 </div>
 
-                <button onclick="closeModal()" class="w-full bg-[#ff0000] hover:bg-[#ff0000] text-white font-bold py-3 rounded-full text-sm shadow-md transition-all active:scale-[0.99]">
+                <button onClick="closeModal()" class="w-full bg-[#ff0000] hover:bg-[#ff0000] text-white font-bold py-3 rounded-full text-sm shadow-md transition-all active:scale-[0.99]">
                     Lanjutkan Pembelian
                 </button>
             </div>
-
-            <!-- 1. CONTENT CASHBACK -->
             <div id="content-cashback" class="hidden">
                 <div class="flex items-center gap-2 mb-4">
                     <h3 class="text-base font-bold text-gray-800 flex items-center gap-2">
@@ -430,19 +400,18 @@
                         Nilai cashback ini merupakan nominal subsidi atau pengembalian dana yang akan Anda dapatkan setelah menyelesaikan transaksi sesuai syarat yang berlaku.
                     </p>
                     <ul class="list-disc pl-5 space-y-1 text-xs">
-                        <li>Cashback akan diverifikasi otomatis setelah sistem membaca pembayaran Anda di TikTok.</li>
+                        <li>Cashback akan diverifikasi otomatis setelah sistem membaca pembayaran Anda di Shopee.</li>
                         <li>Proses sinkronisasi data dapat memakan waktu beberapa menit.</li>
                         <li>Setelah pesanan sukses di terima, maka cashback akan masuk melalui platform MAXI.</li>
                         <li>Jumlah Cashback hanyalah estimasi. Jumlah Cashback = Jumlah Transaksi X Cashback Rate.</li>
                         <li>Pesanan yang dibatalkan atau dikembalikan tidak menghasilkan Cashback.</li>
                     </ul>
                 </div>
-                <button onclick="closeModal()" class="w-full bg-[#ff0000] text-white font-semibold py-2.5 rounded-xl text-sm shadow-md transition hover:bg-red-700">
+                <button onClick="closeModal()" class="w-full bg-[#ff0000] text-white font-semibold py-2.5 rounded-xl text-sm shadow-md transition hover:bg-red-700">
                     Saya Mengerti
                 </button>
             </div>
 
-            <!-- 2. CONTENT PRICE -->
             <div id="content-price" class="hidden">
                 <div class="flex items-center gap-2 mb-4">
                     <h3 class="text-base font-bold text-gray-800 flex items-center gap-2">
@@ -451,22 +420,25 @@
                 </div>
                 <div class="text-sm text-gray-600 space-y-3 leading-relaxed mb-5">
                     <p>
-                        <span class="text-center text-gray-700">Estimasi harga hanya sebagai referensi, harga sebenarnya mengikuti yang ditampilkan di platform tiktok</span>
+                        <span class="text-center text-gray-700">Estimasi harga hanya sebagai referensi, harga sebenarnya mengikuti yang ditampilkan di platform Shopee</span>
+
                     </p>
                 </div>
-                <button onclick="closeModal()" class="w-full bg-[#ff0000] text-white font-semibold py-2.5 rounded-xl text-sm shadow-md transition hover:bg-red-700">
+                <button onClick="closeModal()" class="w-full bg-[#ff0000] text-white font-semibold py-2.5 rounded-xl text-sm shadow-md transition hover:bg-red-700">
                     Ok
                 </button>
             </div>
 
-            <!-- 3. CONTENT SHARE TOMBOL ATAS -->
-           <div id="content-share-top" class="hidden">
+            <div id="content-share-top" class="hidden">
                 <div class="flex justify-center items-center gap-2 mb-4 w-full">
-                    <h3 class="text-base font-bold text-gray-800 flex items-center gap-2">
-                        Bagikan
-                    </h3>
-                </div>
+    <h3 class="text-base font-bold text-gray-800 flex items-center gap-2">
+         
+        Bagikan
+    </h3>
+</div>
                 <div class="text-sm text-gray-600 space-y-4 leading-relaxed mb-5">
+                    
+                    
                     <div class="grid grid-cols-5 gap-5 text-center pt-2">
                         <button class="flex flex-col items-center gap-1 text-xs text-gray-600 hover:text-green-600">
                             <div class="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center text-green-600 text-lg shadow-sm">
@@ -495,13 +467,12 @@
                         </button>
                     </div>
                 </div>
-                <button onclick="closeModal()" class="w-full bg-[#ff0000] text-white font-semibold py-2.5 rounded-xl text-sm shadow-md transition hover:bg-[#ff0000]">
+                <button onClick="closeModal()" class="w-full bg-[#ff0000] text-white font-semibold py-2.5 rounded-xl text-sm shadow-md transition hover:bg-[#ff0000]">
                     Tutup
                 </button>
             </div>
 
-            <!-- 4. CONTENT SHARE TOMBOL BAWAH -->
-           <div id="content-share-bottom" class="hidden">
+            <div id="content-share-bottom" class="hidden">
                 <div class="flex items-center gap-2 mb-4">
                     <h3 class="text-base font-bold text-gray-800 flex items-center gap-2">
                         <i class="fa-solid fa-coins text-[#ff0000]"></i> 
@@ -543,14 +514,13 @@
                         </button>
                     </div>
                 </div>
-                <button onclick="closeModal()" class="w-full bg-[#ff0000] text-white font-semibold py-2.5 rounded-xl text-sm shadow-md transition hover:bg-[#ff0000]">
+                <button onClick="closeModal()" class="w-full bg-[#ff0000] text-white font-semibold py-2.5 rounded-xl text-sm shadow-md transition hover:bg-[#ff0000]">
                     Mulai Sebar Link
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- JAVASCRIPT LOGIC -->
     <script>
         const backdrop = document.getElementById('modal-backdrop');
         const modalContent = document.getElementById('modal-content');
@@ -558,8 +528,9 @@
         const contentPrice = document.getElementById('content-price');
         const contentShareTop = document.getElementById('content-share-top');
         const contentShareBottom = document.getElementById('content-share-bottom');
-        const contentTiktokPay = document.getElementById('content-tiktok-pay');
+        const contentShopeePay = document.getElementById('content-shopee-pay');
 
+        // Fungsi Buka Utama
         function showBottomSheet() {
             backdrop.classList.remove('hidden');
             setTimeout(() => {
@@ -568,6 +539,7 @@
             }, 10);
         }
 
+        // Fungsi Tutup Utama
         function closeModal() {
             if (backdrop.classList.contains('opacity-100')) {
                 backdrop.classList.remove('opacity-100');
@@ -579,12 +551,13 @@
                 contentPrice.classList.add('hidden');
                 contentShareTop.classList.add('hidden'); 
                 contentShareBottom.classList.add('hidden'); 
-                contentTiktokPay.classList.add('hidden'); 
+                contentShopeePay.classList.add('hidden'); // Reset konten Shopee Pay
             }, 300);
         }
 
-        document.getElementById('pay-tiktok-btn').addEventListener('click', () => {
-            contentTiktokPay.classList.remove('hidden');
+        // Pemicu Klik: Bayar di Shopee
+        document.getElementById('pay-shopee-btn').addEventListener('click', () => {
+            contentShopeePay.classList.remove('hidden');
             contentCashback.classList.add('hidden'); 
             contentPrice.classList.add('hidden');       
             contentShareTop.classList.add('hidden');
@@ -592,44 +565,51 @@
             showBottomSheet();
         });
 
+        // Pemicu Klik 1: Info Cashback
         document.getElementById('open-cb-btn').addEventListener('click', () => {
             contentCashback.classList.remove('hidden'); 
             contentPrice.classList.add('hidden');       
             contentShareTop.classList.add('hidden');
             contentShareBottom.classList.add('hidden');
-            contentTiktokPay.classList.add('hidden');
+            contentShopeePay.classList.add('hidden');
             showBottomSheet();
         });
 
+        // Pemicu Klik 2: Info Harga
         document.getElementById('open-price-btn').addEventListener('click', () => {
             contentPrice.classList.remove('hidden');       
             contentCashback.classList.add('hidden');    
             contentShareTop.classList.add('hidden');
             contentShareBottom.classList.add('hidden');
-            contentTiktokPay.classList.add('hidden');
+            contentShopeePay.classList.add('hidden');
             showBottomSheet();
         });
 
+        // Pemicu Klik 3: Tombol Share Atas
         document.getElementById('open-share-top-btn').addEventListener('click', () => {
             contentShareTop.classList.remove('hidden');
             contentShareBottom.classList.add('hidden');
             contentCashback.classList.add('hidden');
             contentPrice.classList.add('hidden');
-            contentTiktokPay.classList.add('hidden');
+            contentShopeePay.classList.add('hidden');
             showBottomSheet();
         });
 
+        // Pemicu Klik 4: Tombol Bagi & Cuan
         document.getElementById('open-share-btn').addEventListener('click', () => {
             contentShareBottom.classList.remove('hidden');
             contentShareTop.classList.add('hidden');
             contentCashback.classList.add('hidden');
             contentPrice.classList.add('hidden');
-            contentTiktokPay.classList.add('hidden');
+            contentShopeePay.classList.add('hidden');
             showBottomSheet();
         });
 
+        // Tutup jika area luar (backdrop) di-klik
         backdrop.addEventListener('click', (e) => {
             if (e.target === backdrop) closeModal();
         });
     </script>
+
+
 </body></html>
