@@ -85,7 +85,8 @@
 
     <div class="w-full max-w-md h-full bg-gray-100 mx-auto flex flex-col shadow-2xl relative">
         
-        <header class="bg-white px-4 py-[0.3rem] grid grid-cols-3 items-center border-b border-gray-200 shrink-0 z-50">
+       
+		<header class="sticky top-0 z-50 bg-white px-4 py-[0.3rem] grid grid-cols-3 items-center border-b border-gray-200">
             <button onclick="history.back()" class="w-8 h-8 flex items-center justify-center bg-orange-600 rounded-full shadow-lg text-white text-[1.3rem] cursor-pointer hover:bg-red-600">
                 <i class="fa-solid fa-arrow-left"></i>
             </button>
@@ -97,7 +98,7 @@
             </a>
         </header>
 	
-	 
+	   <div class="flex-1 overflow-y-auto">
      <div class="bg-white flex border-b border-gray-200 text-center">
         <div class="w-1/3 py-2 text-gray-500">
             <div class="font-bold text-base">00:00</div>
@@ -120,7 +121,7 @@
 	
           
 
-        <div class="flex-1 overflow-y-auto">
+        
              <main class="bg-white flex-1 p-3 space-y-4">
         <!-- Produk 1 -->
         <div class="flex gap-3 border-b border-gray-100 pb-4 group cursor-pointer">
@@ -306,7 +307,8 @@
 		
 
       
-		<footer class="bg-white border-t border-gray-200 flex justify-around py-3 text-center text-xs text-gray-500 shrink-0 pb-[calc(env(safe-area-inset-bottom)+12px)]">
+		<footer class="sticky bottom-0 bg-white border-t border-gray-200 flex justify-around py-3 text-center text-xs text-gray-500">
+		
             <div class="text-red-500 font-semibold cursor-pointer">
                 <i class="fa-solid fa-bolt text-lg block mb-0.5"></i>
                 <span>Misi Bronze</span>
