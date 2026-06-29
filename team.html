@@ -290,10 +290,10 @@
         <i class="fa-solid fa-house text-xl mb-[-0.1rem]"></i>
         <span class="text-[10px] font-medium">Beranda</span>
     </a>
-     <a id="nav-misi" href="misireward.html" class="flex flex-col items-center gap-0 hover:text-[#00a6a6] transition-colors no-underline text-[#00a6a6]">
-        <i class="fa-solid fa-gift text-xl mb-[-0.1rem]"></i>
-        <span class="text-[10px] font-medium font-bold">Misi Reward</span>
-    </a>
+	<a id="nav-misi" href="misireward.html" class="flex flex-col items-center gap-0 text-gray-500 hover:text-[#00a6a6] transition-colors no-underline">
+   		 <i class="fa-solid fa-gift text-xl mb-[-0.1rem]"></i>
+    	<span class="text-[10px] font-medium">Misi Reward</span>
+	</a>
     <a id="nav-team" href="team.html" class="flex flex-col items-center gap-0 text-gray-500 hover:text-[#00a6a6] transition-colors no-underline">
         <i class="fa-solid fa-users text-xl mb-[-0.1rem]"></i>
         <span class="text-[10px] font-medium">Team</span>
@@ -439,13 +439,15 @@ document.getElementById('btn-share').addEventListener('click', async () => {
     }
   </script>
 
-	 <script>
-    // Fungsi untuk menandai menu aktif
+	<script>
     function setActiveMenu() {
-        // Ambil nama file dari URL (contoh: 'misireward.html')
+        // 1. Ambil nama file dari URL
         const path = window.location.pathname.split("/").pop() || 'index.html';
         
-        // Pemetaan path ke ID menu
+        // 2. Daftar semua ID menu
+        const menuIds = ['nav-beranda', 'nav-misi', 'nav-team', 'nav-pendapatan', 'nav-saya'];
+        
+        // 3. Pemetaan path ke ID menu
         const menuMap = {
             'index.html': 'nav-beranda',
             'misireward.html': 'nav-misi',
@@ -455,22 +457,32 @@ document.getElementById('btn-share').addEventListener('click', async () => {
         };
 
         const activeId = menuMap[path];
-        
+
+        // 4. Reset semua menu ke kondisi default
+        menuIds.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+                el.classList.remove('text-[#00a6a6]');
+                el.classList.add('text-gray-500');
+                const span = el.querySelector('span');
+                if (span) span.classList.remove('font-bold');
+            }
+        });
+
+        // 5. Berikan style aktif ke menu yang sesuai
         if (activeId) {
             const activeElement = document.getElementById(activeId);
             if (activeElement) {
-                // Hapus warna default dari semua link (gray-500)
-                // Tambahkan warna aktif (text-[#00a6a6])
                 activeElement.classList.remove('text-gray-500');
                 activeElement.classList.add('text-[#00a6a6]');
-                // Opsional: tambah font-bold
-                activeElement.querySelector('span').classList.add('font-bold');
+                const activeSpan = activeElement.querySelector('span');
+                if (activeSpan) activeSpan.classList.add('font-bold');
             }
         }
     }
 
-    // Jalankan fungsi saat halaman dimuat
-    window.onload = setActiveMenu;
+    // Jalankan saat halaman dimuat
+    window.addEventListener('DOMContentLoaded', setActiveMenu);
 </script>
 
   
