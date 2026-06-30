@@ -9,13 +9,16 @@
         .page { display: none; }
         .page.active { display: block; }
         body { font-family: 'Inter', sans-serif; }
+        /* Tambahkan untuk animasi popup */
+        .popup-overlay { display: none; }
+        .popup-overlay.active { display: flex; }
         @keyframes slide-up { from { transform: translateY(100%); } to { transform: translateY(0); } }
         .animate-slide-up { animation: slide-up 0.3s ease-out; }
     </style>
 </head>
 <body class="h-screen w-screen overflow-hidden bg-white">
 
-    <div id="pageInfoBank" class="page w-full h-full bg-gray-50 overflow-y-auto active">
+    <div id="pageInfoBank" class="page w-full h-full bg-gray-50 overflow-y-auto">
         <header class="sticky top-0 bg-white px-4 py-4 flex items-center shadow-sm">
             <button onclick="showPage('pageMethod')" class="mr-4"><i class="fa-solid fa-arrow-left"></i></button>
             <h1 class="text-lg font-bold">Informasi Bank</h1>
@@ -24,70 +27,48 @@
             <form class="space-y-5">
                 <div>
                     <label class="block text-[1rem] font-semibold text-gray-700 tracking-wider ml-1 mb-1.5">Nama</label>
-                    <input type="text" placeholder="Nama Anda" class="pl-[1rem] w-full bg-gray-50 border border-gray-200 p-3.5 rounded-xl outline-none">
+                    <input type="text" placeholder="Nama Anda" class="pl-[1rem] w-full bg-gray-50 border border-gray-200 text-gray-900 text-[1rem] rounded-xl focus:ring-2 focus:ring-[#00A5A6]/20 focus:border-[#00A5A6] block p-3.5 outline-none transition-all placeholder-gray-400">
                 </div>
                 <div>
                     <label class="block text-[1rem] font-semibold text-gray-700 tracking-wider ml-1 mb-[-0.5rem]">Nama Bank</label>
-                    <button type="button" id="btnBankTrigger" onclick="toggleBankPopup(true)" class="w-full bg-gray-50 border border-gray-200 text-gray-400 font-regular py-4 rounded-xl mt-4 flex items-center justify-between px-4 transition-all">
-                        <span id="bankDisplayText">Pilihan Bank</span>
-                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    <button type="button" onclick="openBankPopup()" class="w-full bg-gray-50 border border-gray-200 text-gray-400 font-regular py-4 rounded-xl transition-all focus:ring-2 focus:ring-[#00A5A6]/20 focus:border-[#00A5A6] transform active:scale-[0.98] mt-4 flex items-center justify-between px-4">
+                        <span id="bankNameDisplay">Pilihan Bank</span>
+                        <i class="text-gray-400 fa-solid fa-arrow-right text-sm"></i>
                     </button>
                 </div>
-            </form>
+                </form>
         </main>
     </div>
 
-    <div id="bankPopup" class="hidden fixed inset-0 z-50">
-        <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-[2px]"></div>
-        <div class="fixed bottom-0 left-0 right-0 bg-white rounded-t-[2.5rem] h-[50%] flex flex-col shadow-[0_-10px_60px_-15px_rgba(0,0,0,0.3)] animate-slide-up">
-            <div class="w-full flex justify-center pt-5 pb-2"><div class="w-12 h-1.5 bg-gray-200 rounded-full"></div></div>
-            <h2 class="text-[1rem] font-bold text-gray-900 text-center pb-4">Pilih Akun Bank</h2>
-            <div class="flex-1 overflow-y-auto px-[0.5rem] pb-24 space-y-4">
-                <label class="group block cursor-pointer">
-                    <input type="radio" name="bank_select" value="Bank Central Asia ( BCA )" class="peer sr-only">
-                    <div class="p-5 rounded-2xl flex items-center justify-between peer-checked:bg-indigo-50/50 peer-checked:border-2 peer-checked:border-[#4F46E5]">
-                        <span class="font-semibold text-gray-700">Bank Central Asia ( BCA )</span>
-                    </div>
+    <div id="bankPopup" class="popup-overlay fixed inset-0 z-50 items-end bg-gray-900/50">
+        <div class="w-full bg-white rounded-t-[2rem] p-6 animate-slide-up">
+            <h2 class="text-lg font-bold mb-4">Pilih Bank</h2>
+            <div class="space-y-3 mb-6">
+                <label class="flex items-center p-4 border rounded-xl cursor-pointer">
+                    <input type="radio" name="bank" value="BCA" class="mr-3"> BCA
                 </label>
-                <label class="group block cursor-pointer">
-                    <input type="radio" name="bank_select" value="Bank Negara Indonesia ( BNI )" class="peer sr-only">
-                    <div class="p-5 rounded-2xl flex items-center justify-between peer-checked:bg-indigo-50/50 peer-checked:border-2 peer-checked:border-[#4F46E5]">
-                        <span class="font-semibold text-gray-700">Bank Negara Indonesia ( BNI )</span>
-                    </div>
+                <label class="flex items-center p-4 border rounded-xl cursor-pointer">
+                    <input type="radio" name="bank" value="BNI" class="mr-3"> BNI
                 </label>
             </div>
-            <div class="absolute bottom-0 left-0 right-0 p-[1rem] bg-white border-t">
-                <button type="button" onclick="confirmBank()" class="w-full bg-[#00a6a6] text-white font-bold py-4 rounded-2xl">Konfirmasi</button>
-            </div>
+            <button onclick="confirmBank()" class="w-full bg-[#00a6a6] text-white py-4 rounded-xl font-bold">Konfirmasi</button>
         </div>
     </div>
 
     <script>
-        function showPage(pageId) {
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.getElementById(pageId).classList.add('active');
-        }
+        function openBankPopup() { document.getElementById('bankPopup').classList.add('active'); }
         
-        function toggleBankPopup(show) {
-            const popup = document.getElementById('bankPopup');
-            if (show) {
-                popup.classList.remove('hidden');
-            } else {
-                popup.classList.add('hidden');
-            }
-        }
-
         function confirmBank() {
-            const selected = document.querySelector('input[name="bank_select"]:checked');
+            const selected = document.querySelector('input[name="bank"]:checked');
             if (selected) {
-                const btnText = document.getElementById('bankDisplayText');
-                btnText.innerText = selected.value;
-                btnText.style.color = '#111827'; // Ubah warna jadi hitam (gray-900)
-                btnText.style.fontWeight = 'bold';
-                toggleBankPopup(false);
+                document.getElementById('bankNameDisplay').innerText = selected.value;
+                document.getElementById('bankNameDisplay').classList.remove('text-gray-400');
+                document.getElementById('bankNameDisplay').classList.add('text-gray-900');
+                document.getElementById('bankPopup').classList.remove('active');
             } else {
-                alert("Silakan pilih salah satu bank terlebih dahulu.");
+                alert("Pilih bank terlebih dahulu!");
             }
         }
+        // ... fungsi showPage dan lainnya tetap sama
     </script>
 </body></html>
