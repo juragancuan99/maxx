@@ -37,17 +37,17 @@
 </head>
 <body class="h-screen w-screen overflow-hidden bg-gray-900 flex justify-center items-center">
 
-    <div class="w-full max-w-md h-full bg-gray-100 relative font-sans text-gray-800 shadow-2xl flex flex-col justify-between animate-zoom-entrance opacity-0">
+    <div class="w-full max-w-md h-screen overflow-hidden bg-gray-100 relative font-sans text-gray-800 shadow-2xl flex flex-col animate-zoom-entrance opacity-0">
         
-        <div class="w-full h-full overflow-y-auto pb-24">
+        <div class="flex-1 overflow-y-auto pb-28">
             <header class="bg-white px-4 py-[0.3rem] grid grid-cols-3 items-center border-b border-gray-200 sticky top-0 z-50">
-               <button onclick="history.back()" class="w-8 h-8 flex items-center justify-center bg-orange-600 rounded-full shadow-lg text-white text-[1.3rem] justify-self-start cursor-pointer hover:bg-red-600 transition-colors">
+               <button onClick="history.back()" class="w-8 h-8 flex items-center justify-center bg-orange-600 rounded-full shadow-lg text-white text-[1.3rem] justify-self-start cursor-pointer hover:bg-red-600 transition-colors">
             <i class="fa-solid fa-arrow-left"></i>
         </button>
                 
                 <img src="images/flashsale_aa.png" alt="Flash Sale" class="h-[1.7rem] justify-self-center">
                 
-                <a href="#" onclick="openModal(); return false;" class="w-13 h-13 flex flex-col items-center justify-center border-4 border-gray-300 rounded-full shadow-xl justify-self-end text-center no-underline hover:border-gray-400 transition-all">
+                <a href="#" onClick="openModal(); return false;" class="w-13 h-13 flex flex-col items-center justify-center border-4 border-gray-300 rounded-full shadow-xl justify-self-end text-center no-underline hover:border-gray-400 transition-all">
                     <div class="w-10 h-10 flex flex-col items-center justify-center rounded-full border border-gray-200 p-2">
                         <span class="text-gray-600 text-[0.7rem] font-bold leading-tight">info<br>sale</span>
                     </div>
@@ -194,12 +194,12 @@
     
     <div id="info-modal" class="fixed inset-0 z-50 items-center justify-center px-4 bg-[#0000005c] backdrop-blur-[2.3px] hidden">
         <div class="zoom-in relative w-full max-w-sm bg-[#000000b0] rounded-3xl overflow-hidden flex flex-col items-center text-center p-[1.3rem] border border-[#ffd8916b] shadow-2xl">
-          <button onclick="closeModal()" class="absolute top-4 right-4 text-orange-300 hover:text-white transition-colors w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10 cursor-pointer">
+          <button onClick="closeModal()" class="absolute top-4 right-4 text-orange-300 hover:text-white transition-colors w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10 cursor-pointer">
             <i class="fa-solid fa-xmark text-lg"></i>
           </button>
           <h2 class="text-2xl font-extrabold text-gray-100 mb-2 mt-4">Flash Sale</h2>
           <p class="text-gray-100 text-sm leading-relaxed mb-6 px-[0rem]">Flash Sale akan dibuka pada saat omset nasional<span class="font-semibold text-yellow-200"> Maxi Poin </span>Tercapai 500k mp selanjutnya 100k mp setiap periode, kuota misi dibuka maksimal 100 slot dan yang bisa klaim misi adalah affiliate yang masuk daftar kuota. Semakin sering anda bertransaksi maka semakin besar peluang masuk kuota.!</p>
-          <button onclick="closeModal()" class="w-full bg-[#b7993e] hover:bg-[#a38531] text-white font-bold py-4 rounded-xl shadow-lg transition-all transform active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer">
+          <button onClick="closeModal()" class="w-full bg-[#b7993e] hover:bg-[#a38531] text-white font-bold py-4 rounded-xl shadow-lg transition-all transform active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer">
               <span>OK</span>
           </button>
         </div>
