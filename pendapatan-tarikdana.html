@@ -15,29 +15,7 @@
 </head>
 <body class="h-screen w-screen overflow-hidden bg-white">
 
-    <div id="pageMain" class="page w-full h-full bg-gray-50 overflow-y-auto relative active">
-        <header class="sticky top-0 z-20 bg-white px-4 py-4 flex items-center justify-between shadow-sm">
-            <button class="w-10 h-10 flex items-center justify-center hover:bg-gray-100 rounded-full text-slate-600"><i class="fa-solid fa-arrow-left"></i></button>
-            <h1 class="text-lg font-bold">Penarikan Dana</h1>
-            <div class="w-10"></div>
-        </header>
-        <main class="p-5 pb-48">
-            <div class="bg-gradient-to-br from-[#00A5A6] to-[#00a6a6] rounded-2xl p-6 text-white shadow-lg mb-6 relative">
-                <p class="text-indigo-100 text-sm font-medium">Saldo yang bisa dicairkan</p>
-                <h2 class="text-3xl font-bold">Rp. 650.000</h2>
-            </div>
-            <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 mb-6">
-                <label class="block text-xs font-bold text-gray-400 uppercase mb-2">Jumlah Penarikan</label>
-                <div class="relative flex items-center border-b-2 border-indigo-100 py-2">
-                    <span class="text-3xl font-bold mr-2">Rp</span>
-                    <input type="number" id="amountInput" value="650000" class="w-full text-3xl font-bold outline-none bg-transparent">
-                    <button type="button" id="maxBtn" class="text-[#015a5a] font-bold text-sm bg-indigo-50 px-3 py-1.5 rounded-full">Max</button>
-                </div>
-            </div>
-        </main>
-    </div>
-
-    <div id="pageInfoBank" class="page w-full h-full bg-gray-50 overflow-y-auto">
+    <div id="pageInfoBank" class="page w-full h-full bg-gray-50 overflow-y-auto active">
         <header class="sticky top-0 bg-white px-4 py-4 flex items-center shadow-sm">
             <button onclick="showPage('pageMethod')" class="mr-4"><i class="fa-solid fa-arrow-left"></i></button>
             <h1 class="text-lg font-bold">Informasi Bank</h1>
@@ -59,9 +37,9 @@
         </main>
     </div>
 
-    <div id="bankPopup" class="hidden">
-        <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-[2px] z-40 transition-opacity duration-300"></div>
-        <div class="fixed bottom-0 left-0 right-0 bg-white rounded-t-[2.5rem] z-50 h-[50%] flex flex-col shadow-[0_-10px_60px_-15px_rgba(0,0,0,0.3)] animate-slide-up">
+    <div id="bankPopup" class="hidden fixed inset-0 z-50">
+        <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-[2px]"></div>
+        <div class="fixed bottom-0 left-0 right-0 bg-white rounded-t-[2.5rem] h-[50%] flex flex-col shadow-[0_-10px_60px_-15px_rgba(0,0,0,0.3)] animate-slide-up">
             <div class="w-full flex justify-center pt-5 pb-2"><div class="w-12 h-1.5 bg-gray-200 rounded-full"></div></div>
             <h2 class="text-[1rem] font-bold text-gray-900 text-center pb-4">Pilih Akun Bank</h2>
             <div class="flex-1 overflow-y-auto px-[0.5rem] pb-24 space-y-4">
@@ -89,19 +67,26 @@
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById(pageId).classList.add('active');
         }
+        
         function toggleBankPopup(show) {
-            document.getElementById('bankPopup').classList.toggle('hidden', !show);
+            const popup = document.getElementById('bankPopup');
+            if (show) {
+                popup.classList.remove('hidden');
+            } else {
+                popup.classList.add('hidden');
+            }
         }
+
         function confirmBank() {
             const selected = document.querySelector('input[name="bank_select"]:checked');
             if (selected) {
                 const btnText = document.getElementById('bankDisplayText');
                 btnText.innerText = selected.value;
-                btnText.classList.remove('text-gray-400');
-                btnText.classList.add('text-gray-900', 'font-bold');
+                btnText.style.color = '#111827'; // Ubah warna jadi hitam (gray-900)
+                btnText.style.fontWeight = 'bold';
                 toggleBankPopup(false);
             } else {
-                alert("Silakan pilih bank terlebih dahulu.");
+                alert("Silakan pilih salah satu bank terlebih dahulu.");
             }
         }
     </script>
