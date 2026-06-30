@@ -99,7 +99,7 @@
                 <label class="block text-[1rem] font-semibold text-gray-700 tracking-wider ml-1 mb-[-0.5rem]">Nama Bank</label>
                  <button type="button" id="btnBankTrigger" onclick="toggleBankPopup(true)" class="w-full bg-gray-50 border border-gray-200 py-4 px-4 MT-4 rounded-xl transition-all focus:ring-2 focus:ring-[#00A5A6]/20 focus:border-[#00A5A6] flex items-center justify-between">
 
-    <span id="bankDisplayText" class="text-gray-900 font-semibold flex-1 text-left whitespace-nowrap overflow-hidden text-ellipsis">Bank Negara Indonesia ( BNI )</span>
+    <span id="bankDisplayText" class="text-gray-900 font-semibold flex-1 text-left whitespace-nowrap overflow-hidden text-ellipsis">Bank Central Asia ( BCA )</span>
 
     <i class="fa-solid fa-arrow-right text-sm text-gray-500 ml-3 flex-shrink-0"></i>
 </button>
@@ -119,8 +119,7 @@
 <div id="bankPopup" class="hidden">
 
     <!-- Overlay -->
-    <div class="fixed inset-0 bg-black/50 backdrop-blur-[2px] z-40"
-         onclick="toggleBankPopup(false)">
+    <div class="fixed inset-0 bg-black/50 backdrop-blur-[2px] z-40" onclick="toggleBankPopup(false)">
     </div>
 
     <!-- Popup -->
@@ -143,11 +142,7 @@
 
             <!-- BCA -->
             <label class="block cursor-pointer group">
-                <input
-                    type="radio"
-                    name="bank_select"
-                    value="Bank Central Asia ( BCA )"
-                    class="peer sr-only">
+                <input type="radio" name="bank_select" value="Bank Central Asia ( BCA )" class="peer sr-only">
 
                 <div class="flex items-center justify-between p-4 rounded-2xl border border-gray-200 transition-all
                     peer-checked:border-[#00A5A6]
@@ -155,9 +150,7 @@
 
                     <div class="flex items-center gap-3">
 
-                        <img
-                            src="https://www.bca.co.id/-/media/Feature/Card/List-Card/Tentang-BCA/Brand-Assets/Logo-BCA/Logo-BCA_Biru.png"
-                            class="w-10 h-10 object-contain">
+                        <img src="images/Logo_BCA.png" class="w-10 h-10 object-contain">
 
                         <span class="font-semibold text-gray-800">
                             Bank Central Asia ( BCA )
@@ -178,11 +171,7 @@
 
             <!-- BNI -->
             <label class="block cursor-pointer group">
-                <input
-                    type="radio"
-                    name="bank_select"
-                    value="Bank Negara Indonesia ( BNI )"
-                    class="peer sr-only">
+                <input type="radio" name="bank_select" value="Bank Negara Indonesia ( BNI )" class="peer sr-only">
 
                 <div class="flex items-center justify-between p-4 rounded-2xl border border-gray-200 transition-all
                     peer-checked:border-[#00A5A6]
@@ -190,9 +179,7 @@
 
                     <div class="flex items-center gap-3">
 
-                        <img
-                            src="https://images.seeklogo.com/logo-png/35/1/bank-bni-logo-png_seeklogo-355606.png"
-                            class="w-10 h-10 object-contain">
+                        <img class="w-10 h-10 object-contain" src="images/Logo_BNI.png">
 
                         <span class="font-semibold text-gray-800">
                             Bank Negara Indonesia ( BNI )
@@ -213,11 +200,7 @@
 
             <!-- BRI -->
             <label class="block cursor-pointer group">
-                <input
-                    type="radio"
-                    name="bank_select"
-                    value="Bank Rakyat Indonesia ( BRI )"
-                    class="peer sr-only">
+                <input type="radio" name="bank_select" value="Bank Rakyat Indonesia ( BRI )" class="peer sr-only">
 
                 <div class="flex items-center justify-between p-4 rounded-2xl border border-gray-200 transition-all
                     peer-checked:border-[#00A5A6]
@@ -225,9 +208,7 @@
 
                     <div class="flex items-center gap-3">
 
-                        <img
-                            src="https://i.pinimg.com/1200x/aa/0e/67/aa0e67d2e759af6d677088e9160784d1.jpg"
-                            class="w-10 h-10 object-contain">
+                        <img src="images/Logo_BRI.png" class="w-10 h-10 object-contain">
 
                         <span class="font-semibold text-gray-800">
                             Bank Rakyat Indonesia ( BRI )
@@ -248,11 +229,7 @@
 
             <!-- Mandiri -->
             <label class="block cursor-pointer group">
-                <input
-                    type="radio"
-                    name="bank_select"
-                    value="Bank Mandiri"
-                    class="peer sr-only">
+                <input type="radio" name="bank_select" value="Bank Mandiri" class="peer sr-only">
 
                 <div class="flex items-center justify-between p-4 rounded-2xl border border-gray-200 transition-all
                     peer-checked:border-[#00A5A6]
@@ -260,9 +237,7 @@
 
                     <div class="flex items-center gap-3">
 
-                        <img
-                            src="https://e7.pngegg.com/pngimages/524/701/png-clipart-bank-mandiri-business-bank-negara-indonesia-bank-indonesia-bank-text-logo-thumbnail.png"
-                            class="w-10 h-10 object-contain">
+                        <img src="images/Logo_MANDIRI.png" class="w-10 h-10 object-contain">
 
                         <span class="font-semibold text-gray-800">
                             Bank Mandiri
@@ -286,10 +261,7 @@
      
         <div class="absolute bottom-0 left-0 right-0 p-4 bg-white border-t">
 
-            <button
-                type="button"
-                onclick="confirmBank()"
-                class="w-full bg-[#00A5A6] text-white font-bold py-4 rounded-2xl active:scale-95 transition">
+            <button type="button" onclick="confirmBank()" class="w-full bg-[#00A5A6] text-white font-bold py-4 rounded-2xl active:scale-95 transition">
 
                 Konfirmasi
 
@@ -394,7 +366,6 @@
             updateTotal();
         });
     </script>
-	
 
 
 </body></html>
