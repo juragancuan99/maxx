@@ -22,6 +22,19 @@
 <div class="rounded-2xl border p-4"><div class="font-bold mb-2">Riwayat</div><ul class="text-sm space-y-2"><li>✓ Pembayaran berhasil - 17 Jun 2026 22:31</li><li>✓ Pesanan dibuat - 22:32</li><li class="text-orange-600">● Sedang diverifikasi - 22:40</li></ul></div>
 </div>
 <div class="p-4 space-y-3 border-t"><button class="w-full bg-sky-600 text-white py-3 rounded-xl">Hubungi Customer Service</button><button onClick="location.href='index.html'" class="w-full border py-3 rounded-xl">Kembali ke Beranda</button></div>
-</div><script>
-let i=0;setInterval(()=>{i=(i+1)%4;document.getElementById('dots').textContent='.'.repeat(i)},500);
-</script></body></html>
+</div>
+
+<script>
+timeline.innerHTML += `
+<div class="flex items-center gap-3">
+    <div class="w-5 h-5 rounded-full bg-green-500 flex items-center justify-center">
+        <i class="fas fa-check text-white text-[10px]"></i>
+    </div>
+    <div>
+        ...
+    </div>
+</div>
+`;
+</script>
+
+</body></html>
