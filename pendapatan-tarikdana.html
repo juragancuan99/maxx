@@ -39,7 +39,7 @@
             <div class="mb-6">
                 <div class="flex justify-between items-end mb-3">
                     <label class="text-sm font-bold text-slate-800">Akun Penarikan</label>
-                    <button onclick="showPage('pageMethod')" class="text-xs font-bold text-[#032c2c]">Add New</button>
+                    <button onClick="showPage('pageMethod')" class="text-xs font-bold text-[#032c2c]">Add New</button>
                 </div>
                 <div class="p-4 bg-white border-2 border-[#00A5A6] rounded-xl flex items-center shadow-sm">
                     <i class="fa-solid fa-building-columns text-[#00A5A6] mr-4"></i>
@@ -62,18 +62,18 @@
 
     <div id="pageMethod" class="page w-full h-full bg-gray-50 overflow-y-auto">
         <header class="sticky top-0 bg-white px-4 py-4 flex items-center shadow-sm">
-            <button onclick="showPage('pageMain')" class="mr-4"><i class="fa-solid fa-arrow-left"></i></button>
+            <button onClick="showPage('pageMain')" class="mr-4"><i class="fa-solid fa-arrow-left"></i></button>
             <h1 class="text-lg font-bold">Metode Penarikan</h1>
         </header>
         <main class="p-5">
             <div class="w-full bg-gray-100 rounded-2xl p-4 border border-gray-100 mb-10 flex flex-col items-center shadow-sm">
-                <button onclick="showPage('pageInfoBank')" class="w-14 h-14 bg-[#00a6a6] rounded-full flex items-center justify-center text-white shadow-lg shadow-blue-500/40 mb-3">
+                <button onClick="showPage('pageInfoBank')" class="w-14 h-14 bg-[#00a6a6] rounded-full flex items-center justify-center text-white shadow-lg shadow-blue-500/40 mb-3">
                     <i class="fa-solid fa-plus text-xl"></i>
                 </button>
                 <span class="text-xl font-mono font-bold text-gray-800">Tambahkan Kartu Bank</span>
             </div>
             <div class="w-full bg-gray-100 rounded-2xl p-4 border border-gray-100 mb-10 flex flex-col items-center shadow-sm">
-                <button onclick="showPage('pageInfoEwallet')" class="w-14 h-14 bg-[#00a6a6] rounded-full flex items-center justify-center text-white shadow-lg shadow-blue-500/40 mb-3">
+                <button onClick="showPage('pageInfoEwallet')" class="w-14 h-14 bg-[#00a6a6] rounded-full flex items-center justify-center text-white shadow-lg shadow-blue-500/40 mb-3">
                     <i class="fa-solid fa-plus text-xl"></i>
                 </button>
                 <span class="text-xl font-mono font-bold text-gray-800">Tambahkan E-wallet</span>
@@ -83,7 +83,7 @@
 
     <div id="pageInfoBank" class="page w-full h-full bg-gray-50 overflow-y-auto">
         <header class="sticky top-0 bg-white px-4 py-4 flex items-center shadow-sm">
-            <button onclick="showPage('pageMethod')" class="mr-4"><i class="fa-solid fa-arrow-left"></i></button>
+            <button onClick="showPage('pageMethod')" class="mr-4"><i class="fa-solid fa-arrow-left"></i></button>
             <h1 class="text-lg font-bold">Informasi Bank</h1>
         </header>
         <main class="p-5">
@@ -97,8 +97,8 @@
             </div>
                 <div>
                 <label class="block text-[1rem] font-semibold text-gray-700 tracking-wider ml-1 mb-[-0.5rem]">Nama Bank</label>
-                 <button type="button" id="btnBankTrigger" onclick="toggleBankPopup(true)" class="w-full bg-gray-50 border border-gray-200 text-gray-400 font-regular py-4 rounded-xl transition-all focus:ring-2 focus:ring-[#00A5A6]/20 focus:border-[#00A5A6] transform active:scale-[0.98] mt-4 flex items-center justify-center gap-[11rem]">
-                <span>Pilihan Bank</span>
+                 <button type="button" id="btnBankTrigger" onClick="toggleBankPopup(true)" class="w-full bg-gray-50 border border-gray-200 text-gray-400 font-regular py-4 rounded-xl transition-all focus:ring-2 focus:ring-[#00A5A6]/20 focus:border-[#00A5A6] transform active:scale-[0.98] mt-4 flex items-center justify-center gap-[11rem]">
+                <span id="bankDisplayText" class="text-gray-400">Pilihan Bank</span>
                 <i class="text-gray-105 fa-solid fa-arrow-right text-sm"></i>
             </button>
             </div>
@@ -134,7 +134,7 @@
                 </label>
             </div>
             <div class="absolute bottom-0 left-0 right-0 p-[1rem] bg-white border-t">
-                <button type="button" onclick="confirmBank()" class="w-full bg-[#00a6a6] text-white font-bold py-4 rounded-2xl">Konfirmasi</button>
+                <button type="button" onClick="confirmBank()" class="w-full bg-[#00a6a6] text-white font-bold py-4 rounded-2xl">Konfirmasi</button>
             </div>
         </div>
     </div>
@@ -143,7 +143,7 @@
 
     <div id="pageInfoEwallet" class="page w-full h-full bg-gray-50 overflow-y-auto">
         <header class="sticky top-0 bg-white px-4 py-4 flex items-center shadow-sm">
-            <button onclick="showPage('pageMethod')" class="mr-4"><i class="fa-solid fa-arrow-left"></i></button>
+            <button onClick="showPage('pageMethod')" class="mr-4"><i class="fa-solid fa-arrow-left"></i></button>
             <h1 class="text-lg font-bold">Informasi E-Wallet</h1>
         </header>
         <main class="p-5">
@@ -200,15 +200,12 @@
 
         function confirmBank() {
             const selected = document.querySelector('input[name="bank_select"]:checked');
-            if (selected) {
-                const btnText = document.getElementById('bankDisplayText');
-                btnText.innerText = selected.value;
-                btnText.style.color = '#111827'; // Ubah warna jadi hitam (gray-900)
-                btnText.style.fontWeight = 'bold';
-                toggleBankPopup(false);
-            } else {
-                alert("Silakan pilih salah satu bank terlebih dahulu.");
-            }
+            if(!selected){alert('Silakan pilih salah satu bank terlebih dahulu.');return;}
+            const btnText=document.getElementById('bankDisplayText');
+            btnText.textContent=selected.value;
+            btnText.classList.remove('text-gray-400');
+            btnText.classList.add('text-gray-900','font-semibold');
+            toggleBankPopup(false);
         }
     </script>
 	
