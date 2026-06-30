@@ -46,7 +46,7 @@
       width: 100%; 
       height: 100%; 
       overflow: hidden; 
-      background-color: #ffffff;
+      background-color: #00a6a6; 
       transition: background-color 0.3s ease; 
     }
     .app-container {
@@ -112,15 +112,13 @@
    
 	<div class="w-full h-full max-w-[430px] mx-auto bg-gray-50 overflow-y-auto relative font-sans text-gray-800 pb-24 shadow-2xl no-scrollbar">
 	  <!--<div class="w-full h-full max-w-[430px] bg-gray-50 overflow-y-auto relative font-sans text-gray-800 pb-24 shadow-2xl no-scrollbar"> -->
-		<div id="modal-reward" class="absolute inset-0 z-40 flex items-center justify-center px-4 bg-gray-900/60 backdrop-blur-sm hidden">
-            <div id="confetti-container" class="absolute inset-0 overflow-hidden pointer-events-none"></div>
-            <div class="absolute w-full max-w-[12rem] bg-transparent rounded-3xl overflow-hidden animate-pop flex flex-col items-center text-center p-0">
-              <img src="images/searching.gif" class="w-[9rem] h-auto cursor-pointer" id="btn-close-modal" title="Klik gif untuk menutup">
-              <p class="text-white text-xs font-bold mt-2 tracking-wide animate-pulse" style="text-shadow: 1px 1px 4px rgba(0,0,0,0.8);">
-                  Sedang Melacak Mohon Tunggu....
-              </p>
-            </div>
-        </div>
+		<div id="modal-reward" class="fixed inset-0 z-[99999] flex items-center justify-center bg-gray-900/60 backdrop-blur-sm hidden">
+    <div id="confetti-container" class="fixed inset-0 overflow-hidden pointer-events-none"></div>
+    <div class="relative w-full max-w-[12rem] flex flex-col items-center text-center animate-pop">
+      <img src="images/searching.gif" class="w-36 h-auto cursor-pointer select-none" id="btn-close-modal" title="Klik gif untuk menutup" draggable="false">
+      <p class="text-white text-xs font-bold mt-2 tracking-wide animate-pulse" style="text-shadow:1px 1px 4px rgba(0,0,0,.8);">Sedang Melacak Mohon Tunggu....</p>
+    </div>
+</div>
 
         <div class="bg-[#00a6a6] pt-[0.8rem] pb-6 px-5 rounded-b-[2rem] shadow-lg relative z-10">
 
@@ -674,11 +672,11 @@ window.addEventListener('DOMContentLoaded', () => {
     const splash2 = document.getElementById('screen-splash2');
     if (splash2) {
         setTimeout(() => {
-            splash2.style.opacity='0';
-            document.body.style.background='#fff';
-            document.documentElement.style.background='#fff';
-            setTimeout(()=>{ splash2.remove(); },500);
-        },2500);
+            splash2.style.opacity = '0'; // Animasi fade out
+            setTimeout(() => {
+                splash2.remove(); // Hapus total dari DOM
+            }, 500);
+        }, 2500);
     }
 });
 
