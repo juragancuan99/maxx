@@ -2,74 +2,137 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <title>Lacak Pesanan</title>
+    <title>Transaksi &amp; Detail Pesanan</title>
 
 </head>
 <body class="bg-gray-100 flex justify-center items-center min-h-screen">
 
-    <div class="w-full max-w-md h-screen bg-white shadow-xl flex flex-col p-6 overflow-y-auto">
-        <div class="flex items-center gap-3 mb-8">
-            <a href="beranda.html" class="text-gray-600 hover:text-gray-800">
-                <i class="fas fa-arrow-left text-xl"></i>
-            </a>
-            <h1 class="text-xl font-bold text-gray-800">Lacak Pesanan</h1>
-        </div>
-
-        <div class="bg-gray-50 p-4 rounded-xl border border-gray-100 mb-6">
-            <p class="text-xs text-gray-400 uppercase font-bold">No. Referensi</p>
-            <p class="font-mono font-bold text-gray-800">TRX-982410475</p>
-        </div>
-
-        <div class="relative pl-4 border-l-2 border-gray-200 space-y-10 ml-2">
-            <div class="relative">
-                <div class="absolute -left-[29px] w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white text-xs">
-                    <i class="fas fa-check"></i>
+    <div class="w-full max-w-md h-screen bg-white shadow-xl flex flex-col justify-between p-6 overflow-y-auto">
+        
+        <div id="halaman-sukses" class="flex-1 flex flex-col justify-between">
+            <div class="flex-1 flex flex-col items-center justify-center text-center my-auto">
+                <div class="flex flex-col items-center justify-center text-center mb-6">
+                    <div class="relative mb-4">
+                        <div class="absolute inset-0 bg-green-400 rounded-full opacity-20 animate-ping"></div>
+                        <div class="relative w-20 h-20 bg-green-50 rounded-full flex items-center justify-center border border-green-100 shadow-sm">
+                            <i class="fas fa-check text-3xl text-green-500"></i>
+                        </div>
+                    </div>
                 </div>
-                <h4 class="font-bold text-gray-800">Pembayaran Berhasil</h4>
-                <p class="text-xs text-gray-400">17 Jun 2026, 22:31</p>
+                
+                <h1 class="text-2xl font-bold text-gray-800 mb-1">Pembayaran Sukses!</h1>
+                <p class="text-sm text-gray-500 mb-6">Terima kasih, transaksi Anda telah berhasil diproses.</p>
+
+                <div class="w-full bg-gray-50 p-4 rounded-2xl border border-gray-100 mb-6">
+                    <p class="text-xs font-medium text-gray-400 uppercase tracking-wider mb-1">Total Dibayar</p>
+                    <p class="text-3xl font-extrabold text-gray-800">Rp9.000</p>
+                </div>
+
+                <div class="w-full space-y-3.5 border-t border-b border-dashed border-gray-200 py-4 text-sm text-left">
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-400 font-medium">Metode Pembayaran</span>
+                        <div class="flex items-center gap-1.5 font-semibold text-gray-700">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Logo_dana_blue.svg" alt="Dana" class="h-3 w-auto object-contain">
+                            <span>Dana</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-400 font-medium">Waktu Transaksi</span>
+                        <span class="font-semibold text-gray-700">17 Jun 2026, 22:31</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-400 font-medium">No. Referensi</span>
+                        <span class="font-mono font-semibold text-gray-700 uppercase">TRX-982410475</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-400 font-medium">Status</span>
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-green-100 text-green-800">
+                            Berhasil
+                        </span>
+                    </div>
+                </div>
             </div>
 
-            <div class="relative">
-    <div class="absolute -left-[29px] w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center text-white text-xs">
-        <i class="fas fa-box-open"></i>
-    </div>
-    <h4 class="font-bold text-[#FF5722]">
-        Pesanan Sedang Diproses
-        <span class="inline-flex gap-[2px]">
-            <span class="w-1 h-1 bg-[#FF5722] rounded-full animate-bounce" style="animation-delay: 0s;"></span>
-            <span class="w-1 h-1 bg-[#FF5722] rounded-full animate-bounce" style="animation-delay: 0.2s;"></span>
-            <span class="w-1 h-1 bg-[#FF5722] rounded-full animate-bounce" style="animation-delay: 0.4s;"></span>
-        </span>
-    </h4>
-    <p class="text-xs text-gray-500 mt-1">Tim kami sedang menyiapkan hadiah Anda.</p>
-</div>
-
-            <div class="relative">
-                <div class="absolute -left-[29px] w-6 h-6 bg-gray-200 rounded-full flex items-center justify-center text-gray-400 text-xs">
-                    <i class="fas fa-truck"></i>
-                </div>
-                <h4 class="font-bold text-gray-400">Dalam Pengiriman</h4>
-                <p class="text-xs text-gray-400">Menunggu antrean pengiriman</p>
+            <div class="w-full space-y-3 mt-auto">
+                <button onclick="window.location.href='pembayaran-flashsale-lacak.html'" class="w-full bg-[#FF5722] text-white font-bold py-3.5 rounded-xl transition-all transform active:scale-95 shadow-lg shadow-orange-500/10 text-center block">
+                    Lihat Pesanan
+                </button>
+                 <button onclick="window.location.href='index.html'" class="w-full border-2 border-gray-200 text-gray-600 font-bold py-3.5 rounded-xl transition-all transform active:scale-95 hover:bg-gray-50 text-center block">
+                    Kembali ke Beranda
+                </button>
             </div>
         </div>
 
-        <div class="mt-10 bg-blue-50 p-4 rounded-xl text-blue-800 text-xs">
-            <i class="fas fa-info-circle mr-2"></i> Hadiah akan dikirimkan maksimal 7 hari kerja setelah status berubah menjadi "Dalam Pengiriman".
+
+        <div id="halaman-detail" class="flex-1 flex flex-col justify-between hidden">
+            <div class="flex-1 flex flex-col text-left my-4">
+                <div class="flex items-center gap-3 mb-6">
+                    <button onclick="tampilkanSukses()" class="text-gray-600 hover:text-gray-800 p-1">
+                        <i class="fas fa-arrow-left text-xl"></i>
+                    </button>
+                    <h1 class="text-xl font-bold text-gray-800">Detail Pesanan</h1>
+                </div>
+
+                <div class="w-full bg-blue-50 border border-blue-100 p-4 rounded-xl flex items-start gap-3 mb-6">
+                    <i class="fas fa-info-circle text-blue-500 mt-0.5 text-lg"></i>
+                    <div>
+                        <h4 class="font-semibold text-blue-900 text-sm">Pesanan Diproses</h4>
+                        <p class="text-xs text-blue-700 mt-0.5">Pembelian Flash Sale berhasil! Terima kasih atas partisipasi Anda. Hadiah Anda akan segera diproses oleh tim kami.</p>
+                    </div>
+                </div>
+
+                <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-3">Item Yang Dibeli</h3>
+                <div class="w-full border border-gray-100 rounded-2xl p-4 bg-gray-50/50 flex items-center gap-4 mb-6">
+                    <div class="w-28 h-28 bg-emerald-50 rounded-md border border-emerald-100 flex items-center justify-center relative flex-shrink-0 overflow-hidden">
+                        <img src="images/flashsale1.jpg" class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110" alt="Honda Brio">
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-bold text-gray-800 text-base">Pembelian Flash Sale - Mobil Brio</h4>
+                        <p class="text-xs text-gray-400 mt-0.5">Qyt : 1</p>
+                        <p class="text-sm font-extrabold text-[#FF5722] mt-1">Rp9.000</p>
+                    </div>
+                </div>
+
+                <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-3">Rincian Pembayaran</h3>
+                <div class="w-full space-y-3.5 bg-white border border-gray-100 rounded-2xl p-4 text-sm">
+                    <div class="flex justify-between">
+                        <span class="text-gray-500">Harga</span>
+                        <span class="font-medium text-gray-800">Rp9.000</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-gray-500">Biaya Layanan</span>
+                        <span class="font-medium text-gray-800">Rp0</span>
+                    </div>
+                    <hr class="border-gray-100">
+                    <div class="flex justify-between items-center pt-1">
+                        <span class="font-bold text-gray-800">Total Pembayaran</span>
+                        <span class="text-lg font-black text-[#FF5722]">Rp9.000</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full space-y-3 mt-auto pt-4">
+                <button onclick="window.location.href='cekmisi-misibronze.html'" class="w-full bg-cyan-600 text-white font-bold py-3.5 rounded-xl transition-all transform active:scale-95 text-center block">
+                    Cek Misi Lainya
+                </button>
+                <button onclick="window.location.href='beranda.html'" class="w-full border-2 border-gray-200 text-gray-600 font-bold py-3.5 rounded-xl transition-all transform active:scale-95 hover:bg-gray-50 text-center block">
+                    Beranda
+                </button>
+            </div>
         </div>
 
-        <div class="mt-auto pt-6">
-            <button onclick="window.location.href='index.html'" class="w-full bg-[#FF5722] text-white font-bold py-3.5 rounded-xl shadow-lg shadow-orange-500/10">
-                Kembali ke Beranda
-            </button>
-        </div>
     </div>
 
-<!-- Floating CS Button -->
-    <a href="#" class="fixed top-[35rem] right-0 -translate-y-1/2 z-50 flex items-center gap-2 bg-white pl-4 pr-3 py-3 rounded-l-full shadow-lg border border-gray-200 border-r-0 transition-all hover:scale-105 active:scale-95">
-        <div class="bg-green-500 text-white w-8 h-8 rounded-full flex items-center justify-center">
-            <i class="fas fa-headset"></i>
-        </div>
-        <span class="text-sm font-bold text-gray-700 pr-2">Hubungi CS</span>
-    </a>
+    <script>
+        function tampilkanDetailPesanan() {
+            document.getElementById('halaman-sukses').classList.add('hidden');
+            document.getElementById('halaman-detail').classList.remove('hidden');
+        }
+
+        function tampilkanSukses() {
+            document.getElementById('halaman-detail').classList.add('hidden');
+            document.getElementById('halaman-sukses').classList.remove('hidden');
+        }
+    </script>
 
 </body></html>
