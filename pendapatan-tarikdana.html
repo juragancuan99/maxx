@@ -115,33 +115,192 @@
         </main>
     </div>
 	
-	<!-- P O P U P   B A N K -->
-	<div id="bankPopup" class="hidden">
-        <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-[2px] z-40 transition-opacity duration-300"></div>
-        <div class="fixed bottom-0 left-0 right-0 bg-white rounded-t-[2.5rem] z-50 h-[50%] flex flex-col shadow-[0_-10px_60px_-15px_rgba(0,0,0,0.3)] animate-slide-up">
-            <div class="w-full flex justify-center pt-5 pb-2"><div class="w-12 h-1.5 bg-gray-200 rounded-full"></div></div>
-            <h2 class="text-[1rem] font-bold text-gray-900 text-center pb-4">Pilih Akun Bank</h2>
-            <div class="flex-1 overflow-y-auto px-[0.5rem] pb-24 space-y-4">
-                <label class="group block cursor-pointer">
-                    <input type="radio" name="bank_select" value="Bank Central Asia ( BCA )" class="peer sr-only">
-                    <div class="p-5 rounded-2xl flex items-center justify-between peer-checked:bg-indigo-50/50 peer-checked:border-2 peer-checked:border-[#4F46E5]">
-                        <span class="font-semibold text-gray-700">Bank Central Asia ( BCA )</span>
-                    </div>
-                </label>
-                <label class="group block cursor-pointer">
-                    <input type="radio" name="bank_select" value="Bank Negara Indonesia ( BNI )" class="peer sr-only">
-                    <div class="p-5 rounded-2xl flex items-center justify-between peer-checked:bg-indigo-50/50 peer-checked:border-2 peer-checked:border-[#4F46E5]">
-                        <span class="font-semibold text-gray-700">Bank Negara Indonesia ( BNI )</span>
-                    </div>
-                </label>
-            </div>
-            <div class="absolute bottom-0 left-0 right-0 p-[1rem] bg-white border-t">
-                <button type="button" onclick="confirmBank()" class="w-full bg-[#00a6a6] text-white font-bold py-4 rounded-2xl">Konfirmasi</button>
-            </div>
-        </div>
+<!-- P O P U P   B A N K -->
+<div id="bankPopup" class="hidden">
+
+    <!-- Overlay -->
+    <div class="fixed inset-0 bg-black/50 backdrop-blur-[2px] z-40"
+         onclick="toggleBankPopup(false)">
     </div>
-	
-	<!-- FINIS  P O P U P   B A N K -->
+
+    <!-- Popup -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white rounded-t-[2.5rem] z-50 h-[65vh] flex flex-col shadow-[0_-10px_60px_-15px_rgba(0,0,0,0.3)] animate-slide-up">
+
+        <!-- Drag -->
+        <div class="w-full flex justify-center pt-5 pb-2 flex-shrink-0">
+            <div class="w-12 h-1.5 bg-gray-200 rounded-full"></div>
+        </div>
+
+        <!-- Header -->
+        <div class="pb-4 flex justify-center flex-shrink-0">
+            <h2 class="text-[1rem] font-bold text-gray-900">
+                Pilih Akun Bank
+            </h2>
+        </div>
+
+        <!-- List -->
+        <div class="flex-1 overflow-y-auto px-3 pb-24 space-y-3">
+
+            <!-- BCA -->
+            <label class="block cursor-pointer group">
+                <input
+                    type="radio"
+                    name="bank_select"
+                    value="Bank Central Asia ( BCA )"
+                    class="peer sr-only">
+
+                <div class="flex items-center justify-between p-4 rounded-2xl border border-gray-200 transition-all
+                    peer-checked:border-[#00A5A6]
+                    peer-checked:bg-cyan-50">
+
+                    <div class="flex items-center gap-3">
+
+                        <img
+                            src="https://www.bca.co.id/-/media/Feature/Card/List-Card/Tentang-BCA/Brand-Assets/Logo-BCA/Logo-BCA_Biru.png"
+                            class="w-10 h-10 object-contain">
+
+                        <span class="font-semibold text-gray-800">
+                            Bank Central Asia ( BCA )
+                        </span>
+
+                    </div>
+
+                    <div class="w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center
+                        peer-checked:bg-[#00A5A6]
+                        peer-checked:border-[#00A5A6]">
+
+                        <i class="fa-solid fa-check text-white text-xs opacity-0 peer-checked:opacity-100"></i>
+
+                    </div>
+
+                </div>
+            </label>
+
+            <!-- BNI -->
+            <label class="block cursor-pointer group">
+                <input
+                    type="radio"
+                    name="bank_select"
+                    value="Bank Negara Indonesia ( BNI )"
+                    class="peer sr-only">
+
+                <div class="flex items-center justify-between p-4 rounded-2xl border border-gray-200 transition-all
+                    peer-checked:border-[#00A5A6]
+                    peer-checked:bg-cyan-50">
+
+                    <div class="flex items-center gap-3">
+
+                        <img
+                            src="https://images.seeklogo.com/logo-png/35/1/bank-bni-logo-png_seeklogo-355606.png"
+                            class="w-10 h-10 object-contain">
+
+                        <span class="font-semibold text-gray-800">
+                            Bank Negara Indonesia ( BNI )
+                        </span>
+
+                    </div>
+
+                    <div class="w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center
+                        peer-checked:bg-[#00A5A6]
+                        peer-checked:border-[#00A5A6]">
+
+                        <i class="fa-solid fa-check text-white text-xs opacity-0 peer-checked:opacity-100"></i>
+
+                    </div>
+
+                </div>
+            </label>
+
+            <!-- BRI -->
+            <label class="block cursor-pointer group">
+                <input
+                    type="radio"
+                    name="bank_select"
+                    value="Bank Rakyat Indonesia ( BRI )"
+                    class="peer sr-only">
+
+                <div class="flex items-center justify-between p-4 rounded-2xl border border-gray-200 transition-all
+                    peer-checked:border-[#00A5A6]
+                    peer-checked:bg-cyan-50">
+
+                    <div class="flex items-center gap-3">
+
+                        <img
+                            src="https://i.pinimg.com/1200x/aa/0e/67/aa0e67d2e759af6d677088e9160784d1.jpg"
+                            class="w-10 h-10 object-contain">
+
+                        <span class="font-semibold text-gray-800">
+                            Bank Rakyat Indonesia ( BRI )
+                        </span>
+
+                    </div>
+
+                    <div class="w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center
+                        peer-checked:bg-[#00A5A6]
+                        peer-checked:border-[#00A5A6]">
+
+                        <i class="fa-solid fa-check text-white text-xs opacity-0 peer-checked:opacity-100"></i>
+
+                    </div>
+
+                </div>
+            </label>
+
+            <!-- Mandiri -->
+            <label class="block cursor-pointer group">
+                <input
+                    type="radio"
+                    name="bank_select"
+                    value="Bank Mandiri"
+                    class="peer sr-only">
+
+                <div class="flex items-center justify-between p-4 rounded-2xl border border-gray-200 transition-all
+                    peer-checked:border-[#00A5A6]
+                    peer-checked:bg-cyan-50">
+
+                    <div class="flex items-center gap-3">
+
+                        <img
+                            src="https://e7.pngegg.com/pngimages/524/701/png-clipart-bank-mandiri-business-bank-negara-indonesia-bank-indonesia-bank-text-logo-thumbnail.png"
+                            class="w-10 h-10 object-contain">
+
+                        <span class="font-semibold text-gray-800">
+                            Bank Mandiri
+                        </span>
+
+                    </div>
+
+                    <div class="w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center
+                        peer-checked:bg-[#00A5A6]
+                        peer-checked:border-[#00A5A6]">
+
+                        <i class="fa-solid fa-check text-white text-xs opacity-0 peer-checked:opacity-100"></i>
+
+                    </div>
+
+                </div>
+            </label>
+
+        </div>
+
+     
+        <div class="absolute bottom-0 left-0 right-0 p-4 bg-white border-t">
+
+            <button
+                type="button"
+                onclick="confirmBank()"
+                class="w-full bg-[#00A5A6] text-white font-bold py-4 rounded-2xl active:scale-95 transition">
+
+                Konfirmasi
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- END POPUP -->
 
     <div id="pageInfoEwallet" class="page w-full h-full bg-gray-50 overflow-y-auto">
         <header class="sticky top-0 bg-white px-4 py-4 flex items-center shadow-sm">
@@ -200,15 +359,25 @@
             }
         }
 
-        function confirmBank() {
-            const selected = document.querySelector('input[name="bank_select"]:checked');
-            if(!selected){alert('Silakan pilih salah satu bank terlebih dahulu.');return;}
-            const btnText=document.getElementById('bankDisplayText');
-            btnText.textContent=selected.value;
-            btnText.classList.remove('text-gray-400');
-            btnText.classList.add('text-gray-900','font-semibold');
-            toggleBankPopup(false);
-        }
+       function confirmBank() {
+
+    const selected = document.querySelector('input[name="bank_select"]:checked');
+
+    if (!selected) {
+        alert("Silakan pilih salah satu bank.");
+        return;
+    }
+
+    const bankText = document.getElementById("bankDisplayText");
+
+    bankText.textContent = selected.value;
+    bankText.classList.remove("text-gray-400");
+    bankText.classList.add("text-gray-900", "font-semibold");
+
+    toggleBankPopup(false);
+}
+		
+		
     </script>
 	
 	<script>
