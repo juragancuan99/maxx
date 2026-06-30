@@ -16,7 +16,9 @@
 
     <div id="pageMain" class="page w-full h-full bg-gray-50 overflow-y-auto relative active">
         <header class="sticky top-0 z-20 bg-white px-4 py-4 flex items-center justify-between shadow-sm">
-            <button class="w-10 h-10 flex items-center justify-center hover:bg-gray-100 rounded-full text-slate-600"><i class="fa-solid fa-arrow-left"></i></button>
+            <button onclick="history.back();" class="w-10 h-10 flex items-center justify-center hover:bg-gray-100 rounded-full text-slate-600 transition">
+    <i class="fa-solid fa-arrow-left"></i>
+</button>
             <h1 class="text-lg font-bold">Penarikan Dana</h1>
             <div class="w-10"></div>
         </header>
@@ -524,5 +526,6 @@ document.querySelectorAll('input[name="ewallet_select"]').forEach(radio => {
 
 
 </script>
+
 
 </body></html>
