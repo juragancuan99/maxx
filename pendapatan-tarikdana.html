@@ -53,7 +53,7 @@
                 <div class="flex justify-between text-sm"><span class="text-gray-500">Biaya Adm</span><span class="font-medium">Rp. 6.500</span></div>
                 <div class="flex justify-between text-base font-bold text-slate-800">
                     <span>Total Penarikan</span>
-                    <span id="totalDisplay">Rp. 656.500</span>
+                    <span id="totalDisplay">Rp. 7.150</span>
                 </div>
             </div>
             <button class="w-full bg-[#00A5A6] text-white font-bold py-4 rounded-xl">Tarik Dana</button>
@@ -71,13 +71,19 @@
                     <i class="fa-solid fa-plus text-xl"></i>
                 </button>
                 <span class="text-xl font-mono font-bold text-gray-800">Tambahkan Kartu Bank</span>
-            </div>
+            <div class="w-full h-px bg-gray-200 my-3"></div><div class="flex items-center justify-center space-x-2 text-sm text-gray-600">
+                <i class="fa-solid fa-building-columns"></i>
+                <span>Pilihan Bank : <span class="font-semibold">BCA, BNI, BRI, MANDIRI</span></span>
+            </div></div>
             <div class="w-full bg-gray-100 rounded-2xl p-4 border border-gray-100 mb-10 flex flex-col items-center shadow-sm">
                 <button onclick="showPage('pageInfoEwallet')" class="w-14 h-14 bg-[#00a6a6] rounded-full flex items-center justify-center text-white shadow-lg shadow-blue-500/40 mb-3">
                     <i class="fa-solid fa-plus text-xl"></i>
                 </button>
                 <span class="text-xl font-mono font-bold text-gray-800">Tambahkan E-wallet</span>
-            </div>
+            <div class="w-full h-px bg-gray-200 my-3"></div><div class="flex items-center justify-center space-x-2 text-sm text-gray-600">
+                
+                <i class="fa-solid fa-wallet"></i>
+            <span><span class="font-semibold">DANA, OVO, SHOPEEPAY, GOPAY</span></span></div></div>
         </main>
     </div>
 
@@ -99,7 +105,7 @@
                 <label class="block text-[1rem] font-semibold text-gray-700 tracking-wider ml-1 mb-[-0.5rem]">Nama Bank</label>
                  <button type="button" id="btnBankTrigger" onclick="toggleBankPopup(true)" class="w-full bg-gray-50 border border-gray-200 py-4 px-4 MT-4 rounded-xl transition-all focus:ring-2 focus:ring-[#00A5A6]/20 focus:border-[#00A5A6] flex items-center justify-between">
 
-    <span id="bankDisplayText" class="text-gray-900 font-semibold flex-1 text-left whitespace-nowrap overflow-hidden text-ellipsis">Bank Mandiri</span>
+    <span id="bankDisplayText" class="text-gray-900 font-semibold flex-1 text-left whitespace-nowrap overflow-hidden text-ellipsis">Bank Rakyat Indonesia ( BRI )</span>
 
     <i class="fa-solid fa-arrow-right text-sm text-gray-500 ml-3 flex-shrink-0"></i>
 </button>
@@ -158,9 +164,7 @@
 
                     </div>
 
-                    <div class="radio-circle w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center
-                        peer-checked:bg-[#00A5A6]
-                        peer-checked:border-[#00A5A6]">
+                    <div class="radio-circle w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center peer-checked:bg-[#00A5A6] peer-checked:border-[#00A5A6]">
 
                         <i class="fa-solid fa-check text-white text-xs opacity-0 peer-checked:opacity-100"></i>
 
@@ -187,9 +191,7 @@
 
                     </div>
 
-                   <div class="radio-circle w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center
-                        peer-checked:bg-[#00A5A6]
-                        peer-checked:border-[#00A5A6]">
+                   <div class="radio-circle w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center peer-checked:bg-[#00A5A6] peer-checked:border-[#00A5A6]">
 
                         <i class="fa-solid fa-check text-white text-xs opacity-0 peer-checked:opacity-100"></i>
 
@@ -216,9 +218,7 @@
 
                     </div>
 
-                   <div class="radio-circle w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center
-                        peer-checked:bg-[#00A5A6]
-                        peer-checked:border-[#00A5A6]">
+                   <div class="radio-circle w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center peer-checked:bg-[#00A5A6] peer-checked:border-[#00A5A6] bg-[#00A5A6] border-[#00A5A6]">
 
                         <i class="fa-solid fa-check text-white text-xs opacity-0 peer-checked:opacity-100"></i>
 
@@ -245,9 +245,7 @@
 
                     </div>
 
-                    <div class="radio-circle w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center
-                        peer-checked:bg-[#00A5A6]
-                        peer-checked:border-[#00A5A6]">
+                    <div class="radio-circle w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center peer-checked:bg-[#00A5A6] peer-checked:border-[#00A5A6]">
 
                         <i class="fa-solid fa-check text-white text-xs opacity-0 peer-checked:opacity-100"></i>
 
@@ -461,10 +459,7 @@
 
     <!-- Button -->
     <div class="p-4 border-t bg-white">
-        <button
-            type="button"
-            onclick="confirmEwallet()"
-            class="w-full bg-[#00a6a6] text-white font-bold py-4 rounded-2xl active:scale-95 transition">
+        <button type="button" onclick="confirmEwallet()" class="w-full bg-[#00a6a6] text-white font-bold py-4 rounded-2xl active:scale-95 transition">
             Konfirmasi
         </button>
     </div>
@@ -472,7 +467,7 @@
 
 </div>
 </div>
-</div>
+
 
 <script>
 function toggleEwalletPopup(s){document.getElementById('ewalletPopup').classList.toggle('hidden',!s);}
@@ -527,10 +522,5 @@ document.querySelectorAll('input[name="ewallet_select"]').forEach(radio => {
 
 
 </script>
-
-
-
-
-
 
 </body></html>
