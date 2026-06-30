@@ -24,11 +24,11 @@
     <div class="w-full h-full max-w-[430px] mx-auto bg-gray-100 overflow-y-auto relative font-sans text-gray-800 pb-24 shadow-2xl animate-zoom-entrance opacity-0 no-scrollbar">
         
         <header class="sticky top-0 z-50 bg-white border-b border-gray-200 h-14 px-4 grid grid-cols-3 items-center">
-            <button onClick="history.back()" class="justify-self-start flex items-center justify-center w-9 h-9 rounded-full bg-orange-600 text-white shadow-md hover:bg-red-600 transition">
+            <button onclick="history.back()" class="justify-self-start flex items-center justify-center w-9 h-9 rounded-full bg-orange-600 text-white shadow-md hover:bg-red-600 transition">
                 <i class="fa-solid fa-arrow-left"></i>
             </button>
             <img src="images/flashsale_aa.png" alt="Flash Sale" class="h-7 w-auto object-contain justify-self-center">
-            <a href="#" onClick="openModal(); return false;" class="justify-self-end flex items-center justify-center w-12 h-12 rounded-full border-2 border-gray-300 shadow-md bg-white no-underline hover:border-gray-400 transition-all">
+            <a href="#" onclick="openModal(); return false;" class="justify-self-end flex items-center justify-center w-12 h-12 rounded-full border-2 border-gray-300 shadow-md bg-white no-underline hover:border-gray-400 transition-all">
                 <div class="flex items-center justify-center w-9 h-9 rounded-full border border-gray-200">
                     <span class="text-gray-600 text-[10px] font-bold leading-[10px] text-center">info<br>sale</span>
                 </div>
@@ -65,7 +65,7 @@
                 </div>
 
             <div class="bg-white p-4 mb-2 shadow-sm rounded-xl">
-                <div id="content-container" class="text-sm text-gray-600 leading-relaxed space-y-2 transition-all duration-300 max-h-32 overflow-hidden">
+                <div id="content-container" class="text-sm text-gray-600 leading-relaxed space-y-2 transition-all duration-300 max-h-[1000px]">
                         <div class="bg-transparent p-[0rem] text-[1rem] rounded-xl flex items-start gap-[0.3rem]">
                             <div class="flex-1">
                                 <div class="flex justify-between items-center">
@@ -125,6 +125,7 @@
                                     <span class="font-bold text-gray-500">Target Omset Nasional:</span>
                                 </div>
                                 Perkelipatan <strong class="font-bold">100.000 MAXIPOIN</strong>
+Setelah tercapai 500K pertama
                             </div>
                         </div>
                         <br>
@@ -145,7 +146,7 @@
                         </div>
                     </div>
                 <button id="read-more-btn" class="w-full text-center text-[#FF5722] text-sm font-medium mt-3 flex items-center justify-center gap-1">
-                    <span>Read More</span> <i class="fa-solid fa-chevron-down"></i>
+                    <span>Read Less</span> <i class="fa-solid fa-chevron-up"></i>
                 </button>
             </div>
         </div>
@@ -160,10 +161,10 @@
 
     <div id="info-modal" class="fixed inset-0 z-[60] items-center justify-center px-4 bg-[#0000005c] backdrop-blur-[2.3px] hidden">
         <div class="relative w-full max-w-sm bg-[#000000b0] rounded-3xl p-6 text-center border border-[#ffd8916b]">
-            <button onClick="closeModal()" class="absolute top-4 right-4 text-white"><i class="fa-solid fa-xmark"></i></button>
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-white"><i class="fa-solid fa-xmark"></i></button>
             <h2 class="text-2xl font-extrabold text-white mb-4">Flash Sale</h2>
             <p class="text-gray-100 text-sm mb-6">Flash Sale akan dibuka saat omset nasional tercapai. Dapatkan slot Anda segera!</p>
-            <button onClick="closeModal()" class="w-full bg-[#b7993e] text-white font-bold py-3 rounded-xl">OK</button>
+            <button onclick="closeModal()" class="w-full bg-[#b7993e] text-white font-bold py-3 rounded-xl">OK</button>
         </div>
     </div>
 
@@ -190,6 +191,7 @@
         function openModal() { document.getElementById('info-modal').classList.replace('hidden', 'flex'); }
         function closeModal() { document.getElementById('info-modal').classList.replace('flex', 'hidden'); }
     </script>
+
 
 
 </body></html>
