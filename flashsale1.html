@@ -1,10 +1,9 @@
-<html lang="id">
-<head>
+<html lang="id"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; margin: 0; padding: 0; }
         ::-webkit-scrollbar { display: none; } 
@@ -18,6 +17,7 @@
     <script>
         tailwind.config = { theme: { extend: { colors: { primary: '#D4FF00', } } } }
     </script>
+
 </head>
 <body class="h-screen w-screen overflow-hidden bg-gray-900 flex justify-center items-center">
 
@@ -39,7 +39,7 @@
             <img src="images/flashsale1.jpg" alt="Product Image" class="w-full h-full object-cover">
         </div>
 
-        <div class="p-4">
+        <div class="p-[-0.1rem] mt-[-0rem]">
             <div class="text-center bg-[#333333] p-[0.5rem] mb-[0.5rem] shadow-lg shadow-yellow-200 relative overflow-hidden">
                 <div class="text-[1rem] font-medium text-gray-100 flex items-center justify-center gap-2 mx-auto">
                     <i class="text-orange-500 fas fa-bolt"></i>Stok disimpan untuk Flash Sale
@@ -47,24 +47,103 @@
             </div>
 
             <div class="bg-white p-4 mb-2 shadow-sm rounded-b-2xl">
-                <h1 class="text-lg font-semibold leading-snug text-gray-900 mb-2">Mobil Honda Brio E M/T</h1>
-                <div class="flex items-end gap-2 mb-1">
-                    <span class="text-[1.7rem] font-bold text-[#FF5722]">Rp9.000</span>
-                    <span class="text-[1rem] text-gray-400 line-through mb-1">Rp 180.000.000</span>
+                    <h1 class="text-lg font-semibold leading-snug text-gray-900 mb-2">Mobil Honda Brio E M/T</h1>
+                    <div class="flex items-end gap-2 mb-1">
+                        <span class="text-[1.7rem] font-bold text-[#FF5722]">Rp9.000</span>
+                        <span class="text-[1rem] text-gray-400 line-through mb-1">Rp 180.000.000</span>
+                        <span class="text-xs px-1.5 py-0.5 rounded mb-1">
+                            <i class="fa-solid fa-fire text-[#fb660c] text-[1rem]"></i>
+                        </span>
+                    </div>
+
+                    <div class="flex items-center gap-2 mb-2">
+                        <div class="flex text-[#fb660c] text-xs">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <span class="font-bold text-xs text-gray-400">Flash Sale dimulai pada saat omset nasional 500k selanjutnya perkelipatan 100k MaxiPoin</span>
+                    </div>
                 </div>
-            </div>
 
             <div class="bg-white p-4 mb-2 shadow-sm rounded-xl">
-                <div id="content-container" class="text-sm text-gray-600 leading-relaxed space-y-4 transition-all duration-300 max-h-32 overflow-hidden">
-                    <span class="font-bold text-gray-800">SYARAT MISI REWARD BRONZE</span>
-                    <p>Upgrade akun anda (Agen atau Partner).</p>
-                    <p>Aktif bertransaksi di E-Commerce & Merchant Partner.</p>
-                    <ul class="list-disc pl-4 space-y-1">
-                        <li>10% dari transaksi E-Commerce</li>
-                        <li>90% dari transaksi Merchant Partner</li>
-                    </ul>
-                    <p>Sistem kuota misi hanya untuk 100 slot.</p>
-                </div>
+                <div id="content-container" class="text-sm text-gray-600 leading-relaxed space-y-2 transition-all duration-300 max-h-32 overflow-hidden">
+                        <div class="bg-transparent p-[0rem] text-[1rem] rounded-xl flex items-start gap-[0.3rem]">
+                            <div class="flex-1">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-bold text-gray-600 mb-3">SYARAT MISI REWARD BRONZE</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-transparent p-[0rem] rounded-xl shadow-sm flex items-start gap-[0.3rem]">
+                            <div class="mt-[0rem] text-cyan-700">
+                                <i class="fas fa-diamond text-[0.6rem]"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-bold text-gray-500">Upgrade akun anda ( Agen atau Partner )</span>
+                                </div>
+                                <p class="text-sm text-gray-600 leading-snug">Naik level, naik peluang!<br><br></p>
+                            </div>
+                        </div>
+
+                        <div class="bg-transparent p-[0rem] rounded-xl shadow-sm flex items-start gap-[0.3rem]">
+                            <div class="mt-[0rem] text-cyan-700">
+                                <i class="fas fa-diamond text-[0.6rem]"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-bold text-gray-500">Aktif bertransaksi di E-Commerce &amp; Merchant Partner</span>
+                                </div>
+                                <p class="text-sm text-gray-600 leading-snug">Semakin aktif, semakin besar bobot persentase penilaian misi reward Anda.<br><br></p>
+                            </div>
+                        </div>
+
+                        <div class="bg-transparent p-[0rem] rounded-xl shadow-sm flex items-start gap-[0.3rem]">
+                            <div class="mt-[0rem] text-cyan-700">
+                                <i class="fas fa-diamond text-[0.6rem]"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-bold text-gray-500">Skema Penilaian Kuota Misi Reward :</span>
+                                </div>
+                                <ul class="list-disc pl-4 space-y-1">
+                                    <li>10% dari transaksi E-Commerce</li>
+                                    <li>90% dari transaksi Merchant Partner</li>
+                                    <li>Undang teman dan arahkan upgrade ke agent atau partner mendapatkan presentase 90%</li>
+                                    <li>Repeat order minimal 10 item dan belanja misi di merchant partner dari team anda akan meningkatkan presentase 90% </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <br> 
+
+                        <div class="bg-transparent p-[0rem] rounded-xl shadow-sm flex items-start gap-[0.3rem]">
+                            <div class="mt-[0rem] text-cyan-700">
+                                <i class="fas fa-diamond text-[0.6rem]"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-bold text-gray-500">Target Omset Nasional:</span>
+                                </div>
+                                Perkelipatan <strong class="font-bold">100.000 MAXIPOIN</strong>
+                            </div>
+                        </div>
+                        <br>
+
+                        <div class="bg-transparent p-[0rem] rounded-xl shadow-sm flex items-start gap-[0.3rem]">
+                            <div class="mt-[0rem] text-orange-500">
+                                <i class="fa-solid fa-fire text-[1.3rem]"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-bold text-gray-600">SISTEM KUOTA</span>
+                                </div>
+                                <ul class="list-disc pl-4 space-y-1">
+                                    <li>Kuota Misi dibuka hanya untuk 100 Slot.</li>
+                                    <li>Semakin tinggi transaksi anda dan team maka semakin besar peluang masuk kuota misi flash sale</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 <button id="read-more-btn" class="w-full text-center text-[#FF5722] text-sm font-medium mt-3 flex items-center justify-center gap-1">
                     <span>Read More</span> <i class="fa-solid fa-chevron-down"></i>
                 </button>
@@ -75,7 +154,7 @@
     <div class="fixed bottom-0 left-0 right-0 mx-auto w-full max-w-[430px] bg-white border-t border-gray-200 px-4 py-3 z-50 flex items-center gap-3 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
         <div class="flex-1 flex gap-3">
             <a href="URL_TUJUAN_DI_SINI" class="flex-1 border border-[#FF5722] text-[#FF5722] font-bold text-sm py-2.5 rounded-lg text-center flex items-center justify-center">Cek Misi Lain</a>
-            <button disabled class="flex-1 bg-gray-200 text-gray-400 font-bold text-sm py-2.5 rounded-lg cursor-not-allowed"><i class="fas fa-lock"></i> Beli Sekarang</button>
+            <button disabled="" class="flex-1 bg-gray-200 text-gray-400 font-bold text-sm py-2.5 rounded-lg cursor-not-allowed"><i class="fas fa-lock"></i> Beli Sekarang</button>
         </div>
     </div>
 
@@ -111,5 +190,6 @@
         function openModal() { document.getElementById('info-modal').classList.replace('hidden', 'flex'); }
         function closeModal() { document.getElementById('info-modal').classList.replace('flex', 'hidden'); }
     </script>
-</body>
-</html>
+
+
+</body></html>
