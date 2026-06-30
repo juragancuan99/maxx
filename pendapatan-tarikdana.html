@@ -9,14 +9,77 @@
         .page { display: none; }
         .page.active { display: block; }
         body { font-family: 'Inter', sans-serif; }
-        /* Tambahkan untuk animasi popup */
-        .popup-overlay { display: none; }
-        .popup-overlay.active { display: flex; }
-        @keyframes slide-up { from { transform: translateY(100%); } to { transform: translateY(0); } }
-        .animate-slide-up { animation: slide-up 0.3s ease-out; }
     </style>
+
 </head>
 <body class="h-screen w-screen overflow-hidden bg-white">
+
+    <div id="pageMain" class="page w-full h-full bg-gray-50 overflow-y-auto relative active">
+        <header class="sticky top-0 z-20 bg-white px-4 py-4 flex items-center justify-between shadow-sm">
+            <button class="w-10 h-10 flex items-center justify-center hover:bg-gray-100 rounded-full text-slate-600"><i class="fa-solid fa-arrow-left"></i></button>
+            <h1 class="text-lg font-bold">Penarikan Dana</h1>
+            <div class="w-10"></div>
+        </header>
+
+        <main class="p-5 pb-48">
+            <div class="bg-gradient-to-br from-[#00A5A6] to-[#00a6a6] rounded-2xl p-6 text-white shadow-lg mb-6 relative">
+                <p class="text-indigo-100 text-sm font-medium">Saldo yang bisa dicairkan</p>
+                <h2 class="text-3xl font-bold">Rp. 650.000</h2>
+            </div>
+
+            <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 mb-6">
+                <label class="block text-xs font-bold text-gray-400 uppercase mb-2">Jumlah Penarikan</label>
+                <div class="relative flex items-center border-b-2 border-indigo-100 py-2">
+                    <span class="text-3xl font-bold mr-2">Rp</span>
+                    <input type="number" id="amountInput" value="650000" class="w-full text-3xl font-bold outline-none bg-transparent">
+                    <button type="button" id="maxBtn" class="text-[#015a5a] font-bold text-sm bg-indigo-50 px-3 py-1.5 rounded-full">Max</button>
+                </div>
+            </div>
+
+            <div class="mb-6">
+                <div class="flex justify-between items-end mb-3">
+                    <label class="text-sm font-bold text-slate-800">Akun Penarikan</label>
+                    <button onclick="showPage('pageMethod')" class="text-xs font-bold text-[#032c2c]">Add New</button>
+                </div>
+                <div class="p-4 bg-white border-2 border-[#00A5A6] rounded-xl flex items-center shadow-sm">
+                    <i class="fa-solid fa-building-columns text-[#00A5A6] mr-4"></i>
+                    <div><p class="font-bold text-sm">DANA</p><p class="text-xs text-gray-500">6288***8949</p></div>
+                </div>
+            </div>
+        </main>
+
+        <div class="fixed bottom-0 w-full bg-white border-t p-5 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] z-30">
+            <div class="space-y-2 mb-5">
+                <div class="flex justify-between text-sm"><span class="text-gray-500">Biaya Adm</span><span class="font-medium">Rp. 6.500</span></div>
+                <div class="flex justify-between text-base font-bold text-slate-800">
+                    <span>Total Penarikan</span>
+                    <span id="totalDisplay">Rp. 656.500</span>
+                </div>
+            </div>
+            <button class="w-full bg-[#00A5A6] text-white font-bold py-4 rounded-xl">Tarik Dana</button>
+        </div>
+    </div>
+
+    <div id="pageMethod" class="page w-full h-full bg-gray-50 overflow-y-auto">
+        <header class="sticky top-0 bg-white px-4 py-4 flex items-center shadow-sm">
+            <button onclick="showPage('pageMain')" class="mr-4"><i class="fa-solid fa-arrow-left"></i></button>
+            <h1 class="text-lg font-bold">Metode Penarikan</h1>
+        </header>
+        <main class="p-5">
+            <div class="w-full bg-gray-100 rounded-2xl p-4 border border-gray-100 mb-10 flex flex-col items-center shadow-sm">
+                <button onclick="showPage('pageInfoBank')" class="w-14 h-14 bg-[#00a6a6] rounded-full flex items-center justify-center text-white shadow-lg shadow-blue-500/40 mb-3">
+                    <i class="fa-solid fa-plus text-xl"></i>
+                </button>
+                <span class="text-xl font-mono font-bold text-gray-800">Tambahkan Kartu Bank</span>
+            </div>
+            <div class="w-full bg-gray-100 rounded-2xl p-4 border border-gray-100 mb-10 flex flex-col items-center shadow-sm">
+                <button onclick="showPage('pageInfoEwallet')" class="w-14 h-14 bg-[#00a6a6] rounded-full flex items-center justify-center text-white shadow-lg shadow-blue-500/40 mb-3">
+                    <i class="fa-solid fa-plus text-xl"></i>
+                </button>
+                <span class="text-xl font-mono font-bold text-gray-800">Tambahkan E-wallet</span>
+            </div>
+        </main>
+    </div>
 
     <div id="pageInfoBank" class="page w-full h-full bg-gray-50 overflow-y-auto">
         <header class="sticky top-0 bg-white px-4 py-4 flex items-center shadow-sm">
@@ -26,49 +89,146 @@
         <main class="p-5">
             <form class="space-y-5">
                 <div>
-                    <label class="block text-[1rem] font-semibold text-gray-700 tracking-wider ml-1 mb-1.5">Nama</label>
+                <label class="block text-[1rem] font-semibold text-gray-700 tracking-wider ml-1 mb-1.5">Nama</label>
+                <div class="relative group">
+                    
                     <input type="text" placeholder="Nama Anda" class="pl-[1rem] w-full bg-gray-50 border border-gray-200 text-gray-900 text-[1rem] rounded-xl focus:ring-2 focus:ring-[#00A5A6]/20 focus:border-[#00A5A6] block p-3.5 outline-none transition-all placeholder-gray-400">
                 </div>
+            </div>
                 <div>
-                    <label class="block text-[1rem] font-semibold text-gray-700 tracking-wider ml-1 mb-[-0.5rem]">Nama Bank</label>
-                    <button type="button" onclick="openBankPopup()" class="w-full bg-gray-50 border border-gray-200 text-gray-400 font-regular py-4 rounded-xl transition-all focus:ring-2 focus:ring-[#00A5A6]/20 focus:border-[#00A5A6] transform active:scale-[0.98] mt-4 flex items-center justify-between px-4">
-                        <span id="bankNameDisplay">Pilihan Bank</span>
-                        <i class="text-gray-400 fa-solid fa-arrow-right text-sm"></i>
-                    </button>
+                <label class="block text-[1rem] font-semibold text-gray-700 tracking-wider ml-1 mb-[-0.5rem]">Nama Bank</label>
+                 <button type="button" id="btnBankTrigger" onclick="toggleBankPopup(true)" class="w-full bg-gray-50 border border-gray-200 text-gray-400 font-regular py-4 rounded-xl transition-all focus:ring-2 focus:ring-[#00A5A6]/20 focus:border-[#00A5A6] transform active:scale-[0.98] mt-4 flex items-center justify-center gap-[11rem]">
+                <span>Pilihan Bank</span>
+                <i class="text-gray-105 fa-solid fa-arrow-right text-sm"></i>
+            </button>
+            </div>
+                <div>
+                <label class="block text-[1rem] font-semibold text-gray-700 tracking-wider ml-1 mb-1.5">Nomor Rekening Bank</label>
+                <div class="relative group">
+                    
+                    <input type="text" placeholder="Nomor Rekening" class="pl-[1rem] w-full bg-gray-50 border border-gray-200 text-gray-900 text-[1rem] rounded-xl focus:ring-2 focus:ring-[#00A5A6]/20 focus:border-[#00A5A6] block p-3.5 outline-none transition-all placeholder-gray-400">
                 </div>
-                </form>
+            </div>
+            </form>
+        </main>
+    </div>
+	
+	<!-- P O P U P   B A N K -->
+	<div id="bankPopup" class="hidden">
+        <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-[2px] z-40 transition-opacity duration-300"></div>
+        <div class="fixed bottom-0 left-0 right-0 bg-white rounded-t-[2.5rem] z-50 h-[50%] flex flex-col shadow-[0_-10px_60px_-15px_rgba(0,0,0,0.3)] animate-slide-up">
+            <div class="w-full flex justify-center pt-5 pb-2"><div class="w-12 h-1.5 bg-gray-200 rounded-full"></div></div>
+            <h2 class="text-[1rem] font-bold text-gray-900 text-center pb-4">Pilih Akun Bank</h2>
+            <div class="flex-1 overflow-y-auto px-[0.5rem] pb-24 space-y-4">
+                <label class="group block cursor-pointer">
+                    <input type="radio" name="bank_select" value="Bank Central Asia ( BCA )" class="peer sr-only">
+                    <div class="p-5 rounded-2xl flex items-center justify-between peer-checked:bg-indigo-50/50 peer-checked:border-2 peer-checked:border-[#4F46E5]">
+                        <span class="font-semibold text-gray-700">Bank Central Asia ( BCA )</span>
+                    </div>
+                </label>
+                <label class="group block cursor-pointer">
+                    <input type="radio" name="bank_select" value="Bank Negara Indonesia ( BNI )" class="peer sr-only">
+                    <div class="p-5 rounded-2xl flex items-center justify-between peer-checked:bg-indigo-50/50 peer-checked:border-2 peer-checked:border-[#4F46E5]">
+                        <span class="font-semibold text-gray-700">Bank Negara Indonesia ( BNI )</span>
+                    </div>
+                </label>
+            </div>
+            <div class="absolute bottom-0 left-0 right-0 p-[1rem] bg-white border-t">
+                <button type="button" onclick="confirmBank()" class="w-full bg-[#00a6a6] text-white font-bold py-4 rounded-2xl">Konfirmasi</button>
+            </div>
+        </div>
+    </div>
+	
+	<!-- FINIS  P O P U P   B A N K -->
+
+    <div id="pageInfoEwallet" class="page w-full h-full bg-gray-50 overflow-y-auto">
+        <header class="sticky top-0 bg-white px-4 py-4 flex items-center shadow-sm">
+            <button onclick="showPage('pageMethod')" class="mr-4"><i class="fa-solid fa-arrow-left"></i></button>
+            <h1 class="text-lg font-bold">Informasi E-Wallet</h1>
+        </header>
+        <main class="p-5">
+            <form class="space-y-5">
+                <div>
+                <label class="block text-[1rem] font-semibold text-gray-700 tracking-wider ml-1 mb-1.5">Nama</label>
+                <div class="relative group">
+                    
+                    <input type="text" placeholder="Nama Anda" class="pl-[1rem] w-full bg-gray-50 border border-gray-200 text-gray-900 text-[1rem] rounded-xl focus:ring-2 focus:ring-[#00A5A6]/20 focus:border-[#00A5A6] block p-3.5 outline-none transition-all placeholder-gray-400">
+                </div>
+            </div>
+                <div>
+                <label class="block text-[1rem] font-semibold text-gray-700 tracking-wider ml-1 mb-[-0.5rem]">Nama E-Wallet</label>
+                <button class="w-full bg-gray-50 border border-gray-200 text-gray-400 font-regular py-4 rounded-xl transition-all focus:ring-2 focus:ring-[#00A5A6]/20 focus:border-[#00A5A6] transform active:scale-[0.98] mt-4 flex items-center justify-center gap-[9rem]">
+                <span>Pilihan E-Wallet</span>
+                <i class="text-gray-105 fa-solid fa-arrow-right text-sm"></i>
+            </button>
+            </div>
+                <div>
+                <label class="block text-[1rem] font-semibold text-gray-700 tracking-wider ml-1 mb-1.5">Nomor HP</label>
+                <div class="flex w-full border border-gray-300 rounded-xl overflow-hidden transition-all duration-200 focus-within:ring-2 focus-within:ring-[#00a6a6] focus-within:border-transparent shadow-sm">
+                        
+                        <!-- Country Code Dropdown Trigger -->
+                        <div class="bg-gray-50 px-[0.5rem] py-4 border-r border-gray-200 flex items-center space-x-2 cursor-pointer hover:bg-gray-100 transition-colors">
+                            <!-- Kuwait Flag SVG -->
+                            
+                            <span class="text-gray-900 font-semibold text-base">+62</span>
+                            
+                        </div>
+
+                        <!-- Phone Input -->
+                        <input type="tel" placeholder="Masukan Nomor Whatsapp" class="w-full px-4 py-4 text-[1rem] text-gray-900 placeholder-gray-400 outline-none bg-white" inputmode="numeric">
+                    </div>
+            </div>
+            </form>
         </main>
     </div>
 
-    <div id="bankPopup" class="popup-overlay fixed inset-0 z-50 items-end bg-gray-900/50">
-        <div class="w-full bg-white rounded-t-[2rem] p-6 animate-slide-up">
-            <h2 class="text-lg font-bold mb-4">Pilih Bank</h2>
-            <div class="space-y-3 mb-6">
-                <label class="flex items-center p-4 border rounded-xl cursor-pointer">
-                    <input type="radio" name="bank" value="BCA" class="mr-3"> BCA
-                </label>
-                <label class="flex items-center p-4 border rounded-xl cursor-pointer">
-                    <input type="radio" name="bank" value="BNI" class="mr-3"> BNI
-                </label>
-            </div>
-            <button onclick="confirmBank()" class="w-full bg-[#00a6a6] text-white py-4 rounded-xl font-bold">Konfirmasi</button>
-        </div>
-    </div>
-
-    <script>
-        function openBankPopup() { document.getElementById('bankPopup').classList.add('active'); }
+	
+	<script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+        }
         
-        function confirmBank() {
-            const selected = document.querySelector('input[name="bank"]:checked');
-            if (selected) {
-                document.getElementById('bankNameDisplay').innerText = selected.value;
-                document.getElementById('bankNameDisplay').classList.remove('text-gray-400');
-                document.getElementById('bankNameDisplay').classList.add('text-gray-900');
-                document.getElementById('bankPopup').classList.remove('active');
+        function toggleBankPopup(show) {
+            const popup = document.getElementById('bankPopup');
+            if (show) {
+                popup.classList.remove('hidden');
             } else {
-                alert("Pilih bank terlebih dahulu!");
+                popup.classList.add('hidden');
             }
         }
-        // ... fungsi showPage dan lainnya tetap sama
+
+        function confirmBank() {
+            const selected = document.querySelector('input[name="bank_select"]:checked');
+            if (selected) {
+                const btnText = document.getElementById('bankDisplayText');
+                btnText.innerText = selected.value;
+                btnText.style.color = '#111827'; // Ubah warna jadi hitam (gray-900)
+                btnText.style.fontWeight = 'bold';
+                toggleBankPopup(false);
+            } else {
+                alert("Silakan pilih salah satu bank terlebih dahulu.");
+            }
+        }
     </script>
+	
+	<script>
+		//fungsi hitung angka
+		function updateTotal() {
+            const adminFee = 6500;
+            const val = parseFloat(document.getElementById('amountInput').value) || 0;
+            const total = val + adminFee;
+            document.getElementById('totalDisplay').innerText = "Rp. " + total.toLocaleString('id-ID');
+        }
+        document.getElementById('amountInput').addEventListener('input', updateTotal);
+        document.getElementById('maxBtn').addEventListener('click', () => {
+            document.getElementById('amountInput').value = 650000;
+            updateTotal();
+        });
+    </script>
+	
+</body>
+</html>
+
+
 </body></html>
