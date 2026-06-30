@@ -46,7 +46,7 @@
       width: 100%; 
       height: 100%; 
       overflow: hidden; 
-      background-color: #ffffff; 
+      background-color: #ffffff;
       transition: background-color 0.3s ease; 
     }
     .app-container {
@@ -66,7 +66,7 @@
       pointer-events: none;
       transition: opacity 0.5s ease;
       overflow-y: auto;
-      background: #ffffff;
+      background: #00a6a6;
       z-index: 100;
     }
     .screen.active {
@@ -92,7 +92,7 @@
 
 </head>
 
-<body class="h-screen w-screen overflow-hidden bg-white flex items-center justify-center" style="background:#fff;margin:0;padding:0;">
+<body class="h-screen w-screen overflow-hidden bg-gray-900 flex items-center justify-center" style="background-color: rgb(255, 255, 255);">
 
 <div id="screen-splash2" class="fixed inset-0 z-[9999] flex flex-col justify-between items-center bg-[#00a6a6] transition-opacity duration-500">
     <div class="absolute top-0 left-0 w-72 h-72 bg-white/20 rounded-full mix-blend-overlay filter blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
@@ -674,11 +674,11 @@ window.addEventListener('DOMContentLoaded', () => {
     const splash2 = document.getElementById('screen-splash2');
     if (splash2) {
         setTimeout(() => {
-            splash2.style.opacity = '0'; // Animasi fade out
-            setTimeout(() => {
-                splash2.remove(); // Hapus total dari DOM
-            }, 500);
-        }, 2500);
+            splash2.style.opacity='0';
+            document.body.style.background='#fff';
+            document.documentElement.style.background='#fff';
+            setTimeout(()=>{ splash2.remove(); },500);
+        },2500);
     }
 });
 
