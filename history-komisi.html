@@ -1,0 +1,534 @@
+<html lang="id"><head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Pendapatan - Maxi Affiliate</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; margin: 0; padding: 0; }
+        ::-webkit-scrollbar { display: none; } 
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .btn-active { background-color: #FF5722 !important; color: white !important; shadow-sm: shadow-orange-200; }
+    </style>
+    <script>
+        tailwind.config = { theme: { extend: { colors: { primary: '#D4FF00' } } } }
+    </script>
+
+</head>
+<body class="h-screen w-screen overflow-hidden bg-white">
+    <div class="w-full h-full bg-white overflow-y-auto relative flex flex-col font-sans">
+        <div class="px-6 mt-[0.5rem] sticky top-0 z-20 bg-white shadow-sm">
+            <div class="flex items-center justify-between px-4 py-4">
+                <button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition"><i class="fa-solid fa-arrow-left text-gray-800 text-lg"></i></button>
+                <h1 class="text-lg font-bold text-gray-900">History Komisi</h1>
+                <button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition"><i class="fa-solid fa-filter text-gray-800"></i></button>
+            </div>
+        <div class="flex px-4 border-b border-gray-100">
+                <button class="flex-1 pb-3 text-sm font-semibold text-gray-900 border-b-2 border-[#FFD700]">All</button>
+                <button class="flex-1 pb-3 text-sm font-medium text-gray-500 hover:text-gray-700">Pending</button>
+                <button class="flex-1 pb-3 text-sm font-medium text-gray-500 hover:text-gray-700">Selesai</button>
+            </div></div>
+
+        <div class="px-6 mt-6">
+            <div class="px-4 pb-3 flex gap-3 overflow-x-auto no-scrollbar">
+                <button class="tab-btn flex-shrink-0 px-4 py-1.5 bg-[#FF5722] text-sm font-medium rounded-full bg-white border border-gray-200 text-gray-600" onclick="showTab('all', this)">All Komisi</button>
+                <button class="tab-btn flex-shrink-0 px-4 py-1.5 text-sm font-medium rounded-full bg-white border border-gray-200 text-gray-600" onclick="showTab('referral', this)">Komisi Refferal</button>
+                <button class="tab-btn flex-shrink-0 px-4 py-1.5 text-sm font-medium rounded-full bg-white border border-gray-200 text-gray-600" onclick="showTab('generasi', this)">Komisi Generasi</button>
+                <button class="tab-btn flex-shrink-0 px-4 py-1.5 text-sm font-medium rounded-full bg-white border border-gray-200 text-gray-600" onclick="showTab('cashback', this)">Cashback Team</button>
+                <button class="tab-btn flex-shrink-0 px-4 py-1.5 text-sm font-medium rounded-full btn-active" onclick="showTab('pribadi', this)">Cashback Pribadi</button>
+            </div>
+        </div>
+
+        <div id="all" class="tab-content px-6 mt-4">
+            <div class="flex justify-between items-end mb-4">
+                <h3 class="text-slate-900 font-bold text-lg">Semua Komisi</h3>
+                <div class="flex gap-2">
+                    <div class="relative">
+                        <button id="btnYear-all" onclick="toggleMenu('menuYear-all')" class="text-xs font-semibold text-[#6C5CE7] flex items-center bg-[#6C5CE7]/10 px-2 py-1 rounded-md">Tahun<i class="fa-solid fa-chevron-down ml-1 text-[10px]"></i></button>
+                        <div id="menuYear-all" class="absolute right-0 mt-2 bg-white border rounded shadow z-30 hidden">
+                            <button onclick="selectOption('menuYear-all', 'btnYear-all', '2026')" class="block px-4 py-2 text-xs">2026</button>
+                            <button onclick="selectOption('menuYear-all', 'btnYear-all', '2025')" class="block px-4 py-2 text-xs">2025</button>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <button id="btnFilter-all" onclick="toggleMenu('menuFilter-all')" class="text-xs font-semibold text-[#6C5CE7] flex items-center bg-[#6C5CE7]/10 px-2 py-1 rounded-md">Bulan<i class="fa-solid fa-chevron-down ml-1 text-[10px]"></i></button>
+                        <div id="menuFilter-all" class="absolute right-0 mt-2 bg-white border rounded shadow z-30 hidden">
+                            <button onclick="selectOption('menuFilter-all', 'btnFilter-all', '0-10')" class="block px-4 py-2 text-xs">0-10</button>
+                            <button onclick="selectOption('menuFilter-all', 'btnFilter-all', '10-20')" class="block px-4 py-2 text-xs">10-20</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="space-y-4">
+        <!-- Item 1 -->
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+              <i class="fa-solid fa-arrow-down"></i>
+            </div>
+            <div>
+              <p class="text-sm font-bold text-slate-900">Komisi Refferal</p>
+              <p class="text-xs text-slate-500">10 Mar 2023 ? 14:30</p>
+            </div>
+          </div>
+          
+
+<div class="text-right">
+                    <p class="text-green-600 font-bold text-sm">+Rp 6.725.000</p>
+                    <span class="inline-block px-2 py-0.5 bg-green-50 text-green-600 text-[10px] rounded-full mt-1">Selesai</span>
+                </div>
+        </div>
+
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center text-gray-600">
+              <i class="fa-solid fa-arrow-down"></i>
+            </div>
+            <div>
+              <p class="text-sm font-bold text-slate-900">Komisi Refferal</p>
+              <p class="text-xs text-slate-500">10 Mar 2023 ? 14:30</p>
+            </div>
+          </div>
+          
+
+
+
+
+<div class="text-right">
+                    <p class="text-gray-600 font-bold text-sm">Rp 15.750.000</p>
+                    <span class="inline-block px-2 py-0.5 bg-gray-100 text-gray-500 text-[10px] rounded-full mt-1">Pending</span>
+                </div>
+
+                
+        </div><!-- Item 1 --><!-- Item 2 -->
+         
+
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+              <i class="fa-solid fa-arrow-down"></i>
+            </div>
+            <div>
+              <p class="text-sm font-bold text-slate-900">Komisi Generasi 1</p>
+              <p class="text-xs text-slate-500">08 Mar 2023 ? 10:00</p>
+            </div>
+          </div>
+          <div class="text-right">
+                    <p class="text-green-600 font-bold text-sm">+Rp 6.725.000</p>
+                    <span class="inline-block px-2 py-0.5 bg-green-50 text-green-600 text-[10px] rounded-full mt-1">Selesai</span>
+                </div>
+        </div> <!-- Item 3 -->
+        
+      <div class="flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+              <i class="fa-solid fa-arrow-down"></i>
+            </div>
+            <div>
+              <p class="text-sm font-bold text-slate-900">Komisi Generasi 2</p>
+              <p class="text-xs text-slate-500">08 Mar 2023 ? 10:00</p>
+            </div>
+          </div>
+          <div class="text-right">
+                    <p class="text-green-600 font-bold text-sm">+Rp 800.000</p>
+                    <span class="inline-block px-2 py-0.5 bg-green-50 text-green-600 text-[10px] rounded-full mt-1">Selesai</span>
+                </div>
+        </div><div class="flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+              <i class="fa-solid fa-arrow-down"></i>
+            </div>
+            <div>
+              <p class="text-sm font-bold text-slate-900">Komisi Generasi 3</p>
+              <p class="text-xs text-slate-500">08 Mar 2023 ? 10:00</p>
+            </div>
+          </div>
+          <div class="text-right">
+                    <p class="text-green-600 font-bold text-sm">+Rp 300.000</p>
+                    <span class="inline-block px-2 py-0.5 bg-green-50 text-green-600 text-[10px] rounded-full mt-1">Selesai</span>
+                </div>
+        </div><div class="flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+              <i class="fa-solid fa-arrow-down"></i>
+            </div>
+            <div>
+              <p class="text-sm font-bold text-slate-900">Cashback Team</p>
+              <p class="text-xs text-slate-500">08 Mar 2023 ? 10:00</p>
+            </div>
+          </div>
+          <div class="text-right">
+                    <p class="text-green-600 font-bold text-sm">+Rp 725.000</p>
+                    <span class="inline-block px-2 py-0.5 bg-green-50 text-green-600 text-[10px] rounded-full mt-1">Selesai</span>
+                </div>
+        </div><div class="flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+              <i class="fa-solid fa-arrow-down"></i>
+            </div>
+            <div>
+              <p class="text-sm font-bold text-slate-900">Cashback Pribadi</p>
+              <p class="text-xs text-slate-500">08 Mar 2023 ? 10:00</p>
+            </div>
+          </div>
+          <div class="text-right">
+                    <p class="text-green-600 font-bold text-sm">+Rp 3.750</p>
+                    <span class="inline-block px-2 py-0.5 bg-green-50 text-green-600 text-[10px] rounded-full mt-1">Selesai</span>
+                </div>
+        </div></div>
+        </div>
+
+        <div id="referral" class="tab-content px-6 mt-4">
+            <div class="flex justify-between items-end mb-4">
+                <h3 class="text-slate-900 font-bold text-lg">Komisi Refferal</h3>
+                <div class="flex gap-2">
+                    <div class="relative">
+                        <button id="btnYear-ref2" onclick="toggleMenu('menuYear-ref2')" class="text-xs font-semibold text-[#6C5CE7] flex items-center bg-[#6C5CE7]/10 px-2 py-1 rounded-md">Tahun<i class="fa-solid fa-chevron-down ml-1 text-[10px]"></i></button>
+                        <div id="menuYear-ref2" class="absolute right-0 mt-2 bg-white border rounded shadow z-30 hidden">
+                            <button onclick="selectOption('menuYear-ref2', 'btnYear-ref2', '2026')" class="block px-4 py-2 text-xs">2026</button>
+                            <button onclick="selectOption('menuYear-ref2', 'btnYear-ref2', '2025')" class="block px-4 py-2 text-xs">2025</button>
+                        </div>
+                    </div>
+                   <div class="relative">
+                        <button id="btnFilter-all2" onclick="toggleMenu('menuFilter-all2')" class="text-xs font-semibold text-[#6C5CE7] flex items-center bg-[#6C5CE7]/10 px-2 py-1 rounded-md">Bulan<i class="fa-solid fa-chevron-down ml-1 text-[10px]"></i></button>
+                        <div id="menuFilter-all2" class="absolute right-0 mt-2 bg-white border rounded shadow z-30 hidden">
+                            <button onclick="selectOption('menuFilter-all2', 'btnFilter-all2', '0-10')" class="block px-4 py-2 text-xs">0-10</button>
+                            <button onclick="selectOption('menuFilter-all2', 'btnFilter-all2', '10-20')" class="block px-4 py-2 text-xs">10-20</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <div class="relative">
+                    <img src="images/icono-human.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-800 text-sm">Komisi Refferal</h3><p class="text-xs text-gray-500">Dari Siti Aminah</p>
+                    
+                    <div class="flex items-center mt-1 gap-2">
+                        <p class="text-xs text-slate-500">10 Mar 2023 ? 14:30</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-right">
+                <p class="text-[10px] text-gray-400 uppercase">Level 1</p>
+                <p class="font-bold text-green-500 text-sm">Rp 5.000.000</p>
+                <p class="text-[10px] text-green-500 font-medium"><i class="fas fa-arrow-up"></i> Done</p>
+            </div>
+        </div>
+        <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <div class="relative">
+                    <img src="images/icono-human.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-800 text-sm">Komisi Refferal</h3><p class="text-xs text-gray-500">Dari Siti Aminah</p>
+                    
+                    <div class="flex items-center mt-1 gap-2">
+                        <p class="text-xs text-slate-500">10 Mar 2023 ? 14:30</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-right">
+                <p class="text-[10px] text-gray-400 uppercase">Level 1</p>
+                <p class="font-bold text-green-500 text-sm">Rp 5.000.000</p>
+                <p class="text-[10px] text-green-500 font-medium"><i class="fas fa-arrow-up"></i> Done</p>
+            </div>
+        </div><div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <div class="relative">
+                    <img src="images/icono-human.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-800 text-sm">Komisi Refferal</h3><p class="text-xs text-gray-500">Dari Siti Aminah</p>
+                    
+                    <div class="flex items-center mt-1 gap-2">
+                        <p class="text-xs text-slate-500">10 Mar 2023 ? 14:30</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-right">
+                <p class="text-[10px] text-gray-400 uppercase">Level 1</p>
+                <p class="font-bold text-green-500 text-sm">Rp 5.000.000</p>
+                <p class="text-[10px] text-green-500 font-medium"><i class="fas fa-arrow-up"></i> Done</p>
+            </div>
+        </div></div>
+
+<div id="generasi" class="tab-content px-6 mt-4">
+            <div class="flex justify-between items-end mb-4">
+                <h3 class="text-slate-900 font-bold text-lg">Komisi Generasi</h3>
+                <div class="flex gap-2">
+                    <div class="relative">
+                        <button id="btnYear-all3" onclick="toggleMenu('menuYear-all3')" class="text-xs font-semibold text-[#6C5CE7] flex items-center bg-[#6C5CE7]/10 px-2 py-1 rounded-md">Tahun<i class="fa-solid fa-chevron-down ml-1 text-[10px]"></i></button>
+                        <div id="menuYear-all3" class="absolute right-0 mt-2 bg-white border rounded shadow z-30 hidden">
+                            <button onclick="selectOption('menuYear-all3', 'btnYear-all3', '2026')" class="block px-4 py-2 text-xs">2026</button>
+                            <button onclick="selectOption('menuYear-all3', 'btnYear-all3', '2025')" class="block px-4 py-2 text-xs">2025</button>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <button id="btnFilter-all3" onclick="toggleMenu('menuFilter-all3')" class="text-xs font-semibold text-[#6C5CE7] flex items-center bg-[#6C5CE7]/10 px-2 py-1 rounded-md">Bulan<i class="fa-solid fa-chevron-down ml-1 text-[10px]"></i></button>
+                        <div id="menuFilter-all3" class="absolute right-0 mt-2 bg-white border rounded shadow z-30 hidden">
+                            <button onclick="selectOption('menuFilter-all3', 'btnFilter-all3', '0-10')" class="block px-4 py-2 text-xs">0-10</button>
+                            <button onclick="selectOption('menuFilter-all3', 'btnFilter-all3', '10-20')" class="block px-4 py-2 text-xs">10-20</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <div class="relative">
+                    <img src="images/icono-human.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-800 text-sm">Komisi Generasi</h3><p class="text-xs text-gray-500">Dari Siti Aminah</p>
+                    
+                    <div class="flex items-center mt-1 gap-2">
+                        <p class="text-xs text-slate-500">10 Mar 2023 ? 14:30</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-right">
+                <p class="text-[10px] text-gray-400 uppercase">Gen 1</p>
+                <p class="font-bold text-green-500 text-sm">Rp 5.000.000</p>
+                <p class="text-[10px] text-green-500 font-medium"><i class="fas fa-arrow-up"></i> Done</p>
+            </div>
+        </div>
+        <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <div class="relative">
+                    <img src="images/icono-human.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-800 text-sm">Komisi Generasi</h3><p class="text-xs text-gray-500">Dari Siti Aminah</p>
+                    
+                    <div class="flex items-center mt-1 gap-2">
+                        <p class="text-xs text-slate-500">10 Mar 2023 ? 14:30</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-right">
+                <p class="text-[10px] text-gray-400 uppercase">Gen 2</p>
+                <p class="font-bold text-green-500 text-sm">Rp 5.000.000</p>
+                <p class="text-[10px] text-green-500 font-medium"><i class="fas fa-arrow-up"></i> Done</p>
+            </div>
+        </div><div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <div class="relative">
+                    <img src="images/icono-human.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-800 text-sm">Komisi Generasi</h3><p class="text-xs text-gray-500">Dari Siti Aminah</p>
+                    
+                    <div class="flex items-center mt-1 gap-2">
+                        <p class="text-xs text-slate-500">10 Mar 2023 ? 14:30</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-right">
+                <p class="text-[10px] text-gray-400 uppercase">Gen 3</p>
+                <p class="font-bold text-green-500 text-sm">Rp 5.000.000</p>
+                <p class="text-[10px] text-green-500 font-medium"><i class="fas fa-arrow-up"></i> Done</p>
+            </div>
+        </div></div>
+
+<div id="cashback" class="tab-content px-6 mt-4">
+            <div class="flex justify-between items-end mb-4">
+                <h3 class="text-slate-900 font-bold text-lg">Cashback Team</h3>
+                <div class="flex gap-2">
+                    <div class="relative">
+                        <button id="btnYear-all4" onclick="toggleMenu('menuYear-all4')" class="text-xs font-semibold text-[#6C5CE7] flex items-center bg-[#6C5CE7]/10 px-2 py-1 rounded-md">Tahun<i class="fa-solid fa-chevron-down ml-1 text-[10px]"></i></button>
+                        <div id="menuYear-all4" class="absolute right-0 mt-2 bg-white border rounded shadow z-30 hidden">
+                            <button onclick="selectOption('menuYear-all4', 'btnYear-all4', '2026')" class="block px-4 py-2 text-xs">2026</button>
+                            <button onclick="selectOption('menuYear-all4', 'btnYear-all4', '2025')" class="block px-4 py-2 text-xs">2025</button>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <button id="btnFilter-all4" onclick="toggleMenu('menuFilter-all4')" class="text-xs font-semibold text-[#6C5CE7] flex items-center bg-[#6C5CE7]/10 px-2 py-1 rounded-md">Bulan<i class="fa-solid fa-chevron-down ml-1 text-[10px]"></i></button>
+                        <div id="menuFilter-all4" class="absolute right-0 mt-2 bg-white border rounded shadow z-30 hidden">
+                            <button onclick="selectOption('menuFilter-all4', 'btnFilter-all4', '0-10')" class="block px-4 py-2 text-xs">0-10</button>
+                            <button onclick="selectOption('menuFilter-all4', 'btnFilter-all4', '10-20')" class="block px-4 py-2 text-xs">10-20</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <div class="relative">
+                    <img src="images/icono-human.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-800 text-sm">Cashback Team</h3><p class="text-xs text-gray-500">Dari Siti Aminah</p>
+                    
+                    <div class="flex items-center mt-1 gap-2">
+                        <p class="text-xs text-slate-500">10 Mar 2023 ? 14:30</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-right">
+                <p class="text-[10px] text-gray-400 uppercase">Gen 1</p>
+                <p class="font-bold text-green-500 text-sm">Rp 5.000.000</p>
+                <p class="text-[10px] text-green-500 font-medium"><i class="fas fa-arrow-up"></i> Done</p>
+            </div>
+        </div>
+        <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <div class="relative">
+                    <img src="images/icono-human.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-800 text-sm">Cashback Team</h3><p class="text-xs text-gray-500">Dari Siti Aminah</p>
+                    
+                    <div class="flex items-center mt-1 gap-2">
+                        <p class="text-xs text-slate-500">10 Mar 2023 ? 14:30</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-right">
+                <p class="text-[10px] text-gray-400 uppercase">Gen 2</p>
+                <p class="font-bold text-green-500 text-sm">Rp 5.000.000</p>
+                <p class="text-[10px] text-green-500 font-medium"><i class="fas fa-arrow-up"></i> Done</p>
+            </div>
+        </div><div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <div class="relative">
+                    <img src="images/icono-human.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-800 text-sm">Cashback Team</h3><p class="text-xs text-gray-500">Dari Siti Aminah</p>
+                    
+                    <div class="flex items-center mt-1 gap-2">
+                        <p class="text-xs text-slate-500">10 Mar 2023 ? 14:30</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-right">
+                <p class="text-[10px] text-gray-400 uppercase">Gen 3</p>
+                <p class="font-bold text-green-500 text-sm">Rp 5.000.000</p>
+                <p class="text-[10px] text-green-500 font-medium"><i class="fas fa-arrow-up"></i> Done</p>
+            </div>
+        </div></div>
+
+<div id="pribadi" class="tab-content px-6 mt-4 active">
+            <div class="flex justify-between items-end mb-4">
+                <h3 class="text-slate-900 font-bold text-lg">Cashback Pribadi</h3>
+                <div class="flex gap-2">
+                     <div class="relative">
+                        <button id="btnYear-all5" onclick="toggleMenu('menuYear-all5')" class="text-xs font-semibold text-[#6C5CE7] flex items-center bg-[#6C5CE7]/10 px-2 py-1 rounded-md">2025<i class="fa-solid fa-chevron-down ml-1 text-[10px]"></i></button>
+                        <div id="menuYear-all5" class="absolute right-0 mt-2 bg-white border rounded shadow z-30 hidden">
+                            <button onclick="selectOption('menuYear-all5', 'btnYear-all5', '2026')" class="block px-4 py-2 text-xs">2026</button>
+                            <button onclick="selectOption('menuYear-all5', 'btnYear-all5', '2025')" class="block px-4 py-2 text-xs">2025</button>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <button id="btnFilter-all5" onclick="toggleMenu('menuFilter-all5')" class="text-xs font-semibold text-[#6C5CE7] flex items-center bg-[#6C5CE7]/10 px-2 py-1 rounded-md">10-20<i class="fa-solid fa-chevron-down ml-1 text-[10px]"></i></button>
+                        <div id="menuFilter-all5" class="absolute right-0 mt-2 bg-white border rounded shadow z-30 hidden">
+                            <button onclick="selectOption('menuFilter-all5', 'btnFilter-all5', '0-10')" class="block px-4 py-2 text-xs">0-10</button>
+                            <button onclick="selectOption('menuFilter-all5', 'btnFilter-all5', '10-20')" class="block px-4 py-2 text-xs">10-20</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <div class="relative">
+                    <img src="images/icon-s.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-800 text-sm">Shopee</h3>
+                    
+                    <div class="flex items-center mt-1 gap-2">
+                        <p class="text-xs text-slate-500">10 Mar 2023 ? 14:30</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-right">
+                
+                <p class="font-bold text-green-500 text-sm">+2.350</p>
+                <p class="text-[10px] text-green-500 font-medium"><i class="fas fa-arrow-up"></i> Done</p>
+            </div>
+        </div><div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <div class="relative">
+                    <img src="images/icon-t.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-800 text-sm">Tiktok</h3>
+                    
+                    <div class="flex items-center mt-1 gap-2">
+                        <p class="text-xs text-slate-500">10 Mar 2023 ? 14:30</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-right">
+                
+                <p class="font-bold text-green-500 text-sm">+1.250</p>
+                <p class="text-[10px] text-green-500 font-medium"><i class="fas fa-arrow-up"></i> Done</p>
+            </div>
+        </div>
+        <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <div class="relative">
+                    <img src="images/icon-l.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-800 text-sm">Lazada</h3>
+                    
+                    <div class="flex items-center mt-1 gap-2">
+                        <p class="text-xs text-slate-500">10 Mar 2023 ? 14:30</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-right">
+                
+                <p class="font-bold text-green-500 text-sm">+950</p>
+                <p class="text-[10px] text-green-500 font-medium"><i class="fas fa-arrow-up"></i> Done</p>
+            </div>
+        </div><div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <div class="relative">
+                    <img src="images/icon-traveloka.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-800 text-sm">Traveloka</h3>
+                    
+                    <div class="flex items-center mt-1 gap-2">
+                        <p class="text-xs text-slate-500">10 Mar 2023 ? 14:30</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-right">
+                
+                <p class="font-bold text-green-500 text-sm">+5.000</p>
+                <p class="text-[10px] text-green-500 font-medium"><i class="fas fa-arrow-up"></i> Done</p>
+            </div>
+        </div></div>
+
+        </div>
+
+    <script>
+        function showTab(id, btn) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => {
+                b.classList.remove('btn-active');
+                b.classList.add('bg-white', 'border', 'border-gray-200', 'text-gray-600');
+            });
+            document.getElementById(id).classList.add('active');
+            btn.classList.add('btn-active');
+            btn.classList.remove('bg-white', 'border', 'border-gray-200', 'text-gray-600');
+        }
+
+        function toggleMenu(id) {
+            document.getElementById(id).classList.toggle('hidden');
+        }
+
+        function selectOption(menuId, btnId, value) {
+            document.getElementById(btnId).innerHTML = value + '<i class="fa-solid fa-chevron-down ml-1 text-[10px]"></i>';
+            toggleMenu(menuId);
+        }
+    </script>
+
+</body></html>
