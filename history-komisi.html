@@ -17,7 +17,6 @@
         tailwind.config = { theme: { extend: { colors: { primary: '#D4FF00' } } } }
     </script>
 
-
 </head>
 <body class="h-screen w-screen overflow-hidden bg-white">
     <div class="w-full h-full bg-white overflow-y-auto relative flex flex-col font-sans">
@@ -422,14 +421,14 @@
                 <h3 class="text-slate-900 font-bold text-lg">Cashback Pribadi</h3>
                 <div class="flex gap-2">
                      <div class="relative">
-                        <button id="btnYear-all5" onclick="toggleMenu('menuYear-all5')" class="text-xs font-semibold text-[#6C5CE7] flex items-center bg-[#6C5CE7]/10 px-2 py-1 rounded-md">2025<i class="fa-solid fa-chevron-down ml-1 text-[10px]"></i></button>
+                        <button id="btnYear-all5" onclick="toggleMenu('menuYear-all5')" class="text-xs font-semibold text-[#6C5CE7] flex items-center bg-[#6C5CE7]/10 px-2 py-1 rounded-md">Tahun<i class="fa-solid fa-chevron-down ml-1 text-[10px]"></i></button>
                         <div id="menuYear-all5" class="absolute right-0 mt-2 bg-white border rounded shadow z-30 hidden">
                             <button onclick="selectOption('menuYear-all5', 'btnYear-all5', '2026')" class="block px-4 py-2 text-xs">2026</button>
                             <button onclick="selectOption('menuYear-all5', 'btnYear-all5', '2025')" class="block px-4 py-2 text-xs">2025</button>
                         </div>
                     </div>
                     <div class="relative">
-                        <button id="btnFilter-all5" onclick="toggleMenu('menuFilter-all5')" class="text-xs font-semibold text-[#6C5CE7] flex items-center bg-[#6C5CE7]/10 px-2 py-1 rounded-md">Februari<i class="fa-solid fa-chevron-down ml-1 text-[10px]"></i></button>
+                        <button id="btnFilter-all5" onclick="toggleMenu('menuFilter-all5')" class="text-xs font-semibold text-[#6C5CE7] flex items-center bg-[#6C5CE7]/10 px-2 py-1 rounded-md">Bulan<i class="fa-solid fa-chevron-down ml-1 text-[10px]"></i></button>
                         <div id="menuFilter-all5" class="absolute right-0 mt-2 bg-white border rounded shadow z-30 hidden">
                             <button onclick="selectOption('menuFilter-all5', 'btnFilter-all5', 'Januari')" class="block px-4 py-2 text-xs">Januari</button>
                             <button onclick="selectOption('menuFilter-all5', 'btnFilter-all5', 'Februari')" class="block px-4 py-2 text-xs">Februari</button>
@@ -535,5 +534,6 @@
             toggleMenu(menuId);
         }
     </script>
+
 
 </body></html>
