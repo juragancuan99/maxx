@@ -1,0 +1,383 @@
+<html lang="id"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pesanan - Ecommerce</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; margin: 0; padding: 0; }
+  ::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  @keyframes zoomIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  .zoom-in { animation: zoomIn 0.2s ease-out forwards; }
+
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400&display=swap');
+
+  .liquid-text {
+    background-image: linear-gradient(to top, #ff0000 100%);
+    background-size: 100% 0%;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: rgba(212, 175, 55, 0.1);
+    animation: fillUp 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    position: relative;
+  }
+  .liquid-text::after {
+    content: 'Rp39.000';
+    position: absolute;
+    left: 0; top: 0; width: 100%; height: 100%;
+    background: linear-gradient(120deg, transparent 0%, transparent 40%, rgba(255,255,255,0.6) 50%, transparent 60%, transparent 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    opacity: 0;
+    animation: shimmer 3s infinite linear;
+    animation-delay: 2.2s;
+  }
+  @keyframes fillUp {
+    0% { background-size: 100% 0%; filter: drop-shadow(0 0 0px rgba(212,175,55,0)); }
+    100% { background-size: 100% 100%; color: transparent; filter: drop-shadow(0 0 15px rgba(212,175,55,0.3)); }
+  }
+  @keyframes shimmer {
+    0% { background-position: 150% 0; opacity: 0; }
+    10% { opacity: 1; }
+    50% { background-position: -150% 0; opacity: 1; }
+    100% { background-position: -150% 0; opacity: 0; }
+  }
+
+  /* Bottom-sheet popup */
+  #popupOverlay {
+    position: fixed; inset: 0; z-index: 40;
+    background: rgba(17,24,39,0.6);
+    backdrop-filter: blur(2px);
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+  #popupOverlay.show { opacity: 1; pointer-events: auto; }
+
+  #popupSheet {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
+    background: #fff; border-radius: 1.6rem 1.6rem 0 0;
+    height: 60%; display: flex; flex-direction: column;
+    box-shadow: 0 -10px 60px -15px rgba(0,0,0,0.3);
+    transform: translateY(100%);
+    transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+  }
+  #popupSheet.show { transform: translateY(0); }
+
+  .brand-tab.is-active-shopee    { background:#FF5722; color:#fff; border-color:transparent; box-shadow:0 4px 10px rgba(255,87,34,.25); }
+  .brand-tab.is-active-tiktok    { background:#000;    color:#fff; border-color:transparent; box-shadow:0 4px 10px rgba(0,0,0,.25); }
+  .brand-tab.is-active-lazada    { background:#001dcd; color:#fff; border-color:transparent; box-shadow:0 4px 10px rgba(0,29,205,.25); }
+  .brand-tab.is-active-traveloka { background:#1494C6; color:#fff; border-color:transparent; box-shadow:0 4px 10px rgba(20,148,198,.25); }
+</style>
+
+</head>
+<body class="h-screen w-screen overflow-hidden bg-white" style="">
+
+<div class="w-full h-full bg-white overflow-y-auto relative font-sans flex flex-col">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-30 bg-white border-b border-gray-100 px-[0rem] py-3 flex items-center justify-between shadow-sm">
+    <button onclick="history.back()" class="w-8 h-8 flex items-center justify-center text-gray-600 hover:bg-gray-50 rounded-full transition-colors">
+      <i class="fas fa-arrow-left text-lg"></i>
+    </button>
+    <h1 class="text-lg font-bold text-gray-900">Pesanan E-Commerce</h1>
+    <button onclick="openPopup('shopee')" class="w-8 h-8 flex items-center justify-center text-gray-600 hover:bg-gray-50 rounded-full transition-colors relative">
+      <i class="fa-regular fa-circle-question text-lg"></i>
+    </button>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="pb-24 space-y-4 flex-1 flex flex-col px-[0.5rem]">
+
+    <div class="bg-gray-50 z-20 pt-6 pb-2 px-[0rem]">
+      <div class="flex bg-white p-1 rounded-xl shadow-sm border border-gray-200">
+        <button data-filter="semua" class="flex-1 py-2 text-sm rounded-lg transition-all bg-[#00a6a6] text-white shadow-md font-semibold">Semua</button>
+        <button data-filter="terlacak" class="flex-1 py-2 text-sm rounded-lg transition-all text-gray-500 hover:bg-gray-50 font-medium">Terlacak</button>
+        <button data-filter="tertunda" class="flex-1 py-2 text-sm rounded-lg transition-all text-gray-500 hover:bg-gray-50 font-medium">Tertunda</button>
+        <button data-filter="dibayar" class="flex-1 py-2 text-sm rounded-lg transition-all text-gray-500 hover:bg-gray-50 font-medium">Dibayar</button>
+        <button data-filter="gagal" class="flex-1 py-2 text-sm rounded-lg transition-all text-gray-500 hover:bg-gray-50 font-medium">Gagal</button>
+      </div>
+    </div>
+
+    <!-- Card: Terlacak -->
+       
+      <main class="flex-1 flex flex-col items-center justify-center px-8 pb-[12rem]">
+        
+        
+        <!-- Illustration Container --><div class="relative w-64 h-64 mb-8">
+            <!-- Decorative Background Blob -->
+            <div class="absolute inset-0 bg-orange-50 rounded-full scale-90 animate-pulse" style="animation-duration: 3s;"></div>
+            
+            <!-- Custom SVG Illustration -->
+            <svg class="relative w-full h-full drop-shadow-sm" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Basket Body -->
+                <path d="M40 80 L55 160 C56 168 62 175 70 175 H130 C138 175 144 168 145 160 L160 80 H40Z" fill="white" stroke="#FF5722" stroke-width="3" stroke-linejoin="round"></path>
+                <!-- Basket Rim -->
+                <path d="M35 80 H165" stroke="#FF5722" stroke-width="3" stroke-linecap="round"></path>
+                <!-- Basket Handle -->
+                <path d="M70 80 V60 C70 43.4315 83.4315 30 100 30 C116.569 30 130 43.4315 130 60 V80" stroke="#FF5722" stroke-width="3" stroke-linecap="round"></path>
+                <!-- Vertical Lines on Basket -->
+                <path d="M75 85 L80 165" stroke="#FFCCBC" stroke-width="2" stroke-linecap="round"></path>
+                <path d="M100 85 L100 165" stroke="#FFCCBC" stroke-width="2" stroke-linecap="round"></path>
+                <path d="M125 85 L120 165" stroke="#FFCCBC" stroke-width="2" stroke-linecap="round"></path>
+                
+                <!-- Floating Elements (Empty State Vibe) -->
+                <circle cx="150" cy="50" r="4" fill="#FFAB91" class="animate-bounce" style="animation-delay: 0.1s"></circle>
+                <circle cx="45" cy="120" r="3" fill="#FFAB91" class="animate-bounce" style="animation-delay: 0.3s"></circle>
+                <circle cx="170" cy="140" r="2" fill="#FFAB91" class="animate-bounce" style="animation-delay: 0.5s"></circle>
+                
+                <!-- Question Mark / Confusion -->
+                <path d="M100 110 C100 110 95 105 95 100 C95 94 105 94 105 100 C105 105 100 110 100 110 V115" stroke="#FF5722" stroke-width="3" stroke-linecap="round"></path>
+                <circle cx="100" cy="122" r="2" fill="#FF5722"></circle>
+            </svg>
+        </div>
+
+        <!-- Text Content -->
+        <div class="mt-[-1rem] text-center space-y-3 max-w-xs mx-auto">
+            <h2 class="text-2xl font-bold text-gray-900">Belum ada pesanan
+</h2>
+            <p class="text-gray-500 text-sm leading-relaxed">Silakan lakukan pesanan anda dan dapatkan benefit lebih banyak.</p>
+        </div>
+
+        <!-- Action Button -->
+        
+
+    </main>
+
+    <!-- Card: Sedang Diproses -->
+    
+
+    <!-- Card: Cashback Dibayar -->
+    
+
+    <!-- Card: Cashback Tertunda -->
+    
+
+    <!-- Card: Cashback Gagal -->
+    
+
+  </main>
+
+  <!-- ===== Popup: overlay + bottom sheet ===== -->
+  <div id="popupOverlay" onclick="closePopup()" class=""></div>
+
+  <div id="popupSheet" role="dialog" aria-modal="true" aria-labelledby="popupTitle" class="">
+    <div class="w-full flex justify-center pt-5 pb-2 flex-shrink-0">
+      <div class="w-12 h-1.5 bg-gray-200 rounded-full"></div>
+    </div>
+
+    <div class="flex-1 overflow-y-auto sticky top-0 z-20 bg-white shadow-sm p-6 space-y-6 pb-[0rem]">
+      <div class="mt-[-1.5rem] mb-8 text-center">
+        <h2 id="popupTitle" class="text-[1.3rem] font-bold text-black mb-2">Penjelasan Cashback</h2>
+      </div>
+
+      <!-- Brand tabs -->
+      <div id="brandTabs" class="flex overflow-x-auto px-5 pb-4 gap-3 no-scrollbar mt-2">
+        <button data-brand="shopee" onclick="setBrand('shopee')" class="brand-tab flex-shrink-0 px-5 py-2 rounded-full bg-white border border-gray-200 text-gray-600 text-sm font-medium whitespace-nowrap transition-colors is-active-shopee">Shopee</button>
+        <button data-brand="tiktok" onclick="setBrand('tiktok')" class="brand-tab flex-shrink-0 px-5 py-2 rounded-full bg-white border border-gray-200 text-gray-600 text-sm font-medium whitespace-nowrap transition-colors">TikTok</button>
+        <button data-brand="lazada" onclick="setBrand('lazada')" class="brand-tab flex-shrink-0 px-5 py-2 rounded-full bg-white border border-gray-200 text-gray-600 text-sm font-medium whitespace-nowrap transition-colors">Lazada</button>
+        <button data-brand="traveloka" onclick="setBrand('traveloka')" class="brand-tab flex-shrink-0 px-5 py-2 rounded-full bg-white border border-gray-200 text-gray-600 text-sm font-medium whitespace-nowrap transition-colors">Traveloka</button>
+      </div>
+
+      <div class="px-[0rem] pb-[6rem]">
+
+        <!-- Step 1 -->
+        <div class="flex gap-4 relative pb-8">
+          <div class="absolute left-[27px] top-8 bottom-0 w-0.5 border-l-2 border-dashed border-gray-300"></div>
+          <div class="relative z-10 flex-shrink-0 w-14 flex flex-col items-center">
+            <div class="w-10 h-10 rounded-full bg-[#00A5A6] flex items-center justify-center shadow-md shadow-blue-200">
+              <i class="fa-solid fa-box-open text-[1.2rem] text-gray-100"></i>
+            </div>
+          </div>
+          <div class="flex-1 pt-1">
+            <h4 id="step1Title" class="text-base font-bold text-gray-900">Pesan Produk</h4>
+            <p id="step1Sub" class="text-sm text-gray-500">*Hari ini</p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="flex gap-4 relative pb-8">
+          <div class="absolute left-[27px] top-8 bottom-0 w-0.5 border-l-2 border-dashed border-gray-300"></div>
+          <div class="relative z-10 flex-shrink-0 w-14 flex flex-col items-center">
+            <div class="w-10 h-10 rounded-full bg-[#00A5A6] flex items-center justify-center shadow-md shadow-blue-200">
+              <i class="fa-solid fa-check-square text-[1.2rem] text-gray-100"></i>
+            </div>
+          </div>
+          <div class="flex-1 pt-1">
+            <h4 class="text-base font-bold text-gray-900">Lacak Pesanan</h4>
+            <p id="step2Sub" class="text-sm text-gray-500">*1 - 2 Hari</p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="flex gap-4 relative pb-8">
+          <div class="relative z-10 flex-shrink-0 w-14 flex flex-col items-center">
+            <div class="w-10 h-10 rounded-full bg-[#00A5A6] flex items-center justify-center shadow-md shadow-blue-200">
+              <i class="fa-solid fa-dollar text-[1.2rem] text-gray-100"></i>
+            </div>
+          </div>
+          <div class="flex-1 pt-1">
+            <h4 class="text-base font-bold text-gray-900">Terima Cashback</h4>
+            <p id="step3Sub" class="text-sm text-gray-500">Pesanan Selesai</p>
+          </div>
+        </div>
+
+        <!-- Explanation box -->
+        <div class="w-full bg-gradient-to-r from-orange-50 to-white border border-orange-100 rounded-2xl p-4 flex items-center shadow-sm mb-6 relative overflow-hidden">
+          <div class="flex-1 z-10">
+            <p class="text-[1.03rem] text-gray-900 font-bold">Lacak Pesanan</p>
+            <p id="lacakDesc" class="text-[0.9rem] font-regular text-black">Setelah melakukan pemesanan, pesanan akan mulai dilacak setelah 1-2 hari, dan informasi cahsback dapat dilihat.</p>
+
+            <p class="mt-[0.5rem] text-[1.03rem] text-gray-900 font-bold">Penyelesaian Pesanan</p>
+            <p id="penyelesaianDesc" class="text-[0.9rem] font-regular text-black">Setiap tanggal 20 bulan berjalan, akan dilakukan settlement untuk pesanan yang dikonfirmasi diterima pada bulan sebelumnya. Setelah settlement, cashback bisa ditarik.</p>
+
+            <div id="contohBlock" style="">
+              <p class="mt-[0.5rem] text-[1.03rem] text-gray-900 font-bold">Contoh :</p>
+              <p id="contohDesc" class="text-[0.9rem] font-regular text-black">Pesanan Anda dikonfirmasi diterima pada bulan November, dan baru akan diselesaikan pada tanggal 20 Desember. Dan seterusnya mengikuti pola tersebut.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-100 p-5 shadow-[0_-4px_10px_rgba(0,0,0,0.05)] z-50">
+          <button onclick="closePopup()" class="w-full bg-[#ffffff00] text-gray-800 font-bold text-lg py-3.5 rounded-xl border border-cyan-600 transition active:scale-[0.98] flex items-center justify-center gap-2">Ok</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- ===== /Popup ===== -->
+
+</div>
+
+<script>
+  const CASHBACK_DATA = {
+    shopee: {
+      step1Title: 'Pesan Produk', step1Sub: '*Hari ini',
+      step2Sub: '*1 - 2 Hari',
+      step3Sub: 'Pesanan Selesai',
+      lacak: 'Setelah melakukan pemesanan, pesanan akan mulai dilacak setelah 1-2 hari, dan informasi cahsback dapat dilihat.',
+      penyelesaian: 'Setiap tanggal 20 bulan berjalan, akan dilakukan settlement untuk pesanan yang dikonfirmasi diterima pada bulan sebelumnya. Setelah settlement, cashback bisa ditarik.',
+      contoh: 'Pesanan Anda dikonfirmasi diterima pada bulan November, dan baru akan diselesaikan pada tanggal 20 Desember. Dan seterusnya mengikuti pola tersebut.'
+    },
+    tiktok: {
+      step1Title: 'Pesan Produk', step1Sub: '*Hari ini',
+      step2Sub: '*24h',
+      step3Sub: 'Pesanan Selesai',
+      lacak: 'Setelah melakukan pemesanan, pesanan akan mulai dilacak setelah 24h, dan informasi cahsback dapat dilihat.',
+      penyelesaian: 'Setelah pesanan selesai, (3-15 hari setelah pemesanan). Cashback bisa ditarik.',
+      contoh: null
+    },
+    lazada: {
+      step1Title: 'Pesan Produk', step1Sub: '*Hari ini',
+      step2Sub: '*1 - 2 Hari',
+      step3Sub: '*Diterima +60 hari',
+      lacak: 'Setelah melakukan pemesanan, pesanan akan mulai dilacak setelah 1-2 hari, dan informasi cahsback dapat dilihat.',
+      penyelesaian: 'Setelah pesanan diterima, cashback diperkirakan dapat dicairkan sekitar 60 hari, sesuai ketentuan dari Lazada.',
+      contoh: null
+    },
+    traveloka: {
+      step1Title: 'Selesaikan Pembayaran', step1Sub: '*Hari ini',
+      step2Sub: '*1 - 2 Hari',
+      step3Sub: '*90 hari setelah checkout / penerbangan selesai / pesanan sudah digunakan',
+      lacak: 'Setelah melakukan pemesanan, pesanan akan dilacak keesokan harinya, dan informasi cahsback pesanan dapat dilihat.',
+      penyelesaian: 'Cashback dapat ditarik dalam 90 hari setelah checkout / penerbangan selesai / pesanan sudah digunakan, ketentuan akhir mengikuti aturan dari Traveloka.',
+      contoh: null
+    }
+  };
+
+  const overlay = document.getElementById('popupOverlay');
+  const sheet = document.getElementById('popupSheet');
+
+  function setBrand(brand) {
+    const d = CASHBACK_DATA[brand];
+    document.getElementById('step1Title').textContent = d.step1Title;
+    document.getElementById('step1Sub').textContent = d.step1Sub;
+    document.getElementById('step2Sub').textContent = d.step2Sub;
+    document.getElementById('step3Sub').textContent = d.step3Sub;
+    document.getElementById('lacakDesc').textContent = d.lacak;
+    document.getElementById('penyelesaianDesc').textContent = d.penyelesaian;
+
+    const contohBlock = document.getElementById('contohBlock');
+    if (d.contoh) {
+      contohBlock.style.display = '';
+      document.getElementById('contohDesc').textContent = d.contoh;
+    } else {
+      contohBlock.style.display = 'none';
+    }
+
+    document.querySelectorAll('.brand-tab').forEach(btn => {
+      btn.classList.remove('is-active-shopee', 'is-active-tiktok', 'is-active-lazada', 'is-active-traveloka');
+      if (btn.dataset.brand === brand) {
+        btn.classList.add('is-active-' + brand);
+      }
+    });
+  }
+
+  function openPopup(brand) {
+    setBrand(brand || 'shopee');
+    overlay.classList.add('show');
+    sheet.classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closePopup() {
+    overlay.classList.remove('show');
+    sheet.classList.remove('show');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && sheet.classList.contains('show')) closePopup();
+  });
+</script>
+
+<script>
+  /* ===== Fungsi filter status pesanan: Semua / Terlacak / Tertunda / Dibayar / Gagal ===== */
+  (function () {
+    const filterButtons = document.querySelectorAll('button[data-filter]');
+    const orderCards = document.querySelectorAll('[data-status]');
+
+    const activeClasses = ['bg-[#00a6a6]', 'text-white', 'shadow-md', 'font-semibold'];
+    const inactiveClasses = ['text-gray-500', 'hover:bg-gray-50', 'font-medium'];
+
+    function filterOrders(filter) {
+      // Tampilkan / sembunyikan kartu pesanan sesuai status yang dipilih
+      orderCards.forEach(card => {
+        const status = card.getAttribute('data-status');
+        const match = (filter === 'semua') || (status === filter);
+        card.style.display = match ? '' : 'none';
+      });
+
+      // Perbarui tampilan tombol filter yang sedang aktif
+      filterButtons.forEach(btn => {
+        const isActive = btn.getAttribute('data-filter') === filter;
+        if (isActive) {
+          btn.classList.add(...activeClasses);
+          btn.classList.remove(...inactiveClasses);
+        } else {
+          btn.classList.remove(...activeClasses);
+          btn.classList.add(...inactiveClasses);
+        }
+      });
+    }
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => filterOrders(btn.getAttribute('data-filter')));
+    });
+
+    // Set kondisi awal: tampilkan semua pesanan
+    filterOrders('semua');
+  })();
+</script>
+
+
+</body></html>
