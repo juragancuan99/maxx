@@ -1,163 +1,115 @@
 <html lang="id"><head>
 <meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pendapatan - Maxi Affiliate</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght=300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
 <style>
-        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; margin: 0; padding: 0; }
-        ::-webkit-scrollbar { display: none; } 
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; margin: 0; padding: 0; }
+  ::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* Animasi Zoom In untuk Pop-Up Modal Info */
-        @keyframes zoomIn {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
-        }
-        .zoom-in { animation: zoomIn 0.2s ease-out forwards; }
-    </style>
-<script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#D4FF00',
-                    }
-                }
-            }
-        }
-    </script>
+  @keyframes zoomIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  .zoom-in { animation: zoomIn 0.2s ease-out forwards; }
 
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400&display=swap');
+
+  .liquid-text {
+    background-image: linear-gradient(to top, #ff0000 100%);
+    background-size: 100% 0%;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: rgba(212, 175, 55, 0.1);
+    animation: fillUp 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    position: relative;
+  }
+  .liquid-text::after {
+    content: 'Rp39.000';
+    position: absolute;
+    left: 0; top: 0; width: 100%; height: 100%;
+    background: linear-gradient(120deg, transparent 0%, transparent 40%, rgba(255,255,255,0.6) 50%, transparent 60%, transparent 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    opacity: 0;
+    animation: shimmer 3s infinite linear;
+    animation-delay: 2.2s;
+  }
+  @keyframes fillUp {
+    0% { background-size: 100% 0%; filter: drop-shadow(0 0 0px rgba(212,175,55,0)); }
+    100% { background-size: 100% 100%; color: transparent; filter: drop-shadow(0 0 15px rgba(212,175,55,0.3)); }
+  }
+  @keyframes shimmer {
+    0% { background-position: 150% 0; opacity: 0; }
+    10% { opacity: 1; }
+    50% { background-position: -150% 0; opacity: 1; }
+    100% { background-position: -150% 0; opacity: 0; }
+  }
+
+  /* Bottom-sheet popup */
+  #popupOverlay {
+    position: fixed; inset: 0; z-index: 40;
+    background: rgba(17,24,39,0.6);
+    backdrop-filter: blur(2px);
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+  #popupOverlay.show { opacity: 1; pointer-events: auto; }
+
+  #popupSheet {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
+    background: #fff; border-radius: 1.6rem 1.6rem 0 0;
+    height: 60%; display: flex; flex-direction: column;
+    box-shadow: 0 -10px 60px -15px rgba(0,0,0,0.3);
+    transform: translateY(100%);
+    transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+  }
+  #popupSheet.show { transform: translateY(0); }
+
+  .brand-tab.is-active-shopee    { background:#FF5722; color:#fff; border-color:transparent; box-shadow:0 4px 10px rgba(255,87,34,.25); }
+  .brand-tab.is-active-tiktok    { background:#000;    color:#fff; border-color:transparent; box-shadow:0 4px 10px rgba(0,0,0,.25); }
+  .brand-tab.is-active-lazada    { background:#001dcd; color:#fff; border-color:transparent; box-shadow:0 4px 10px rgba(0,29,205,.25); }
+  .brand-tab.is-active-traveloka { background:#1494C6; color:#fff; border-color:transparent; box-shadow:0 4px 10px rgba(20,148,198,.25); }
+</style>
 
 </head>
 <body class="h-screen w-screen overflow-hidden bg-white">
 
+<div class="w-full h-full bg-white overflow-y-auto relative font-sans flex flex-col">
 
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400&display=swap');
+  <!-- Header -->
+  <header class="bg-white border-b border-gray-100 px-[0rem] py-3 flex items-center justify-between shadow-sm">
+    <button class="w-8 h-8 flex items-center justify-center text-gray-600 hover:bg-gray-50 rounded-full transition-colors">
+      <i class="fas fa-arrow-left text-lg"></i>
+    </button>
+    <h1 class="text-lg font-bold text-gray-900">Pesanan E-Commerce</h1>
+    <button onclick="openPopup('shopee')" class="w-8 h-8 flex items-center justify-center text-gray-600 hover:bg-gray-50 rounded-full transition-colors relative">
+      <i class="fa-regular fa-circle-question text-lg"></i>
+    </button>
+  </header>
 
-    /* Liquid Fill Animation */
-   /*  .liquid-text {
-      background-image: linear-gradient(to top, #b88a20 0%, #D4AF37 40%, #F9E076 60%, #D4AF37 100%); */
+  <!-- Main Content Area -->
+  <main class="pb-24 space-y-4 flex-1 flex flex-col px-[0.5rem]">
 
-     .liquid-text {
-      background-image: linear-gradient(to top, #ff0000 100%);
-      background-size: 100% 0%;
-      background-repeat: no-repeat;
-      background-position: bottom;
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: rgba(212, 175, 55, 0.1); /* Very faint gold outline before fill */
-      animation: fillUp 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-      position: relative;
-    }
+    <div class="sticky top-0 bg-gray-50 z-20 pt-6 pb-2 px-[0rem]">
+      <div class="flex bg-white p-1 rounded-xl shadow-sm border border-gray-200">
+        <button class="flex-1 py-2 text-sm font-semibold rounded-lg bg-[#00a6a6] text-white shadow-md transition-all">Semua</button>
+        <button class="flex-1 py-2 text-sm font-medium rounded-lg text-gray-500 hover:bg-gray-50 transition-all">Terlacak</button>
+        <button class="flex-1 py-2 text-sm font-medium rounded-lg text-gray-500 hover:bg-gray-50 transition-all">Tertunda</button>
+        <button class="flex-1 py-2 text-sm font-medium rounded-lg text-gray-500 hover:bg-gray-50 transition-all">Dibayar</button>
+        <button class="flex-1 py-2 text-sm font-medium rounded-lg text-gray-500 hover:bg-gray-50 transition-all">Gagal</button>
+      </div>
+    </div>
 
-    /* Shimmer Effect that runs after fill */
-    .liquid-text::after {
-      content: 'Rp39.000';
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(120deg, transparent 0%, transparent 40%, rgba(255, 255, 255, 0.6) 50%, transparent 60%, transparent 100%);
-      background-size: 200% 100%;
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      opacity: 0;
-      animation: shimmer 3s infinite linear;
-      animation-delay: 2.2s;
-    }
-
-    @keyframes fillUp {
-      0% {
-        background-size: 100% 0%;
-        filter: drop-shadow(0 0 0px rgba(212, 175, 55, 0));
-      }
-      100% {
-        background-size: 100% 100%;
-        color: transparent;
-        filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.3));
-      }
-    }
-
-    @keyframes shimmer {
-      0% {
-        background-position: 150% 0;
-        opacity: 0;
-      }
-      10% {
-        opacity: 1;
-      }
-      50% {
-        background-position: -150% 0;
-        opacity: 1;
-      }
-      100% {
-        background-position: -150% 0;
-        opacity: 0;
-      }
-    }
-
-    /* Tagline Fade In */
-    .fade-in-up {
-      animation: fadeInUp 1.5s ease-out forwards;
-      animation-delay: 1.8s;
-      opacity: 0;
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Background Pulse */
-    .bg-pulse {
-      animation: bgPulse 4s ease-in-out infinite alternate;
-    }
-
-    @keyframes bgPulse {
-      0% { opacity: 0.3; }
-      100% { opacity: 0.6; }
-    }
-  </style>
-
-
-
-
-          <div class="w-full h-full bg-white overflow-y-auto relative font-sans flex flex-col">
-    
-    <!-- Header -->
-    <header class="sticky top-0 z-50 bg-white border-b border-gray-100 px-[0rem] py-3 flex items-center justify-between shadow-sm">
-        <button class="w-8 h-8 flex items-center justify-center text-gray-600 hover:bg-gray-50 rounded-full transition-colors">
-            <i class="fas fa-arrow-left text-lg"></i>
-        </button>
-        <h1 class="text-lg font-bold text-gray-900">Pesanan E-Commerce</h1>
-        <button class="w-8 h-8 flex items-center justify-center text-gray-600 hover:bg-gray-50 rounded-full transition-colors relative">
-            <i class="fa-regular fa-circle-question text-lg"></i>
-        </button>
-    </header>
-
-    <!-- Main Content Area -->
-    <main class="pb-24 space-y-4 flex-1 flex flex-col px-[0.5rem]">
-        
-        <!-- Empty State Illustration & Message -->
-        <!-- Empty State Illustration & Message --><div class="sticky top-0 bg-gray-50 z-20 pt-6 pb-2 px-[0rem]">
-        <div class="flex bg-white p-1 rounded-xl shadow-sm border border-gray-200">
-            <button class="flex-1 py-2 text-sm font-semibold rounded-lg bg-[#00a6a6] text-white shadow-md transition-all">Semua</button>
-            <button class="flex-1 py-2 text-sm font-medium rounded-lg text-gray-500 hover:bg-gray-50 transition-all">Terlacak</button><button class="flex-1 py-2 text-sm font-medium rounded-lg text-gray-500 hover:bg-gray-50 transition-all">Tertunda</button>
-            <button class="flex-1 py-2 text-sm font-medium rounded-lg text-gray-500 hover:bg-gray-50 transition-all">Dibayar</button>
-        <button class="flex-1 py-2 text-sm font-medium rounded-lg text-gray-500 hover:bg-gray-50 transition-all">Gagal</button></div>
-        
-    </div><div class="bg-white rounded-2xl p-[0.5rem] shadow-sm border border-gray-100">
+    <!-- Card: Terlacak -->
+    <div class="bg-white rounded-2xl p-[0.5rem] shadow-sm border border-gray-100">
       <div class="flex gap-[0.3rem]">
         <i class="fa-solid fa-store text-gray-400 text-sm"></i>
         <div class="mt-[-0.2rem] flex-1">
@@ -165,110 +117,71 @@
             <h3 class="font-bold text-gray-600">Toko Alfa</h3>
             <span class="flex items-center gap-1 text-xs font-bold text-blue-700 bg-yellow-50 px-2 py-0.5 rounded-full">Terlacak</span>
           </div>
-          <!-- <p class="text-xs text-gray-500 mt-1">Invite 5 friends to join MaxiReward.</p> -->
-          
-          
-
-          
         </div>
       </div>
-    <div class="mt-[1rem] flex gap-[0.3rem]">
+      <div class="mt-[1rem] flex gap-[0.3rem]">
         <div class="w-20 h-20 flex-shrink-0 bg-gray-100 rounded-lg overflow-hidden border border-gray-200">
-          <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=300&amp;q=80" alt="Batik Shirt" class="w-full h-full object-cover">
+          <img src="images/ecommerce3.jpg" alt="Batik Shirt" class="w-full h-full object-cover">
         </div>
         <div class="mt-[-0.2rem] flex-1">
           <div class="flex items-left gap-1 mt-1">
-                    <div class="w-[1.5rem] h-[1.5rem] bg-transparant flex items-center justify-center">
-                        <img src="https://image2url.com/r2/default/images/1771864131973-69464962-d8b3-4c39-b093-1c30d8c676d0.jpg" alt="User" class="w-[1.5rem] h-[1.5rem] rounded-full border-2 border-white shadow-sm mx-3">
-                    </div>
-                    <span class="text-gray-800 font-bold text-[0.8rem]">Sweater Couple Pasangan</span>
-                </div>
+            <div class="w-[1.5rem] h-[1.5rem] bg-transparant flex items-center justify-center">
+              <img src="images/ecommerce2.jpg" alt="User" class="w-[1.5rem] h-[1.5rem] rounded-full border-2 border-white shadow-sm mx-3">
+            </div>
+            <span class="text-gray-800 font-bold text-[0.8rem]">Sweater Couple Pasangan</span>
+          </div>
           <div class="flex items-center gap-1">
-                        
-                        <div class="mb-6 relative animate-fade-in-up bg-gradient-to-r from-white-100 to-emerald-600 text-white text-[2rem] font-bold px-2 py-1 rounded flex items-center gap-1 shadow-sm border border-red-500">
-                    
-                    
-                
-
-<h1 class="font-bold text-[#ff0000] text-[0.7rem] md:text-7xl font-bold">Est. Cashback</h1>
-                
-    
-                <h1 class="font-bold text-[1rem] md:text-7xl font-bold tracking-wide liquid-text select-none">Rp39.000</h1>
-
-                        <i class="fa-regular fa-circle-question text-[#ff0000] text-xs"></i>
-                        
-                        
-                    </div>
-                        
-                    </div>
-          
-          
-
-          
+            <div class="mb-6 relative animate-fade-in-up bg-gradient-to-r from-white-100 to-emerald-600 text-white text-[0rem] font-bold px-2 py-1 rounded flex items-center gap-1 shadow-sm border border-red-500">
+              <h1 class="font-bold text-[#ff0000] text-[0.7rem] md:text-7xl font-bold">Est. Cashback</h1>
+              <h1 class="font-bold text-[1rem] md:text-7xl font-bold tracking-wide liquid-text select-none">Rp39.000</h1>
+              <button onclick="openPopup('shopee')"><i class="fa-regular fa-circle-question text-[#ff0000] text-xs"></i></button>
+            </div>
+          </div>
         </div>
-      </div><div class="mt-[0rem] flex gap-[0.3rem]">
-        
+      </div>
+      <div class="mt-[0rem] flex gap-[0.3rem]">
         <p class="text-xs text-gray-500 mt-1">Proses Pelacakan Hingga : 26/01/2026</p>
-      </div></div><div class="bg-white rounded-2xl p-[0.5rem] shadow-sm border border-gray-100">
+      </div>
+    </div>
+
+    <!-- Card: Sedang Diproses -->
+    <div class="bg-white rounded-2xl p-[0.5rem] shadow-sm border border-gray-100">
       <div class="flex gap-[0.3rem]">
         <i class="fa-solid fa-store text-gray-400 text-sm"></i>
         <div class="mt-[-0.2rem] flex-1">
           <div class="flex justify-between items-start">
             <h3 class="font-bold text-gray-600">Toko Alfa</h3>
-            <span class="flex items-center gap-1 text-xs font-bold text-[#FFD700] bg-yellow-50 px-2 py-0.5 rounded-full">Sedang Diproses
-            </span>
+            <span class="flex items-center gap-1 text-xs font-bold text-[#FFD700] bg-yellow-50 px-2 py-0.5 rounded-full">Sedang Diproses</span>
           </div>
-          <!-- <p class="text-xs text-gray-500 mt-1">Invite 5 friends to join MaxiReward.</p> -->
-          
-          
-
-          
         </div>
       </div>
-    <div class="mt-[1rem] flex gap-[0.3rem]">
+      <div class="mt-[1rem] flex gap-[0.3rem]">
         <div class="w-20 h-20 flex-shrink-0 bg-gray-100 rounded-lg overflow-hidden border border-gray-200">
-          <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=300&amp;q=80" alt="Batik Shirt" class="w-full h-full object-cover">
+          <img src="images/ecommerce3.jpg" alt="Batik Shirt" class="w-full h-full object-cover">
         </div>
         <div class="mt-[-0.2rem] flex-1">
           <div class="flex items-left gap-1 mt-1">
-                    <div class="w-[1.5rem] h-[1.5rem] bg-transparant flex items-center justify-center">
-                        <img src="https://image2url.com/r2/default/images/1771864131973-69464962-d8b3-4c39-b093-1c30d8c676d0.jpg" alt="User" class="w-[1.5rem] h-[1.5rem] rounded-full border-2 border-white shadow-sm mx-3">
-                    </div>
-                    <span class="text-gray-800 font-bold text-[0.8rem]">Sweater Couple Pasangan</span>
-                </div>
+            <div class="w-[1.5rem] h-[1.5rem] bg-transparant flex items-center justify-center">
+              <img src="https://image2url.com/r2/default/images/1771864131973-69464962-d8b3-4c39-b093-1c30d8c676d0.jpg" alt="User" class="w-[1.5rem] h-[1.5rem] rounded-full border-2 border-white shadow-sm mx-3">
+            </div>
+            <span class="text-gray-800 font-bold text-[0.8rem]">Sweater Couple Pasangan</span>
+          </div>
           <div class="flex items-center gap-1">
-                        
-                        <div class="mb-6 relative animate-fade-in-up bg-gradient-to-r from-white-100 to-emerald-600 text-white text-[2rem] font-bold px-2 py-1 rounded flex items-center gap-1 shadow-sm border border-red-500">
-                    
-                    
-                
-
-<h1 class="font-bold text-[#ff0000] text-[0.7rem] md:text-7xl font-bold">Est. Cashback</h1>
-                
-    
-                <h1 class="font-bold text-[1rem] md:text-7xl font-bold tracking-wide liquid-text select-none">Rp39.000</h1>
-
-                        <i class="fa-regular fa-circle-question text-[#ff0000] text-xs"></i>
-                        
-                        
-                    </div>
-                        
-                    </div>
-          
-          
-
-          
+            <div class="mb-6 relative animate-fade-in-up bg-gradient-to-r from-white-100 to-emerald-600 text-white text-[0rem] font-bold px-2 py-1 rounded flex items-center gap-1 shadow-sm border border-red-500">
+              <h1 class="font-bold text-[#ff0000] text-[0.7rem] md:text-7xl font-bold">Est. Cashback</h1>
+              <h1 class="font-bold text-[1rem] md:text-7xl font-bold tracking-wide liquid-text select-none">Rp39.000</h1>
+              <button onclick="openPopup('shopee')"><i class="fa-regular fa-circle-question text-[#ff0000] text-xs"></i></button>
+            </div>
+          </div>
         </div>
-      </div><div class="mt-[0rem] flex gap-[0.3rem]">
-        
+      </div>
+      <div class="mt-[0rem] flex gap-[0.3rem]">
         <p class="text-xs text-gray-500 mt-1">Waktu pesanan : 26/01/2026 - 08.20.10</p>
-      </div></div>
+      </div>
+    </div>
 
-        
-        
-    
-
-<div class="bg-white rounded-2xl p-[0.5rem] shadow-sm border border-gray-100">
+    <!-- Card: Cashback Dibayar -->
+    <div class="bg-white rounded-2xl p-[0.5rem] shadow-sm border border-gray-100">
       <div class="flex gap-[0.3rem]">
         <i class="fa-solid fa-store text-gray-400 text-sm"></i>
         <div class="mt-[-0.2rem] flex-1">
@@ -276,57 +189,35 @@
             <h3 class="font-bold text-gray-600">Toko Alfa</h3>
             <span class="flex items-center gap-1 text-xs font-bold text-[#00ba68] bg-yellow-50 px-2 py-0.5 rounded-full">Cashback Dibayar</span>
           </div>
-          <!-- <p class="text-xs text-gray-500 mt-1">Invite 5 friends to join MaxiReward.</p> -->
-          
-          
-
-          
         </div>
       </div>
-    <div class="mt-[1rem] flex gap-[0.3rem]">
+      <div class="mt-[1rem] flex gap-[0.3rem]">
         <div class="w-20 h-20 flex-shrink-0 bg-gray-100 rounded-lg overflow-hidden border border-gray-200">
           <img src="https://image2url.com/r2/default/images/1771865243607-230f88cc-0b3b-4b56-bf74-2c8116dc7af5.jpg" alt="Batik Shirt" class="w-full h-full object-cover">
         </div>
         <div class="mt-[-0.2rem] flex-1">
           <div class="flex items-left gap-1 mt-1">
-                    <div class="w-[1.5rem] h-[1.5rem] bg-transparant flex items-center justify-center">
-                        <img src="https://image2url.com/r2/default/images/1771864375157-7f84d4d2-96a3-4417-ad07-7bdb454c809d.png" alt="User" class="w-[1.5rem] h-[1.5rem] rounded-full border-2 border-white shadow-sm mx-3">
-                    </div>
-                    <!-- CATATAN POSISI TEXT TERDIRI DARI 3 BARIS KEBAWAH MAKA AKAN MENGUBAH POSISI DESAIN MAKA ALTERNAFINYA AGAR DESAIN TETAP PRESISI PERLU DITAMBAHKAN KHUSUS UNTUK TEXT LEBIH DARI 1 BARIS YAITU mt-[-1rem] -->
-
-<span class="text-gray-800 font-bold text-[0.8rem]">SoundCore N60i NC uPGRADE tYPE dUAL Terbaru 2026 Kekinian GEN-Z</span>
-                </div>
+            <div class="w-[1.5rem] h-[1.5rem] bg-transparant flex items-center justify-center">
+              <img src="https://image2url.com/r2/default/images/1771864375157-7f84d4d2-96a3-4417-ad07-7bdb454c809d.png" alt="User" class="w-[1.5rem] h-[1.5rem] rounded-full border-2 border-white shadow-sm mx-3">
+            </div>
+            <span class="text-gray-800 font-bold text-[0.8rem]">SoundCore N60i NC uPGRADE tYPE dUAL Terbaru 2026 Kekinian GEN-Z</span>
+          </div>
           <div class="flex items-center gap-1">
-                        
-                        <div class="mb-6 relative animate-fade-in-up bg-gradient-to-r from-white-100 to-emerald-600 text-white text-[2rem] font-bold px-2 py-1 rounded flex items-center gap-1 shadow-sm border border-red-500">
-                    
-                    
-                
-
-<h1 class="font-bold text-[#ff0000] text-[0.7rem] md:text-7xl font-bold">Est. Cashback</h1>
-                
-    
-                <h1 class="font-bold text-[1rem] md:text-7xl font-bold tracking-wide liquid-text select-none">Rp39.000</h1>
-
-                        <i class="fa-regular fa-circle-question text-[#ff0000] text-xs"></i>
-                        
-                        
-                    </div>
-                        
-                    </div>
-          
-          
-
-          
+            <div class="mb-6 relative animate-fade-in-up bg-gradient-to-r from-white-100 to-emerald-600 text-white text-[0rem] font-bold px-2 py-1 rounded flex items-center gap-1 shadow-sm border border-red-500">
+              <h1 class="font-bold text-[#ff0000] text-[0.7rem] md:text-7xl font-bold">Est. Cashback</h1>
+              <h1 class="font-bold text-[1rem] md:text-7xl font-bold tracking-wide liquid-text select-none">Rp39.000</h1>
+              <button onclick="openPopup('shopee')"><i class="fa-regular fa-circle-question text-[#ff0000] text-xs"></i></button>
+            </div>
+          </div>
         </div>
-      </div><!-- TAMBAHKAN DISINI KODENYA -->
-<!-- TAMBAHKAN DISINI KODENYA -->
-<!-- TAMBAHKAN DISINI KODENYA -->
-<!-- TAMBAHKAN DISINI KODENYA -->
-<div class="mt-[-1rem] flex gap-[0.3rem]">
-        
+      </div>
+      <div class="mt-[-1rem] flex gap-[0.3rem]">
         <p class="text-xs text-gray-500 mt-1">Waktu pesanan : 26/01/2026 - 08.20.10</p>
-      </div></div><div class="bg-white rounded-2xl p-[0.5rem] shadow-sm border border-gray-100">
+      </div>
+    </div>
+
+    <!-- Card: Cashback Tertunda -->
+    <div class="bg-white rounded-2xl p-[0.5rem] shadow-sm border border-gray-100">
       <div class="flex gap-[0.3rem]">
         <i class="fa-solid fa-store text-gray-400 text-sm"></i>
         <div class="mt-[-0.2rem] flex-1">
@@ -334,51 +225,35 @@
             <h3 class="font-bold text-gray-600">Toko Alfa</h3>
             <span class="flex items-center gap-1 text-xs font-bold text-[#999999] bg-yellow-50 px-2 py-0.5 rounded-full">Cashback Tertunda</span>
           </div>
-          <!-- <p class="text-xs text-gray-500 mt-1">Invite 5 friends to join MaxiReward.</p> -->
-          
-          
-
-          
         </div>
       </div>
-    <div class="mt-[1rem] flex gap-[0.3rem]">
+      <div class="mt-[1rem] flex gap-[0.3rem]">
         <div class="w-20 h-20 flex-shrink-0 bg-gray-100 rounded-lg overflow-hidden border border-gray-200">
-          <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=300&amp;q=80" alt="Batik Shirt" class="w-full h-full object-cover">
+          <img src="images/ecommerce3.jpg" alt="Batik Shirt" class="w-full h-full object-cover">
         </div>
         <div class="mt-[-0.2rem] flex-1">
           <div class="flex items-left gap-1 mt-1">
-                    <div class="w-[1.5rem] h-[1.5rem] bg-transparant flex items-center justify-center">
-                        <img src="https://image2url.com/r2/default/images/1771864131973-69464962-d8b3-4c39-b093-1c30d8c676d0.jpg" alt="User" class="w-[1.5rem] h-[1.5rem] rounded-full border-2 border-white shadow-sm mx-3">
-                    </div>
-                    <span class="text-gray-800 font-bold text-[0.8rem]">Sweater Couple Pasangan</span>
-                </div>
+            <div class="w-[1.5rem] h-[1.5rem] bg-transparant flex items-center justify-center">
+              <img src="https://image2url.com/r2/default/images/1771864131973-69464962-d8b3-4c39-b093-1c30d8c676d0.jpg" alt="User" class="w-[1.5rem] h-[1.5rem] rounded-full border-2 border-white shadow-sm mx-3">
+            </div>
+            <span class="text-gray-800 font-bold text-[0.8rem]">Sweater Couple Pasangan</span>
+          </div>
           <div class="flex items-center gap-1">
-                        
-                        <div class="mb-6 relative animate-fade-in-up bg-gradient-to-r from-white-100 to-emerald-600 text-white text-[2rem] font-bold px-2 py-1 rounded flex items-center gap-1 shadow-sm border border-red-500">
-                    
-                    
-                
-
-<h1 class="font-bold text-[#ff0000] text-[0.7rem] md:text-7xl font-bold">Est. Cashback</h1>
-                
-    
-                <h1 class="font-bold text-[1rem] md:text-7xl font-bold tracking-wide liquid-text select-none">Rp39.000</h1>
-
-                        <i class="fa-regular fa-circle-question text-[#ff0000] text-xs"></i>
-                        
-                        
-                    </div>
-                        
-                    </div>
-          
-          
-
-          
+            <div class="mb-6 relative animate-fade-in-up bg-gradient-to-r from-white-100 to-emerald-600 text-white text-[0rem] font-bold px-2 py-1 rounded flex items-center gap-1 shadow-sm border border-red-500">
+              <h1 class="font-bold text-[#ff0000] text-[0.7rem] md:text-7xl font-bold">Est. Cashback</h1>
+              <h1 class="font-bold text-[1rem] md:text-7xl font-bold tracking-wide liquid-text select-none">Rp39.000</h1>
+              <button onclick="openPopup('shopee')"><i class="fa-regular fa-circle-question text-[#ff0000] text-xs"></i></button>
+            </div>
+          </div>
         </div>
-      </div><div class="mt-[0rem] flex gap-[0.3rem]">
-        
+      </div>
+      <div class="mt-[0rem] flex gap-[0.3rem]">
         <p class="text-xs text-gray-500 mt-1">Waktu pesanan : 26/01/2026 - 08.20.10</p>
-      </div></div><div class="bg-white rounded-2xl p-[0.5rem] shadow-sm border border-gray-100">
+      </div>
+    </div>
+
+    <!-- Card: Cashback Gagal -->
+    <div class="bg-white rounded-2xl p-[0.5rem] shadow-sm border border-gray-100">
       <div class="flex gap-[0.3rem]">
         <i class="fa-solid fa-store text-gray-400 text-sm"></i>
         <div class="mt-[-0.2rem] flex-1">
@@ -386,55 +261,208 @@
             <h3 class="font-bold text-gray-600">Toko Alfa</h3>
             <span class="flex items-center gap-1 text-xs font-bold text-[#ff2a2a] bg-yellow-50 px-2 py-0.5 rounded-full">Cashback Gagal</span>
           </div>
-          <!-- <p class="text-xs text-gray-500 mt-1">Invite 5 friends to join MaxiReward.</p> -->
-          
-          
-
-          
         </div>
       </div>
-    <div class="mt-[1rem] flex gap-[0.3rem]">
+      <div class="mt-[1rem] flex gap-[0.3rem]">
         <div class="w-20 h-20 flex-shrink-0 bg-gray-100 rounded-lg overflow-hidden border border-gray-200">
-          <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=300&amp;q=80" alt="Batik Shirt" class="w-full h-full object-cover">
+          <img src="images/ecommerce3.jpg" alt="Batik Shirt" class="w-full h-full object-cover">
         </div>
         <div class="mt-[-0.2rem] flex-1">
           <div class="flex items-left gap-1 mt-1">
-                    <div class="w-[1.5rem] h-[1.5rem] bg-transparant flex items-center justify-center">
-                        <img src="https://image2url.com/r2/default/images/1771864375157-7f84d4d2-96a3-4417-ad07-7bdb454c809d.png" alt="User" class="w-[1.5rem] h-[1.5rem] rounded-full border-2 border-white shadow-sm mx-3">
-                    </div>
-                    <span class="text-gray-800 font-bold text-[0.8rem]">Sweater Couple Pasangan</span>
-                </div>
+            <div class="w-[1.5rem] h-[1.5rem] bg-transparant flex items-center justify-center">
+              <img src="https://image2url.com/r2/default/images/1771864375157-7f84d4d2-96a3-4417-ad07-7bdb454c809d.png" alt="User" class="w-[1.5rem] h-[1.5rem] rounded-full border-2 border-white shadow-sm mx-3">
+            </div>
+            <span class="text-gray-800 font-bold text-[0.8rem]">Sweater Couple Pasangan</span>
+          </div>
           <div class="flex items-center gap-1">
-                        
-                        <div class="mb-6 relative animate-fade-in-up bg-gradient-to-r from-white-100 to-emerald-600 text-white text-[2rem] font-bold px-2 py-1 rounded flex items-center gap-1 shadow-sm border border-red-500">
-                    
-                    
-                
-
-<h1 class="font-bold text-[#ff0000] text-[0.7rem] md:text-7xl font-bold">Est. Cashback</h1>
-                
-    
-                <h1 class="font-bold text-[1rem] md:text-7xl font-bold tracking-wide liquid-text select-none">Rp39.000</h1>
-
-                        <i class="fa-regular fa-circle-question text-[#ff0000] text-xs"></i>
-                        
-                        
-                    </div>
-                        
-                    </div>
-          
-          
-
-          
+            <div class="mb-6 relative animate-fade-in-up bg-gradient-to-r from-white-100 to-emerald-600 text-white text-[0rem] font-bold px-2 py-1 rounded flex items-center gap-1 shadow-sm border border-red-500">
+              <h1 class="font-bold text-[#ff0000] text-[0.7rem] md:text-7xl font-bold">Est. Cashback</h1>
+              <h1 class="font-bold text-[1rem] md:text-7xl font-bold tracking-wide liquid-text select-none">Rp39.000</h1>
+              <button onclick="openPopup('shopee')"><i class="fa-regular fa-circle-question text-[#ff0000] text-xs"></i></button>
+            </div>
+          </div>
         </div>
-      </div><div class="mt-[0rem] flex gap-[0.3rem]">
-        
+      </div>
+      <div class="mt-[0rem] flex gap-[0.3rem]">
         <p class="text-xs text-gray-500 mt-1">Waktu pesanan : 26/01/2026 - 08.20.10</p>
-      </div></div></main>
+      </div>
+    </div>
 
-    <!-- Bottom Navigation -->
-    
+  </main>
+
+  <!-- ===== Popup: overlay + bottom sheet ===== -->
+  <div id="popupOverlay" onclick="closePopup()"></div>
+
+  <div id="popupSheet" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
+    <div class="w-full flex justify-center pt-5 pb-2 flex-shrink-0">
+      <div class="w-12 h-1.5 bg-gray-200 rounded-full"></div>
+    </div>
+
+    <div class="flex-1 overflow-y-auto sticky top-0 z-20 bg-white shadow-sm p-6 space-y-6 pb-[0rem]">
+      <div class="mt-[-1.5rem] mb-8 text-center">
+        <h2 id="popupTitle" class="text-[1.3rem] font-bold text-black mb-2">Penjelasan Cashback</h2>
+      </div>
+
+      <!-- Brand tabs -->
+      <div id="brandTabs" class="flex overflow-x-auto px-5 pb-4 gap-3 no-scrollbar mt-2">
+        <button data-brand="shopee" onclick="setBrand('shopee')" class="brand-tab flex-shrink-0 px-5 py-2 rounded-full bg-white border border-gray-200 text-gray-600 text-sm font-medium whitespace-nowrap transition-colors">Shopee</button>
+        <button data-brand="tiktok" onclick="setBrand('tiktok')" class="brand-tab flex-shrink-0 px-5 py-2 rounded-full bg-white border border-gray-200 text-gray-600 text-sm font-medium whitespace-nowrap transition-colors">TikTok</button>
+        <button data-brand="lazada" onclick="setBrand('lazada')" class="brand-tab flex-shrink-0 px-5 py-2 rounded-full bg-white border border-gray-200 text-gray-600 text-sm font-medium whitespace-nowrap transition-colors">Lazada</button>
+        <button data-brand="traveloka" onclick="setBrand('traveloka')" class="brand-tab flex-shrink-0 px-5 py-2 rounded-full bg-white border border-gray-200 text-gray-600 text-sm font-medium whitespace-nowrap transition-colors">Traveloka</button>
+      </div>
+
+      <div class="px-[0rem] pb-[6rem]">
+
+        <!-- Step 1 -->
+        <div class="flex gap-4 relative pb-8">
+          <div class="absolute left-[27px] top-8 bottom-0 w-0.5 border-l-2 border-dashed border-gray-300"></div>
+          <div class="relative z-10 flex-shrink-0 w-14 flex flex-col items-center">
+            <div class="w-10 h-10 rounded-full bg-[#00A5A6] flex items-center justify-center shadow-md shadow-blue-200">
+              <i class="fa-solid fa-box-open text-[1.2rem] text-gray-100"></i>
+            </div>
+          </div>
+          <div class="flex-1 pt-1">
+            <h4 id="step1Title" class="text-base font-bold text-gray-900">Pesan Produk</h4>
+            <p id="step1Sub" class="text-sm text-gray-500">*Hari ini</p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="flex gap-4 relative pb-8">
+          <div class="absolute left-[27px] top-8 bottom-0 w-0.5 border-l-2 border-dashed border-gray-300"></div>
+          <div class="relative z-10 flex-shrink-0 w-14 flex flex-col items-center">
+            <div class="w-10 h-10 rounded-full bg-[#00A5A6] flex items-center justify-center shadow-md shadow-blue-200">
+              <i class="fa-solid fa-check-square text-[1.2rem] text-gray-100"></i>
+            </div>
+          </div>
+          <div class="flex-1 pt-1">
+            <h4 class="text-base font-bold text-gray-900">Lacak Pesanan</h4>
+            <p id="step2Sub" class="text-sm text-gray-500">*1 - 2 Hari</p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="flex gap-4 relative pb-8">
+          <div class="relative z-10 flex-shrink-0 w-14 flex flex-col items-center">
+            <div class="w-10 h-10 rounded-full bg-[#00A5A6] flex items-center justify-center shadow-md shadow-blue-200">
+              <i class="fa-solid fa-dollar text-[1.2rem] text-gray-100"></i>
+            </div>
+          </div>
+          <div class="flex-1 pt-1">
+            <h4 class="text-base font-bold text-gray-900">Terima Cashback</h4>
+            <p id="step3Sub" class="text-sm text-gray-500">Pesanan Selesai</p>
+          </div>
+        </div>
+
+        <!-- Explanation box -->
+        <div class="w-full bg-gradient-to-r from-orange-50 to-white border border-orange-100 rounded-2xl p-4 flex items-center shadow-sm mb-6 relative overflow-hidden">
+          <div class="flex-1 z-10">
+            <p class="text-[1.03rem] text-gray-900 font-bold">Lacak Pesanan</p>
+            <p id="lacakDesc" class="text-[0.9rem] font-regular text-black">Setelah melakukan pemesanan, pesanan akan mulai dilacak setelah 1-2 hari, dan informasi cahsback dapat dilihat.</p>
+
+            <p class="mt-[0.5rem] text-[1.03rem] text-gray-900 font-bold">Penyelesaian Pesanan</p>
+            <p id="penyelesaianDesc" class="text-[0.9rem] font-regular text-black">Setiap tanggal 20 bulan berjalan, akan dilakukan settlement untuk pesanan yang dikonfirmasi diterima pada bulan sebelumnya. Setelah settlement, cashback bisa ditarik.</p>
+
+            <div id="contohBlock">
+              <p class="mt-[0.5rem] text-[1.03rem] text-gray-900 font-bold">Contoh :</p>
+              <p id="contohDesc" class="text-[0.9rem] font-regular text-black">Pesanan Anda dikonfirmasi diterima pada bulan November, dan baru akan diselesaikan pada tanggal 20 Desember. Dan seterusnya mengikuti pola tersebut.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-100 p-5 shadow-[0_-4px_10px_rgba(0,0,0,0.05)] z-50">
+          <button onclick="closePopup()" class="w-full bg-[#ffffff00] text-gray-800 font-bold text-lg py-3.5 rounded-xl border border-cyan-600 transition active:scale-[0.98] flex items-center justify-center gap-2">Ok</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- ===== /Popup ===== -->
+
 </div>
-        
-      
-    </body></html>
+
+<script>
+  const CASHBACK_DATA = {
+    shopee: {
+      step1Title: 'Pesan Produk', step1Sub: '*Hari ini',
+      step2Sub: '*1 - 2 Hari',
+      step3Sub: 'Pesanan Selesai',
+      lacak: 'Setelah melakukan pemesanan, pesanan akan mulai dilacak setelah 1-2 hari, dan informasi cahsback dapat dilihat.',
+      penyelesaian: 'Setiap tanggal 20 bulan berjalan, akan dilakukan settlement untuk pesanan yang dikonfirmasi diterima pada bulan sebelumnya. Setelah settlement, cashback bisa ditarik.',
+      contoh: 'Pesanan Anda dikonfirmasi diterima pada bulan November, dan baru akan diselesaikan pada tanggal 20 Desember. Dan seterusnya mengikuti pola tersebut.'
+    },
+    tiktok: {
+      step1Title: 'Pesan Produk', step1Sub: '*Hari ini',
+      step2Sub: '*24h',
+      step3Sub: 'Pesanan Selesai',
+      lacak: 'Setelah melakukan pemesanan, pesanan akan mulai dilacak setelah 24h, dan informasi cahsback dapat dilihat.',
+      penyelesaian: 'Setelah pesanan selesai, (3-15 hari setelah pemesanan). Cashback bisa ditarik.',
+      contoh: null
+    },
+    lazada: {
+      step1Title: 'Pesan Produk', step1Sub: '*Hari ini',
+      step2Sub: '*1 - 2 Hari',
+      step3Sub: '*Diterima +60 hari',
+      lacak: 'Setelah melakukan pemesanan, pesanan akan mulai dilacak setelah 1-2 hari, dan informasi cahsback dapat dilihat.',
+      penyelesaian: 'Setelah pesanan diterima, cashback diperkirakan dapat dicairkan sekitar 60 hari, sesuai ketentuan dari Lazada.',
+      contoh: null
+    },
+    traveloka: {
+      step1Title: 'Selesaikan Pembayaran', step1Sub: '*Hari ini',
+      step2Sub: '*1 - 2 Hari',
+      step3Sub: '*90 hari setelah checkout / penerbangan selesai / pesanan sudah digunakan',
+      lacak: 'Setelah melakukan pemesanan, pesanan akan dilacak keesokan harinya, dan informasi cahsback pesanan dapat dilihat.',
+      penyelesaian: 'Cashback dapat ditarik dalam 90 hari setelah checkout / penerbangan selesai / pesanan sudah digunakan, ketentuan akhir mengikuti aturan dari Traveloka.',
+      contoh: null
+    }
+  };
+
+  const overlay = document.getElementById('popupOverlay');
+  const sheet = document.getElementById('popupSheet');
+
+  function setBrand(brand) {
+    const d = CASHBACK_DATA[brand];
+    document.getElementById('step1Title').textContent = d.step1Title;
+    document.getElementById('step1Sub').textContent = d.step1Sub;
+    document.getElementById('step2Sub').textContent = d.step2Sub;
+    document.getElementById('step3Sub').textContent = d.step3Sub;
+    document.getElementById('lacakDesc').textContent = d.lacak;
+    document.getElementById('penyelesaianDesc').textContent = d.penyelesaian;
+
+    const contohBlock = document.getElementById('contohBlock');
+    if (d.contoh) {
+      contohBlock.style.display = '';
+      document.getElementById('contohDesc').textContent = d.contoh;
+    } else {
+      contohBlock.style.display = 'none';
+    }
+
+    document.querySelectorAll('.brand-tab').forEach(btn => {
+      btn.classList.remove('is-active-shopee', 'is-active-tiktok', 'is-active-lazada', 'is-active-traveloka');
+      if (btn.dataset.brand === brand) {
+        btn.classList.add('is-active-' + brand);
+      }
+    });
+  }
+
+  function openPopup(brand) {
+    setBrand(brand || 'shopee');
+    overlay.classList.add('show');
+    sheet.classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closePopup() {
+    overlay.classList.remove('show');
+    sheet.classList.remove('show');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && sheet.classList.contains('show')) closePopup();
+  });
+</script>
+
+
+
+</body></html>
