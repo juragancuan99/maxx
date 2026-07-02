@@ -17,6 +17,7 @@
         tailwind.config = { theme: { extend: { colors: { primary: '#D4FF00' } } } }
     </script>
 
+
 </head>
 <body class="h-screen w-screen overflow-hidden bg-white">
     <div class="w-full h-full bg-white overflow-y-auto relative flex flex-col font-sans">
@@ -34,15 +35,17 @@
 
         <div class="px-6 mt-6">
             <div class="px-4 pb-3 flex gap-3 overflow-x-auto no-scrollbar">
-                <button class="tab-btn flex-shrink-0 px-4 py-1.5 bg-[#FF5722] text-sm font-medium rounded-full bg-white border border-gray-200 text-gray-600" onclick="showTab('all', this)">All Komisi</button>
+                
+
+<button class="tab-btn flex-shrink-0 px-4 py-1.5 text-sm font-medium rounded-full btn-active" onclick="showTab('all', this)">Semua Komisi</button>
                 <button class="tab-btn flex-shrink-0 px-4 py-1.5 text-sm font-medium rounded-full bg-white border border-gray-200 text-gray-600" onclick="showTab('referral', this)">Komisi Refferal</button>
                 <button class="tab-btn flex-shrink-0 px-4 py-1.5 text-sm font-medium rounded-full bg-white border border-gray-200 text-gray-600" onclick="showTab('generasi', this)">Komisi Generasi</button>
                 <button class="tab-btn flex-shrink-0 px-4 py-1.5 text-sm font-medium rounded-full bg-white border border-gray-200 text-gray-600" onclick="showTab('cashback', this)">Cashback Team</button>
-                <button class="tab-btn flex-shrink-0 px-4 py-1.5 text-sm font-medium rounded-full btn-active" onclick="showTab('pribadi', this)">Cashback Pribadi</button>
+                <button class="tab-btn flex-shrink-0 px-4 py-1.5 text-sm font-medium rounded-full bg-white border border-gray-200 text-gray-600" onclick="showTab('pribadi', this)">Cashback Pribadi</button>
             </div>
         </div>
 
-        <div id="all" class="tab-content px-6 mt-4">
+        <div id="all" class="tab-content px-6 mt-4 active">
             <div class="flex justify-between items-end mb-4">
                 <h3 class="text-slate-900 font-bold text-lg">Semua Komisi</h3>
                 <div class="flex gap-2">
@@ -71,7 +74,7 @@
             </div>
             <div>
               <p class="text-sm font-bold text-slate-900">Komisi Refferal</p>
-              <p class="text-xs text-slate-500">10 Mar 2023 ? 14:30</p>
+              <p class="text-xs text-slate-500">10 Mar 2023 � 14:30</p>
             </div>
           </div>
           
@@ -89,7 +92,7 @@
             </div>
             <div>
               <p class="text-sm font-bold text-slate-900">Komisi Refferal</p>
-              <p class="text-xs text-slate-500">10 Mar 2023 ? 14:30</p>
+              <p class="text-xs text-slate-500">10 Mar 2023 � 14:30</p>
             </div>
           </div>
           
@@ -113,7 +116,7 @@
             </div>
             <div>
               <p class="text-sm font-bold text-slate-900">Komisi Generasi 1</p>
-              <p class="text-xs text-slate-500">08 Mar 2023 ? 10:00</p>
+              <p class="text-xs text-slate-500">08 Mar 2023 � 10:00</p>
             </div>
           </div>
           <div class="text-right">
@@ -129,7 +132,7 @@
             </div>
             <div>
               <p class="text-sm font-bold text-slate-900">Komisi Generasi 2</p>
-              <p class="text-xs text-slate-500">08 Mar 2023 ? 10:00</p>
+              <p class="text-xs text-slate-500">08 Mar 2023 � 10:00</p>
             </div>
           </div>
           <div class="text-right">
@@ -143,7 +146,7 @@
             </div>
             <div>
               <p class="text-sm font-bold text-slate-900">Komisi Generasi 3</p>
-              <p class="text-xs text-slate-500">08 Mar 2023 ? 10:00</p>
+              <p class="text-xs text-slate-500">08 Mar 2023 � 10:00</p>
             </div>
           </div>
           <div class="text-right">
@@ -157,7 +160,7 @@
             </div>
             <div>
               <p class="text-sm font-bold text-slate-900">Cashback Team</p>
-              <p class="text-xs text-slate-500">08 Mar 2023 ? 10:00</p>
+              <p class="text-xs text-slate-500">08 Mar 2023 � 10:00</p>
             </div>
           </div>
           <div class="text-right">
@@ -171,7 +174,7 @@
             </div>
             <div>
               <p class="text-sm font-bold text-slate-900">Cashback Pribadi</p>
-              <p class="text-xs text-slate-500">08 Mar 2023 ? 10:00</p>
+              <p class="text-xs text-slate-500">08 Mar 2023 � 10:00</p>
             </div>
           </div>
           <div class="text-right">
@@ -204,13 +207,13 @@
             <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
             <div class="flex items-center gap-4">
                 <div class="relative">
-                    <img src="images/icono-human.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                    <img src="https://cdn-icons-png.flaticon.com/512/6543/6543006.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
                 </div>
                 <div>
                     <h3 class="font-bold text-gray-800 text-sm">Komisi Refferal</h3><p class="text-xs text-gray-500">Dari Siti Aminah</p>
                     
                     <div class="flex items-center mt-1 gap-2">
-                        <p class="text-xs text-slate-500">10 Mar 2023 ? 14:30</p>
+                        <p class="text-xs text-slate-500">10 Mar 2023 � 14:30</p>
                     </div>
                 </div>
             </div>
@@ -223,13 +226,13 @@
         <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
             <div class="flex items-center gap-4">
                 <div class="relative">
-                    <img src="images/icono-human.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                    <img src="https://cdn-icons-png.flaticon.com/512/6543/6543006.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
                 </div>
                 <div>
                     <h3 class="font-bold text-gray-800 text-sm">Komisi Refferal</h3><p class="text-xs text-gray-500">Dari Siti Aminah</p>
                     
                     <div class="flex items-center mt-1 gap-2">
-                        <p class="text-xs text-slate-500">10 Mar 2023 ? 14:30</p>
+                        <p class="text-xs text-slate-500">10 Mar 2023 � 14:30</p>
                     </div>
                 </div>
             </div>
@@ -241,13 +244,13 @@
         </div><div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
             <div class="flex items-center gap-4">
                 <div class="relative">
-                    <img src="images/icono-human.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                    <img src="https://cdn-icons-png.flaticon.com/512/6543/6543006.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
                 </div>
                 <div>
                     <h3 class="font-bold text-gray-800 text-sm">Komisi Refferal</h3><p class="text-xs text-gray-500">Dari Siti Aminah</p>
                     
                     <div class="flex items-center mt-1 gap-2">
-                        <p class="text-xs text-slate-500">10 Mar 2023 ? 14:30</p>
+                        <p class="text-xs text-slate-500">10 Mar 2023 � 14:30</p>
                     </div>
                 </div>
             </div>
@@ -281,13 +284,13 @@
             <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
             <div class="flex items-center gap-4">
                 <div class="relative">
-                    <img src="images/icono-human.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                    <img src="https://cdn-icons-png.flaticon.com/512/6543/6543006.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
                 </div>
                 <div>
                     <h3 class="font-bold text-gray-800 text-sm">Komisi Generasi</h3><p class="text-xs text-gray-500">Dari Siti Aminah</p>
                     
                     <div class="flex items-center mt-1 gap-2">
-                        <p class="text-xs text-slate-500">10 Mar 2023 ? 14:30</p>
+                        <p class="text-xs text-slate-500">10 Mar 2023 � 14:30</p>
                     </div>
                 </div>
             </div>
@@ -300,13 +303,13 @@
         <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
             <div class="flex items-center gap-4">
                 <div class="relative">
-                    <img src="images/icono-human.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                    <img src="https://cdn-icons-png.flaticon.com/512/6543/6543006.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
                 </div>
                 <div>
                     <h3 class="font-bold text-gray-800 text-sm">Komisi Generasi</h3><p class="text-xs text-gray-500">Dari Siti Aminah</p>
                     
                     <div class="flex items-center mt-1 gap-2">
-                        <p class="text-xs text-slate-500">10 Mar 2023 ? 14:30</p>
+                        <p class="text-xs text-slate-500">10 Mar 2023 � 14:30</p>
                     </div>
                 </div>
             </div>
@@ -318,13 +321,13 @@
         </div><div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
             <div class="flex items-center gap-4">
                 <div class="relative">
-                    <img src="images/icono-human.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                    <img src="https://cdn-icons-png.flaticon.com/512/6543/6543006.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
                 </div>
                 <div>
                     <h3 class="font-bold text-gray-800 text-sm">Komisi Generasi</h3><p class="text-xs text-gray-500">Dari Siti Aminah</p>
                     
                     <div class="flex items-center mt-1 gap-2">
-                        <p class="text-xs text-slate-500">10 Mar 2023 ? 14:30</p>
+                        <p class="text-xs text-slate-500">10 Mar 2023 � 14:30</p>
                     </div>
                 </div>
             </div>
@@ -358,13 +361,13 @@
             <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
             <div class="flex items-center gap-4">
                 <div class="relative">
-                    <img src="images/icono-human.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                    <img src="https://cdn-icons-png.flaticon.com/512/6543/6543006.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
                 </div>
                 <div>
                     <h3 class="font-bold text-gray-800 text-sm">Cashback Team</h3><p class="text-xs text-gray-500">Dari Siti Aminah</p>
                     
                     <div class="flex items-center mt-1 gap-2">
-                        <p class="text-xs text-slate-500">10 Mar 2023 ? 14:30</p>
+                        <p class="text-xs text-slate-500">10 Mar 2023 � 14:30</p>
                     </div>
                 </div>
             </div>
@@ -377,13 +380,13 @@
         <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
             <div class="flex items-center gap-4">
                 <div class="relative">
-                    <img src="images/icono-human.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                    <img src="https://cdn-icons-png.flaticon.com/512/6543/6543006.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
                 </div>
                 <div>
                     <h3 class="font-bold text-gray-800 text-sm">Cashback Team</h3><p class="text-xs text-gray-500">Dari Siti Aminah</p>
                     
                     <div class="flex items-center mt-1 gap-2">
-                        <p class="text-xs text-slate-500">10 Mar 2023 ? 14:30</p>
+                        <p class="text-xs text-slate-500">10 Mar 2023 � 14:30</p>
                     </div>
                 </div>
             </div>
@@ -395,13 +398,13 @@
         </div><div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
             <div class="flex items-center gap-4">
                 <div class="relative">
-                    <img src="images/icono-human.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                    <img src="https://cdn-icons-png.flaticon.com/512/6543/6543006.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
                 </div>
                 <div>
                     <h3 class="font-bold text-gray-800 text-sm">Cashback Team</h3><p class="text-xs text-gray-500">Dari Siti Aminah</p>
                     
                     <div class="flex items-center mt-1 gap-2">
-                        <p class="text-xs text-slate-500">10 Mar 2023 ? 14:30</p>
+                        <p class="text-xs text-slate-500">10 Mar 2023 � 14:30</p>
                     </div>
                 </div>
             </div>
@@ -412,7 +415,7 @@
             </div>
         </div></div>
 
-<div id="pribadi" class="tab-content px-6 mt-4 active">
+<div id="pribadi" class="tab-content px-6 mt-4">
             <div class="flex justify-between items-end mb-4">
                 <h3 class="text-slate-900 font-bold text-lg">Cashback Pribadi</h3>
                 <div class="flex gap-2">
@@ -441,7 +444,7 @@
                     <h3 class="font-bold text-gray-800 text-sm">Shopee</h3>
                     
                     <div class="flex items-center mt-1 gap-2">
-                        <p class="text-xs text-slate-500">10 Mar 2023 ? 14:30</p>
+                        <p class="text-xs text-slate-500">10 Mar 2023 � 14:30</p>
                     </div>
                 </div>
             </div>
@@ -459,7 +462,7 @@
                     <h3 class="font-bold text-gray-800 text-sm">Tiktok</h3>
                     
                     <div class="flex items-center mt-1 gap-2">
-                        <p class="text-xs text-slate-500">10 Mar 2023 ? 14:30</p>
+                        <p class="text-xs text-slate-500">10 Mar 2023 � 14:30</p>
                     </div>
                 </div>
             </div>
@@ -478,7 +481,7 @@
                     <h3 class="font-bold text-gray-800 text-sm">Lazada</h3>
                     
                     <div class="flex items-center mt-1 gap-2">
-                        <p class="text-xs text-slate-500">10 Mar 2023 ? 14:30</p>
+                        <p class="text-xs text-slate-500">10 Mar 2023 � 14:30</p>
                     </div>
                 </div>
             </div>
@@ -496,7 +499,7 @@
                     <h3 class="font-bold text-gray-800 text-sm">Traveloka</h3>
                     
                     <div class="flex items-center mt-1 gap-2">
-                        <p class="text-xs text-slate-500">10 Mar 2023 ? 14:30</p>
+                        <p class="text-xs text-slate-500">10 Mar 2023 � 14:30</p>
                     </div>
                 </div>
             </div>
