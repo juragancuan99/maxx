@@ -1,0 +1,134 @@
+<html lang="id"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Koneksi Tidak Ditemukan</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background: #ffffff;
+    color: #1a1a1a;
+  }
+
+  .screen {
+    max-width: 480px;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+  }
+
+  /* Header */
+  .header {
+    padding: 20px 20px 0 20px;
+  }
+  .back-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #1a1a1a;
+    border-radius: 50%;
+    transition: background 0.15s ease;
+  }
+  .back-btn:hover { background: #f2f2f2; }
+  .back-btn svg { width: 22px; height: 22px; }
+
+  /* Main content */
+  .content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 32px 100px 32px;
+  }
+
+  .illustration {
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 12px;
+  }
+  .illustration img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  h1.title {
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 800;
+    font-size: 36px;
+    margin: 8px 0 0 0;
+    color: #111111;
+    letter-spacing: 0.5px;
+  }
+
+  p.subtitle {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #6b6b6b;
+    max-width: 320px;
+    margin: 14px 0 40px 0;
+  }
+
+  .retry-btn {
+    width: 100%;
+    max-width: 340px;
+    background: #F2093B;
+    color: #ffffff;
+    border: none;
+    padding: 17px 24px;
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 30px;
+    cursor: pointer;
+    letter-spacing: 0.3px;
+    box-shadow: 0 8px 18px rgba(242, 9, 59, 0.25);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .retry-btn:active {
+    transform: scale(0.98);
+    box-shadow: 0 4px 10px rgba(242, 9, 59, 0.25);
+  }
+</style>
+</head>
+<body>
+  <div class="screen">
+
+    <!-- Header -->
+    <div class="header">
+      <button class="back-btn" onclick="history.back()" aria-label="Kembali">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Main content -->
+    <div class="content">
+      <div class="illustration">
+        <img src="images/icon_404.jpg" alt="Koneksi internet tidak ditemukan">
+      </div>
+
+      <h1 class="title">Oppps!</h1>
+      <p class="subtitle">Waduh! Koneksi internet tidak ditemukan.<br>Periksa koneksi dan coba lagi.</p>
+
+      <button class="retry-btn" onclick="location.reload()">Coba Lagi</button>
+    </div>
+
+  </div>
+
+
+</body></html>
