@@ -18,18 +18,18 @@
     </script>
 
 </head>
-<body class="h-screen w-screen overflow-hidden bg-white">
+<body class="h-screen w-screen overflow-hidden bg-white" style="overflow: hidden;">
           <div class="w-full h-full bg-gray-50 overflow-y-auto relative font-sans text-[#2D3436]">
   <!-- FontAwesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <!-- Header -->
   <div class="sticky top-0 z-30 bg-[#00a6a6] shadow-sm px-4 py-[0.5rem] flex items-center justify-between">
-    <button onClick="history.back()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-orange-500 transition">
+    <button onclick="history.back()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-orange-500 transition">
       <i class="text-gray-100 fa-solid fa-arrow-left text-lg"></i>
     </button>
     <h1 class="text-gray-100 text-lg font-bold tracking-tight">Lacak Pesanan Merchant</h1>
-    <button onClick="openInfoModal()" class="w-8 h-8 flex items-center justify-center text-gray-100 hover:bg-white/10 rounded-full transition-colors relative">
+    <button onclick="openInfoModal()" class="w-8 h-8 flex items-center justify-center text-gray-100 hover:bg-white/10 rounded-full transition-colors relative">
             <i class="fa-regular fa-circle-question text-lg"></i>
         </button>
   </div>
@@ -209,13 +209,13 @@
   
 
   <!-- ===== Info Modal: Merchant Partner ===== -->
-  <div id="infoModalOverlay" onClick="closeInfoModal()" class="fixed inset-0 z-40 bg-gray-900/60 backdrop-blur-[2px] opacity-0 pointer-events-none transition-opacity duration-200"></div>
+  <div id="infoModalOverlay" onclick="closeInfoModal()" class="fixed inset-0 z-40 bg-gray-900/60 backdrop-blur-[2px] transition-opacity duration-200 opacity-100 pointer-events-auto"></div>
 
-  <div id="infoModalBox" role="dialog" aria-modal="true" aria-labelledby="infoModalTitle" class="fixed inset-0 z-50 flex items-center justify-center px-6 opacity-0 pointer-events-none transition-opacity duration-200">
+  <div id="infoModalBox" role="dialog" aria-modal="true" aria-labelledby="infoModalTitle" class="fixed inset-0 z-50 flex items-center justify-center px-6 transition-opacity duration-200 opacity-100 pointer-events-auto">
     <div class="bg-white w-full max-w-sm rounded-2xl shadow-xl p-5 relative">
       <div class="flex items-center justify-between mb-3">
         <h3 id="infoModalTitle" class="font-bold text-base text-[#2D3436]">Info Merchant Partner</h3>
-        <button onClick="closeInfoModal()" class="w-8 h-8 flex items-center justify-center rounded-full text-gray-400 hover:bg-gray-100 hover:text-gray-600 transition-colors">
+        <button onclick="closeInfoModal()" class="w-8 h-8 flex items-center justify-center rounded-full text-gray-400 hover:bg-gray-100 hover:text-gray-600 transition-colors">
           <i class="fa-solid fa-xmark text-sm"></i>
         </button>
       </div>
@@ -231,16 +231,12 @@
       </div>
 
       <p class="text-xs text-gray-500 leading-relaxed mb-3">
-        Merchant partner adalah toko atau penjual yang telah bekerja sama secara resmi dengan Maxi Affiliate. Setiap pesanan dari merchant partner diproses, dikemas, dan dikirim langsung oleh pihak merchant, dan status pengirimannya dapat dipantau melalui halaman lacak pesanan ini.
+       Merchant Partner adalah rekanan bisnis resmi yang bekerja sama dengan Maxi  dalam menyediakan dan menawarkan produk kepada pengguna. Merchant Partner merupakan pemilik sah produk yang dipasarkan, sementara Maxi berperan sebagai mitra usaha, bukan sebagai pemilik produk.
       </p>
 
-      <ul class="text-xs text-gray-500 leading-relaxed space-y-1.5 mb-4">
-        <li class="flex gap-2"><i class="fa-solid fa-check text-[#00a6a6] text-[10px] mt-1"></i><span>Produk dan stok dikelola langsung oleh merchant.</span></li>
-        <li class="flex gap-2"><i class="fa-solid fa-check text-[#00a6a6] text-[10px] mt-1"></i><span>Estimasi waktu pada timeline dapat berubah menyesuaikan proses merchant.</span></li>
-        <li class="flex gap-2"><i class="fa-solid fa-check text-[#00a6a6] text-[10px] mt-1"></i><span>Kendala pesanan dapat dibantu melalui pusat bantuan Maxi Affiliate.</span></li>
-      </ul>
+      
 
-      <button onClick="closeInfoModal()" class="w-full bg-[#00a6a6] text-white font-bold text-sm py-2.5 rounded-xl transition active:scale-[0.98]">Mengerti</button>
+      <button onclick="closeInfoModal()" class="w-full bg-[#00a6a6] text-white font-bold text-sm py-2.5 rounded-xl transition active:scale-[0.98]">Mengerti</button>
     </div>
   </div>
   <!-- ===== /Info Modal ===== -->
@@ -275,5 +271,5 @@
   })();
 </script>
         
-      
-    </body></html>
+
+</body></html>
