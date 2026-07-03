@@ -25,13 +25,13 @@
 
   <!-- Header -->
   <div class="sticky top-0 z-30 bg-[#00a6a6] shadow-sm px-4 py-[0.5rem] flex items-center justify-between">
-    <button onclick="history.back()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-orange-500 transition">
+    <button onClick="history.back()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-orange-500 transition">
       <i class="text-gray-100 fa-solid fa-arrow-left text-lg"></i>
     </button>
     <h1 class="text-gray-100 text-lg font-bold tracking-tight">Lacak Pesanan Merchant</h1>
-    <p class="w-10 h-10 flex items-center justify-center rounded-full text-gray-100 transition">
-            
-        </p>
+    <button onClick="openInfoModal()" class="w-8 h-8 flex items-center justify-center text-gray-100 hover:bg-white/10 rounded-full transition-colors relative">
+            <i class="fa-regular fa-circle-question text-lg"></i>
+        </button>
   </div>
 
   <!-- Order Summary Card -->
@@ -208,7 +208,72 @@
   <!-- Bottom Action -->
   
 
+  <!-- ===== Info Modal: Merchant Partner ===== -->
+  <div id="infoModalOverlay" onClick="closeInfoModal()" class="fixed inset-0 z-40 bg-gray-900/60 backdrop-blur-[2px] opacity-0 pointer-events-none transition-opacity duration-200"></div>
+
+  <div id="infoModalBox" role="dialog" aria-modal="true" aria-labelledby="infoModalTitle" class="fixed inset-0 z-50 flex items-center justify-center px-6 opacity-0 pointer-events-none transition-opacity duration-200">
+    <div class="bg-white w-full max-w-sm rounded-2xl shadow-xl p-5 relative">
+      <div class="flex items-center justify-between mb-3">
+        <h3 id="infoModalTitle" class="font-bold text-base text-[#2D3436]">Info Merchant Partner</h3>
+        <button onClick="closeInfoModal()" class="w-8 h-8 flex items-center justify-center rounded-full text-gray-400 hover:bg-gray-100 hover:text-gray-600 transition-colors">
+          <i class="fa-solid fa-xmark text-sm"></i>
+        </button>
+      </div>
+
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-10 h-10 rounded-full bg-[#00a6a6]/10 flex items-center justify-center flex-shrink-0">
+          <i class="fa-solid fa-store text-[#00a6a6] text-sm"></i>
+        </div>
+        <div>
+          <p class="text-sm font-bold text-[#2D3436] leading-tight">Merchant Partner Resmi</p>
+          <p class="text-xs text-gray-500">Terverifikasi Maxi Affiliate</p>
+        </div>
+      </div>
+
+      <p class="text-xs text-gray-500 leading-relaxed mb-3">
+        Merchant partner adalah toko atau penjual yang telah bekerja sama secara resmi dengan Maxi Affiliate. Setiap pesanan dari merchant partner diproses, dikemas, dan dikirim langsung oleh pihak merchant, dan status pengirimannya dapat dipantau melalui halaman lacak pesanan ini.
+      </p>
+
+      <ul class="text-xs text-gray-500 leading-relaxed space-y-1.5 mb-4">
+        <li class="flex gap-2"><i class="fa-solid fa-check text-[#00a6a6] text-[10px] mt-1"></i><span>Produk dan stok dikelola langsung oleh merchant.</span></li>
+        <li class="flex gap-2"><i class="fa-solid fa-check text-[#00a6a6] text-[10px] mt-1"></i><span>Estimasi waktu pada timeline dapat berubah menyesuaikan proses merchant.</span></li>
+        <li class="flex gap-2"><i class="fa-solid fa-check text-[#00a6a6] text-[10px] mt-1"></i><span>Kendala pesanan dapat dibantu melalui pusat bantuan Maxi Affiliate.</span></li>
+      </ul>
+
+      <button onClick="closeInfoModal()" class="w-full bg-[#00a6a6] text-white font-bold text-sm py-2.5 rounded-xl transition active:scale-[0.98]">Mengerti</button>
+    </div>
+  </div>
+  <!-- ===== /Info Modal ===== -->
+
 </div>
+
+<script>
+  /* Fungsi popup infomodal: Info Merchant Partner */
+  (function () {
+    const overlay = document.getElementById('infoModalOverlay');
+    const box = document.getElementById('infoModalBox');
+
+    window.openInfoModal = function () {
+      overlay.classList.remove('opacity-0', 'pointer-events-none');
+      overlay.classList.add('opacity-100', 'pointer-events-auto');
+      box.classList.remove('opacity-0', 'pointer-events-none');
+      box.classList.add('opacity-100', 'pointer-events-auto');
+      document.body.style.overflow = 'hidden';
+    };
+
+    window.closeInfoModal = function () {
+      overlay.classList.add('opacity-0', 'pointer-events-none');
+      overlay.classList.remove('opacity-100', 'pointer-events-auto');
+      box.classList.add('opacity-0', 'pointer-events-none');
+      box.classList.remove('opacity-100', 'pointer-events-auto');
+      document.body.style.overflow = '';
+    };
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeInfoModal();
+    });
+  })();
+</script>
         
       
     </body></html>
