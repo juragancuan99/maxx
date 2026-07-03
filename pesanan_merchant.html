@@ -209,9 +209,9 @@
   
 
   <!-- ===== Info Modal: Merchant Partner ===== -->
-  <div id="infoModalOverlay" onclick="closeInfoModal()" class="fixed inset-0 z-40 bg-gray-900/60 backdrop-blur-[2px] transition-opacity duration-200 opacity-100 pointer-events-auto"></div>
+  <div id="infoModalOverlay" onclick="closeInfoModal()" class="fixed inset-0 z-40 bg-gray-900/60 backdrop-blur-[2px] transition-opacity duration-200 opacity-0 pointer-events-none"></div>
 
-  <div id="infoModalBox" role="dialog" aria-modal="true" aria-labelledby="infoModalTitle" class="fixed inset-0 z-50 flex items-center justify-center px-6 transition-opacity duration-200 opacity-100 pointer-events-auto">
+  <div id="infoModalBox" role="dialog" aria-modal="true" aria-labelledby="infoModalTitle" class="fixed inset-0 z-50 flex items-center justify-center px-6 transition-opacity duration-200 opacity-0 pointer-events-none">
     <div class="bg-white w-full max-w-sm rounded-2xl shadow-xl p-5 relative">
       <div class="flex items-center justify-between mb-3">
         <h3 id="infoModalTitle" class="font-bold text-base text-[#2D3436]">Info Merchant Partner</h3>
@@ -239,6 +239,7 @@
       <button onclick="closeInfoModal()" class="w-full bg-[#00a6a6] text-white font-bold text-sm py-2.5 rounded-xl transition active:scale-[0.98]">Mengerti</button>
     </div>
   </div>
+
   <!-- ===== /Info Modal ===== -->
 
 </div>
