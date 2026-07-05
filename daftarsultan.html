@@ -19,6 +19,29 @@
             }
         }
     </script>
+    <script>
+        function switchTab(tab) {
+            var buttons = {
+                daily: document.getElementById('tabDailyBtn'),
+                weekly: document.getElementById('tabWeeklyBtn'),
+                final: document.getElementById('tabFinalBtn')
+            };
+            var activeClasses = ['font-bold', 'text-slate-900', 'bg-[#FFD700]', 'shadow-lg', 'shadow-yellow-500/20'];
+            var inactiveClasses = ['font-medium', 'text-gray-400'];
+
+            Object.keys(buttons).forEach(function (key) {
+                var btn = buttons[key];
+                if (!btn) return;
+                if (key === tab) {
+                    btn.classList.remove(...inactiveClasses);
+                    btn.classList.add(...activeClasses);
+                } else {
+                    btn.classList.remove(...activeClasses);
+                    btn.classList.add(...inactiveClasses);
+                }
+            });
+        }
+    </script>
 
 
 </head>
@@ -75,9 +98,9 @@
             <p class="text-white/80 text-sm font-medium">Berdasarkan Peraih Misi Reward Terbanyak</p>
         </div><!-- Time Filter Tabs -->
         <!-- Time Filter Tabs --><div class="bg-white/10 p-1 rounded-2xl flex backdrop-blur-md border border-white/5">
-            <button class="flex-1 py-2 text-sm font-medium text-gray-400 rounded-xl transition-colors">Daily</button>
-            <button class="flex-1 py-2 text-sm font-bold text-slate-900 bg-[#FFD700] rounded-xl shadow-lg shadow-yellow-500/20">Weekly</button>
-            <button class="flex-1 py-2 text-sm font-medium text-gray-400 rounded-xl transition-colors">Top Final</button>
+            <button id="tabDailyBtn" onclick="switchTab('daily')" class="flex-1 py-2 text-sm font-medium text-gray-400 rounded-xl transition-colors">Daily</button>
+            <button id="tabWeeklyBtn" onclick="switchTab('weekly')" class="flex-1 py-2 text-sm font-bold text-slate-900 bg-[#FFD700] rounded-xl shadow-lg shadow-yellow-500/20 transition-colors">Weekly</button>
+            <button id="tabFinalBtn" onclick="switchTab('final')" class="flex-1 py-2 text-sm font-medium text-gray-400 rounded-xl transition-colors">Top Final</button>
         </div>
     </div>
 
