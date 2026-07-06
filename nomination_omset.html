@@ -1,0 +1,649 @@
+<html lang="id"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; margin: 0; padding: 0; }
+        ::-webkit-scrollbar { display: none; } 
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+
+    <!-- EFEK TEXT ANIMASI -->
+    <style>
+	
+	 body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    //*.box {
+      width: 200px;
+      height: 100px;
+      background-color: #4CAF50;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 15px;
+      border-radius: 8px;
+      font-size: 18px;
+      text-align: center; //*
+    }
+        /* Fade In */
+        .fade-in {
+            animation: fadeIn 2s ease-in-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* Bounce */
+        .bounce {
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-30px); }
+            60% { transform: translateY(-15px); }
+        }
+
+        /* Flip */
+        .flip {
+            animation: flip 1s ease-in-out forwards;
+        }
+
+        @keyframes flip {
+            from { transform: perspective(400px) rotateY(0deg); }
+            to { transform: perspective(400px) rotateY(180deg); }
+        }
+
+        /* Heartbeat */
+        .heartbeat {
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            14% { transform: scale(1.3); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.3); }
+            70% { transform: scale(1); }
+        }
+
+        /* Zoom In */
+        .zoom-in {
+            animation: zoomIn 0.3s ease forwards;
+            transform: scale(0);
+        }
+
+        @keyframes zoomIn {
+            to { transform: scale(1); }
+        }
+
+        /* Slide fade antar tampilan (ranking <-> pemenang) */
+        .view-fade {
+            animation: viewFadeIn 0.25s ease forwards;
+        }
+
+        @keyframes viewFadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+
+    <!-- Custom Styles for Confetti Animation -->
+    <style>
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+        .confetti {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background-color: #FFD700;
+            animation: fall 4s linear infinite;
+            opacity: 0;
+        }
+        .confetti:nth-child(odd) { background-color: #FFF; }
+        .confetti:nth-child(2n) { animation-duration: 3.5s; animation-delay: 0.5s; }
+        .confetti:nth-child(3n) { animation-duration: 4.2s; animation-delay: 1.2s; left: 20%; }
+        .confetti:nth-child(4n) { animation-duration: 3.8s; animation-delay: 2.5s; left: 80%; }
+        .confetti:nth-child(5n) { animation-duration: 4.5s; animation-delay: 0.8s; left: 50%; }
+    </style>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#D4FF00',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script>
+        // ---- Tab Daily / Weekly / Top Final (tampilan Ranking) ----
+        function switchTab(tab) {
+            var buttons = {
+                daily: document.getElementById('tabDailyBtn'),
+                weekly: document.getElementById('tabWeeklyBtn'),
+                final: document.getElementById('tabFinalBtn')
+            };
+            var activeClasses = ['font-bold', 'text-slate-900', 'bg-[#FFD700]', 'shadow-lg', 'shadow-yellow-500/20'];
+            var inactiveClasses = ['font-medium', 'text-gray-400'];
+
+            Object.keys(buttons).forEach(function (key) {
+                var btn = buttons[key];
+                if (!btn) return;
+                if (key === tab) {
+                    btn.classList.remove(...inactiveClasses);
+                    btn.classList.add(...activeClasses);
+                } else {
+                    btn.classList.remove(...activeClasses);
+                    btn.classList.add(...inactiveClasses);
+                }
+            });
+        }
+
+        // ---- Dropdown custom "100K Ke X" (tampilan Pemenang) ----
+        function toggleSponsorDropdown() {
+            document.getElementById('sponsorDropdownMenu').classList.toggle('hidden');
+            document.getElementById('sponsorDropdownIcon').classList.toggle('rotate-180');
+        }
+
+        function selectSponsorOption(el) {
+            document.getElementById('sponsorDropdownLabel').textContent = el.textContent;
+            document.getElementById('sponsorDropdownMenu').classList.add('hidden');
+            document.getElementById('sponsorDropdownIcon').classList.remove('rotate-180');
+            highlightPemenangOption(el.textContent);
+        }
+
+        document.addEventListener('click', function (event) {
+            var wrapper = document.getElementById('sponsorDropdownBtn');
+            var menu = document.getElementById('sponsorDropdownMenu');
+            if (!wrapper || !menu) return;
+            if (!wrapper.contains(event.target) && !menu.contains(event.target)) {
+                menu.classList.add('hidden');
+                document.getElementById('sponsorDropdownIcon').classList.remove('rotate-180');
+            }
+        });
+
+        // ---- Penghubung antara tampilan Ranking (select) & tampilan Pemenang (dropdown) ----
+
+        // Dipanggil saat <select> "Nominasi MP 100K ke X" di halaman Ranking diubah
+        function handleRankingTierChange(selectEl) {
+            var ke = selectEl.selectedIndex + 1; // 1 - 10
+            var label = 'Nominasi MP 100K ke ' + ke;
+            goToPemenangView(label, ke);
+        }
+
+        // Dipanggil saat salah satu opsi dropdown 100K di halaman Pemenang dipilih
+        function highlightPemenangOption(labelText) {
+            var subtitle = document.getElementById('pemenangSubtitle');
+            if (subtitle) {
+                subtitle.textContent = 'Daftar pemenang ' + labelText;
+            }
+        }
+
+        function goToPemenangView(labelText, ke) {
+            document.getElementById('viewRanking').classList.add('hidden');
+            var viewPemenang = document.getElementById('viewPemenang');
+            viewPemenang.classList.remove('hidden');
+            viewPemenang.classList.add('view-fade');
+
+            document.getElementById('sponsorDropdownLabel').textContent = '100K Ke ' + ke + ' ( Omset Nasional Maxipoin )';
+            document.getElementById('pemenangSubtitle').textContent = 'Daftar pemenang ' + labelText;
+
+            // Tandai opsi yang sesuai di dropdown menu pemenang (opsional, untuk highlight)
+            var options = document.querySelectorAll('#sponsorDropdownMenu button');
+            options.forEach(function (opt, idx) {
+                if (idx === ke - 1) {
+                    opt.classList.add('bg-white/10', 'text-[#FFD700]');
+                } else {
+                    opt.classList.remove('bg-white/10', 'text-[#FFD700]');
+                }
+            });
+        }
+
+        function backToRankingView() {
+            document.getElementById('viewPemenang').classList.add('hidden');
+            var viewRanking = document.getElementById('viewRanking');
+            viewRanking.classList.remove('hidden');
+            viewRanking.classList.add('view-fade');
+        }
+    </script>
+
+</head>
+
+<body class="h-screen w-screen overflow-hidden bg-white">
+          <div class="w-full h-full bg-slate-900 overflow-y-auto relative font-sans text-white selection:bg-yellow-500 selection:text-black">
+
+    <!-- Confetti Layer -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <div class="confetti left-[10%]"></div>
+        <div class="confetti left-[30%]"></div>
+        <div class="confetti left-[60%]"></div>
+        <div class="confetti left-[90%]"></div>
+        <div class="confetti left-[15%]"></div>
+        <div class="confetti left-[45%]"></div>
+        <div class="confetti left-[75%]"></div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- VIEW 1: RANKING (Top Sponsor Deal - Rank 1-10)                -->
+    <!-- ============================================================ -->
+    <div id="viewRanking" class="view-fade">
+
+        <!-- Header & Tabs -->
+        <div class="relative z-20 px-6 pt-12 pb-4">
+            <div class="flex justify-between items-center mb-6 text-white">
+                <button onclick="history.back()" class="w-10 h-10 flex items-center justify-center bg-white/20 rounded-full backdrop-blur-sm hover:bg-white/30 transition">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+                <h1 class="text-lg font-bold tracking-wide">NOMINATION</h1>
+                <button onclick="document.getElementById('infoSultanModal').classList.remove('hidden')" class="w-10 h-10 flex items-center justify-center bg-white/20 rounded-full backdrop-blur-sm hover:bg-white/30 transition">
+                    <i class="fa-solid fa-circle-info"></i>
+                </button>
+            </div>
+
+            <div class="text-center text-white mb-6">
+                <h2 class="text-2xl font-black uppercase italic tracking-tighter">TOP OMSET DEAL</h2>
+                <p class="text-white/80 text-sm font-medium">Berdasarkan Omset Grup Terbanyak</p>
+            </div>
+
+            <!-- Time Filter Tabs -->
+            <div class="bg-white/10 p-1 rounded-2xl flex backdrop-blur-md border border-white/5">
+            <button id="tabDailyBtn" onclick="switchTab('daily')" class="flex-1 py-2 text-sm rounded-xl transition-colors font-bold text-slate-900 bg-[#FFD700] shadow-lg shadow-yellow-500/20">Daily</button>
+            <button id="tabWeeklyBtn" onclick="switchTab('weekly')" class="flex-1 py-2 text-sm rounded-xl transition-colors font-medium text-gray-400">Weekly</button>
+            <button id="tabFinalBtn" onclick="switchTab('final')" class="flex-1 py-2 text-sm rounded-xl transition-colors font-medium text-gray-400">Top Final</button>
+        </div>
+        </div>
+
+        <!-- Spotlight Effect -->
+        <div class="absolute top-40 left-1/2 -translate-x-1/2 w-80 h-80 bg-[#FFD700] opacity-20 blur-[100px] rounded-full pointer-events-none z-0"></div>
+
+        <!-- The Podium Section -->
+        <div class="relative z-10 px-4 mt-4 mb-8">
+            <div class="flex justify-center items-end gap-2 sm:gap-4">
+
+                <!-- Rank 2 -->
+                <div class="flex flex-col items-center w-1/3">
+                    <div class="relative mb-2">
+                        <div class="w-16 h-16 rounded-full border-2 border-gray-300 p-1 bg-slate-800 shadow-lg shadow-gray-500/20">
+                            <img src="images/icono-human.png" alt="User" class="w-full h-full rounded-full object-cover">
+                        </div>
+                        <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-gray-300 text-slate-900 text-xs font-bold px-2 py-0.5 rounded-full">
+                            #2
+                        </div>
+                    </div>
+                    <div class="text-center mb-2">
+                    <p class="text-sm font-semibold truncate w-20">Sarah J.</p>
+                    <p class="text-xs text-gray-400">500.000.000</p>
+                <p class="text-xs text-gray-400">Omset Group</p></div>
+                    <!-- Podium Block -->
+                    <div class="w-full h-32 bg-gradient-to-b from-gray-300 to-gray-500 rounded-t-lg relative opacity-90 shadow-lg">
+                        <div class="absolute top-0 left-0 w-full h-full bg-white/10 rounded-t-lg"></div>
+                        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 text-4xl font-black text-slate-900/20">2</div>
+                    </div>
+                </div>
+
+                <!-- Rank 1 -->
+                <div class="flex flex-col items-center w-1/3 z-20">
+                    <div class="relative mb-3">
+                        <i class="fas fa-crown text-[#FFD700] text-2xl absolute -top-8 left-1/2 -translate-x-1/2 animate-bounce"></i>
+                        <div class="w-24 h-24 rounded-full border-4 border-[#FFD700] p-1 bg-slate-800 shadow-xl shadow-[#FFD700]/40">
+                            <img src="images/icono-human.png" alt="User" class="w-full h-full rounded-full object-cover">
+                        </div>
+                        <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-[#FFD700] text-slate-900 text-sm font-bold px-3 py-0.5 rounded-full shadow-lg">
+                            #1
+                        </div>
+                    </div>
+                    <div class="text-center mb-2">
+                    <p class="text-base font-bold truncate w-24">Alex M.</p>
+                    <p class="text-sm text-[#FFD700]">1.000.000.000</p>
+                <p class="text-sm text-[#FFD700]">Omset Group</p></div>
+                    <!-- Podium Block -->
+                    <div class="w-full h-44 bg-gradient-to-b from-[#FFD700] to-yellow-700 rounded-t-lg relative shadow-[0_0_30px_rgba(255,215,0,0.3)]">
+                        <div class="absolute top-0 left-0 w-full h-full bg-white/20 rounded-t-lg"></div>
+                        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 text-5xl font-black text-slate-900/20">1</div>
+                    </div>
+                </div>
+
+                <!-- Rank 3 -->
+                <div class="flex flex-col items-center w-1/3">
+                    <div class="relative mb-2">
+                        <div class="w-16 h-16 rounded-full border-2 border-orange-700 p-1 bg-slate-800 shadow-lg shadow-orange-700/20">
+                            <img src="images/icono-human.png" alt="User" class="w-full h-full rounded-full object-cover">
+                        </div>
+                        <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-orange-700 text-white text-xs font-bold px-2 py-0.5 rounded-full">
+                            #3
+                        </div>
+                    </div>
+                    <div class="text-center mb-2">
+                    <p class="text-sm font-semibold truncate w-20">Mike R.</p>
+                    <p class="text-xs text-gray-400">100.000.000</p>
+                <p class="text-xs text-gray-400">Omset Group</p></div>
+                    <!-- Podium Block -->
+                    <div class="w-full h-24 bg-gradient-to-b from-orange-600 to-orange-900 rounded-t-lg relative opacity-90 shadow-lg">
+                        <div class="absolute top-0 left-0 w-full h-full bg-white/10 rounded-t-lg"></div>
+                        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 text-4xl font-black text-slate-900/20">3</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Leaderboard List (Rank 4-10) -->
+        <div class="relative z-10 bg-slate-800/50 rounded-t-3xl min-h-[400px] backdrop-blur-lg border-t border-white/5 pb-24">
+            <div class="p-6">
+
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="font-bold text-[#b1b1b1]">Rank 4 - 10</h3>
+                    <div class="relative">
+                        <select id="rankingTierSelect" onchange="handleRankingTierChange(this)" class="appearance-none bg-gray-800/50 border border-gray-200 rounded-lg py-2 pl-4 pr-8 text-sm outline-none focus:border-[#FFD700] focus:ring-1 focus:ring-orange-300 transition-all text-sm font-bold">
+                            <option value="all">Nominasi MP 100K ke 1</option>
+                            <option value="voucherbelanja">Nominasi MP 100K ke 2</option>
+                            <option value="emas">Nominasi MP 100K ke 3</option>
+                            <option value="ac">Nominasi MP 100K ke 4</option>
+                            <option value="kulkas">Nominasi MP 100K ke 5</option>
+                            <option value="mesincuci">Nominasi MP 100K ke 6</option>
+                            <option value="tv">Nominasi MP 100K ke 7</option>
+                            <option value="samsung">Nominasi MP 100K ke 8</option>
+                            <option value="iphone">Nominasi MP 100K ke 9</option>
+                            <option value="bali">Nominasi MP 100K ke 10</option>
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
+                            <i class="fa-solid fa-chevron-down text-xs"></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-xs text-gray-500 -mt-4 mb-4">Pilih salah satu nominasi di atas untuk melihat daftar pemenangnya.</p>
+
+                <!-- List Item 4 -->
+                <div class="flex items-center p-3 mb-3 bg-white/5 rounded-2xl border border-white/5 hover:bg-white/10 transition-colors">
+                    <span class="w-8 text-center font-bold text-gray-400">1</span>
+                    <img src="images/icono-human.png" class="w-10 h-10 rounded-full border border-white/10 ml-2">
+                    <div class="flex-1 ml-4">
+                        <p class="font-semibold text-sm">David K.</p>
+                        <p class="text-xs text-gray-400">Surabaya</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-[#FFD700] font-bold text-sm">950</p>
+                        <p class="text-[10px] text-gray-400 font-bold"> Omset Grup</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center p-3 mb-3 bg-white/5 rounded-2xl border border-white/5 hover:bg-white/10 transition-colors">
+                    <span class="w-8 text-center font-bold text-gray-400">2</span>
+                    <img src="images/icono-human.png" class="w-10 h-10 rounded-full border border-white/10 ml-2">
+                    <div class="flex-1 ml-4">
+                        <p class="font-semibold text-sm">David K.</p>
+                        <p class="text-xs text-gray-400">Surabaya</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-[#FFD700] font-bold text-sm">750</p>
+                        <p class="text-[10px] text-gray-400 font-bold"> Omset Grup</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center p-3 mb-3 bg-white/5 rounded-2xl border border-white/5 hover:bg-white/10 transition-colors">
+                    <span class="w-8 text-center font-bold text-gray-400">3</span>
+                    <img src="images/icono-human.png" class="w-10 h-10 rounded-full border border-white/10 ml-2">
+                    <div class="flex-1 ml-4">
+                        <p class="font-semibold text-sm">David K.</p>
+                        <p class="text-xs text-gray-400">Surabaya</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-[#FFD700] font-bold text-sm">550</p>
+                        <p class="text-[10px] text-gray-400 font-bold"> Omset Grup</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center p-3 mb-3 bg-white/5 rounded-2xl border border-white/5 hover:bg-white/10 transition-colors">
+                    <span class="w-8 text-center font-bold text-gray-400">4</span>
+                    <img src="images/icono-human.png" class="w-10 h-10 rounded-full border border-white/10 ml-2">
+                    <div class="flex-1 ml-4">
+                        <p class="font-semibold text-sm">David K.</p>
+                        <p class="text-xs text-gray-400">Surabaya</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-[#FFD700] font-bold text-sm">350</p>
+                        <p class="text-[10px] text-gray-400 font-bold"> Omset Grup</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center p-3 mb-3 bg-white/5 rounded-2xl border border-white/5 hover:bg-white/10 transition-colors">
+                    <span class="w-8 text-center font-bold text-gray-400">5</span>
+                    <img src="images/icono-human.png" class="w-10 h-10 rounded-full border border-white/10 ml-2">
+                    <div class="flex-1 ml-4">
+                        <p class="font-semibold text-sm">David K.</p>
+                        <p class="text-xs text-gray-400">Surabaya</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-[#FFD700] font-bold text-sm">150</p>
+                        <p class="text-[10px] text-gray-400 font-bold"> Omset Grup</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center p-3 mb-3 bg-white/5 rounded-2xl border border-white/5 hover:bg-white/10 transition-colors">
+                    <span class="w-8 text-center font-bold text-gray-400">6</span>
+                    <div class="flex-1 ml-4">
+                        <p class="font-semibold text-sm text-gray-400">- No Participants</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- VIEW 2: PEMENANG (Daftar Pemenang per Nominasi 100K)          -->
+    <!-- ============================================================ -->
+    <div id="viewPemenang" class="view-fade hidden">
+
+        <!-- Header & Tabs -->
+        <div class="relative z-20 px-6 pt-12 pb-4">
+            <div class="flex justify-between items-center mb-6 text-white">
+                <button onclick="backToRankingView()" class="w-10 h-10 flex items-center justify-center bg-white/20 rounded-full backdrop-blur-sm hover:bg-white/30 transition">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+                <h1 class="text-lg font-bold tracking-wide">NOMINATION</h1>
+                <button onclick="document.getElementById('infoSultanModal').classList.remove('hidden')" class="w-10 h-10 flex items-center justify-center bg-white/20 rounded-full backdrop-blur-sm hover:bg-white/30 transition">
+                    <i class="fa-solid fa-circle-info"></i>
+                </button>
+            </div>
+
+            <div class="text-center text-white mb-6">
+                <h2 class="text-2xl font-black uppercase italic tracking-tighter">TOP OMSET DEAL</h2>
+                <p id="pemenangSubtitle" class="text-white/80 text-sm font-medium">Daftar pemenang Nominasi MP 100K ke 1</p>
+            </div>
+
+            <!-- Dropdown Nominasi 100K -->
+            <div class="bg-white/10 p-1 rounded-2xl backdrop-blur-md border border-white/5 relative">
+                <button id="sponsorDropdownBtn" onclick="toggleSponsorDropdown()" class="w-full flex items-center justify-between py-2 px-3 text-sm font-bold text-slate-900 bg-[#FFD700] rounded-xl shadow-lg shadow-yellow-500/20">
+                    <span id="sponsorDropdownLabel">100K Ke 1 ( Omset Nasional Maxipoin )</span>
+                    <i id="sponsorDropdownIcon" class="fa-solid fa-chevron-down text-xs ml-2 transition-transform duration-200"></i>
+                </button>
+
+                <div id="sponsorDropdownMenu" class="hidden absolute left-0 right-0 mt-2 bg-slate-800 border border-white/10 rounded-xl shadow-xl z-30 max-h-64 overflow-y-auto no-scrollbar">
+                    <button onclick="selectSponsorOption(this)" class="w-full text-left px-4 py-2.5 text-sm text-white hover:bg-white/10 transition-colors bg-white/10 text-[#FFD700]">100K Ke 1 ( Omset Nasional Maxipoin )</button>
+                    <button onclick="selectSponsorOption(this)" class="w-full text-left px-4 py-2.5 text-sm text-white hover:bg-white/10 transition-colors">100K Ke 2 ( Omset Nasional Maxipoin )</button>
+                    <button onclick="selectSponsorOption(this)" class="w-full text-left px-4 py-2.5 text-sm text-white hover:bg-white/10 transition-colors">100K Ke 3 ( Omset Nasional Maxipoin )</button>
+                    <button onclick="selectSponsorOption(this)" class="w-full text-left px-4 py-2.5 text-sm text-white hover:bg-white/10 transition-colors">100K Ke 4 ( Omset Nasional Maxipoin )</button>
+                    <button onclick="selectSponsorOption(this)" class="w-full text-left px-4 py-2.5 text-sm text-white hover:bg-white/10 transition-colors">100K Ke 5 ( Omset Nasional Maxipoin )</button>
+                    <button onclick="selectSponsorOption(this)" class="w-full text-left px-4 py-2.5 text-sm text-white hover:bg-white/10 transition-colors">100K Ke 6 ( Omset Nasional Maxipoin )</button>
+                    <button onclick="selectSponsorOption(this)" class="w-full text-left px-4 py-2.5 text-sm text-white hover:bg-white/10 transition-colors">100K Ke 7 ( Omset Nasional Maxipoin )</button>
+                    <button onclick="selectSponsorOption(this)" class="w-full text-left px-4 py-2.5 text-sm text-white hover:bg-white/10 transition-colors">100K Ke 8 ( Omset Nasional Maxipoin )</button>
+                    <button onclick="selectSponsorOption(this)" class="w-full text-left px-4 py-2.5 text-sm text-white hover:bg-white/10 transition-colors">100K Ke 9 ( Omset Nasional Maxipoin )</button>
+                    <button onclick="selectSponsorOption(this)" class="w-full text-left px-4 py-2.5 text-sm text-white hover:bg-white/10 transition-colors">100K Ke 10 ( Omset Nasional Maxipoin )</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Spotlight Effect -->
+        <div class="absolute top-40 left-1/2 -translate-x-1/2 w-80 h-80 bg-[#FFD700] opacity-20 blur-[100px] rounded-full pointer-events-none z-0"></div>
+
+        <!-- Daftar Pemenang / Hadiah -->
+        <div class="relative z-10 bg-slate-800/50 rounded-t-3xl min-h-[400px] backdrop-blur-lg border-t border-white/5 pb-24 mt-4">
+            <div class="p-6">
+
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="font-bold text-[#b1b1b1]">Pemenang</h3>
+                    <h3 class="font-bold text-[#b1b1b1]">Hadiah</h3>
+                </div>
+
+                <div class="flex items-center p-3 mb-3 bg-white/5 rounded-2xl border border-white/5 hover:bg-white/10 transition-colors">
+                    <span class="w-8 text-center font-bold text-gray-400">1</span>
+                    <img src="images/icono-human.png" class="w-10 h-10 rounded-full border border-white/10 ml-2">
+                    <div class="flex-1 ml-4">
+                        <p class="font-semibold text-sm">David K.</p>
+                        <p class="text-xs text-gray-400">Surabaya</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-[#FFD700] font-bold text-sm">Rp100.000.000</p>
+                        <p class="text-[10px] text-green-300 font-bold">Done</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center p-3 mb-3 bg-white/5 rounded-2xl border border-white/5 hover:bg-white/10 transition-colors">
+                    <span class="w-8 text-center font-bold text-gray-400">2</span>
+                    <img src="images/icono-human.png" class="w-10 h-10 rounded-full border border-white/10 ml-2">
+                    <div class="flex-1 ml-4">
+                        <p class="font-semibold text-sm">David K.</p>
+                        <p class="text-xs text-gray-400">Surabaya</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-[#FFD700] font-bold text-sm">Rp50.000.000</p>
+                        <p class="text-[10px] text-green-300 font-bold">Done</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center p-3 mb-3 bg-white/5 rounded-2xl border border-white/5 hover:bg-white/10 transition-colors">
+                    <span class="w-8 text-center font-bold text-gray-400">3</span>
+                    <img src="images/icono-human.png" class="w-10 h-10 rounded-full border border-white/10 ml-2">
+                    <div class="flex-1 ml-4">
+                        <p class="font-semibold text-sm">David K.</p>
+                        <p class="text-xs text-gray-400">Surabaya</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-[#FFD700] font-bold text-sm">Rp30.000.000</p>
+                        <p class="text-[10px] text-green-300 font-bold">Done</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center p-3 mb-3 bg-white/5 rounded-2xl border border-white/5 hover:bg-white/10 transition-colors">
+                    <span class="w-8 text-center font-bold text-gray-400">4</span>
+                    <img src="images/icono-human.png" class="w-10 h-10 rounded-full border border-white/10 ml-2">
+                    <div class="flex-1 ml-4">
+                        <p class="font-semibold text-sm">David K.</p>
+                        <p class="text-xs text-gray-400">Surabaya</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-[#FFD700] font-bold text-sm">Rp10.000.000</p>
+                        <p class="text-[10px] text-green-300 font-bold">Done</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center p-3 mb-3 bg-white/5 rounded-2xl border border-white/5 hover:bg-white/10 transition-colors">
+                    <span class="w-8 text-center font-bold text-gray-400">5</span>
+                    <img src="images/icono-human.png" class="w-10 h-10 rounded-full border border-white/10 ml-2">
+                    <div class="flex-1 ml-4">
+                        <p class="font-semibold text-sm">David K.</p>
+                        <p class="text-xs text-gray-400">Surabaya</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-[#FFD700] font-bold text-sm">Rp1.000.000</p>
+                        <p class="text-[10px] text-green-300 font-bold">Done</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center p-3 mb-3 bg-white/5 rounded-2xl border border-white/5 hover:bg-white/10 transition-colors">
+                    <span class="w-8 text-center font-bold text-gray-400">6</span>
+                    <div class="flex-1 ml-4">
+                        <p class="font-semibold text-sm text-gray-400">- No Participants</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Bottom Navigation (dipakai bersama kedua tampilan) -->
+    <div class="fixed bottom-6 left-6 right-6 bg-slate-900/90 backdrop-blur-xl border border-white/10 rounded-2xl p-4 shadow-2xl z-50">
+        <div class="flex justify-between items-center px-2">
+            <a href="index.html">
+                <button class="flex flex-col items-center gap-1 text-gray-400 hover:text-[#D4AF37] transition-colors">
+                    <i class="fa-solid fa-house text-xl mb-0.5"></i>
+                    <span class="text-[10px] font-medium">Beranda</span>
+                </button>
+            </a>
+
+            <a href="misireward.html">
+                <button class="flex flex-col items-center gap-1 text-[#D4AF37]">
+                    <i class="fa-solid fa-gift text-xl mb-0.5"></i>
+                    <span class="text-[10px] font-medium">Misi Reward</span>
+                </button>
+            </a>
+
+            <a href="team.html">
+                <button class="flex flex-col items-center gap-1 text-gray-400 hover:text-[#D4AF37] transition-colors">
+                    <i class="fa-solid fa-users text-xl mb-0.5"></i>
+                    <span class="text-[10px] font-medium">Team</span>
+                </button>
+            </a>
+
+            <a href="pendapatan.html">
+                <button class="flex flex-col items-center gap-1 text-gray-400 hover:text-[#D4AF37] transition-colors">
+                    <i class="fa-solid fa-wallet text-xl mb-0.5"></i>
+                    <span class="text-[10px] font-medium">Pendapatan</span>
+                </button>
+            </a>
+
+            <a href="saya.html">
+                <button class="flex flex-col items-center gap-1 text-gray-400 hover:text-[#D4AF37] transition-colors">
+                    <i class="fa-solid fa-user text-xl mb-0.5"></i>
+                    <span class="text-[10px] font-bold">Saya</span>
+                </button>
+            </a>
+        </div>
+    </div>
+</div>
+
+    <!-- Info Sultan Modal (dipakai bersama kedua tampilan) -->
+    <div id="infoSultanModal" class="fixed inset-0 z-50 flex items-center justify-center px-4 bg-[#0000005c] backdrop-blur-[2.3px] hidden">
+
+        <!-- MODAL CARD -->
+        <div class="zoom-in relative w-full max-w-sm bg-[#00000099] rounded-3xl overflow-hidden animate-pop flex flex-col items-center text-center p-[1.3rem] border border-yellow-100">
+
+            <!-- Decorative Background Glow -->
+            <div class="absolute top-0 left-0 w-full h-48 bg-gradient-to-b from-transparent to-transparent -z-10"></div>
+            <div class="absolute -top-10 left-1/2 transform -translate-x-1/2 w-64 h-64 bg-[#00000099] rounded-full blur-3xl -z-10"></div>
+            <!-- Close Button -->
+            <button onclick="document.getElementById('infoSultanModal').classList.add('hidden')" class="absolute top-4 right-4 text-orange-300 hover:text-gray-600 transition-colors w-8 h-8 flex items-center justify-center rounded-full hover:bg-orange-300">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <!-- Text Content -->
+            <h2 class="text-2xl font-extrabold text-gray-100 mb-2">Top Omset Deal</h2>
+            <p class="text-gray-100 text-sm leading-relaxed mb-6 px-[0rem]">Diberikan per-kelipatan 100.000 omset nasional<span class="font-semibold text-yellow-200"> Maxi Poin</span> dari Omset Grup Terbanyak seluruh affiliator juara 1 s/d juara 10 ( Maxi poin didapat dari pembelian produk merchant partner dan transaksi belanja dari E-Commerce ( Shopee, Tiktok, Lazada dll ) dari seluruh affiliate.</p>
+            <!-- OK Button -->
+            <button onclick="document.getElementById('infoSultanModal').classList.add('hidden')" class="w-full bg-[#b7993e] hover:bg-[#a3872f] text-white font-bold py-4 rounded-xl shadow-lg shadow-blue-600/20 transition-all transform active:scale-[0.98] mt-[-0.6rem] flex items-center justify-center gap-2">
+                <span>OK</span>
+            </button>
+
+        </div>
+    </div>
+
+
+</body></html>
