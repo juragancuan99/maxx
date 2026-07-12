@@ -1,4 +1,4 @@
-<html lang="id" data-kantu="1"><head>
+<html lang="id"><head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
 <title>Saya - Maxi Affiliate</title>
@@ -11,6 +11,12 @@
         body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; margin: 0; padding: 0; }
         ::-webkit-scrollbar { display: none; } 
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Fallback agar class .hidden langsung aktif sejak HTML di-parse,
+           tidak menunggu Tailwind CDN selesai men-generate CSS via JS.
+           Tanpa ini, elemen modal (mis. daftar provinsi) bisa sempat
+           "kelihatan" sekilas sebelum akhirnya disembunyikan. */
+        .hidden { display: none !important; }
 
         /* Animasi Zoom In untuk Pop-Up Modal Info */
         @keyframes zoomIn {
@@ -41,12 +47,9 @@
 </head>
 <body class="h-screen w-screen overflow-hidden bg-white">
           <div class="w-full h-full bg-gray-50 overflow-y-auto relative font-sans text-gray-800">
-    <!-- FontAwesome CDN for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <!-- Header Section -->
     <header class="sticky top-0 z-30 bg-white/90 backdrop-blur-md border-b border-gray-200 px-4 h-14 flex items-center justify-between">
-    <button onclick="history.back()" class="w-10 h-10 flex items-center justify-center text-gray-600 active:text-[#FF5722] transition-colors">
+    <button onClick="history.back()" class="w-10 h-10 flex items-center justify-center text-gray-600 active:text-[#FF5722] transition-colors">
       <i class="fa-solid fa-chevron-left text-lg"></i>
     </button>
     <h1 class="text-lg font-medium text-gray-900">Pengaturan</h1>
@@ -133,10 +136,10 @@
             <!-- Payment Methods -->
             
         <!-- </div> -->
-    <button onclick="openPhotoModal()" class="w-full bg-white p-[0.6rem] rounded-xl shadow-sm border border-[#dedede87] flex items-center justify-between active:scale-[0.98] transition-transform duration-100 relative overflow-hidden">
+    <button onClick="openPhotoModal()" class="w-full bg-white p-[0.6rem] rounded-xl shadow-sm border border-[#dedede87] flex items-center justify-between active:scale-[0.98] transition-transform duration-100 relative overflow-hidden">
             <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#00a6a6]"></div>
             <div class="flex items-center gap-4 pl-1">
-                <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-cyan-800" 5="">
+                <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-cyan-800">
                     <i class="fa-solid fa-camera"></i>
                 </div>
                 <div class="text-left">
@@ -148,10 +151,10 @@
                 <img id="profilePhotoImg" src="images/icon-human1.png" alt="User Avatar" class="w-[3rem] h-[3rem] rounded-full object-cover border-4 border-[#fff6d0] shadow-sm">
                 <i class="fa-solid fa-chevron-right text-gray-300 text-sm"></i>
             </div>
-        </button><button onclick="openUsernameModal()" class="w-full bg-white p-[0.6rem] rounded-xl shadow-sm border border-[#dedede87] flex items-center justify-between active:scale-[0.98] transition-transform duration-100 relative overflow-hidden">
+        </button><button onClick="openUsernameModal()" class="w-full bg-white p-[0.6rem] rounded-xl shadow-sm border border-[#dedede87] flex items-center justify-between active:scale-[0.98] transition-transform duration-100 relative overflow-hidden">
             <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#00a6a6]"></div>
             <div class="flex items-center gap-4 pl-1">
-                <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-cyan-800" 5="">
+                <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-cyan-800">
                     <i class="fa-solid fa-pencil"></i>
                 </div>
                 <div class="text-left">
@@ -163,10 +166,10 @@
                 <span id="usernameLabel" class="bg-blue-50 text-gray-700 text-[10px] font-bold px-2 py-0.5 rounded-full">MAXI2026</span>
                 <i class="fa-solid fa-chevron-right text-gray-300 text-sm"></i>
             </div>
-        </button><button onclick="openKeamananPage()" class="w-full bg-white p-[0.6rem] rounded-xl shadow-sm border border-[#dedede87] flex items-center justify-between active:scale-[0.98] transition-transform duration-100 relative overflow-hidden">
+        </button><button onClick="openKeamananPage()" class="w-full bg-white p-[0.6rem] rounded-xl shadow-sm border border-[#dedede87] flex items-center justify-between active:scale-[0.98] transition-transform duration-100 relative overflow-hidden">
             <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#00a6a6]"></div>
             <div class="flex items-center gap-4 pl-1">
-                <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-cyan-800" 5="">
+                <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-cyan-800">
                     <i class="fa-solid fa-user-shield"></i>
                 </div>
                 <div class="text-left">
@@ -178,10 +181,10 @@
                 
                 <i class="fa-solid fa-chevron-right text-gray-300 text-sm"></i>
             </div>
-        </button><button onclick="openWhatsappModal()" class="w-full bg-white p-[0.6rem] rounded-xl shadow-sm border border-[#dedede87] flex items-center justify-between active:scale-[0.98] transition-transform duration-100 relative overflow-hidden">
+        </button><button onClick="openWhatsappModal()" class="w-full bg-white p-[0.6rem] rounded-xl shadow-sm border border-[#dedede87] flex items-center justify-between active:scale-[0.98] transition-transform duration-100 relative overflow-hidden">
             <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#00a6a6]"></div>
             <div class="flex items-center gap-4 pl-1">
-                <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-cyan-800" 5="">
+                <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-cyan-800">
                     <i class="fas fa-phone"></i>
                 </div>
                 <div class="text-left">
@@ -196,10 +199,10 @@
                 <i class="fa-solid fa-chevron-right text-gray-300 text-sm"></i>
             </div>
             </div>
-        </button><button onclick="openAddressModal()" class="w-full bg-white p-[0.6rem] rounded-xl shadow-sm border border-[#dedede87] flex items-center justify-between active:scale-[0.98] transition-transform duration-100 relative overflow-hidden">
+        </button><button onClick="openAddressModal()" class="w-full bg-white p-[0.6rem] rounded-xl shadow-sm border border-[#dedede87] flex items-center justify-between active:scale-[0.98] transition-transform duration-100 relative overflow-hidden">
             <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#00a6a6]"></div>
             <div class="flex items-center gap-4 pl-1">
-                <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-cyan-800" 5="">
+                <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-cyan-800">
                     <i class="fas fa-map-location-dot"></i>
                 </div>
                 <div class="text-left">
@@ -211,7 +214,7 @@
                 
                 <i class="fa-solid fa-chevron-right text-gray-300 text-sm"></i>
             </div>
-        </button><button onclick="openCountryModal()" class="w-full bg-white p-[0.6rem] rounded-xl shadow-sm border border-[#dedede87] flex items-center justify-between active:scale-[0.98] transition-transform duration-100 relative overflow-hidden">
+        </button><button onClick="openCountryModal()" class="w-full bg-white p-[0.6rem] rounded-xl shadow-sm border border-[#dedede87] flex items-center justify-between active:scale-[0.98] transition-transform duration-100 relative overflow-hidden">
             <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#00a6a6]"></div>
             <div class="flex items-center gap-4 pl-1">
                 <div id="countryIconWrap" class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-cyan-800 overflow-hidden">
@@ -246,7 +249,7 @@
         <!-- <button class="w-full bg-white p-[0.6rem] rounded-xl shadow-sm border border-[#dedede87] flex items-center justify-between active:scale-[0.98] transition-transform duration-100 relative overflow-hidden">
             <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#00a6a6]"></div>
             <div class="flex items-center gap-4 pl-1">
-                <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-cyan-800" 5="">
+                <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-cyan-800">
                     <i class="fa-solid fa-pencil"></i>
                 </div>
                 <div class="text-left">
@@ -264,7 +267,7 @@
         </button> --><!-- <button class="w-full bg-white p-[0.6rem] rounded-xl shadow-sm border border-[#dedede87] flex items-center justify-between active:scale-[0.98] transition-transform duration-100 relative overflow-hidden">
             <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#00a6a6]"></div>
             <div class="flex items-center gap-4 pl-1">
-                <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-cyan-800" 5="">
+                <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-cyan-800">
                     <i class="fa-solid fa-user"></i>
                 </div>
                 <div class="text-left">
@@ -282,7 +285,7 @@
         </button> --><!-- Menu Item: Account Settings --><h3 class="text-sm font-semibold text-gray-400 ml-1 mt-6">Tentang</h3><button class="w-full bg-white p-[0.6rem] rounded-xl shadow-sm border border-[#dedede87] flex items-center justify-between active:scale-[0.98] transition-transform duration-100 relative overflow-hidden">
             <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#00a6a6]"></div>
             <div class="flex items-center gap-4 pl-1">
-                <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-cyan-800" 5="">
+                <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-cyan-800">
                     <i class="fa-solid fa-bell"></i>
                 </div>
                 <div class="text-left">
@@ -294,10 +297,10 @@
                         <input type="checkbox" value="" class="sr-only peer" checked="">
                         <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#21b4b9]"></div>
                     </label>
-        </button><button onclick="window.location.href='kebijakan&amp;privasi.html';" class="w-full bg-white p-[0.6rem] rounded-xl shadow-sm border border-[#dedede87] flex items-center justify-between active:scale-[0.98] transition-transform duration-100 relative overflow-hidden">
+        </button><button onClick="openKebijakanPage()" class="w-full bg-white p-[0.6rem] rounded-xl shadow-sm border border-[#dedede87] flex items-center justify-between active:scale-[0.98] transition-transform duration-100 relative overflow-hidden">
             <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#00a6a6]"></div>
             <div class="flex items-center gap-4 pl-1">
-                <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-cyan-800" 5="">
+                <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-cyan-800">
                     <i class="fa-solid fa-info-circle"></i>
                 </div>
                 <div class="text-left">
@@ -330,7 +333,7 @@
     <div id="usernamePageOverlay" class="fixed inset-0 z-[60] bg-gray-50 transition-transform duration-300 ease-out overflow-y-auto pb-24 translate-x-full">
         <!-- Header -->
         <div class="sticky top-0 z-50 bg-white px-[0rem] py-4 flex items-center justify-between shadow-sm">
-            <button onclick="closeUsernameModal()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-600 transition">
+            <button onClick="closeUsernameModal()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-600 transition">
                 <i class="fa-solid fa-arrow-left text-lg"></i>
             </button>
             <h1 class="pr-[6.6rem] text-lg font-bold text-gray-800">Nama Panggilan</h1>
@@ -351,7 +354,7 @@
 
         <!-- Sticky Footer CTA -->
         <div class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-100 p-5 shadow-[0_-4px_10px_rgba(0,0,0,0.05)] z-50">
-            <button onclick="saveUsernameModal()" class="w-full bg-[#00a6a6] hover:bg-[#00a6a6] text-white font-bold text-lg py-3.5 rounded-xl shadow-lg shadow-gray-150 transition active:scale-[0.98] flex items-center justify-center gap-2">Simpan
+            <button onClick="saveUsernameModal()" class="w-full bg-[#00a6a6] hover:bg-[#00a6a6] text-white font-bold text-lg py-3.5 rounded-xl shadow-lg shadow-gray-150 transition active:scale-[0.98] flex items-center justify-center gap-2">Simpan
             </button>
         </div>
     </div>
@@ -403,7 +406,7 @@
 
         <!-- Header -->
         <div class="sticky top-0 z-50 bg-white px-[0rem] py-4 flex items-center justify-between shadow-sm">
-            <button onclick="closeAddressModal()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-600 transition">
+            <button onClick="closeAddressModal()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-600 transition">
                 <i class="fa-solid fa-arrow-left text-lg"></i>
             </button>
             <h1 class="pr-[6rem] text-lg font-bold text-gray-800">Alamat Pengiriman</h1>
@@ -442,7 +445,7 @@
         <!-- Area -->
         <div class="px-[0.8rem] mt-6">
             <p class="text-gray-800 font-medium text-left mb-8 text-sm">Area<br></p>
-            <button onclick="openAreaModal()" class="mt-[-1.5rem] w-full flex items-center justify-between p-4 hover:bg-gray-50 border border-gray-300 rounded-xl transition-colors group transition-all duration-200 focus-within:ring-2 focus-within:ring-[#00a6a6] focus-within:border-transparent shadow-sm">
+            <button onClick="openAreaModal()" class="mt-[-1.5rem] w-full flex items-center justify-between p-4 hover:bg-gray-50 border border-gray-300 rounded-xl transition-colors group transition-all duration-200 focus-within:ring-2 focus-within:ring-[#00a6a6] focus-within:border-transparent shadow-sm">
                 <div class="flex items-center gap-4">
                     <div class="text-left">
                         <p id="areaSelectedLabel" class="text-gray-400 text-[1rem]">Masukan Area </p>
@@ -479,7 +482,7 @@
 
         <!-- Sticky Footer CTA -->
         <div class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-100 p-5 shadow-[0_-4px_10px_rgba(0,0,0,0.05)] z-50">
-            <button onclick="saveAddressModal()" class="w-full bg-[#00a6a6] hover:bg-[#00a6a6] text-white font-bold text-lg py-3.5 rounded-xl shadow-lg shadow-gray-150 transition active:scale-[0.98] flex items-center justify-center gap-2">Simpan</button>
+            <button onClick="saveAddressModal()" class="w-full bg-[#00a6a6] hover:bg-[#00a6a6] text-white font-bold text-lg py-3.5 rounded-xl shadow-lg shadow-gray-150 transition active:scale-[0.98] flex items-center justify-center gap-2">Simpan</button>
         </div>
     </div>
 
@@ -487,7 +490,7 @@
     <div id="whatsappPageOverlay" class="fixed inset-0 z-[60] bg-gray-50 translate-x-full transition-transform duration-300 ease-out overflow-y-auto pb-24">
         <!-- Header -->
         <div class="sticky top-0 z-50 bg-white px-[0rem] py-4 flex items-center justify-between shadow-sm">
-            <button onclick="closeWhatsappModal()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-600 transition">
+            <button onClick="closeWhatsappModal()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-600 transition">
                 <i class="fa-solid fa-arrow-left text-lg"></i>
             </button>
             <h1 class="pr-[6.8rem] text-lg font-bold text-gray-800">Whatsapp Saya</h1>
@@ -519,7 +522,7 @@
 
         <!-- Sticky Footer CTA -->
         <div class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-100 p-5 shadow-[0_-4px_10px_rgba(0,0,0,0.05)] z-50">
-            <button onclick="saveWhatsappModal()" class="w-full bg-[#00a6a6] hover:bg-[#00a6a6] text-white font-bold text-lg py-3.5 rounded-xl shadow-lg shadow-gray-150 transition active:scale-[0.98] flex items-center justify-center gap-2">Simpan</button>
+            <button onClick="saveWhatsappModal()" class="w-full bg-[#00a6a6] hover:bg-[#00a6a6] text-white font-bold text-lg py-3.5 rounded-xl shadow-lg shadow-gray-150 transition active:scale-[0.98] flex items-center justify-center gap-2">Simpan</button>
         </div>
     </div>
 
@@ -591,7 +594,7 @@
     <div id="keamananPageOverlay" class="fixed inset-0 z-[60] bg-gray-50 translate-x-full transition-transform duration-300 ease-out overflow-y-auto pb-24">
         <!-- Header -->
         <div class="sticky top-0 z-50 bg-white px-[0rem] py-4 flex items-center justify-between shadow-sm">
-            <button onclick="closeKeamananPage()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-600 transition">
+            <button onClick="closeKeamananPage()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-600 transition">
                 <i class="fa-solid fa-arrow-left text-lg"></i>
             </button>
             <h1 class="pr-[6.5rem] text-lg font-bold text-gray-800">Keamanan Akun</h1>
@@ -600,7 +603,7 @@
         <!-- List Menu Keamanan -->
         <div class="px-4 mb-6 mt-4">
             <div class="bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100">
-                <button onclick="openUbahNomorHpInfo()" class="w-full flex items-center justify-between p-[0.7rem] border-b border-[#6a360f45] hover:bg-gray-50 transition active:bg-gray-100">
+                <button onClick="openUbahNomorHpInfo()" class="w-full flex items-center justify-between p-[0.7rem] border-b border-[#6a360f45] hover:bg-gray-50 transition active:bg-gray-100">
                     <div class="flex items-center gap-4">
                         <div class="w-10 h-10 rounded-full bg-[#ffeed9] flex items-center justify-center text-black">
                             <i class="fa-solid fa-phone"></i>
@@ -612,7 +615,7 @@
                         <i class="fa-solid fa-chevron-right text-[#100800] text-[0.75rem]"></i>
                     </div>
                 </button>
-                <button onclick="openUbahEmailForm()" class="w-full flex items-center justify-between p-[0.7rem] border-b border-[#6a360f45] hover:bg-gray-50 transition active:bg-gray-100">
+                <button onClick="openUbahEmailForm()" class="w-full flex items-center justify-between p-[0.7rem] border-b border-[#6a360f45] hover:bg-gray-50 transition active:bg-gray-100">
                     <div class="flex items-center gap-4">
                         <div class="w-10 h-10 rounded-full bg-[#ffeed9] flex items-center justify-center text-black">
                             <i class="fa-solid fa-envelope"></i>
@@ -624,7 +627,7 @@
                         <i class="fa-solid fa-chevron-right text-[#100800] text-[0.75rem]"></i>
                     </div>
                 </button>
-                <button onclick="openUbahPasswordForm()" class="w-full flex items-center justify-between p-[0.7rem] hover:bg-gray-50 transition active:bg-gray-100">
+                <button onClick="openUbahPasswordForm()" class="w-full flex items-center justify-between p-[0.7rem] hover:bg-gray-50 transition active:bg-gray-100">
                     <div class="flex items-center gap-4">
                         <div class="w-10 h-10 rounded-full bg-[#ffeed9] flex items-center justify-center text-[#000000]">
                             <i class="fas fa-lock"></i>
@@ -637,10 +640,49 @@
         </div>
     </div>
 
+    <!-- ===== Overlay Halaman: Ketentuan & Kebijakan Privasi ===== -->
+    <div id="kebijakanPageOverlay" class="fixed inset-0 z-[60] bg-gray-50 translate-x-full transition-transform duration-300 ease-out overflow-y-auto pb-24">
+        <!-- Header -->
+        <div class="sticky top-0 z-50 bg-white px-[0rem] py-4 flex items-center justify-between shadow-sm">
+            <button onClick="closeKebijakanPage()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-600 transition">
+                <i class="fa-solid fa-arrow-left text-lg"></i>
+            </button>
+            <h1 class="pr-[6.5rem] text-lg font-bold text-gray-800">Ketentuan &amp; Kebijakan</h1>
+        </div>
+
+        <!-- Konten -->
+        <div class="px-5 mt-5 text-gray-700 leading-relaxed">
+
+            <h2 class="text-base font-bold text-gray-900 mt-2 mb-3">Syarat dan Ketentuan Layanan</h2>
+            <ol class="list-decimal pl-5 space-y-3 text-sm">
+                <li><span class="font-semibold text-gray-800">Pendaftaran dan Keamanan Akun:</span> Pengguna wajib memberikan data yang akurat dan menjaga kerahasiaan kredensial akun. Anda bertanggung jawab penuh atas segala aktivitas yang terjadi di bawah akun Anda.</li>
+                <li><span class="font-semibold text-gray-800">Penggunaan Layanan yang Dilarang:</span> Pengguna dilarang keras menggunakan aplikasi untuk tindakan melanggar hukum, penipuan, atau meretas sistem.</li>
+                <li><span class="font-semibold text-gray-800">Kekayaan Intelektual:</span> Seluruh konten dalam aplikasi adalah milik eksklusif platform kami.</li>
+                <li><span class="font-semibold text-gray-800">Batasan Tanggung Jawab:</span> Layanan disediakan "sebagaimana adanya". Kami tidak bertanggung jawab atas kerugian akibat gangguan layanan atau kegagalan sistem.</li>
+                <li><span class="font-semibold text-gray-800">Transaksi dan Pembayaran:</span> Pengguna setuju untuk membayar biaya sesuai harga yang tercantum. Kami tidak bertanggung jawab atas kesalahan pembayaran pihak ketiga.</li>
+                <li><span class="font-semibold text-gray-800">Pengakhiran Akun:</span> Kami berhak menangguhkan akun jika terdapat pelanggaran ketentuan atau aktivitas yang membahayakan keamanan.</li>
+            </ol>
+
+            <h2 class="text-base font-bold text-gray-900 mt-6 mb-3">Kebijakan Privasi</h2>
+            <ol class="list-decimal pl-5 space-y-3 text-sm">
+                <li><span class="font-semibold text-gray-800">Pengumpulan Informasi:</span> Kami mengumpulkan data profil, nomor telepon untuk verifikasi OTP, email, dan alamat pengiriman.</li>
+                <li><span class="font-semibold text-gray-800">Penggunaan Informasi:</span> Data digunakan untuk operasional pesanan, peningkatan pengalaman pengguna, dan keamanan akun.</li>
+                <li><span class="font-semibold text-gray-800">Keamanan Data:</span> Kami menerapkan standar keamanan teknis untuk melindungi data pribadi Anda dari akses tidak sah.</li>
+                <li><span class="font-semibold text-gray-800">Berbagi Data dengan Pihak Ketiga:</span> Kami hanya membagikan data kepada pihak yang membantu operasional (kurir/pembayaran) sejauh yang diperlukan.</li>
+                <li><span class="font-semibold text-gray-800">Hak Pengguna:</span> Anda memiliki hak untuk mengakses, memperbarui, atau menghapus data pribadi Anda melalui pengaturan akun.</li>
+                <li><span class="font-semibold text-gray-800">Perubahan Kebijakan:</span> Kami dapat memperbarui kebijakan ini sewaktu-waktu; penggunaan terus-menerus berarti penerimaan kebijakan baru.</li>
+            </ol>
+
+            <div class="mt-8 mb-4 text-center text-xs text-gray-400">
+                <p>&copy;2026 MAXI AFFILIATE. Seluruh hak cipta dilindungi.</p>
+            </div>
+        </div>
+    </div>
+
     <!-- ===== Overlay: Info Nomor HP Saat Ini ===== -->
     <div id="ubahNomorHpInfoOverlay" class="fixed inset-0 z-[65] bg-gray-50 translate-x-full transition-transform duration-300 ease-out overflow-y-auto pb-24">
         <div class="sticky top-0 z-50 bg-white px-[0rem] py-4 flex items-center justify-between shadow-sm">
-            <button onclick="closeUbahNomorHpInfo()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-600 transition">
+            <button onClick="closeUbahNomorHpInfo()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-600 transition">
                 <i class="fa-solid fa-arrow-left text-lg"></i>
             </button>
             <h1 class="pr-[6.5rem] text-lg font-bold text-gray-800">Ubah Nomor HP</h1>
@@ -654,14 +696,14 @@
             <div class="inline-block bg-gray-300 text-orange-500 text-[0.55rem] font-sm px-3 py-1 rounded-full mt-3">Demi keamanan kami akan mengirimkan verifikasi ke nomor HP anda</div>
         </div>
         <div class="px-5 mt-6">
-            <button onclick="openUbahNomorHpForm()" class="w-full bg-[#00a6a6] hover:bg-[#00a6a6] text-white font-bold text-lg py-3.5 rounded-xl shadow-lg shadow-GRAY-200 transition active:scale-[0.98] flex items-center justify-center gap-2">Ubah Nomor HP</button>
+            <button onClick="openUbahNomorHpForm()" class="w-full bg-[#00a6a6] hover:bg-[#00a6a6] text-white font-bold text-lg py-3.5 rounded-xl shadow-lg shadow-GRAY-200 transition active:scale-[0.98] flex items-center justify-center gap-2">Ubah Nomor HP</button>
         </div>
     </div>
 
     <!-- ===== Overlay: Form Nomor HP Baru ===== -->
     <div id="ubahNomorHpFormOverlay" class="fixed inset-0 z-[70] bg-gray-50 translate-x-full transition-transform duration-300 ease-out overflow-y-auto pb-24">
         <div class="sticky top-0 z-50 bg-white px-[0rem] py-4 flex items-center justify-between shadow-sm">
-            <button onclick="closeUbahNomorHpForm()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-600 transition">
+            <button onClick="closeUbahNomorHpForm()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-600 transition">
                 <i class="fa-solid fa-arrow-left text-lg"></i>
             </button>
         </div>
@@ -669,7 +711,7 @@
             <h1 class="text-2xl font-bold text-gray-900 mb-2">Ubah Nomor HP</h1>
             <p class="text-gray-500 text-left mb-8 text-sm">Masukan Nomor HP Aktif Anda Untuk Keamanan Akun</p>
 
-            <form class="space-y-6" onsubmit="event.preventDefault(); submitUbahNomorHp();">
+            <form class="space-y-6" onSubmit="event.preventDefault(); submitUbahNomorHp();">
                 <div class="flex w-full border border-gray-300 rounded-xl overflow-hidden transition-all duration-200 focus-within:ring-2 focus-within:ring-[#00a6a6] focus-within:border-transparent shadow-sm">
                     <div class="bg-gray-50 px-[0.5rem] py-4 border-r border-gray-200 flex items-center space-x-2 cursor-pointer hover:bg-gray-100 transition-colors">
                         <div class="relative">
@@ -691,7 +733,7 @@
     <!-- ===== Overlay: Form Ubah Email ===== -->
     <div id="ubahEmailFormOverlay" class="fixed inset-0 z-[65] bg-gray-50 translate-x-full transition-transform duration-300 ease-out overflow-y-auto pb-24">
         <div class="sticky top-0 z-50 bg-white px-[0rem] py-4 flex items-center justify-between shadow-sm">
-            <button onclick="closeUbahEmailForm()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-600 transition">
+            <button onClick="closeUbahEmailForm()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-600 transition">
                 <i class="fa-solid fa-arrow-left text-lg"></i>
             </button>
         </div>
@@ -699,7 +741,7 @@
             <h1 class="text-2xl font-bold text-gray-900 mb-2">Hubungkan Ke Email</h1>
             <p class="text-gray-500 text-left mb-8 text-sm">Pastikan email yang anda masukan Aktif karena kami akan mengirimkan notifikasi ke email ini.</p>
 
-            <form class="space-y-6" onsubmit="event.preventDefault(); submitUbahEmail();">
+            <form class="space-y-6" onSubmit="event.preventDefault(); submitUbahEmail();">
                 <div class="relative">
                     <input type="text" id="newEmailInput" class="block px-4 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-white rounded-xl border border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-[#00a6a6] peer shadow-sm" placeholder=" ">
                     <label for="newEmailInput" class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-4 peer-focus:text-[#00a6a6] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">Silakan Masukan Email</label>
@@ -716,7 +758,7 @@
     <!-- ===== Overlay: Form Atur Kata Sandi ===== -->
     <div id="ubahPasswordFormOverlay" class="fixed inset-0 z-[65] bg-white translate-x-full transition-transform duration-300 ease-out overflow-y-auto pb-24">
         <div class="sticky top-0 z-50 bg-white px-[0rem] py-4 flex items-center justify-between shadow-sm">
-            <button onclick="closeUbahPasswordForm()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-600 transition">
+            <button onClick="closeUbahPasswordForm()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-600 transition">
                 <i class="fa-solid fa-arrow-left text-lg"></i>
             </button>
         </div>
@@ -724,11 +766,11 @@
             <h1 class="text-2xl font-bold text-gray-900 mb-2">Atur Kata Sandi</h1>
             <p class="text-gray-500 text-left mb-8 text-sm">Kata sandi harus 8 - 20 karakter, dan terdiri dari gabungan huruf, angka dan simbol.</p>
 
-            <form class="space-y-6" onsubmit="event.preventDefault(); submitUbahPassword();">
+            <form class="space-y-6" onSubmit="event.preventDefault(); submitUbahPassword();">
                 <div class="relative">
                     <input type="password" id="newPasswordInput" class="block px-4 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-white rounded-xl border border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-[#00a6a6] peer shadow-sm" placeholder=" ">
                     <label for="newPasswordInput" class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-4 peer-focus:text-[#00a6a6] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">Masukan Kata Sandi</label>
-                    <button type="button" onclick="togglePasswordVisibility('newPasswordInput', this)" class="absolute right-4 top-4 text-gray-400 hover:text-gray-600 focus:outline-none">
+                    <button type="button" onClick="togglePasswordVisibility('newPasswordInput', this)" class="absolute right-4 top-4 text-gray-400 hover:text-gray-600 focus:outline-none">
                         <i class="far fa-eye-slash"></i>
                     </button>
                 </div>
@@ -736,7 +778,7 @@
                 <div class="relative">
                     <input type="password" id="confirmPasswordInput" class="block px-4 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-white rounded-xl border border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-[#00a6a6] peer shadow-sm" placeholder=" ">
                     <label for="confirmPasswordInput" class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-4 peer-focus:text-[#00a6a6] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">Konfirmasi Kata Sandi</label>
-                    <button type="button" onclick="togglePasswordVisibility('confirmPasswordInput', this)" class="absolute right-4 top-4 text-gray-400 hover:text-gray-600 focus:outline-none">
+                    <button type="button" onClick="togglePasswordVisibility('confirmPasswordInput', this)" class="absolute right-4 top-4 text-gray-400 hover:text-gray-600 focus:outline-none">
                         <i class="far fa-eye-slash"></i>
                     </button>
                 </div>
@@ -753,7 +795,7 @@
     <div id="otpPageOverlay" class="fixed inset-0 z-[80] bg-white translate-x-full transition-transform duration-300 ease-out overflow-y-auto">
         <div class="w-full h-full flex flex-col justify-between">
             <div class="sticky top-0 z-50 bg-white px-[0rem] py-4 flex items-center justify-between shadow-sm">
-                <button onclick="closeOtpPage()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-600 transition">
+                <button onClick="closeOtpPage()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-600 transition">
                     <i class="fa-solid fa-arrow-left text-lg"></i>
                 </button>
             </div>
@@ -774,7 +816,7 @@
                             <img id="otpChannelIcon" src="https://image2url.com/r2/default/images/1774317856305-a6257b55-0053-4ebb-b4b2-5aead8bef559.png" class="w-full h-full object-cover">
                         </div>
                         <span id="otpChannelLabel" class="text-xs text-green-600 font-medium">Whatsapp</span>
-                        <span class="text-gray-300 text-[10px]">�</span>
+                        <span class="text-gray-300 text-[10px]">?</span>
                     </div>
                 </div>
 
@@ -797,31 +839,31 @@
                         </svg>
                         <span id="otpTimerLabel" class="text-red-500 font-semibold text-sm font-mono">01:59</span>
                     </div>
-                    <div class="text-sm text-red-500 font-medium">Tidak terima OTP? <span id="otpResendBtn" onclick="resendOtp()" class="opacity-50 cursor-not-allowed">Kirim Ulang</span></div>
+                    <div class="text-sm text-red-500 font-medium">Tidak terima OTP? <span id="otpResendBtn" onClick="resendOtp()" class="opacity-50 cursor-not-allowed">Kirim Ulang</span></div>
                 </div>
             </div>
 
             <div class="w-full bg-gray-50 rounded-t-3xl shadow-[0_-4px_20px_rgba(0,0,0,0.05)]">
                 <div class="px-6 pt-[0.5rem] pb-4">
-                    <button onclick="verifyOtp()" class="w-full bg-[#00a6a6] text-white font-bold py-4 rounded-xl shadow-lg shadow-[#00a6a6]/30 active:scale-[0.98] transition-transform flex items-center justify-center">
+                    <button onClick="verifyOtp()" class="w-full bg-[#00a6a6] text-white font-bold py-4 rounded-xl shadow-lg shadow-[#00a6a6]/30 active:scale-[0.98] transition-transform flex items-center justify-center">
                         Verifikasi
                     </button>
                 </div>
 
                 <!-- Simulated Numeric Keypad -->
                 <div class="grid grid-cols-3 gap-y-4 pb-8 pt-2 px-4">
-                    <button type="button" onclick="otpKeypadPress('1')" class="bg-gray-100 h-12 flex items-center justify-center text-2xl font-medium text-gray-800 active:bg-gray-200 rounded-[1.9rem] transition-colors">1</button>
-                    <button type="button" onclick="otpKeypadPress('2')" class="bg-gray-100 h-12 flex items-center justify-center text-2xl font-medium text-gray-800 active:bg-gray-200 rounded-[1.9rem] transition-colors">2</button>
-                    <button type="button" onclick="otpKeypadPress('3')" class="bg-gray-100 h-12 flex items-center justify-center text-2xl font-medium text-gray-800 active:bg-gray-200 rounded-[1.9rem] transition-colors">3</button>
-                    <button type="button" onclick="otpKeypadPress('4')" class="bg-gray-100 h-12 flex items-center justify-center text-2xl font-medium text-gray-800 active:bg-gray-200 rounded-[1.9rem] transition-colors">4</button>
-                    <button type="button" onclick="otpKeypadPress('5')" class="bg-gray-100 h-12 flex items-center justify-center text-2xl font-medium text-gray-800 active:bg-gray-200 rounded-[1.9rem] transition-colors">5</button>
-                    <button type="button" onclick="otpKeypadPress('6')" class="bg-gray-100 h-12 flex items-center justify-center text-2xl font-medium text-gray-800 active:bg-gray-200 rounded-[1.9rem] transition-colors">6</button>
-                    <button type="button" onclick="otpKeypadPress('7')" class="bg-gray-100 h-12 flex items-center justify-center text-2xl font-medium text-gray-800 active:bg-gray-200 rounded-[1.9rem] transition-colors">7</button>
-                    <button type="button" onclick="otpKeypadPress('8')" class="bg-gray-100 h-12 flex items-center justify-center text-2xl font-medium text-gray-800 active:bg-gray-200 rounded-[1.9rem] transition-colors">8</button>
-                    <button type="button" onclick="otpKeypadPress('9')" class="bg-gray-100 h-12 flex items-center justify-center text-2xl font-medium text-gray-800 active:bg-gray-200 rounded-[1.9rem] transition-colors">9</button>
+                    <button type="button" onClick="otpKeypadPress('1')" class="bg-gray-100 h-12 flex items-center justify-center text-2xl font-medium text-gray-800 active:bg-gray-200 rounded-[1.9rem] transition-colors">1</button>
+                    <button type="button" onClick="otpKeypadPress('2')" class="bg-gray-100 h-12 flex items-center justify-center text-2xl font-medium text-gray-800 active:bg-gray-200 rounded-[1.9rem] transition-colors">2</button>
+                    <button type="button" onClick="otpKeypadPress('3')" class="bg-gray-100 h-12 flex items-center justify-center text-2xl font-medium text-gray-800 active:bg-gray-200 rounded-[1.9rem] transition-colors">3</button>
+                    <button type="button" onClick="otpKeypadPress('4')" class="bg-gray-100 h-12 flex items-center justify-center text-2xl font-medium text-gray-800 active:bg-gray-200 rounded-[1.9rem] transition-colors">4</button>
+                    <button type="button" onClick="otpKeypadPress('5')" class="bg-gray-100 h-12 flex items-center justify-center text-2xl font-medium text-gray-800 active:bg-gray-200 rounded-[1.9rem] transition-colors">5</button>
+                    <button type="button" onClick="otpKeypadPress('6')" class="bg-gray-100 h-12 flex items-center justify-center text-2xl font-medium text-gray-800 active:bg-gray-200 rounded-[1.9rem] transition-colors">6</button>
+                    <button type="button" onClick="otpKeypadPress('7')" class="bg-gray-100 h-12 flex items-center justify-center text-2xl font-medium text-gray-800 active:bg-gray-200 rounded-[1.9rem] transition-colors">7</button>
+                    <button type="button" onClick="otpKeypadPress('8')" class="bg-gray-100 h-12 flex items-center justify-center text-2xl font-medium text-gray-800 active:bg-gray-200 rounded-[1.9rem] transition-colors">8</button>
+                    <button type="button" onClick="otpKeypadPress('9')" class="bg-gray-100 h-12 flex items-center justify-center text-2xl font-medium text-gray-800 active:bg-gray-200 rounded-[1.9rem] transition-colors">9</button>
                     <div class="h-12"></div>
-                    <button type="button" onclick="otpKeypadPress('0')" class="bg-gray-100 h-12 flex items-center justify-center text-2xl font-medium text-gray-800 active:bg-gray-200 rounded-[1.9rem] transition-colors">0</button>
-                    <button type="button" onclick="otpKeypadBackspace()" class="bg-gray-100 h-12 flex items-center justify-center text-gray-800 active:bg-gray-200 rounded-[1.9rem] transition-colors">
+                    <button type="button" onClick="otpKeypadPress('0')" class="bg-gray-100 h-12 flex items-center justify-center text-2xl font-medium text-gray-800 active:bg-gray-200 rounded-[1.9rem] transition-colors">0</button>
+                    <button type="button" onClick="otpKeypadBackspace()" class="bg-gray-100 h-12 flex items-center justify-center text-gray-800 active:bg-gray-200 rounded-[1.9rem] transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2M3 12l6.414 6.414a2 2 0 001.414.586H19a2 2 0 002-2V7a2 2 0 00-2-2h-8.172a2 2 0 00-1.414.586L3 12z"></path>
                         </svg>
@@ -890,6 +932,16 @@
         }
         function closeKeamananPage() {
             document.getElementById('keamananPageOverlay').classList.add('translate-x-full');
+        }
+
+        // ---------- Halaman Ketentuan & Kebijakan ----------
+        function openKebijakanPage() {
+            const overlay = document.getElementById('kebijakanPageOverlay');
+            overlay.classList.remove('hidden');
+            requestAnimationFrame(() => overlay.classList.remove('translate-x-full'));
+        }
+        function closeKebijakanPage() {
+            document.getElementById('kebijakanPageOverlay').classList.add('translate-x-full');
         }
 
         // ---------- Ubah Nomor HP: halaman info ----------
@@ -1164,7 +1216,7 @@
     </script>
 
     <!-- ===== Modal Popup: Pilih Area (Provinsi > Kab/Kota > Kecamatan > Kelurahan/Desa) ===== -->
-    <div id="areaModalOverlay" onclick="if(event.target===this) closeAreaModal()" class="fixed inset-0 z-[70] bg-black/50 backdrop-blur-sm hidden">
+    <div id="areaModalOverlay" onClick="if(event.target===this) closeAreaModal()" class="fixed inset-0 z-[70] bg-black/50 backdrop-blur-sm hidden">
         <div id="areaModalSheet" class="fixed bottom-0 left-0 right-0 bg-white rounded-t-[2rem] z-[70] h-[75%] flex flex-col shadow-[0_-10px_60px_-15px_rgba(0,0,0,0.3)] transition-transform duration-300 ease-out translate-y-full">
 
             <!-- Drag Handle -->
@@ -1174,11 +1226,11 @@
 
             <!-- Header -->
             <div class="px-5 pb-3 flex items-center gap-3 flex-shrink-0 border-b border-gray-100">
-                <button id="areaBackBtn" onclick="areaGoBack()" class="hidden w-8 h-8 flex items-center justify-center rounded-full text-gray-500 hover:bg-gray-100 transition">
+                <button id="areaBackBtn" onClick="areaGoBack()" class="hidden w-8 h-8 flex items-center justify-center rounded-full text-gray-500 hover:bg-gray-100 transition">
                     <i class="fa-solid fa-arrow-left"></i>
                 </button>
                 <h2 id="areaModalTitle" class="text-[1rem] font-bold text-gray-900 tracking-tight flex-1">Pilih Provinsi</h2>
-                <button onclick="closeAreaModal()" class="w-8 h-8 flex items-center justify-center rounded-full text-gray-400 hover:bg-gray-100 transition">
+                <button onClick="closeAreaModal()" class="w-8 h-8 flex items-center justify-center rounded-full text-gray-400 hover:bg-gray-100 transition">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
@@ -1191,11 +1243,12 @@
                 </div>
             </div>
 
-            <!-- List -->
-            <div id="areaListContainer" class="flex-1 overflow-y-auto px-5 pb-6 space-y-2"><button type="button" class="area-item w-full text-left px-4 py-3.5 rounded-xl border border-gray-200 hover:bg-gray-50 active:bg-gray-100 transition flex items-center justify-between" data-name="aceh"><span class="text-gray-700 font-medium text-sm">ACEH</span><i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i></button><button type="button" class="area-item w-full text-left px-4 py-3.5 rounded-xl border border-gray-200 hover:bg-gray-50 active:bg-gray-100 transition flex items-center justify-between" data-name="sumatera utara"><span class="text-gray-700 font-medium text-sm">SUMATERA UTARA</span><i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i></button><button type="button" class="area-item w-full text-left px-4 py-3.5 rounded-xl border border-gray-200 hover:bg-gray-50 active:bg-gray-100 transition flex items-center justify-between" data-name="sumatera barat"><span class="text-gray-700 font-medium text-sm">SUMATERA BARAT</span><i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i></button><button type="button" class="area-item w-full text-left px-4 py-3.5 rounded-xl border border-gray-200 hover:bg-gray-50 active:bg-gray-100 transition flex items-center justify-between" data-name="riau"><span class="text-gray-700 font-medium text-sm">RIAU</span><i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i></button><button type="button" class="area-item w-full text-left px-4 py-3.5 rounded-xl border border-gray-200 hover:bg-gray-50 active:bg-gray-100 transition flex items-center justify-between" data-name="jambi"><span class="text-gray-700 font-medium text-sm">JAMBI</span><i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i></button><button type="button" class="area-item w-full text-left px-4 py-3.5 rounded-xl border border-gray-200 hover:bg-gray-50 active:bg-gray-100 transition flex items-center justify-between" data-name="sumatera selatan"><span class="text-gray-700 font-medium text-sm">SUMATERA SELATAN</span><i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i></button><button type="button" class="area-item w-full text-left px-4 py-3.5 rounded-xl border border-gray-200 hover:bg-gray-50 active:bg-gray-100 transition flex items-center justify-between" data-name="bengkulu"><span class="text-gray-700 font-medium text-sm">BENGKULU</span><i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i></button><button type="button" class="area-item w-full text-left px-4 py-3.5 rounded-xl border border-gray-200 hover:bg-gray-50 active:bg-gray-100 transition flex items-center justify-between" data-name="lampung"><span class="text-gray-700 font-medium text-sm">LAMPUNG</span><i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i></button><button type="button" class="area-item w-full text-left px-4 py-3.5 rounded-xl border border-gray-200 hover:bg-gray-50 active:bg-gray-100 transition flex items-center justify-between" data-name="kepulauan bangka belitung"><span class="text-gray-700 font-medium text-sm">KEPULAUAN BANGKA BELITUNG</span><i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i></button><button type="button" class="area-item w-full text-left px-4 py-3.5 rounded-xl border border-gray-200 hover:bg-gray-50 active:bg-gray-100 transition flex items-center justify-between" data-name="kepulauan riau"><span class="text-gray-700 font-medium text-sm">KEPULAUAN RIAU</span><i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i></button><button type="button" class="area-item w-full text-left px-4 py-3.5 rounded-xl border border-gray-200 hover:bg-gray-50 active:bg-gray-100 transition flex items-center justify-between" data-name="dki jakarta"><span class="text-gray-700 font-medium text-sm">DKI JAKARTA</span><i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i></button><button type="button" class="area-item w-full text-left px-4 py-3.5 rounded-xl border border-gray-200 hover:bg-gray-50 active:bg-gray-100 transition flex items-center justify-between" data-name="jawa barat"><span class="text-gray-700 font-medium text-sm">JAWA BARAT</span><i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i></button><button type="button" class="area-item w-full text-left px-4 py-3.5 rounded-xl border border-gray-200 hover:bg-gray-50 active:bg-gray-100 transition flex items-center justify-between" data-name="jawa tengah"><span class="text-gray-700 font-medium text-sm">JAWA TENGAH</span><i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i></button><button type="button" class="area-item w-full text-left px-4 py-3.5 rounded-xl border border-gray-200 hover:bg-gray-50 active:bg-gray-100 transition flex items-center justify-between" data-name="di yogyakarta"><span class="text-gray-700 font-medium text-sm">DI YOGYAKARTA</span><i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i></button><button type="button" class="area-item w-full text-left px-4 py-3.5 rounded-xl border border-gray-200 hover:bg-gray-50 active:bg-gray-100 transition flex items-center justify-between" data-name="jawa timur"><span class="text-gray-700 font-medium text-sm">JAWA TIMUR</span><i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i></button><button type="button" class="area-item w-full text-left px-4 py-3.5 rounded-xl border border-gray-200 hover:bg-gray-50 active:bg-gray-100 transition flex items-center justify-between" data-name="banten"><span class="text-gray-700 font-medium text-sm">BANTEN</span><i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i></button><button type="button" class="area-item w-full text-left px-4 py-3.5 rounded-xl border border-gray-200 hover:bg-gray-50 active:bg-gray-100 transition flex items-center justify-between" data-name="bali"><span class="text-gray-700 font-medium text-sm">BALI</span><i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i></button><button type="button" class="area-item w-full text-left px-4 py-3.5 rounded-xl border border-gray-200 hover:bg-gray-50 active:bg-gray-100 transition flex items-center justify-between" data-name="nusa tenggara barat"><span class="text-gray-700 font-medium text-sm">NUSA TENGGARA BARAT</span><i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i></button><button type="button" class="area-item w-full text-left px-4 py-3.5 rounded-xl border border-gray-200 hover:bg-gray-50 active:bg-gray-100 transition flex items-center justify-between" data-name="nusa tenggara timur"><span class="text-gray-700 font-medium text-sm">NUSA TENGGARA TIMUR</span><i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i></button><button type="button" class="area-item w-full text-left px-4 py-3.5 rounded-xl border border-gray-200 hover:bg-gray-50 active:bg-gray-100 transition flex items-center justify-between" data-name="kalimantan barat"><span class="text-gray-700 font-medium text-sm">KALIMANTAN BARAT</span><i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i></button><button type="button" class="area-item w-full text-left px-4 py-3.5 rounded-xl border border-gray-200 hover:bg-gray-50 active:bg-gray-100 transition flex items-center justify-between" data-name="kalimantan tengah"><span class="text-gray-700 font-medium text-sm">KALIMANTAN TENGAH</span><i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i></button><button type="button" class="area-item w-full text-left px-4 py-3.5 rounded-xl border border-gray-200 hover:bg-gray-50 active:bg-gray-100 transition flex items-center justify-between" data-name="kalimantan selatan"><span class="text-gray-700 font-medium text-sm">KALIMANTAN SELATAN</span><i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i></button><button type="button" class="area-item w-full text-left px-4 py-3.5 rounded-xl border border-gray-200 hover:bg-gray-50 active:bg-gray-100 transition flex items-center justify-between" data-name="kalimantan timur"><span class="text-gray-700 font-medium text-sm">KALIMANTAN TIMUR</span><i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i></button><button type="button" class="area-item w-full text-left px-4 py-3.5 rounded-xl border border-gray-200 hover:bg-gray-50 active:bg-gray-100 transition flex items-center justify-between" data-name="kalimantan utara"><span class="text-gray-700 font-medium text-sm">KALIMANTAN UTARA</span><i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i></button><button type="button" class="area-item w-full text-left px-4 py-3.5 rounded-xl border border-gray-200 hover:bg-gray-50 active:bg-gray-100 transition flex items-center justify-between" data-name="sulawesi utara"><span class="text-gray-700 font-medium text-sm">SULAWESI UTARA</span><i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i></button><button type="button" class="area-item w-full text-left px-4 py-3.5 rounded-xl border border-gray-200 hover:bg-gray-50 active:bg-gray-100 transition flex items-center justify-between" data-name="sulawesi tengah"><span class="text-gray-700 font-medium text-sm">SULAWESI TENGAH</span><i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i></button><button type="button" class="area-item w-full text-left px-4 py-3.5 rounded-xl border border-gray-200 hover:bg-gray-50 active:bg-gray-100 transition flex items-center justify-between" data-name="sulawesi selatan"><span class="text-gray-700 font-medium text-sm">SULAWESI SELATAN</span><i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i></button><button type="button" class="area-item w-full text-left px-4 py-3.5 rounded-xl border border-gray-200 hover:bg-gray-50 active:bg-gray-100 transition flex items-center justify-between" data-name="sulawesi tenggara"><span class="text-gray-700 font-medium text-sm">SULAWESI TENGGARA</span><i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i></button><button type="button" class="area-item w-full text-left px-4 py-3.5 rounded-xl border border-gray-200 hover:bg-gray-50 active:bg-gray-100 transition flex items-center justify-between" data-name="gorontalo"><span class="text-gray-700 font-medium text-sm">GORONTALO</span><i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i></button><button type="button" class="area-item w-full text-left px-4 py-3.5 rounded-xl border border-gray-200 hover:bg-gray-50 active:bg-gray-100 transition flex items-center justify-between" data-name="sulawesi barat"><span class="text-gray-700 font-medium text-sm">SULAWESI BARAT</span><i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i></button><button type="button" class="area-item w-full text-left px-4 py-3.5 rounded-xl border border-gray-200 hover:bg-gray-50 active:bg-gray-100 transition flex items-center justify-between" data-name="maluku"><span class="text-gray-700 font-medium text-sm">MALUKU</span><i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i></button><button type="button" class="area-item w-full text-left px-4 py-3.5 rounded-xl border border-gray-200 hover:bg-gray-50 active:bg-gray-100 transition flex items-center justify-between" data-name="maluku utara"><span class="text-gray-700 font-medium text-sm">MALUKU UTARA</span><i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i></button><button type="button" class="area-item w-full text-left px-4 py-3.5 rounded-xl border border-gray-200 hover:bg-gray-50 active:bg-gray-100 transition flex items-center justify-between" data-name="papua barat"><span class="text-gray-700 font-medium text-sm">PAPUA BARAT</span><i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i></button><button type="button" class="area-item w-full text-left px-4 py-3.5 rounded-xl border border-gray-200 hover:bg-gray-50 active:bg-gray-100 transition flex items-center justify-between" data-name="papua"><span class="text-gray-700 font-medium text-sm">PAPUA</span><i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i></button></div>
+          <!-- List -->
+            <div id="areaListContainer" class="flex-1 overflow-y-auto px-5 pb-6 space-y-2">
+                <!-- diisi oleh JS -->
+            </div>
         </div>
     </div>
-
     <script>
         // Beberapa sumber API wilayah (mirror), dicoba berurutan jika salah satu gagal/CORS-blocked
         const AREA_API_SOURCES = [
@@ -1359,14 +1412,14 @@
     </script>
 
 
-    <div id="photoModalOverlay" onclick="if(event.target===this) closePhotoModal()" class="fixed inset-0 z-50 hidden items-end sm:items-center justify-center bg-black/50 backdrop-blur-sm">
+    <div id="photoModalOverlay" onClick="if(event.target===this) closePhotoModal()" class="fixed inset-0 z-50 hidden items-end sm:items-center justify-center bg-black/50 backdrop-blur-sm">
         <div id="photoModalSheet" class="w-full sm:w-[380px] bg-white rounded-t-3xl sm:rounded-3xl p-5 pb-8 sm:pb-5 translate-y-full sm:translate-y-0 sm:scale-95 sm:opacity-0 transition-all duration-300 ease-out">
             <!-- Drag handle (mobile) -->
             <div class="w-10 h-1.5 bg-gray-200 rounded-full mx-auto mb-4 sm:hidden"></div>
 
             <div class="flex items-center justify-between mb-1">
                 <h2 class="text-base font-bold text-gray-900">Ubah Foto Profil</h2>
-                <button onclick="closePhotoModal()" class="w-8 h-8 flex items-center justify-center rounded-full text-gray-400 hover:bg-gray-100 active:bg-gray-200 transition">
+                <button onClick="closePhotoModal()" class="w-8 h-8 flex items-center justify-center rounded-full text-gray-400 hover:bg-gray-100 active:bg-gray-200 transition">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
@@ -1379,7 +1432,7 @@
 
             <div class="grid grid-cols-2 gap-3">
                 <!-- Pilihan: Galeri -->
-                <button onclick="triggerGallery()" class="flex flex-col items-center justify-center gap-2 py-5 rounded-2xl bg-orange-50 border border-[#dedede87] active:scale-[0.97] transition-transform">
+                <button onClick="triggerGallery()" class="flex flex-col items-center justify-center gap-2 py-5 rounded-2xl bg-orange-50 border border-[#dedede87] active:scale-[0.97] transition-transform">
                     <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-cyan-800 shadow-sm">
                         <i class="fa-solid fa-images text-lg"></i>
                     </div>
@@ -1387,7 +1440,7 @@
                 </button>
 
                 <!-- Pilihan: Kamera -->
-                <button onclick="triggerCamera()" class="flex flex-col items-center justify-center gap-2 py-5 rounded-2xl bg-orange-50 border border-[#dedede87] active:scale-[0.97] transition-transform">
+                <button onClick="triggerCamera()" class="flex flex-col items-center justify-center gap-2 py-5 rounded-2xl bg-orange-50 border border-[#dedede87] active:scale-[0.97] transition-transform">
                     <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-cyan-800 shadow-sm">
                         <i class="fa-solid fa-camera text-lg"></i>
                     </div>
@@ -1398,7 +1451,7 @@
     </div>
 
     <!-- ===== Modal Popup: Pilih Negara/Wilayah ===== -->
-    <div id="countryModalOverlay" onclick="if(event.target===this) closeCountryModal()" class="fixed inset-0 z-50 hidden bg-black/50 backdrop-blur-sm">
+    <div id="countryModalOverlay" onClick="if(event.target===this) closeCountryModal()" class="fixed inset-0 z-50 hidden bg-black/50 backdrop-blur-sm">
         <div id="countryModalSheet" class="fixed bottom-0 left-0 right-0 bg-white rounded-t-[2.5rem] z-50 h-[43%] flex flex-col shadow-[0_-10px_60px_-15px_rgba(0,0,0,0.3)] translate-y-full transition-transform duration-300 ease-out">
 
             <!-- Drag Handle -->
@@ -1464,7 +1517,7 @@
 
             <!-- Footer Action -->
             <div class="absolute bottom-0 left-0 right-0 p-[1rem] bg-white border-t border-gray-100">
-                <button type="button" onclick="confirmCountry()" class="w-full bg-[#00a6a6] text-white font-semibold text-lg py-4 rounded-2xl shadow-lg shadow-indigo-200 active:scale-[0.98] transition-transform flex items-center justify-center space-x-2">
+                <button type="button" onClick="confirmCountry()" class="w-full bg-[#00a6a6] text-white font-semibold text-lg py-4 rounded-2xl shadow-lg shadow-indigo-200 active:scale-[0.98] transition-transform flex items-center justify-center space-x-2">
                     <span>Konfirmasi</span>
                 </button>
             </div>
@@ -1536,8 +1589,8 @@
         }
     </script>
 
-    <input type="file" id="galleryInput" accept="image/*" class="hidden" onchange="handlePhotoSelected(event)">
-    <input type="file" id="cameraInput" accept="image/*" capture="user" class="hidden" onchange="handlePhotoSelected(event)">
+    <input type="file" id="galleryInput" accept="image/*" class="hidden" onChange="handlePhotoSelected(event)">
+    <input type="file" id="cameraInput" accept="image/*" capture="user" class="hidden" onChange="handlePhotoSelected(event)">
 
     <script>
         function openPhotoModal() {
