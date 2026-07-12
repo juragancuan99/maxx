@@ -197,7 +197,7 @@
                 <i class="fa-solid fa-chevron-right text-gray-300 text-sm"></i>
             </div>
             </div>
-        </button><button class="w-full bg-white p-[0.6rem] rounded-xl shadow-sm border border-[#dedede87] flex items-center justify-between active:scale-[0.98] transition-transform duration-100 relative overflow-hidden">
+        </button><button onclick="openAddressModal()" class="w-full bg-white p-[0.6rem] rounded-xl shadow-sm border border-[#dedede87] flex items-center justify-between active:scale-[0.98] transition-transform duration-100 relative overflow-hidden">
             <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#00a6a6]"></div>
             <div class="flex items-center gap-4 pl-1">
                 <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-cyan-800" 5="">
@@ -212,11 +212,11 @@
                 
                 <i class="fa-solid fa-chevron-right text-gray-300 text-sm"></i>
             </div>
-        </button><button class="w-full bg-white p-[0.6rem] rounded-xl shadow-sm border border-[#dedede87] flex items-center justify-between active:scale-[0.98] transition-transform duration-100 relative overflow-hidden">
+        </button><button onclick="openCountryModal()" class="w-full bg-white p-[0.6rem] rounded-xl shadow-sm border border-[#dedede87] flex items-center justify-between active:scale-[0.98] transition-transform duration-100 relative overflow-hidden">
             <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#00a6a6]"></div>
             <div class="flex items-center gap-4 pl-1">
-                <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-cyan-800" 5="">
-                    <i class="fas fa-globe"></i>
+                <div id="countryIconWrap" class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-cyan-800 overflow-hidden">
+                    <img id="countryFlagIcon" src="https://image2url.com/r2/default/images/1774367205798-1f116ea8-4605-42ff-8f81-f6b7fc7fe511.jpg" alt="Bendera Negara" class="w-6 h-6 rounded-full object-cover">
                 </div>
                 <div class="text-left">
                     <p class="font-semibold text-gray-800">Negara/Wilayah</p>
@@ -226,7 +226,7 @@
             <div class="flex items-center gap-2">
                 
                 <div class="flex items-center gap-[0rem]">
-                <span class="bg-blue-50 text-gray-700 text-[10px] font-bold px-2 py-0.5 rounded-full">Indonesia</span>
+                <span id="countryNameLabel" class="bg-blue-50 text-gray-700 text-[10px] font-bold px-2 py-0.5 rounded-full">Indonesia</span>
                 <i class="fa-solid fa-chevron-right text-gray-300 text-sm"></i>
             </div>
             </div>
@@ -327,7 +327,289 @@
     <!-- Bottom Navigation Bar -->
     
 
-    <!-- ===== Modal Popup: Ubah Foto Profil ===== -->
+    <!-- ===== Overlay Halaman: Alamat Pengiriman ===== -->
+    <style>
+      .benderaID {
+        width: 20px;
+        height: 15px;
+        border: 1px solid #ccc;
+      }
+      .benderaID .merah {
+        height: 50%;
+        background-color: #FF0000;
+      }
+      .benderaID .putih {
+        height: 50%;
+        background-color: #FFFFFF;
+        border-top: 1px solid #eee;
+      }
+    </style>
+
+    <div id="addressPageOverlay" class="fixed inset-0 z-[60] bg-gray-50 translate-x-full transition-transform duration-300 ease-out overflow-y-auto pb-24">
+
+        <!-- Header -->
+        <div class="sticky top-0 z-50 bg-white px-[0rem] py-4 flex items-center justify-between shadow-sm">
+            <button onclick="closeAddressModal()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-600 transition">
+                <i class="fa-solid fa-arrow-left text-lg"></i>
+            </button>
+            <h1 class="pr-[6rem] text-lg font-bold text-gray-800">Alamat Pengiriman</h1>
+        </div>
+
+        <!-- Nama Penerima -->
+        <div class="px-[0.8rem] mt-6">
+            <p class="text-gray-800 font-medium text-left mb-8 text-sm">Nama Penerima<br></p>
+            <div class="relative flex items-center group mt-[-1.5rem]">
+                <div class="flex w-full border border-gray-300 rounded-xl overflow-hidden transition-all duration-200 focus-within:ring-2 focus-within:ring-[#00a6a6] focus-within:border-transparent shadow-sm">
+                    <input type="text" placeholder="Nama Penerima" class="w-full px-4 py-4 text-[1rem] text-gray-900 placeholder-gray-400 outline-none bg-white">
+                </div>
+            </div>
+        </div>
+
+        <!-- Nomor Handphone -->
+        <div class="px-[0.8rem] mt-6">
+            <p class="text-gray-800 font-medium text-left mb-8 text-sm">Nomor Hanphone<br></p>
+            <div class="relative flex items-center group mt-[-1.5rem]">
+                <div class="flex w-full border border-gray-300 rounded-xl overflow-hidden transition-all duration-200 focus-within:ring-2 focus-within:ring-[#00a6a6] focus-within:border-transparent shadow-sm">
+                    <div class="bg-gray-50 px-[0.5rem] py-4 border-r border-gray-200 flex items-center space-x-2 cursor-pointer hover:bg-gray-100 transition-colors">
+                        <div class="benderaID">
+                            <div class="merah"></div>
+                            <div class="putih"></div>
+                        </div>
+                        <span class="text-gray-900 font-semibold text-base">+62</span>
+                        <svg class="w-3 h-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
+                    <input type="tel" placeholder="Nomor Handphone" class="w-full px-4 py-4 text-[1rem] text-gray-900 placeholder-gray-400 outline-none bg-white" inputmode="numeric">
+                </div>
+            </div>
+        </div>
+
+        <!-- Area -->
+        <div class="px-[0.8rem] mt-6">
+            <p class="text-gray-800 font-medium text-left mb-8 text-sm">Area<br></p>
+            <button onclick="openAreaModal()" class="mt-[-1.5rem] w-full flex items-center justify-between p-4 hover:bg-gray-50 border border-gray-300 rounded-xl transition-colors group transition-all duration-200 focus-within:ring-2 focus-within:ring-[#00a6a6] focus-within:border-transparent shadow-sm">
+                <div class="flex items-center gap-4">
+                    <div class="text-left">
+                        <p id="areaSelectedLabel" class="text-gray-400 text-[1rem]">Masukan Area </p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-down text-gray-300 text-sm"></i>
+            </button>
+        </div>
+
+        <!-- Alamat Lengkap -->
+        <div class="px-[0.8rem] mt-6">
+            <p class="text-gray-800 font-medium text-left mb-8 text-sm">Alamat Lengkap<br></p>
+            <div class="relative flex items-center group mt-[-1.5rem]">
+                <div class="flex w-full border border-gray-300 rounded-xl overflow-hidden transition-all duration-200 focus-within:ring-2 focus-within:ring-[#00a6a6] focus-within:border-transparent shadow-sm">
+                    <textarea rows="6" placeholder="Alamat Lengkap" class="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#2563EB] transition resize-none"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tetapkan Sebagai Default -->
+        <div class="px-[0.8rem] mt-6">
+            <div class="bg-white rounded-2xl overflow-hidden border border-gray-100">
+                <div class="w-full flex items-center justify-between p-4">
+                    <div class="flex items-center gap-4">
+                        <span class="font-medium text-gray-700">Tetapkan Sebagai Default</span>
+                    </div>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" value="" class="sr-only peer">
+                        <div class="w-11 h-6 bg-gray-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#00a6a6]"></div>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sticky Footer CTA -->
+        <div class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-100 p-5 shadow-[0_-4px_10px_rgba(0,0,0,0.05)] z-50">
+            <button onclick="saveAddressModal()" class="w-full bg-[#00a6a6] hover:bg-[#00a6a6] text-white font-bold text-lg py-3.5 rounded-xl shadow-lg shadow-gray-150 transition active:scale-[0.98] flex items-center justify-center gap-2">Simpan</button>
+        </div>
+    </div>
+
+    <!-- ===== Modal Popup: Pilih Area (Provinsi > Kab/Kota > Kecamatan > Kelurahan/Desa) ===== -->
+    <div id="areaModalOverlay" onclick="if(event.target===this) closeAreaModal()" class="fixed inset-0 z-[70] hidden bg-black/50 backdrop-blur-sm">
+        <div id="areaModalSheet" class="fixed bottom-0 left-0 right-0 bg-white rounded-t-[2rem] z-[70] h-[75%] flex flex-col shadow-[0_-10px_60px_-15px_rgba(0,0,0,0.3)] translate-y-full transition-transform duration-300 ease-out">
+
+            <!-- Drag Handle -->
+            <div class="w-full flex justify-center pt-4 pb-2 flex-shrink-0">
+                <div class="w-12 h-1.5 bg-gray-200 rounded-full"></div>
+            </div>
+
+            <!-- Header -->
+            <div class="px-5 pb-3 flex items-center gap-3 flex-shrink-0 border-b border-gray-100">
+                <button id="areaBackBtn" onclick="areaGoBack()" class="hidden w-8 h-8 flex items-center justify-center rounded-full text-gray-500 hover:bg-gray-100 transition">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+                <h2 id="areaModalTitle" class="text-[1rem] font-bold text-gray-900 tracking-tight flex-1">Pilih Provinsi</h2>
+                <button onclick="closeAreaModal()" class="w-8 h-8 flex items-center justify-center rounded-full text-gray-400 hover:bg-gray-100 transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Search -->
+            <div class="px-5 py-3 flex-shrink-0">
+                <div class="flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-xl px-3 py-2.5">
+                    <i class="fa-solid fa-magnifying-glass text-gray-400 text-sm"></i>
+                    <input id="areaSearchInput" type="text" placeholder="Cari..." class="w-full bg-transparent outline-none text-sm text-gray-700 placeholder-gray-400" oninput="areaFilterList()">
+                </div>
+            </div>
+
+            <!-- List -->
+            <div id="areaListContainer" class="flex-1 overflow-y-auto px-5 pb-6 space-y-2">
+                <!-- diisi oleh JS -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const AREA_API_BASE = 'https://emsifa.github.io/api-wilayah-indonesia/api';
+
+        // level: 0=provinsi, 1=kabupaten/kota, 2=kecamatan, 3=kelurahan/desa
+        let areaLevel = 0;
+        let areaSelection = { provinsi: null, kabkota: null, kecamatan: null, kelurahan: null };
+        let areaCurrentList = []; // list mentah dari API untuk level aktif
+
+        const areaLevelTitle = ['Pilih Provinsi', 'Pilih Kabupaten/Kota', 'Pilih Kecamatan', 'Pilih Kelurahan/Desa'];
+
+        function openAreaModal() {
+            const overlay = document.getElementById('areaModalOverlay');
+            const sheet = document.getElementById('areaModalSheet');
+            overlay.classList.remove('hidden');
+            requestAnimationFrame(() => {
+                sheet.classList.remove('translate-y-full');
+            });
+
+            // reset ke level provinsi setiap kali dibuka
+            areaLevel = 0;
+            areaSelection = { provinsi: null, kabkota: null, kecamatan: null, kelurahan: null };
+            updateAreaHeader();
+            loadAreaList();
+        }
+
+        function closeAreaModal() {
+            const overlay = document.getElementById('areaModalOverlay');
+            const sheet = document.getElementById('areaModalSheet');
+            sheet.classList.add('translate-y-full');
+            setTimeout(() => overlay.classList.add('hidden'), 300);
+        }
+
+        function updateAreaHeader() {
+            document.getElementById('areaModalTitle').textContent = areaLevelTitle[areaLevel];
+            document.getElementById('areaBackBtn').classList.toggle('hidden', areaLevel === 0);
+            document.getElementById('areaSearchInput').value = '';
+        }
+
+        async function loadAreaList() {
+            const container = document.getElementById('areaListContainer');
+            container.innerHTML = '<div class="flex justify-center py-10 text-gray-400 text-sm"><i class="fa-solid fa-spinner fa-spin mr-2"></i> Memuat data...</div>';
+
+            let url = '';
+            if (areaLevel === 0) {
+                url = `${AREA_API_BASE}/provinces.json`;
+            } else if (areaLevel === 1) {
+                url = `${AREA_API_BASE}/regencies/${areaSelection.provinsi.id}.json`;
+            } else if (areaLevel === 2) {
+                url = `${AREA_API_BASE}/districts/${areaSelection.kabkota.id}.json`;
+            } else if (areaLevel === 3) {
+                url = `${AREA_API_BASE}/villages/${areaSelection.kecamatan.id}.json`;
+            }
+
+            try {
+                const res = await fetch(url);
+                if (!res.ok) throw new Error('Gagal memuat data');
+                const data = await res.json();
+                areaCurrentList = data;
+                renderAreaList(data);
+            } catch (err) {
+                container.innerHTML = '<div class="text-center py-10 text-red-400 text-sm">Gagal memuat data. Periksa koneksi internet Anda.<br><button onclick="loadAreaList()" class="mt-3 text-[#00a6a6] font-semibold underline">Coba lagi</button></div>';
+            }
+        }
+
+        function renderAreaList(list) {
+            const container = document.getElementById('areaListContainer');
+            if (!list || list.length === 0) {
+                container.innerHTML = '<div class="text-center py-10 text-gray-400 text-sm">Data tidak ditemukan.</div>';
+                return;
+            }
+            container.innerHTML = '';
+            list.forEach(item => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'area-item w-full text-left px-4 py-3.5 rounded-xl border border-gray-200 hover:bg-gray-50 active:bg-gray-100 transition flex items-center justify-between';
+                btn.dataset.name = item.name.toLowerCase();
+                btn.innerHTML = `<span class="text-gray-700 font-medium text-sm">${item.name}</span><i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i>`;
+                btn.onclick = () => selectAreaItem(item);
+                container.appendChild(btn);
+            });
+        }
+
+        function areaFilterList() {
+            const q = document.getElementById('areaSearchInput').value.trim().toLowerCase();
+            document.querySelectorAll('#areaListContainer .area-item').forEach(el => {
+                el.classList.toggle('hidden', !el.dataset.name.includes(q));
+            });
+        }
+
+        function selectAreaItem(item) {
+            if (areaLevel === 0) {
+                areaSelection.provinsi = item;
+                areaLevel = 1;
+            } else if (areaLevel === 1) {
+                areaSelection.kabkota = item;
+                areaLevel = 2;
+            } else if (areaLevel === 2) {
+                areaSelection.kecamatan = item;
+                areaLevel = 3;
+            } else if (areaLevel === 3) {
+                areaSelection.kelurahan = item;
+                finishAreaSelection();
+                return;
+            }
+            updateAreaHeader();
+            loadAreaList();
+        }
+
+        function areaGoBack() {
+            if (areaLevel === 0) return;
+            areaLevel -= 1;
+            updateAreaHeader();
+            loadAreaList();
+        }
+
+        function finishAreaSelection() {
+            const teks = `${areaSelection.kelurahan.name}, ${areaSelection.kecamatan.name}, ${areaSelection.kabkota.name}, ${areaSelection.provinsi.name}`;
+            const label = document.getElementById('areaSelectedLabel');
+            label.textContent = teks;
+            label.classList.remove('text-gray-400');
+            label.classList.add('text-gray-800', 'font-medium');
+            closeAreaModal();
+        }
+    </script>
+
+    <script>
+        function openAddressModal() {
+            const overlay = document.getElementById('addressPageOverlay');
+            overlay.classList.remove('hidden');
+            requestAnimationFrame(() => {
+                overlay.classList.remove('translate-x-full');
+            });
+        }
+
+        function closeAddressModal() {
+            const overlay = document.getElementById('addressPageOverlay');
+            overlay.classList.add('translate-x-full');
+        }
+
+        function saveAddressModal() {
+            // Tempat menambahkan proses simpan alamat ke server/API jika diperlukan
+            closeAddressModal();
+        }
+    </script>
+
+
     <div id="photoModalOverlay" onclick="if(event.target===this) closePhotoModal()" class="fixed inset-0 z-50 hidden items-end sm:items-center justify-center bg-black/50 backdrop-blur-sm">
         <div id="photoModalSheet" class="w-full sm:w-[380px] bg-white rounded-t-3xl sm:rounded-3xl p-5 pb-8 sm:pb-5 translate-y-full sm:translate-y-0 sm:scale-95 sm:opacity-0 transition-all duration-300 ease-out">
             <!-- Drag handle (mobile) -->
@@ -366,7 +648,149 @@
         </div>
     </div>
 
-    <!-- Input file tersembunyi -->
+    <!-- ===== Modal Popup: Pilih Negara/Wilayah ===== -->
+    <div id="countryModalOverlay" onclick="if(event.target===this) closeCountryModal()" class="fixed inset-0 z-50 hidden bg-black/50 backdrop-blur-sm">
+        <div id="countryModalSheet" class="fixed bottom-0 left-0 right-0 bg-white rounded-t-[2.5rem] z-50 h-[43%] flex flex-col shadow-[0_-10px_60px_-15px_rgba(0,0,0,0.3)] translate-y-full transition-transform duration-300 ease-out">
+
+            <!-- Drag Handle -->
+            <div class="w-full flex justify-center pt-5 pb-2 flex-shrink-0">
+                <div class="w-12 h-1.5 bg-gray-200 rounded-full"></div>
+            </div>
+
+            <!-- Header -->
+            <div class="pb-4 flex justify-center flex-shrink-0">
+                <h2 class="text-[1rem] font-bold text-gray-900 tracking-tight">Pilih Negara/ Wilayah</h2>
+            </div>
+
+            <!-- Scrollable Form Content -->
+            <form id="countryForm" class="space-y-4 justify-between px-5 overflow-y-auto flex-1 pb-24">
+
+                <!-- Option: Indonesia -->
+                <label class="group relative block cursor-pointer tap-highlight-transparent">
+                    <input type="radio" name="country_select" class="peer sr-only" value="Indonesia"
+                        data-flag="https://image2url.com/r2/default/images/1774367205798-1f116ea8-4605-42ff-8f81-f6b7fc7fe511.jpg" checked="">
+                    <div class="flex items-center justify-between p-5 rounded-2xl transition-all duration-200 ease-in-out 
+                                hover:bg-gray-50 active:scale-[0.98] 
+                                peer-checked:border-[#4F46E5] peer-checked:bg-indigo-50/50 peer-checked:shadow-sm">
+
+                        <div class="flex items-center gap-[0.5rem]">
+                            <div class="w-10 h-10 rounded-full flex items-center justify-center text-lg">
+                                <div class="relative">
+                                    <img src="https://image2url.com/r2/default/images/1774367205798-1f116ea8-4605-42ff-8f81-f6b7fc7fe511.jpg" alt="Bendera Indonesia" class="w-[1.7rem] h-[1.5rem] rounded-full shadow-md object-cover">
+                                </div>
+                            </div>
+                            <span class="font-semibold text-gray-700 peer-checked:text-[#4F46E5] text-[1rem] sm:text-base">Indonesia</span>
+                        </div>
+
+                        <!-- Radio Circle -->
+                        <div class="country-radio-circle w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center transition-colors
+                                    group-hover:border-[#4F46E5]">
+                            <i class="country-radio-check fa-solid fa-check text-white text-xs opacity-0 transform scale-0 transition-all"></i>
+                        </div>
+                    </div>
+                </label>
+
+                <!-- Option: Malaysia -->
+                <label class="group relative block cursor-pointer tap-highlight-transparent">
+                    <input type="radio" name="country_select" class="peer sr-only" value="Malaysia"
+                        data-flag="https://image2url.com/r2/default/images/1774367475653-eb61de39-c4e6-4d75-be7a-d4b40219260c.png">
+                    <div class="flex items-center justify-between p-5 rounded-2xl transition-all duration-200 ease-in-out 
+                                hover:bg-gray-50 active:scale-[0.98] 
+                                peer-checked:border-[#4F46E5] peer-checked:bg-indigo-50/50 peer-checked:shadow-sm">
+
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-full flex items-center justify-center text-lg">
+                                <div class="relative">
+                                    <img src="https://image2url.com/r2/default/images/1774367475653-eb61de39-c4e6-4d75-be7a-d4b40219260c.png" alt="Bendera Malaysia" class="w-[1.7rem] h-[1.5rem] rounded-full shadow-md object-cover">
+                                </div>
+                            </div>
+                            <span class="font-semibold text-gray-700 peer-checked:text-[#4F46E5] text-[1rem] sm:text-base">Malaysia</span>
+                        </div>
+
+                        <!-- Radio Circle -->
+                        <div class="country-radio-circle w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center transition-colors
+                                    group-hover:border-[#4F46E5]">
+                            <i class="country-radio-check fa-solid fa-check text-white text-xs opacity-0 transform scale-0 transition-all"></i>
+                        </div>
+                    </div>
+                </label>
+
+            </form>
+
+            <!-- Footer Action -->
+            <div class="absolute bottom-0 left-0 right-0 p-[1rem] bg-white border-t border-gray-100">
+                <button type="button" onclick="confirmCountry()" class="w-full bg-[#00a6a6] text-white font-semibold text-lg py-4 rounded-2xl shadow-lg shadow-indigo-200 active:scale-[0.98] transition-transform flex items-center justify-center space-x-2">
+                    <span>Konfirmasi</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openCountryModal() {
+            const overlay = document.getElementById('countryModalOverlay');
+            const sheet = document.getElementById('countryModalSheet');
+            overlay.classList.remove('hidden');
+            requestAnimationFrame(() => {
+                sheet.classList.remove('translate-y-full');
+            });
+            syncCountryRadioVisuals();
+        }
+
+        function syncCountryRadioVisuals() {
+            document.querySelectorAll('#countryForm input[name="country_select"]').forEach(radio => {
+                const label = radio.closest('label');
+                const circle = label.querySelector('.country-radio-circle');
+                const check = label.querySelector('.country-radio-check');
+                const nameSpan = label.querySelector('span.font-semibold');
+
+                if (radio.checked) {
+                    circle.classList.remove('border-gray-300');
+                    circle.classList.add('border-[#4F46E5]', 'bg-[#4F46E5]');
+                    check.classList.remove('opacity-0', 'scale-0');
+                    check.classList.add('opacity-100', 'scale-100');
+                    if (nameSpan) nameSpan.classList.add('text-[#4F46E5]');
+                } else {
+                    circle.classList.add('border-gray-300');
+                    circle.classList.remove('border-[#4F46E5]', 'bg-[#4F46E5]');
+                    check.classList.add('opacity-0', 'scale-0');
+                    check.classList.remove('opacity-100', 'scale-100');
+                    if (nameSpan) nameSpan.classList.remove('text-[#4F46E5]');
+                }
+            });
+        }
+
+        document.querySelectorAll('#countryForm input[name="country_select"]').forEach(radio => {
+            radio.addEventListener('change', syncCountryRadioVisuals);
+        });
+        syncCountryRadioVisuals();
+
+        function closeCountryModal() {
+            const overlay = document.getElementById('countryModalOverlay');
+            const sheet = document.getElementById('countryModalSheet');
+            sheet.classList.add('translate-y-full');
+            setTimeout(() => {
+                overlay.classList.add('hidden');
+            }, 300);
+        }
+
+        function confirmCountry() {
+            const checked = document.querySelector('#countryForm input[name="country_select"]:checked');
+            if (!checked) {
+                closeCountryModal();
+                return;
+            }
+            const flagUrl = checked.getAttribute('data-flag');
+            const countryName = checked.value;
+
+            // Otomatis ganti icon bendera & label sesuai negara yang dipilih
+            document.getElementById('countryFlagIcon').src = flagUrl;
+            document.getElementById('countryNameLabel').textContent = countryName;
+
+            closeCountryModal();
+        }
+    </script>
+
     <input type="file" id="galleryInput" accept="image/*" class="hidden" onchange="handlePhotoSelected(event)">
     <input type="file" id="cameraInput" accept="image/*" capture="user" class="hidden" onchange="handlePhotoSelected(event)">
 
