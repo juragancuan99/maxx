@@ -1,7 +1,7 @@
 <html lang="id" data-kantu="1"><head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
-<title>Pengaturan - Maxi Affiliate</title>
+<title>Pendapatan - Maxi Affiliate</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
@@ -37,6 +37,7 @@
             }
         }
     </script>
+
 
 </head>
 <body class="h-screen w-screen overflow-hidden bg-white">
@@ -133,7 +134,7 @@
             <!-- Payment Methods -->
             
         <!-- </div> -->
-    <button onclick="openPhotoModal()" class="w-full bg-white p-[0.6rem] rounded-xl shadow-sm border border-[#dedede87] flex items-center justify-between active:scale-[0.98] transition-transform duration-100 relative overflow-hidden">
+    <button onClick="openPhotoModal()" class="w-full bg-white p-[0.6rem] rounded-xl shadow-sm border border-[#dedede87] flex items-center justify-between active:scale-[0.98] transition-transform duration-100 relative overflow-hidden">
             <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#00a6a6]"></div>
             <div class="flex items-center gap-4 pl-1">
                 <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-cyan-800" 5="">
@@ -163,7 +164,7 @@
                 <span class="bg-blue-50 text-gray-700 text-[10px] font-bold px-2 py-0.5 rounded-full">MAXI2026</span>
                 <i class="fa-solid fa-chevron-right text-gray-300 text-sm"></i>
             </div>
-        </button><button class="w-full bg-white p-[0.6rem] rounded-xl shadow-sm border border-[#dedede87] flex items-center justify-between active:scale-[0.98] transition-transform duration-100 relative overflow-hidden">
+        </button><button onClick="openKeamananPage()" class="w-full bg-white p-[0.6rem] rounded-xl shadow-sm border border-[#dedede87] flex items-center justify-between active:scale-[0.98] transition-transform duration-100 relative overflow-hidden">
             <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#00a6a6]"></div>
             <div class="flex items-center gap-4 pl-1">
                 <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-cyan-800" 5="">
@@ -178,7 +179,7 @@
                 
                 <i class="fa-solid fa-chevron-right text-gray-300 text-sm"></i>
             </div>
-        </button><button onclick="openWhatsappModal()" class="w-full bg-white p-[0.6rem] rounded-xl shadow-sm border border-[#dedede87] flex items-center justify-between active:scale-[0.98] transition-transform duration-100 relative overflow-hidden">
+        </button><button onClick="openWhatsappModal()" class="w-full bg-white p-[0.6rem] rounded-xl shadow-sm border border-[#dedede87] flex items-center justify-between active:scale-[0.98] transition-transform duration-100 relative overflow-hidden">
             <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#00a6a6]"></div>
             <div class="flex items-center gap-4 pl-1">
                 <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-cyan-800" 5="">
@@ -192,11 +193,11 @@
             <div class="flex items-center gap-2">
                 
                 <div class="flex items-center gap-[0rem]">
-                <span id="whatsappNumberLabel" class="bg-blue-50 text-gray-700 text-[10px] font-bold px-2 py-0.5 rounded-full">6299999999</span>
+                <span id="whatsappNumberLabel" class="bg-blue-50 text-gray-700 text-[10px] font-bold px-2 py-0.5 rounded-full">62822xxx949</span>
                 <i class="fa-solid fa-chevron-right text-gray-300 text-sm"></i>
             </div>
             </div>
-        </button><button onclick="openAddressModal()" class="w-full bg-white p-[0.6rem] rounded-xl shadow-sm border border-[#dedede87] flex items-center justify-between active:scale-[0.98] transition-transform duration-100 relative overflow-hidden">
+        </button><button onClick="openAddressModal()" class="w-full bg-white p-[0.6rem] rounded-xl shadow-sm border border-[#dedede87] flex items-center justify-between active:scale-[0.98] transition-transform duration-100 relative overflow-hidden">
             <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#00a6a6]"></div>
             <div class="flex items-center gap-4 pl-1">
                 <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-cyan-800" 5="">
@@ -211,7 +212,7 @@
                 
                 <i class="fa-solid fa-chevron-right text-gray-300 text-sm"></i>
             </div>
-        </button><button onclick="openCountryModal()" class="w-full bg-white p-[0.6rem] rounded-xl shadow-sm border border-[#dedede87] flex items-center justify-between active:scale-[0.98] transition-transform duration-100 relative overflow-hidden">
+        </button><button onClick="openCountryModal()" class="w-full bg-white p-[0.6rem] rounded-xl shadow-sm border border-[#dedede87] flex items-center justify-between active:scale-[0.98] transition-transform duration-100 relative overflow-hidden">
             <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#00a6a6]"></div>
             <div class="flex items-center gap-4 pl-1">
                 <div id="countryIconWrap" class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-cyan-800 overflow-hidden">
@@ -348,7 +349,7 @@
 
         <!-- Header -->
         <div class="sticky top-0 z-50 bg-white px-[0rem] py-4 flex items-center justify-between shadow-sm">
-            <button onclick="closeAddressModal()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-600 transition">
+            <button onClick="closeAddressModal()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-600 transition">
                 <i class="fa-solid fa-arrow-left text-lg"></i>
             </button>
             <h1 class="pr-[6rem] text-lg font-bold text-gray-800">Alamat Pengiriman</h1>
@@ -387,7 +388,7 @@
         <!-- Area -->
         <div class="px-[0.8rem] mt-6">
             <p class="text-gray-800 font-medium text-left mb-8 text-sm">Area<br></p>
-            <button onclick="openAreaModal()" class="mt-[-1.5rem] w-full flex items-center justify-between p-4 hover:bg-gray-50 border border-gray-300 rounded-xl transition-colors group transition-all duration-200 focus-within:ring-2 focus-within:ring-[#00a6a6] focus-within:border-transparent shadow-sm">
+            <button onClick="openAreaModal()" class="mt-[-1.5rem] w-full flex items-center justify-between p-4 hover:bg-gray-50 border border-gray-300 rounded-xl transition-colors group transition-all duration-200 focus-within:ring-2 focus-within:ring-[#00a6a6] focus-within:border-transparent shadow-sm">
                 <div class="flex items-center gap-4">
                     <div class="text-left">
                         <p id="areaSelectedLabel" class="text-gray-400 text-[1rem]">Masukan Area </p>
@@ -424,7 +425,7 @@
 
         <!-- Sticky Footer CTA -->
         <div class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-100 p-5 shadow-[0_-4px_10px_rgba(0,0,0,0.05)] z-50">
-            <button onclick="saveAddressModal()" class="w-full bg-[#00a6a6] hover:bg-[#00a6a6] text-white font-bold text-lg py-3.5 rounded-xl shadow-lg shadow-gray-150 transition active:scale-[0.98] flex items-center justify-center gap-2">Simpan</button>
+            <button onClick="saveAddressModal()" class="w-full bg-[#00a6a6] hover:bg-[#00a6a6] text-white font-bold text-lg py-3.5 rounded-xl shadow-lg shadow-gray-150 transition active:scale-[0.98] flex items-center justify-center gap-2">Simpan</button>
         </div>
     </div>
 
@@ -432,7 +433,7 @@
     <div id="whatsappPageOverlay" class="fixed inset-0 z-[60] bg-gray-50 translate-x-full transition-transform duration-300 ease-out overflow-y-auto pb-24">
         <!-- Header -->
         <div class="sticky top-0 z-50 bg-white px-[0rem] py-4 flex items-center justify-between shadow-sm">
-            <button onclick="closeWhatsappModal()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-600 transition">
+            <button onClick="closeWhatsappModal()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-600 transition">
                 <i class="fa-solid fa-arrow-left text-lg"></i>
             </button>
             <h1 class="pr-[6.8rem] text-lg font-bold text-gray-800">Whatsapp Saya</h1>
@@ -464,7 +465,7 @@
 
         <!-- Sticky Footer CTA -->
         <div class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-100 p-5 shadow-[0_-4px_10px_rgba(0,0,0,0.05)] z-50">
-            <button onclick="saveWhatsappModal()" class="w-full bg-[#00a6a6] hover:bg-[#00a6a6] text-white font-bold text-lg py-3.5 rounded-xl shadow-lg shadow-gray-150 transition active:scale-[0.98] flex items-center justify-center gap-2">Simpan</button>
+            <button onClick="saveWhatsappModal()" class="w-full bg-[#00a6a6] hover:bg-[#00a6a6] text-white font-bold text-lg py-3.5 rounded-xl shadow-lg shadow-gray-150 transition active:scale-[0.98] flex items-center justify-center gap-2">Simpan</button>
         </div>
     </div>
 
@@ -532,8 +533,584 @@
         }
     </script>
 
+    <!-- ===== Overlay Halaman: Keamanan Akun ===== -->
+    <div id="keamananPageOverlay" class="fixed inset-0 z-[60] bg-gray-50 translate-x-full transition-transform duration-300 ease-out overflow-y-auto pb-24">
+        <!-- Header -->
+        <div class="sticky top-0 z-50 bg-white px-[0rem] py-4 flex items-center justify-between shadow-sm">
+            <button onClick="closeKeamananPage()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-600 transition">
+                <i class="fa-solid fa-arrow-left text-lg"></i>
+            </button>
+            <h1 class="pr-[6.5rem] text-lg font-bold text-gray-800">Keamanan Akun</h1>
+        </div>
+
+        <!-- List Menu Keamanan -->
+        <div class="px-4 mb-6 mt-4">
+            <div class="bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100">
+                <button onClick="openUbahNomorHpInfo()" class="w-full flex items-center justify-between p-[0.7rem] border-b border-[#6a360f45] hover:bg-gray-50 transition active:bg-gray-100">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-[#ffeed9] flex items-center justify-center text-black">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <span class="text-gray-700 font-medium text-sm">Ubah Nomor HP</span>
+                    </div>
+                    <div class="flex items-center gap-[0.5rem]">
+                        <span id="securityPhoneLabel" class="text-gray-700 text-[11px] font-bold px-[0rem] py-0.5 rounded-full">62822***8949</span>
+                        <i class="fa-solid fa-chevron-right text-[#100800] text-[0.75rem]"></i>
+                    </div>
+                </button>
+                <button onClick="openUbahEmailForm()" class="w-full flex items-center justify-between p-[0.7rem] border-b border-[#6a360f45] hover:bg-gray-50 transition active:bg-gray-100">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-[#ffeed9] flex items-center justify-center text-black">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <span class="text-gray-700 font-medium text-sm">Email</span>
+                    </div>
+                    <div class="flex items-center gap-[0.5rem]">
+                        <span id="securityEmailLabel" class="text-gray-700 text-[11px] font-bold px-[0rem] py-0.5 rounded-full">Belum Diatur</span>
+                        <i class="fa-solid fa-chevron-right text-[#100800] text-[0.75rem]"></i>
+                    </div>
+                </button>
+                <button onClick="openUbahPasswordForm()" class="w-full flex items-center justify-between p-[0.7rem] hover:bg-gray-50 transition active:bg-gray-100">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-[#ffeed9] flex items-center justify-center text-[#000000]">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <span class="text-gray-700 font-medium text-sm">Kata Sandi Masuk</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-[#100800] text-xs"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== Overlay: Info Nomor HP Saat Ini ===== -->
+    <div id="ubahNomorHpInfoOverlay" class="fixed inset-0 z-[65] bg-gray-50 translate-x-full transition-transform duration-300 ease-out overflow-y-auto pb-24">
+        <div class="sticky top-0 z-50 bg-white px-[0rem] py-4 flex items-center justify-between shadow-sm">
+            <button onClick="closeUbahNomorHpInfo()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-600 transition">
+                <i class="fa-solid fa-arrow-left text-lg"></i>
+            </button>
+            <h1 class="pr-[6.5rem] text-lg font-bold text-gray-800">Ubah Nomor HP</h1>
+        </div>
+
+        <div class="px-5 mt-8 text-center">
+            <p class="text-gray-700 text-sm decoration-red-500">Nomor HP ( dapat digunakan untuk login )</p>
+            <div class="flex items-center justify-center gap-2 mt-1">
+                <h3 id="currentPhoneDisplay" class="text-3xl font-extrabold text-gray-900">822***8949</h3>
+            </div>
+            <div class="inline-block bg-gray-300 text-orange-500 text-[0.55rem] font-sm px-3 py-1 rounded-full mt-3">Demi keamanan kami akan mengirimkan verifikasi ke nomor HP anda</div>
+        </div>
+        <div class="px-5 mt-6">
+            <button onClick="openUbahNomorHpForm()" class="w-full bg-[#00a6a6] hover:bg-[#00a6a6] text-white font-bold text-lg py-3.5 rounded-xl shadow-lg shadow-GRAY-200 transition active:scale-[0.98] flex items-center justify-center gap-2">Ubah Nomor HP</button>
+        </div>
+    </div>
+
+    <!-- ===== Overlay: Form Nomor HP Baru ===== -->
+    <div id="ubahNomorHpFormOverlay" class="fixed inset-0 z-[70] bg-gray-50 translate-x-full transition-transform duration-300 ease-out overflow-y-auto pb-24">
+        <div class="sticky top-0 z-50 bg-white px-[0rem] py-4 flex items-center justify-between shadow-sm">
+            <button onClick="closeUbahNomorHpForm()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-600 transition">
+                <i class="fa-solid fa-arrow-left text-lg"></i>
+            </button>
+        </div>
+        <div class="flex-1 px-6 flex flex-col items-left pt-[0rem]">
+            <h1 class="text-2xl font-bold text-gray-900 mb-2">Ubah Nomor HP</h1>
+            <p class="text-gray-500 text-left mb-8 text-sm">Masukan Nomor HP Aktif Anda Untuk Keamanan Akun</p>
+
+            <form class="space-y-6" onSubmit="event.preventDefault(); submitUbahNomorHp();">
+                <div class="flex w-full border border-gray-300 rounded-xl overflow-hidden transition-all duration-200 focus-within:ring-2 focus-within:ring-[#00a6a6] focus-within:border-transparent shadow-sm">
+                    <div class="bg-gray-50 px-[0.5rem] py-4 border-r border-gray-200 flex items-center space-x-2 cursor-pointer hover:bg-gray-100 transition-colors">
+                        <div class="relative">
+                            <img src="https://image2url.com/r2/default/images/1774317856305-a6257b55-0053-4ebb-b4b2-5aead8bef559.png" alt="Bendera Indonesia" class="w-[3.3rem] h-[1.5rem] rounded-full border-[0px] border-white/20 shadow-md object-cover">
+                        </div>
+                        <span class="text-gray-900 font-semibold text-base">+62</span>
+                    </div>
+                    <input id="newPhoneInput" type="tel" placeholder="Nomor Whatsapp" class="w-full px-4 py-4 text-[1rem] text-gray-900 placeholder-gray-400 outline-none bg-white" inputmode="numeric">
+                </div>
+                <p id="newPhoneErrorMsg" class="hidden text-red-500 text-xs mt-[-1rem]">Nomor HP tidak valid, minimal 8 digit.</p>
+
+                <button type="submit" class="w-full py-4 px-6 bg-[#00a6a6] hover:bg-[#00a6a6] text-white font-semibold rounded-xl shadow-lg shadow-gray-350 transition-all transform active:scale-[0.98] flex items-center justify-center gap-2">
+                    <span>Konfirmasi</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ===== Overlay: Form Ubah Email ===== -->
+    <div id="ubahEmailFormOverlay" class="fixed inset-0 z-[65] bg-gray-50 translate-x-full transition-transform duration-300 ease-out overflow-y-auto pb-24">
+        <div class="sticky top-0 z-50 bg-white px-[0rem] py-4 flex items-center justify-between shadow-sm">
+            <button onClick="closeUbahEmailForm()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-600 transition">
+                <i class="fa-solid fa-arrow-left text-lg"></i>
+            </button>
+        </div>
+        <div class="flex-1 px-6 flex flex-col items-left pt-[0rem]">
+            <h1 class="text-2xl font-bold text-gray-900 mb-2">Hubungkan Ke Email</h1>
+            <p class="text-gray-500 text-left mb-8 text-sm">Pastikan email yang anda masukan Aktif karena kami akan mengirimkan notifikasi ke email ini.</p>
+
+            <form class="space-y-6" onSubmit="event.preventDefault(); submitUbahEmail();">
+                <div class="relative">
+                    <input type="text" id="newEmailInput" class="block px-4 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-white rounded-xl border border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-[#00a6a6] peer shadow-sm" placeholder=" ">
+                    <label for="newEmailInput" class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-4 peer-focus:text-[#00a6a6] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">Silakan Masukan Email</label>
+                </div>
+                <p id="newEmailErrorMsg" class="hidden text-red-500 text-xs mt-[-1rem]">Format email tidak valid.</p>
+
+                <button type="submit" class="w-full py-4 px-6 bg-[#00a6a6] hover:bg-[#00a6a6] text-white font-semibold rounded-xl shadow-lg shadow-gray-350 transition-all transform active:scale-[0.98] flex items-center justify-center gap-2">
+                    <span>Konfirmasi</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ===== Overlay: Form Atur Kata Sandi ===== -->
+    <div id="ubahPasswordFormOverlay" class="fixed inset-0 z-[65] bg-white translate-x-full transition-transform duration-300 ease-out overflow-y-auto pb-24">
+        <div class="sticky top-0 z-50 bg-white px-[0rem] py-4 flex items-center justify-between shadow-sm">
+            <button onClick="closeUbahPasswordForm()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-600 transition">
+                <i class="fa-solid fa-arrow-left text-lg"></i>
+            </button>
+        </div>
+        <div class="flex-1 px-6 flex flex-col items-left pt-[1rem]">
+            <h1 class="text-2xl font-bold text-gray-900 mb-2">Atur Kata Sandi</h1>
+            <p class="text-gray-500 text-left mb-8 text-sm">Kata sandi harus 8 - 20 karakter, dan terdiri dari gabungan huruf, angka dan simbol.</p>
+
+            <form class="space-y-6" onSubmit="event.preventDefault(); submitUbahPassword();">
+                <div class="relative">
+                    <input type="password" id="newPasswordInput" class="block px-4 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-white rounded-xl border border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-[#00a6a6] peer shadow-sm" placeholder=" ">
+                    <label for="newPasswordInput" class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-4 peer-focus:text-[#00a6a6] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">Masukan Kata Sandi</label>
+                    <button type="button" onClick="togglePasswordVisibility('newPasswordInput', this)" class="absolute right-4 top-4 text-gray-400 hover:text-gray-600 focus:outline-none">
+                        <i class="far fa-eye-slash"></i>
+                    </button>
+                </div>
+
+                <div class="relative">
+                    <input type="password" id="confirmPasswordInput" class="block px-4 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-white rounded-xl border border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-[#00a6a6] peer shadow-sm" placeholder=" ">
+                    <label for="confirmPasswordInput" class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-4 peer-focus:text-[#00a6a6] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">Konfirmasi Kata Sandi</label>
+                    <button type="button" onClick="togglePasswordVisibility('confirmPasswordInput', this)" class="absolute right-4 top-4 text-gray-400 hover:text-gray-600 focus:outline-none">
+                        <i class="far fa-eye-slash"></i>
+                    </button>
+                </div>
+                <p id="newPasswordErrorMsg" class="hidden text-red-500 text-xs mt-[-1rem]">Kata sandi belum memenuhi syarat / tidak sama.</p>
+
+                <button type="submit" class="w-full py-4 px-6 bg-[#00a6a6] hover:bg-[#00a6a6] text-white font-semibold rounded-xl shadow-lg shadow-gray-350 transition-all transform active:scale-[0.98] flex items-center justify-center gap-2">
+                    <span>Konfirmasi</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ===== Overlay: Halaman OTP (dipakai untuk semua perubahan data) ===== -->
+    <div id="otpPageOverlay" class="fixed inset-0 z-[80] bg-white translate-x-full transition-transform duration-300 ease-out overflow-y-auto">
+        <div class="w-full h-full flex flex-col justify-between">
+            <div class="sticky top-0 z-50 bg-white px-[0rem] py-4 flex items-center justify-between shadow-sm">
+                <button onClick="closeOtpPage()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-600 transition">
+                    <i class="fa-solid fa-arrow-left text-lg"></i>
+                </button>
+            </div>
+
+            <div class="flex-1 px-6 flex flex-col items-center pt-[1rem]">
+                <div class="w-16 h-16 rounded-2xl bg-[#E8F5E9] flex items-center justify-center mb-6 shadow-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#000000]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                    </svg>
+                </div>
+
+                <h1 class="text-2xl font-bold text-gray-900 mb-2">Masukan Kode OTP</h1>
+                <p class="text-gray-500 text-center mb-8 text-sm">Kode otp telah dikirim ke <span id="otpTargetLabel">6282293858949</span></p>
+                <div class="mt-[-1.8rem] flex items-center gap-[0.5rem] overflow-hidden">
+                    <p class="text-gray-500 text-center mb-8 text-sm">silakan cek</p>
+                    <div class="flex items-center gap-[0.1rem] mt-[-2rem]">
+                        <div class="w-5 h-5 rounded-full bg-gray-50 overflow-hidden">
+                            <img id="otpChannelIcon" src="https://image2url.com/r2/default/images/1774317856305-a6257b55-0053-4ebb-b4b2-5aead8bef559.png" class="w-full h-full object-cover">
+                        </div>
+                        <span id="otpChannelLabel" class="text-xs text-green-600 font-medium">Whatsapp</span>
+                        <span class="text-gray-300 text-[10px]">•</span>
+                    </div>
+                </div>
+
+                <!-- OTP Inputs -->
+                <div class="flex justify-between w-full max-w-xs mb-8 gap-2" id="otpInputsWrap">
+                    <input maxlength="1" inputmode="numeric" class="otp-digit w-11 h-14 border-2 border-gray-200 rounded-xl flex items-center justify-center text-xl font-bold text-gray-900 bg-white shadow-sm text-center outline-none focus:border-[#00a6a6]" data-idx="0">
+                    <input maxlength="1" inputmode="numeric" class="otp-digit w-11 h-14 border-2 border-gray-200 rounded-xl flex items-center justify-center text-xl font-bold text-gray-900 bg-white shadow-sm text-center outline-none focus:border-[#00a6a6]" data-idx="1">
+                    <input maxlength="1" inputmode="numeric" class="otp-digit w-11 h-14 border-2 border-gray-200 rounded-xl flex items-center justify-center text-xl font-bold text-gray-900 bg-white shadow-sm text-center outline-none focus:border-[#00a6a6]" data-idx="2">
+                    <input maxlength="1" inputmode="numeric" class="otp-digit w-11 h-14 border-2 border-gray-200 rounded-xl flex items-center justify-center text-xl font-bold text-gray-900 bg-white shadow-sm text-center outline-none focus:border-[#00a6a6]" data-idx="3">
+                    <input maxlength="1" inputmode="numeric" class="otp-digit w-11 h-14 border-2 border-gray-200 rounded-xl flex items-center justify-center text-xl font-bold text-gray-900 bg-white shadow-sm text-center outline-none focus:border-[#00a6a6]" data-idx="4">
+                    <input maxlength="1" inputmode="numeric" class="otp-digit w-11 h-14 border-2 border-gray-200 rounded-xl flex items-center justify-center text-xl font-bold text-gray-900 bg-white shadow-sm text-center outline-none focus:border-[#00a6a6]" data-idx="5">
+                </div>
+                <p id="otpErrorMsg" class="hidden text-red-500 text-xs mt-[-1.5rem] mb-4">Kode OTP salah, silakan coba lagi.</p>
+                <p id="otpDemoHint" class="text-[11px] text-gray-400 text-center mb-2">(Demo) Kode OTP: <span id="otpDemoCode" class="font-semibold text-gray-600"></span></p>
+
+                <div class="flex flex-col items-center space-y-2">
+                    <div class="flex items-center space-x-2 bg-gray-100 px-3 py-1 rounded-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span id="otpTimerLabel" class="text-red-500 font-semibold text-sm font-mono">01:59</span>
+                    </div>
+                    <div class="text-sm text-red-500 font-medium">Tidak terima OTP? <span id="otpResendBtn" onClick="resendOtp()" class="opacity-50 cursor-not-allowed">Kirim Ulang</span></div>
+                </div>
+            </div>
+
+            <div class="w-full bg-gray-50 rounded-t-3xl shadow-[0_-4px_20px_rgba(0,0,0,0.05)]">
+                <div class="px-6 pt-[0.5rem] pb-4">
+                    <button onClick="verifyOtp()" class="w-full bg-[#00a6a6] text-white font-bold py-4 rounded-xl shadow-lg shadow-[#00a6a6]/30 active:scale-[0.98] transition-transform flex items-center justify-center">
+                        Verifikasi
+                    </button>
+                </div>
+
+                <!-- Simulated Numeric Keypad -->
+                <div class="grid grid-cols-3 gap-y-4 pb-8 pt-2 px-4">
+                    <button type="button" onClick="otpKeypadPress('1')" class="bg-gray-100 h-12 flex items-center justify-center text-2xl font-medium text-gray-800 active:bg-gray-200 rounded-[1.9rem] transition-colors">1</button>
+                    <button type="button" onClick="otpKeypadPress('2')" class="bg-gray-100 h-12 flex items-center justify-center text-2xl font-medium text-gray-800 active:bg-gray-200 rounded-[1.9rem] transition-colors">2</button>
+                    <button type="button" onClick="otpKeypadPress('3')" class="bg-gray-100 h-12 flex items-center justify-center text-2xl font-medium text-gray-800 active:bg-gray-200 rounded-[1.9rem] transition-colors">3</button>
+                    <button type="button" onClick="otpKeypadPress('4')" class="bg-gray-100 h-12 flex items-center justify-center text-2xl font-medium text-gray-800 active:bg-gray-200 rounded-[1.9rem] transition-colors">4</button>
+                    <button type="button" onClick="otpKeypadPress('5')" class="bg-gray-100 h-12 flex items-center justify-center text-2xl font-medium text-gray-800 active:bg-gray-200 rounded-[1.9rem] transition-colors">5</button>
+                    <button type="button" onClick="otpKeypadPress('6')" class="bg-gray-100 h-12 flex items-center justify-center text-2xl font-medium text-gray-800 active:bg-gray-200 rounded-[1.9rem] transition-colors">6</button>
+                    <button type="button" onClick="otpKeypadPress('7')" class="bg-gray-100 h-12 flex items-center justify-center text-2xl font-medium text-gray-800 active:bg-gray-200 rounded-[1.9rem] transition-colors">7</button>
+                    <button type="button" onClick="otpKeypadPress('8')" class="bg-gray-100 h-12 flex items-center justify-center text-2xl font-medium text-gray-800 active:bg-gray-200 rounded-[1.9rem] transition-colors">8</button>
+                    <button type="button" onClick="otpKeypadPress('9')" class="bg-gray-100 h-12 flex items-center justify-center text-2xl font-medium text-gray-800 active:bg-gray-200 rounded-[1.9rem] transition-colors">9</button>
+                    <div class="h-12"></div>
+                    <button type="button" onClick="otpKeypadPress('0')" class="bg-gray-100 h-12 flex items-center justify-center text-2xl font-medium text-gray-800 active:bg-gray-200 rounded-[1.9rem] transition-colors">0</button>
+                    <button type="button" onClick="otpKeypadBackspace()" class="bg-gray-100 h-12 flex items-center justify-center text-gray-800 active:bg-gray-200 rounded-[1.9rem] transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2M3 12l6.414 6.414a2 2 0 001.414.586H19a2 2 0 002-2V7a2 2 0 00-2-2h-8.172a2 2 0 00-1.414.586L3 12z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast notifikasi sukses -->
+    <div id="securityToast" class="fixed left-1/2 -translate-x-1/2 bottom-6 z-[90] hidden bg-gray-900 text-white text-sm font-medium px-4 py-3 rounded-xl shadow-lg transition-opacity duration-300 opacity-0 whitespace-nowrap">
+        Berhasil disimpan
+    </div>
+
+    <script>
+        /* ========================================================
+           LOGIKA HALAMAN KEAMANAN AKUN + UBAH NOMOR HP / EMAIL /
+           PASSWORD + VERIFIKASI OTP (simulasi frontend, tanpa server)
+           ======================================================== */
+
+        // Ambil data tersimpan (atau pakai default) supaya konsisten dengan menu Whatsapp
+        function getSecurityPhone() {
+            return localStorage.getItem('securityPhone') || localStorage.getItem('whatsappNumber') || '6282293858949';
+        }
+        function getSecurityEmail() {
+            return localStorage.getItem('securityEmail') || '';
+        }
+
+        function maskPhone(fullDigits) {
+            const d = fullDigits.replace(/\D/g, '');
+            if (d.length <= 7) return d;
+            return d.slice(0, 5) + '***' + d.slice(-4);
+        }
+        function maskEmail(email) {
+            const [user, domain] = email.split('@');
+            if (!domain) return email;
+            const visible = user.slice(0, 2);
+            return visible + '***@' + domain;
+        }
+
+        function refreshSecurityLabels() {
+            const phone = getSecurityPhone();
+            document.getElementById('securityPhoneLabel').textContent = maskPhone(phone);
+
+            const email = getSecurityEmail();
+            document.getElementById('securityEmailLabel').textContent = email ? maskEmail(email) : 'Belum Diatur';
+        }
+
+        function showSecurityToast(message) {
+            const toast = document.getElementById('securityToast');
+            toast.textContent = message;
+            toast.classList.remove('hidden');
+            requestAnimationFrame(() => toast.classList.remove('opacity-0'));
+            setTimeout(() => {
+                toast.classList.add('opacity-0');
+                setTimeout(() => toast.classList.add('hidden'), 300);
+            }, 2200);
+        }
+
+        // ---------- Halaman utama Keamanan Akun ----------
+        function openKeamananPage() {
+            refreshSecurityLabels();
+            const overlay = document.getElementById('keamananPageOverlay');
+            overlay.classList.remove('hidden');
+            requestAnimationFrame(() => overlay.classList.remove('translate-x-full'));
+        }
+        function closeKeamananPage() {
+            document.getElementById('keamananPageOverlay').classList.add('translate-x-full');
+        }
+
+        // ---------- Ubah Nomor HP: halaman info ----------
+        function openUbahNomorHpInfo() {
+            const phone = getSecurityPhone();
+            document.getElementById('currentPhoneDisplay').textContent = maskPhone(phone).replace(/^62/, '');
+            const overlay = document.getElementById('ubahNomorHpInfoOverlay');
+            overlay.classList.remove('hidden');
+            requestAnimationFrame(() => overlay.classList.remove('translate-x-full'));
+        }
+        function closeUbahNomorHpInfo() {
+            document.getElementById('ubahNomorHpInfoOverlay').classList.add('translate-x-full');
+        }
+
+        // ---------- Ubah Nomor HP: form nomor baru ----------
+        function openUbahNomorHpForm() {
+            document.getElementById('newPhoneInput').value = '';
+            document.getElementById('newPhoneErrorMsg').classList.add('hidden');
+            const overlay = document.getElementById('ubahNomorHpFormOverlay');
+            overlay.classList.remove('hidden');
+            requestAnimationFrame(() => overlay.classList.remove('translate-x-full'));
+        }
+        function closeUbahNomorHpForm() {
+            document.getElementById('ubahNomorHpFormOverlay').classList.add('translate-x-full');
+        }
+        function submitUbahNomorHp() {
+            const input = document.getElementById('newPhoneInput');
+            let digits = input.value.replace(/\D/g, '').replace(/^0+/, '');
+            if (digits.length < 8) {
+                document.getElementById('newPhoneErrorMsg').classList.remove('hidden');
+                return;
+            }
+            document.getElementById('newPhoneErrorMsg').classList.add('hidden');
+            const fullNumber = '62' + digits;
+            startSecurityFlow('phone', fullNumber, 'Whatsapp');
+        }
+
+        // ---------- Ubah Email ----------
+        function openUbahEmailForm() {
+            document.getElementById('newEmailInput').value = getSecurityEmail();
+            document.getElementById('newEmailErrorMsg').classList.add('hidden');
+            const overlay = document.getElementById('ubahEmailFormOverlay');
+            overlay.classList.remove('hidden');
+            requestAnimationFrame(() => overlay.classList.remove('translate-x-full'));
+        }
+        function closeUbahEmailForm() {
+            document.getElementById('ubahEmailFormOverlay').classList.add('translate-x-full');
+        }
+        function submitUbahEmail() {
+            const input = document.getElementById('newEmailInput');
+            const email = input.value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                document.getElementById('newEmailErrorMsg').classList.remove('hidden');
+                return;
+            }
+            document.getElementById('newEmailErrorMsg').classList.add('hidden');
+            startSecurityFlow('email', email, 'Email');
+        }
+
+        // ---------- Ubah Password ----------
+        function togglePasswordVisibility(inputId, btn) {
+            const input = document.getElementById(inputId);
+            const icon = btn.querySelector('i');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            }
+        }
+        function openUbahPasswordForm() {
+            document.getElementById('newPasswordInput').value = '';
+            document.getElementById('confirmPasswordInput').value = '';
+            document.getElementById('newPasswordErrorMsg').classList.add('hidden');
+            const overlay = document.getElementById('ubahPasswordFormOverlay');
+            overlay.classList.remove('hidden');
+            requestAnimationFrame(() => overlay.classList.remove('translate-x-full'));
+        }
+        function closeUbahPasswordForm() {
+            document.getElementById('ubahPasswordFormOverlay').classList.add('translate-x-full');
+        }
+        function submitUbahPassword() {
+            const pass = document.getElementById('newPasswordInput').value;
+            const confirm = document.getElementById('confirmPasswordInput').value;
+            const rule = /^(?=.*[A-Za-z])(?=.*\d).{8,20}$/;
+            if (!rule.test(pass) || pass !== confirm) {
+                document.getElementById('newPasswordErrorMsg').classList.remove('hidden');
+                return;
+            }
+            document.getElementById('newPasswordErrorMsg').classList.add('hidden');
+            // Verifikasi dikirim ke nomor HP yang sudah terdaftar
+            startSecurityFlow('password', getSecurityPhone(), 'Whatsapp');
+        }
+
+        // ---------- Alur OTP (dipakai bersama oleh ketiga menu di atas) ----------
+        let securityFlow = { type: null, value: null, channel: null };
+        let currentOtpCode = '';
+        let otpTimerInterval = null;
+        let otpSecondsLeft = 119;
+
+        function startSecurityFlow(type, value, channel) {
+            securityFlow = { type, value, channel };
+            openOtpPage();
+        }
+
+        function generateOtpCode() {
+            currentOtpCode = String(Math.floor(100000 + Math.random() * 900000));
+            document.getElementById('otpDemoCode').textContent = currentOtpCode;
+        }
+
+        function openOtpPage() {
+            // Set target & channel tampilan
+            const targetLabel = securityFlow.type === 'email' ? securityFlow.value : securityFlow.value;
+            document.getElementById('otpTargetLabel').textContent = targetLabel;
+            document.getElementById('otpChannelLabel').textContent = securityFlow.channel;
+            document.getElementById('otpChannelIcon').src = securityFlow.channel === 'Email'
+                ? 'https://cdn-icons-png.flaticon.com/512/732/732200.png'
+                : 'https://image2url.com/r2/default/images/1774317856305-a6257b55-0053-4ebb-b4b2-5aead8bef559.png';
+
+            // Reset input OTP
+            document.querySelectorAll('.otp-digit').forEach(inp => inp.value = '');
+            document.getElementById('otpErrorMsg').classList.add('hidden');
+
+            generateOtpCode();
+            startOtpTimer();
+
+            const overlay = document.getElementById('otpPageOverlay');
+            overlay.classList.remove('hidden');
+            requestAnimationFrame(() => {
+                overlay.classList.remove('translate-x-full');
+                document.querySelector('.otp-digit[data-idx="0"]').focus();
+            });
+        }
+
+        function closeOtpPage() {
+            document.getElementById('otpPageOverlay').classList.add('translate-x-full');
+            clearInterval(otpTimerInterval);
+        }
+
+        function startOtpTimer() {
+            clearInterval(otpTimerInterval);
+            otpSecondsLeft = 119;
+            updateOtpTimerLabel();
+            document.getElementById('otpResendBtn').classList.add('opacity-50', 'cursor-not-allowed');
+            document.getElementById('otpResendBtn').classList.remove('text-red-600', 'cursor-pointer', 'underline');
+
+            otpTimerInterval = setInterval(() => {
+                otpSecondsLeft--;
+                updateOtpTimerLabel();
+                if (otpSecondsLeft <= 0) {
+                    clearInterval(otpTimerInterval);
+                    document.getElementById('otpResendBtn').classList.remove('opacity-50', 'cursor-not-allowed');
+                    document.getElementById('otpResendBtn').classList.add('text-red-600', 'cursor-pointer', 'underline');
+                }
+            }, 1000);
+        }
+
+        function updateOtpTimerLabel() {
+            const m = Math.floor(otpSecondsLeft / 60).toString().padStart(2, '0');
+            const s = (otpSecondsLeft % 60).toString().padStart(2, '0');
+            document.getElementById('otpTimerLabel').textContent = m + ':' + s;
+        }
+
+        function resendOtp() {
+            if (otpSecondsLeft > 0) return; // masih dalam masa tunggu
+            generateOtpCode();
+            document.querySelectorAll('.otp-digit').forEach(inp => inp.value = '');
+            document.querySelector('.otp-digit[data-idx="0"]').focus();
+            document.getElementById('otpErrorMsg').classList.add('hidden');
+            startOtpTimer();
+            showSecurityToast('Kode OTP baru telah dikirim');
+        }
+
+        // Navigasi otomatis antar kotak OTP + dukungan keyboard asli & paste
+        document.addEventListener('input', function (e) {
+            if (!e.target.classList || !e.target.classList.contains('otp-digit')) return;
+            const el = e.target;
+            el.value = el.value.replace(/\D/g, '').slice(0, 1);
+            if (el.value) {
+                const next = document.querySelector('.otp-digit[data-idx="' + (parseInt(el.dataset.idx) + 1) + '"]');
+                if (next) next.focus();
+            }
+        });
+        document.addEventListener('keydown', function (e) {
+            if (!e.target.classList || !e.target.classList.contains('otp-digit')) return;
+            if (e.key === 'Backspace' && !e.target.value) {
+                const prev = document.querySelector('.otp-digit[data-idx="' + (parseInt(e.target.dataset.idx) - 1) + '"]');
+                if (prev) prev.focus();
+            }
+        });
+        document.addEventListener('paste', function (e) {
+            if (!e.target.classList || !e.target.classList.contains('otp-digit')) return;
+            const text = (e.clipboardData || window.clipboardData).getData('text').replace(/\D/g, '').slice(0, 6);
+            if (!text) return;
+            e.preventDefault();
+            text.split('').forEach((digit, i) => {
+                const box = document.querySelector('.otp-digit[data-idx="' + i + '"]');
+                if (box) box.value = digit;
+            });
+            const lastBox = document.querySelector('.otp-digit[data-idx="' + (text.length - 1) + '"]');
+            if (lastBox) lastBox.focus();
+        });
+
+        // Keypad simulasi (opsional, sebagai alternatif keyboard asli)
+        function otpKeypadPress(digit) {
+            const boxes = Array.from(document.querySelectorAll('.otp-digit'));
+            const target = boxes.find(b => !b.value) || boxes[boxes.length - 1];
+            target.value = digit;
+            target.dispatchEvent(new Event('input'));
+        }
+        function otpKeypadBackspace() {
+            const boxes = Array.from(document.querySelectorAll('.otp-digit'));
+            const filled = boxes.filter(b => b.value);
+            if (filled.length) {
+                filled[filled.length - 1].value = '';
+                filled[filled.length - 1].focus();
+            }
+        }
+
+        function verifyOtp() {
+            const entered = Array.from(document.querySelectorAll('.otp-digit')).map(b => b.value).join('');
+            if (entered.length < 6) {
+                document.getElementById('otpErrorMsg').textContent = 'Silakan lengkapi 6 digit kode OTP.';
+                document.getElementById('otpErrorMsg').classList.remove('hidden');
+                return;
+            }
+            if (entered !== currentOtpCode) {
+                document.getElementById('otpErrorMsg').textContent = 'Kode OTP salah, silakan coba lagi.';
+                document.getElementById('otpErrorMsg').classList.remove('hidden');
+                document.querySelectorAll('.otp-digit').forEach(inp => inp.value = '');
+                document.querySelector('.otp-digit[data-idx="0"]').focus();
+                return;
+            }
+
+            // OTP benar -> terapkan perubahan sesuai jenis flow yang sedang berjalan
+            applySecurityChange();
+        }
+
+        function applySecurityChange() {
+            clearInterval(otpTimerInterval);
+
+            if (securityFlow.type === 'phone') {
+                localStorage.setItem('securityPhone', securityFlow.value);
+                // Sinkronkan juga dengan nomor Whatsapp di menu Pengaturan
+                localStorage.setItem('whatsappNumber', securityFlow.value);
+                const waLabel = document.getElementById('whatsappNumberLabel');
+                if (waLabel) waLabel.textContent = securityFlow.value;
+                showSecurityToast('Nomor HP berhasil diubah');
+            } else if (securityFlow.type === 'email') {
+                localStorage.setItem('securityEmail', securityFlow.value);
+                showSecurityToast('Email berhasil dihubungkan');
+            } else if (securityFlow.type === 'password') {
+                showSecurityToast('Kata sandi berhasil diperbarui');
+            }
+
+            refreshSecurityLabels();
+
+            // Tutup semua overlay dan kembali ke halaman Keamanan Akun
+            document.getElementById('otpPageOverlay').classList.add('translate-x-full');
+            document.getElementById('ubahNomorHpFormOverlay').classList.add('translate-x-full');
+            document.getElementById('ubahNomorHpInfoOverlay').classList.add('translate-x-full');
+            document.getElementById('ubahEmailFormOverlay').classList.add('translate-x-full');
+            document.getElementById('ubahPasswordFormOverlay').classList.add('translate-x-full');
+        }
+
+        // Inisialisasi label saat halaman pertama kali dimuat
+        refreshSecurityLabels();
+    </script>
+
     <!-- ===== Modal Popup: Pilih Area (Provinsi > Kab/Kota > Kecamatan > Kelurahan/Desa) ===== -->
-    <div id="areaModalOverlay" onclick="if(event.target===this) closeAreaModal()" class="fixed inset-0 z-[70] hidden bg-black/50 backdrop-blur-sm">
+    <div id="areaModalOverlay" onClick="if(event.target===this) closeAreaModal()" class="fixed inset-0 z-[70] hidden bg-black/50 backdrop-blur-sm">
         <div id="areaModalSheet" class="fixed bottom-0 left-0 right-0 bg-white rounded-t-[2rem] z-[70] h-[75%] flex flex-col shadow-[0_-10px_60px_-15px_rgba(0,0,0,0.3)] translate-y-full transition-transform duration-300 ease-out">
 
             <!-- Drag Handle -->
@@ -543,11 +1120,11 @@
 
             <!-- Header -->
             <div class="px-5 pb-3 flex items-center gap-3 flex-shrink-0 border-b border-gray-100">
-                <button id="areaBackBtn" onclick="areaGoBack()" class="hidden w-8 h-8 flex items-center justify-center rounded-full text-gray-500 hover:bg-gray-100 transition">
+                <button id="areaBackBtn" onClick="areaGoBack()" class="hidden w-8 h-8 flex items-center justify-center rounded-full text-gray-500 hover:bg-gray-100 transition">
                     <i class="fa-solid fa-arrow-left"></i>
                 </button>
                 <h2 id="areaModalTitle" class="text-[1rem] font-bold text-gray-900 tracking-tight flex-1">Pilih Provinsi</h2>
-                <button onclick="closeAreaModal()" class="w-8 h-8 flex items-center justify-center rounded-full text-gray-400 hover:bg-gray-100 transition">
+                <button onClick="closeAreaModal()" class="w-8 h-8 flex items-center justify-center rounded-full text-gray-400 hover:bg-gray-100 transition">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
@@ -730,14 +1307,14 @@
     </script>
 
 
-    <div id="photoModalOverlay" onclick="if(event.target===this) closePhotoModal()" class="fixed inset-0 z-50 items-end sm:items-center justify-center bg-black/50 backdrop-blur-sm hidden">
-        <div id="photoModalSheet" class="w-full sm:w-[380px] bg-white rounded-t-3xl sm:rounded-3xl p-5 pb-8 sm:pb-5 sm:translate-y-0 transition-all duration-300 ease-out translate-y-full sm:scale-95 sm:opacity-0">
+    <div id="photoModalOverlay" onClick="if(event.target===this) closePhotoModal()" class="fixed inset-0 z-50 hidden items-end sm:items-center justify-center bg-black/50 backdrop-blur-sm">
+        <div id="photoModalSheet" class="w-full sm:w-[380px] bg-white rounded-t-3xl sm:rounded-3xl p-5 pb-8 sm:pb-5 translate-y-full sm:translate-y-0 sm:scale-95 sm:opacity-0 transition-all duration-300 ease-out">
             <!-- Drag handle (mobile) -->
             <div class="w-10 h-1.5 bg-gray-200 rounded-full mx-auto mb-4 sm:hidden"></div>
 
             <div class="flex items-center justify-between mb-1">
                 <h2 class="text-base font-bold text-gray-900">Ubah Foto Profil</h2>
-                <button onclick="closePhotoModal()" class="w-8 h-8 flex items-center justify-center rounded-full text-gray-400 hover:bg-gray-100 active:bg-gray-200 transition">
+                <button onClick="closePhotoModal()" class="w-8 h-8 flex items-center justify-center rounded-full text-gray-400 hover:bg-gray-100 active:bg-gray-200 transition">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
@@ -750,26 +1327,26 @@
 
             <div class="grid grid-cols-2 gap-3">
                 <!-- Pilihan: Galeri -->
-                <button onclick="triggerGallery()" class="flex flex-col items-center justify-center gap-2 py-5 rounded-2xl bg-[#ff0000] border border-[#dedede87] active:scale-[0.97] transition-transform">
-                    <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-[#ff0000] shadow-sm">
+                <button onClick="triggerGallery()" class="flex flex-col items-center justify-center gap-2 py-5 rounded-2xl bg-orange-50 border border-[#dedede87] active:scale-[0.97] transition-transform">
+                    <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-cyan-800 shadow-sm">
                         <i class="fa-solid fa-images text-lg"></i>
                     </div>
-                    <span class="text-sm font-semibold text-gray-100">Galeri</span>
+                    <span class="text-sm font-semibold text-gray-700">Galeri</span>
                 </button>
 
                 <!-- Pilihan: Kamera -->
-                <button onclick="triggerCamera()" class="flex flex-col items-center justify-center gap-2 py-5 rounded-2xl bg-[#ff0000] border border-[#dedede87] active:scale-[0.97] transition-transform">
-                    <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-[#ff0000] shadow-sm">
+                <button onClick="triggerCamera()" class="flex flex-col items-center justify-center gap-2 py-5 rounded-2xl bg-orange-50 border border-[#dedede87] active:scale-[0.97] transition-transform">
+                    <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-cyan-800 shadow-sm">
                         <i class="fa-solid fa-camera text-lg"></i>
                     </div>
-                    <span class="text-sm font-semibold text-gray-100">Kamera</span>
+                    <span class="text-sm font-semibold text-gray-700">Kamera</span>
                 </button>
             </div>
         </div>
     </div>
 
     <!-- ===== Modal Popup: Pilih Negara/Wilayah ===== -->
-    <div id="countryModalOverlay" onclick="if(event.target===this) closeCountryModal()" class="fixed inset-0 z-50 hidden bg-black/50 backdrop-blur-sm">
+    <div id="countryModalOverlay" onClick="if(event.target===this) closeCountryModal()" class="fixed inset-0 z-50 hidden bg-black/50 backdrop-blur-sm">
         <div id="countryModalSheet" class="fixed bottom-0 left-0 right-0 bg-white rounded-t-[2.5rem] z-50 h-[43%] flex flex-col shadow-[0_-10px_60px_-15px_rgba(0,0,0,0.3)] translate-y-full transition-transform duration-300 ease-out">
 
             <!-- Drag Handle -->
@@ -787,7 +1364,8 @@
 
                 <!-- Option: Indonesia -->
                 <label class="group relative block cursor-pointer tap-highlight-transparent">
-                    <input type="radio" name="country_select" class="peer sr-only" value="Indonesia" data-flag="https://image2url.com/r2/default/images/1774367205798-1f116ea8-4605-42ff-8f81-f6b7fc7fe511.jpg" checked="">
+                    <input type="radio" name="country_select" class="peer sr-only" value="Indonesia"
+                        data-flag="https://image2url.com/r2/default/images/1774367205798-1f116ea8-4605-42ff-8f81-f6b7fc7fe511.jpg" checked="">
                     <div class="flex items-center justify-between p-5 rounded-2xl transition-all duration-200 ease-in-out 
                                 hover:bg-gray-50 active:scale-[0.98] 
                                 peer-checked:border-[#4F46E5] peer-checked:bg-indigo-50/50 peer-checked:shadow-sm">
@@ -798,19 +1376,21 @@
                                     <img src="https://image2url.com/r2/default/images/1774367205798-1f116ea8-4605-42ff-8f81-f6b7fc7fe511.jpg" alt="Bendera Indonesia" class="w-[1.7rem] h-[1.5rem] rounded-full shadow-md object-cover">
                                 </div>
                             </div>
-                            <span class="font-semibold text-gray-700 peer-checked:text-[#4F46E5] text-[1rem] sm:text-base text-[#4F46E5]">Indonesia</span>
+                            <span class="font-semibold text-gray-700 peer-checked:text-[#4F46E5] text-[1rem] sm:text-base">Indonesia</span>
                         </div>
 
                         <!-- Radio Circle -->
-                        <div class="country-radio-circle w-6 h-6 rounded-full border-2 flex items-center justify-center transition-colors group-hover:border-[#4F46E5] border-[#4F46E5] bg-[#4F46E5]">
-                            <i class="country-radio-check fa-solid fa-check text-white text-xs transform transition-all opacity-100 scale-100"></i>
+                        <div class="country-radio-circle w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center transition-colors
+                                    group-hover:border-[#4F46E5]">
+                            <i class="country-radio-check fa-solid fa-check text-white text-xs opacity-0 transform scale-0 transition-all"></i>
                         </div>
                     </div>
                 </label>
 
                 <!-- Option: Malaysia -->
                 <label class="group relative block cursor-pointer tap-highlight-transparent">
-                    <input type="radio" name="country_select" class="peer sr-only" value="Malaysia" data-flag="https://image2url.com/r2/default/images/1774367475653-eb61de39-c4e6-4d75-be7a-d4b40219260c.png">
+                    <input type="radio" name="country_select" class="peer sr-only" value="Malaysia"
+                        data-flag="https://image2url.com/r2/default/images/1774367475653-eb61de39-c4e6-4d75-be7a-d4b40219260c.png">
                     <div class="flex items-center justify-between p-5 rounded-2xl transition-all duration-200 ease-in-out 
                                 hover:bg-gray-50 active:scale-[0.98] 
                                 peer-checked:border-[#4F46E5] peer-checked:bg-indigo-50/50 peer-checked:shadow-sm">
@@ -825,7 +1405,8 @@
                         </div>
 
                         <!-- Radio Circle -->
-                        <div class="country-radio-circle w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center transition-colors group-hover:border-[#4F46E5]">
+                        <div class="country-radio-circle w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center transition-colors
+                                    group-hover:border-[#4F46E5]">
                             <i class="country-radio-check fa-solid fa-check text-white text-xs opacity-0 transform scale-0 transition-all"></i>
                         </div>
                     </div>
@@ -835,7 +1416,7 @@
 
             <!-- Footer Action -->
             <div class="absolute bottom-0 left-0 right-0 p-[1rem] bg-white border-t border-gray-100">
-                <button type="button" onclick="confirmCountry()" class="w-full bg-[#00a6a6] text-white font-semibold text-lg py-4 rounded-2xl shadow-lg shadow-indigo-200 active:scale-[0.98] transition-transform flex items-center justify-center space-x-2">
+                <button type="button" onClick="confirmCountry()" class="w-full bg-[#00a6a6] text-white font-semibold text-lg py-4 rounded-2xl shadow-lg shadow-indigo-200 active:scale-[0.98] transition-transform flex items-center justify-center space-x-2">
                     <span>Konfirmasi</span>
                 </button>
             </div>
@@ -907,8 +1488,8 @@
         }
     </script>
 
-    <input type="file" id="galleryInput" accept="image/*" class="hidden" onchange="handlePhotoSelected(event)">
-    <input type="file" id="cameraInput" accept="image/*" capture="user" class="hidden" onchange="handlePhotoSelected(event)">
+    <input type="file" id="galleryInput" accept="image/*" class="hidden" onChange="handlePhotoSelected(event)">
+    <input type="file" id="cameraInput" accept="image/*" capture="user" class="hidden" onChange="handlePhotoSelected(event)">
 
     <script>
         function openPhotoModal() {
@@ -967,5 +1548,5 @@
     </script>
 </div>
         
-	
-	</body></html>
+      
+    </body></html>
