@@ -465,7 +465,12 @@
     </div>
 
     <script>
-        const AREA_API_BASE = 'https://emsifa.github.io/api-wilayah-indonesia/api';
+        // Beberapa sumber API wilayah (mirror), dicoba berurutan jika salah satu gagal/CORS-blocked
+        const AREA_API_SOURCES = [
+            'https://emsifa.github.io/api-wilayah-indonesia/api',
+            'https://www.emsifa.com/api-wilayah-indonesia/api',
+            'https://asywalulfikri.github.io/api-indonesia/api'
+        ];
 
         // level: 0=provinsi, 1=kabupaten/kota, 2=kecamatan, 3=kelurahan/desa
         let areaLevel = 0;
@@ -502,25 +507,37 @@
             document.getElementById('areaSearchInput').value = '';
         }
 
+        function getAreaPath() {
+            if (areaLevel === 0) return 'provinces.json';
+            if (areaLevel === 1) return `regencies/${areaSelection.provinsi.id}.json`;
+            if (areaLevel === 2) return `districts/${areaSelection.kabkota.id}.json`;
+            if (areaLevel === 3) return `villages/${areaSelection.kecamatan.id}.json`;
+        }
+
+        // Coba tiap sumber API satu per satu sampai ada yang berhasil merespons JSON valid
+        async function fetchAreaWithFallback(path) {
+            let lastError = null;
+            for (const base of AREA_API_SOURCES) {
+                try {
+                    const res = await fetch(`${base}/${path}`, { cache: 'no-store' });
+                    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                    const data = await res.json();
+                    if (!Array.isArray(data)) throw new Error('Format data tidak sesuai');
+                    return data;
+                } catch (err) {
+                    lastError = err;
+                    // lanjut coba sumber berikutnya
+                }
+            }
+            throw lastError || new Error('Semua sumber API gagal diakses');
+        }
+
         async function loadAreaList() {
             const container = document.getElementById('areaListContainer');
             container.innerHTML = '<div class="flex justify-center py-10 text-gray-400 text-sm"><i class="fa-solid fa-spinner fa-spin mr-2"></i> Memuat data...</div>';
 
-            let url = '';
-            if (areaLevel === 0) {
-                url = `${AREA_API_BASE}/provinces.json`;
-            } else if (areaLevel === 1) {
-                url = `${AREA_API_BASE}/regencies/${areaSelection.provinsi.id}.json`;
-            } else if (areaLevel === 2) {
-                url = `${AREA_API_BASE}/districts/${areaSelection.kabkota.id}.json`;
-            } else if (areaLevel === 3) {
-                url = `${AREA_API_BASE}/villages/${areaSelection.kecamatan.id}.json`;
-            }
-
             try {
-                const res = await fetch(url);
-                if (!res.ok) throw new Error('Gagal memuat data');
-                const data = await res.json();
+                const data = await fetchAreaWithFallback(getAreaPath());
                 areaCurrentList = data;
                 renderAreaList(data);
             } catch (err) {
