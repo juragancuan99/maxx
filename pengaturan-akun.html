@@ -1,7 +1,7 @@
 <html lang="id" data-kantu="1"><head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
-<title>Pendapatan - Maxi Affiliate</title>
+<title>Pengaturan - Maxi Affiliate</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
@@ -37,7 +37,6 @@
             }
         }
     </script>
-
 
 </head>
 <body class="h-screen w-screen overflow-hidden bg-white">
@@ -193,7 +192,7 @@
             <div class="flex items-center gap-2">
                 
                 <div class="flex items-center gap-[0rem]">
-                <span id="whatsappNumberLabel" class="bg-blue-50 text-gray-700 text-[10px] font-bold px-2 py-0.5 rounded-full">62822xxx949</span>
+                <span id="whatsappNumberLabel" class="bg-blue-50 text-gray-700 text-[10px] font-bold px-2 py-0.5 rounded-full">6299999999</span>
                 <i class="fa-solid fa-chevron-right text-gray-300 text-sm"></i>
             </div>
             </div>
@@ -731,8 +730,8 @@
     </script>
 
 
-    <div id="photoModalOverlay" onclick="if(event.target===this) closePhotoModal()" class="fixed inset-0 z-50 hidden items-end sm:items-center justify-center bg-black/50 backdrop-blur-sm">
-        <div id="photoModalSheet" class="w-full sm:w-[380px] bg-white rounded-t-3xl sm:rounded-3xl p-5 pb-8 sm:pb-5 translate-y-full sm:translate-y-0 sm:scale-95 sm:opacity-0 transition-all duration-300 ease-out">
+    <div id="photoModalOverlay" onclick="if(event.target===this) closePhotoModal()" class="fixed inset-0 z-50 items-end sm:items-center justify-center bg-black/50 backdrop-blur-sm hidden">
+        <div id="photoModalSheet" class="w-full sm:w-[380px] bg-white rounded-t-3xl sm:rounded-3xl p-5 pb-8 sm:pb-5 sm:translate-y-0 transition-all duration-300 ease-out translate-y-full sm:scale-95 sm:opacity-0">
             <!-- Drag handle (mobile) -->
             <div class="w-10 h-1.5 bg-gray-200 rounded-full mx-auto mb-4 sm:hidden"></div>
 
@@ -751,19 +750,19 @@
 
             <div class="grid grid-cols-2 gap-3">
                 <!-- Pilihan: Galeri -->
-                <button onclick="triggerGallery()" class="flex flex-col items-center justify-center gap-2 py-5 rounded-2xl bg-orange-50 border border-[#dedede87] active:scale-[0.97] transition-transform">
-                    <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-cyan-800 shadow-sm">
+                <button onclick="triggerGallery()" class="flex flex-col items-center justify-center gap-2 py-5 rounded-2xl bg-[#ff0000] border border-[#dedede87] active:scale-[0.97] transition-transform">
+                    <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-[#ff0000] shadow-sm">
                         <i class="fa-solid fa-images text-lg"></i>
                     </div>
-                    <span class="text-sm font-semibold text-gray-700">Galeri</span>
+                    <span class="text-sm font-semibold text-gray-100">Galeri</span>
                 </button>
 
                 <!-- Pilihan: Kamera -->
-                <button onclick="triggerCamera()" class="flex flex-col items-center justify-center gap-2 py-5 rounded-2xl bg-orange-50 border border-[#dedede87] active:scale-[0.97] transition-transform">
-                    <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-cyan-800 shadow-sm">
+                <button onclick="triggerCamera()" class="flex flex-col items-center justify-center gap-2 py-5 rounded-2xl bg-[#ff0000] border border-[#dedede87] active:scale-[0.97] transition-transform">
+                    <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-[#ff0000] shadow-sm">
                         <i class="fa-solid fa-camera text-lg"></i>
                     </div>
-                    <span class="text-sm font-semibold text-gray-700">Kamera</span>
+                    <span class="text-sm font-semibold text-gray-100">Kamera</span>
                 </button>
             </div>
         </div>
@@ -788,8 +787,7 @@
 
                 <!-- Option: Indonesia -->
                 <label class="group relative block cursor-pointer tap-highlight-transparent">
-                    <input type="radio" name="country_select" class="peer sr-only" value="Indonesia"
-                        data-flag="https://image2url.com/r2/default/images/1774367205798-1f116ea8-4605-42ff-8f81-f6b7fc7fe511.jpg" checked="">
+                    <input type="radio" name="country_select" class="peer sr-only" value="Indonesia" data-flag="https://image2url.com/r2/default/images/1774367205798-1f116ea8-4605-42ff-8f81-f6b7fc7fe511.jpg" checked="">
                     <div class="flex items-center justify-between p-5 rounded-2xl transition-all duration-200 ease-in-out 
                                 hover:bg-gray-50 active:scale-[0.98] 
                                 peer-checked:border-[#4F46E5] peer-checked:bg-indigo-50/50 peer-checked:shadow-sm">
@@ -800,21 +798,19 @@
                                     <img src="https://image2url.com/r2/default/images/1774367205798-1f116ea8-4605-42ff-8f81-f6b7fc7fe511.jpg" alt="Bendera Indonesia" class="w-[1.7rem] h-[1.5rem] rounded-full shadow-md object-cover">
                                 </div>
                             </div>
-                            <span class="font-semibold text-gray-700 peer-checked:text-[#4F46E5] text-[1rem] sm:text-base">Indonesia</span>
+                            <span class="font-semibold text-gray-700 peer-checked:text-[#4F46E5] text-[1rem] sm:text-base text-[#4F46E5]">Indonesia</span>
                         </div>
 
                         <!-- Radio Circle -->
-                        <div class="country-radio-circle w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center transition-colors
-                                    group-hover:border-[#4F46E5]">
-                            <i class="country-radio-check fa-solid fa-check text-white text-xs opacity-0 transform scale-0 transition-all"></i>
+                        <div class="country-radio-circle w-6 h-6 rounded-full border-2 flex items-center justify-center transition-colors group-hover:border-[#4F46E5] border-[#4F46E5] bg-[#4F46E5]">
+                            <i class="country-radio-check fa-solid fa-check text-white text-xs transform transition-all opacity-100 scale-100"></i>
                         </div>
                     </div>
                 </label>
 
                 <!-- Option: Malaysia -->
                 <label class="group relative block cursor-pointer tap-highlight-transparent">
-                    <input type="radio" name="country_select" class="peer sr-only" value="Malaysia"
-                        data-flag="https://image2url.com/r2/default/images/1774367475653-eb61de39-c4e6-4d75-be7a-d4b40219260c.png">
+                    <input type="radio" name="country_select" class="peer sr-only" value="Malaysia" data-flag="https://image2url.com/r2/default/images/1774367475653-eb61de39-c4e6-4d75-be7a-d4b40219260c.png">
                     <div class="flex items-center justify-between p-5 rounded-2xl transition-all duration-200 ease-in-out 
                                 hover:bg-gray-50 active:scale-[0.98] 
                                 peer-checked:border-[#4F46E5] peer-checked:bg-indigo-50/50 peer-checked:shadow-sm">
@@ -829,8 +825,7 @@
                         </div>
 
                         <!-- Radio Circle -->
-                        <div class="country-radio-circle w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center transition-colors
-                                    group-hover:border-[#4F46E5]">
+                        <div class="country-radio-circle w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center transition-colors group-hover:border-[#4F46E5]">
                             <i class="country-radio-check fa-solid fa-check text-white text-xs opacity-0 transform scale-0 transition-all"></i>
                         </div>
                     </div>
@@ -972,5 +967,5 @@
     </script>
 </div>
         
-      
-    </body></html>
+	
+	</body></html>
