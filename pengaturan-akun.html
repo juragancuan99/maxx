@@ -149,7 +149,7 @@
                 <img id="profilePhotoImg" src="https://i.ibb.co.com/93wsTGfM/Biru-Dan-Putih-Modern-Selamat-dan-Sukses-Instagram-Post-10.png" alt="User Avatar" class="w-[3rem] h-[3rem] rounded-full object-cover border-4 border-[#fff6d0] shadow-sm">
                 <i class="fa-solid fa-chevron-right text-gray-300 text-sm"></i>
             </div>
-        </button><button class="w-full bg-white p-[0.6rem] rounded-xl shadow-sm border border-[#dedede87] flex items-center justify-between active:scale-[0.98] transition-transform duration-100 relative overflow-hidden">
+        </button><button onClick="openUsernameModal()" class="w-full bg-white p-[0.6rem] rounded-xl shadow-sm border border-[#dedede87] flex items-center justify-between active:scale-[0.98] transition-transform duration-100 relative overflow-hidden">
             <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#00a6a6]"></div>
             <div class="flex items-center gap-4 pl-1">
                 <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-cyan-800" 5="">
@@ -161,7 +161,7 @@
                 </div>
             </div>
             <div class="flex items-center gap-[0rem]">
-                <span class="bg-blue-50 text-gray-700 text-[10px] font-bold px-2 py-0.5 rounded-full">MAXI2026</span>
+                <span id="usernameLabel" class="bg-blue-50 text-gray-700 text-[10px] font-bold px-2 py-0.5 rounded-full">MAXI2026</span>
                 <i class="fa-solid fa-chevron-right text-gray-300 text-sm"></i>
             </div>
         </button><button onClick="openKeamananPage()" class="w-full bg-white p-[0.6rem] rounded-xl shadow-sm border border-[#dedede87] flex items-center justify-between active:scale-[0.98] transition-transform duration-100 relative overflow-hidden">
@@ -326,6 +326,61 @@
 
     <!-- Bottom Navigation Bar -->
     
+
+    <!-- ===== Overlay Halaman: Username ===== -->
+    <div id="usernamePageOverlay" class="fixed inset-0 z-[60] bg-gray-50 translate-x-full transition-transform duration-300 ease-out overflow-y-auto pb-24">
+        <!-- Header -->
+        <div class="sticky top-0 z-50 bg-white px-[0rem] py-4 flex items-center justify-between shadow-sm">
+            <button onClick="closeUsernameModal()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-600 transition">
+                <i class="fa-solid fa-arrow-left text-lg"></i>
+            </button>
+            <h1 class="pr-[6.6rem] text-lg font-bold text-gray-800">Nama Panggilan</h1>
+        </div>
+
+        <!-- Form Edit -->
+        <div class="px-5 mt-6">
+            <div>
+                <label class="block text-[1rem] font-bold text-gray-800 uppercase tracking-wider ml-1 mb-1.5">Edit Nama Panggilan</label>
+                <div class="relative group">
+                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                        <i class="fa-solid fa-pencil text-gray-400 group-focus-within:text-[#00a6a6] transition-colors"></i>
+                    </div>
+                    <input id="usernameInput" type="text" placeholder="Nama Panggilan Anda" class="pl-11 w-full bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-xl focus:ring-2 focus:ring-[#00a6a6]/20 focus:border-[#00a6a6] block p-3.5 outline-none transition-all placeholder-gray-400">
+                </div>
+            </div>
+        </div>
+
+        <!-- Sticky Footer CTA -->
+        <div class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-100 p-5 shadow-[0_-4px_10px_rgba(0,0,0,0.05)] z-50">
+            <button onClick="saveUsernameModal()" class="w-full bg-[#00a6a6] hover:bg-[#00a6a6] text-white font-bold text-lg py-3.5 rounded-xl shadow-lg shadow-gray-150 transition active:scale-[0.98] flex items-center justify-center gap-2">Simpan
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function openUsernameModal() {
+            const overlay = document.getElementById('usernamePageOverlay');
+            const currentLabel = document.getElementById('usernameLabel').textContent.trim();
+            document.getElementById('usernameInput').value = currentLabel;
+            overlay.classList.remove('hidden');
+            requestAnimationFrame(() => {
+                overlay.classList.remove('translate-x-full');
+            });
+        }
+
+        function closeUsernameModal() {
+            const overlay = document.getElementById('usernamePageOverlay');
+            overlay.classList.add('translate-x-full');
+        }
+
+        function saveUsernameModal() {
+            const value = document.getElementById('usernameInput').value.trim();
+            if (value) {
+                document.getElementById('usernameLabel').textContent = value;
+            }
+            closeUsernameModal();
+        }
+    </script>
 
     <!-- ===== Overlay Halaman: Alamat Pengiriman ===== -->
     <style>
@@ -720,7 +775,7 @@
                             <img id="otpChannelIcon" src="https://image2url.com/r2/default/images/1774317856305-a6257b55-0053-4ebb-b4b2-5aead8bef559.png" class="w-full h-full object-cover">
                         </div>
                         <span id="otpChannelLabel" class="text-xs text-green-600 font-medium">Whatsapp</span>
-                        <span class="text-gray-300 text-[10px]">•</span>
+                        <span class="text-gray-300 text-[10px]">�</span>
                     </div>
                 </div>
 
