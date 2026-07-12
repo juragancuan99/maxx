@@ -1,0 +1,431 @@
+<html lang="id" data-kantu="1"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<title>Pendapatan - Maxi Affiliate</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  
+  
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; margin: 0; padding: 0; }
+        ::-webkit-scrollbar { display: none; } 
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Animasi Zoom In untuk Pop-Up Modal Info */
+        @keyframes zoomIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .zoom-in { animation: zoomIn 0.2s ease-out forwards; }
+    </style>
+	
+	  <style>
+    .hide-scrollbar::-webkit-scrollbar { display: none; }
+    .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+  
+  
+<script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#D4FF00',
+                    }
+                }
+            }
+        }
+    </script>
+
+
+</head>
+<body class="h-screen w-screen overflow-hidden bg-white">
+          <div class="w-full h-full bg-gray-50 overflow-y-auto relative font-sans text-gray-800">
+    <!-- FontAwesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Header Section -->
+    <header class="sticky top-0 z-30 bg-white/90 backdrop-blur-md border-b border-gray-200 px-4 h-14 flex items-center justify-between">
+    <button class="w-10 h-10 flex items-center justify-center text-gray-600 active:text-[#FF5722] transition-colors">
+      <i class="fa-solid fa-chevron-left text-lg"></i>
+    </button>
+    <h1 class="text-lg font-medium text-gray-900">Pengaturan</h1>
+    <div class="w-10"></div> <!-- Spacer for centering -->
+  </header>
+
+    <!-- Floating Stats Card -->
+    
+
+    <!-- Menu List -->
+    <div class="px-5 mt-6 pb-24 space-y-4">
+        
+        <!-- Section Label -->
+        <h3 class="text-sm font-semibold text-gray-400 ml-1">Akun</h3>
+
+        <!-- Menu Item: My Orders -->
+        
+        <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3 ml-1"></h3>
+        <!-- <div class="bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100">
+            
+            <!-- Order History -->
+            
+
+            <!-- <button class="w-full flex items-center justify-between p-[0.7rem] border-b border-[#c0c0c06b] hover:bg-gray-50 transition active:bg-gray-100">
+                <div class="flex items-center gap-4">
+                    <div class="w-10 h-10 rounded-full bg-[#ffeed9] flex items-center justify-center text-cyan-700">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <span class="text-gray-700 font-medium text-sm">Foto Profil</span>
+                </div>
+                <div class="flex items-center gap-[0rem]">
+                <img src="https://i.ibb.co.com/93wsTGfM/Biru-Dan-Putih-Modern-Selamat-dan-Sukses-Instagram-Post-10.png" alt="User Avatar" class="w-[2.5rem] h-[2.5rem] rounded-full object-cover border-4 border-[#fff6d0] shadow-sm">
+                <i class="fa-solid fa-chevron-right text-[#514232] text-sm"></i>
+            </div>
+            </button><button class="w-full flex items-center justify-between p-[0.7rem] border-b border-[#c0c0c06b] hover:bg-gray-50 transition active:bg-gray-100">
+                <div class="flex items-center gap-4">
+                    <div class="w-10 h-10 rounded-full bg-[#ffeed9] flex items-center justify-center text-cyan-700">
+                        <i class="fas fa-pencil"></i>
+                    </div>
+                    <span class="text-gray-700 font-medium text-sm">Nama Panggilan</span>
+                </div>
+                <div class="flex items-center gap-[0rem]">
+                <span class="bg-blue-50 text-gray-700 text-[12px] font-bold px-2 py-0.5 rounded-full">MAXI2026</span>
+                <i class="fa-solid fa-chevron-right text-[#514232] text-sm"></i>
+            </div>
+            
+            </button><button class="w-full flex items-center justify-between p-[0.7rem] border-b border-[#c0c0c06b] hover:bg-gray-50 transition active:bg-gray-100">
+                <div class="flex items-center gap-4">
+                    <div class="w-10 h-10 rounded-full bg-[#ffeed9] flex items-center justify-center text-cyan-700">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <span class="text-gray-700 font-medium text-sm">Keamanan Akun</span>
+                </div>
+                <i class="fa-solid fa-chevron-right text-[#514232] text-sm"></i>
+            </button><button class="w-full flex items-center justify-between p-[0.7rem] border-b border-[#c0c0c06b] hover:bg-gray-50 transition active:bg-gray-100">
+                <div class="flex items-center gap-4">
+                    <div class="w-10 h-10 rounded-full bg-[#ffeed9] flex items-center justify-center text-cyan-700">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <span class="text-gray-700 font-medium text-sm">Whatsapp</span>
+                </div>
+                <div class="flex items-center gap-[0rem]">
+                <span class="bg-blue-50 text-gray-700 text-[12px] font-bold px-2 py-0.5 rounded-full">62822xxx949</span>
+                <i class="fa-solid fa-chevron-right text-[#514232] text-sm"></i>
+            </div>
+            
+            </button><button class="w-full flex items-center justify-between p-[0.7rem] border-b border-gray-50 hover:bg-gray-50 transition active:bg-gray-100">
+                <div class="flex items-center gap-4">
+                    <div class="w-10 h-10 rounded-full bg-[#ffeed9] flex items-center justify-center text-cyan-700">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <span class="text-gray-700 font-medium text-sm">Alamat Saya</span>
+                </div>
+                
+
+
+
+<i class="fa-solid fa-chevron-right text-[#514232] text-sm"></i> 
+            
+
+            </button><!-- Address -->
+            
+
+            <!-- Payment Methods -->
+            
+        <!-- </div> -->
+    <button onclick="openPhotoModal()" class="w-full bg-white p-[0.6rem] rounded-xl shadow-sm border border-[#dedede87] flex items-center justify-between active:scale-[0.98] transition-transform duration-100 relative overflow-hidden">
+            <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#00a6a6]"></div>
+            <div class="flex items-center gap-4 pl-1">
+                <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-cyan-800" 5="">
+                    <i class="fa-solid fa-camera"></i>
+                </div>
+                <div class="text-left">
+                    <p class="font-semibold text-gray-800">Foto Profil</p>
+                    
+                </div>
+            </div>
+            <div class="flex items-center gap-[0rem]">
+                <img id="profilePhotoImg" src="https://i.ibb.co.com/93wsTGfM/Biru-Dan-Putih-Modern-Selamat-dan-Sukses-Instagram-Post-10.png" alt="User Avatar" class="w-[3rem] h-[3rem] rounded-full object-cover border-4 border-[#fff6d0] shadow-sm">
+                <i class="fa-solid fa-chevron-right text-gray-300 text-sm"></i>
+            </div>
+        </button><button class="w-full bg-white p-[0.6rem] rounded-xl shadow-sm border border-[#dedede87] flex items-center justify-between active:scale-[0.98] transition-transform duration-100 relative overflow-hidden">
+            <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#00a6a6]"></div>
+            <div class="flex items-center gap-4 pl-1">
+                <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-cyan-800" 5="">
+                    <i class="fa-solid fa-pencil"></i>
+                </div>
+                <div class="text-left">
+                    <p class="font-semibold text-gray-800">Username</p>
+                    
+                </div>
+            </div>
+            <div class="flex items-center gap-[0rem]">
+                <span class="bg-blue-50 text-gray-700 text-[10px] font-bold px-2 py-0.5 rounded-full">MAXI2026</span>
+                <i class="fa-solid fa-chevron-right text-gray-300 text-sm"></i>
+            </div>
+        </button><button class="w-full bg-white p-[0.6rem] rounded-xl shadow-sm border border-[#dedede87] flex items-center justify-between active:scale-[0.98] transition-transform duration-100 relative overflow-hidden">
+            <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#00a6a6]"></div>
+            <div class="flex items-center gap-4 pl-1">
+                <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-cyan-800" 5="">
+                    <i class="fa-solid fa-user-shield"></i>
+                </div>
+                <div class="text-left">
+                    <p class="font-semibold text-gray-800">Keamanan Akun</p>
+                    
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                
+                <i class="fa-solid fa-chevron-right text-gray-300 text-sm"></i>
+            </div>
+        </button><button class="w-full bg-white p-[0.6rem] rounded-xl shadow-sm border border-[#dedede87] flex items-center justify-between active:scale-[0.98] transition-transform duration-100 relative overflow-hidden">
+            <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#00a6a6]"></div>
+            <div class="flex items-center gap-4 pl-1">
+                <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-cyan-800" 5="">
+                    <i class="fas fa-phone"></i>
+                </div>
+                <div class="text-left">
+                    <p class="font-semibold text-gray-800">Whatsapp</p>
+                    
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                
+                <div class="flex items-center gap-[0rem]">
+                <span class="bg-blue-50 text-gray-700 text-[10px] font-bold px-2 py-0.5 rounded-full">62822xxx949</span>
+                <i class="fa-solid fa-chevron-right text-gray-300 text-sm"></i>
+            </div>
+            </div>
+        </button><button class="w-full bg-white p-[0.6rem] rounded-xl shadow-sm border border-[#dedede87] flex items-center justify-between active:scale-[0.98] transition-transform duration-100 relative overflow-hidden">
+            <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#00a6a6]"></div>
+            <div class="flex items-center gap-4 pl-1">
+                <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-cyan-800" 5="">
+                    <i class="fas fa-map-location-dot"></i>
+                </div>
+                <div class="text-left">
+                    <p class="font-semibold text-gray-800">Alamat Saya</p>
+                    
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                
+                <i class="fa-solid fa-chevron-right text-gray-300 text-sm"></i>
+            </div>
+        </button><button class="w-full bg-white p-[0.6rem] rounded-xl shadow-sm border border-[#dedede87] flex items-center justify-between active:scale-[0.98] transition-transform duration-100 relative overflow-hidden">
+            <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#00a6a6]"></div>
+            <div class="flex items-center gap-4 pl-1">
+                <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-cyan-800" 5="">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <div class="text-left">
+                    <p class="font-semibold text-gray-800">Negara/Wilayah</p>
+                    
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                
+                <div class="flex items-center gap-[0rem]">
+                <span class="bg-blue-50 text-gray-700 text-[10px] font-bold px-2 py-0.5 rounded-full">Indonesia</span>
+                <i class="fa-solid fa-chevron-right text-gray-300 text-sm"></i>
+            </div>
+            </div>
+        </button>
+
+        <!-- Menu Item: Affiliate Dashboard (Highlighted) -->
+        
+
+        <!-- Section Label -->
+        
+
+        
+        
+
+        
+        
+
+        <!-- <button class="w-full bg-white p-[0.6rem] rounded-xl shadow-sm border border-[#dedede87] flex items-center justify-between active:scale-[0.98] transition-transform duration-100 relative overflow-hidden">
+            <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#00a6a6]"></div>
+            <div class="flex items-center gap-4 pl-1">
+                <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-cyan-800" 5="">
+                    <i class="fa-solid fa-pencil"></i>
+                </div>
+                <div class="text-left">
+                    <p class="font-semibold text-gray-800">Nomor Rekening</p>
+                    
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                
+                <div class="flex items-center gap-[0rem]">
+                <span class="bg-blue-50 text-gray-700 text-[10px] font-bold px-2 py-0.5 rounded-full">797998886</span>
+                <i class="fa-solid fa-chevron-right text-gray-300 text-sm"></i>
+            </div>
+            </div>
+        </button> --><!-- <button class="w-full bg-white p-[0.6rem] rounded-xl shadow-sm border border-[#dedede87] flex items-center justify-between active:scale-[0.98] transition-transform duration-100 relative overflow-hidden">
+            <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#00a6a6]"></div>
+            <div class="flex items-center gap-4 pl-1">
+                <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-cyan-800" 5="">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <div class="text-left">
+                    <p class="font-semibold text-gray-800">Atas Nama</p>
+                    
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                
+                <div class="flex items-center gap-[0rem]">
+                <span class="bg-blue-50 text-gray-700 text-[10px] font-bold px-2 py-0.5 rounded-full">EfexxGuxx</span>
+                <i class="fa-solid fa-chevron-right text-gray-300 text-sm"></i>
+            </div>
+            </div>
+        </button> --><!-- Menu Item: Account Settings --><h3 class="text-sm font-semibold text-gray-400 ml-1 mt-6">Tentang</h3><button class="w-full bg-white p-[0.6rem] rounded-xl shadow-sm border border-[#dedede87] flex items-center justify-between active:scale-[0.98] transition-transform duration-100 relative overflow-hidden">
+            <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#00a6a6]"></div>
+            <div class="flex items-center gap-4 pl-1">
+                <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-cyan-800" 5="">
+                    <i class="fa-solid fa-bell"></i>
+                </div>
+                <div class="text-left">
+                    <p class="font-semibold text-gray-800">Notifikasi</p>
+                    
+                </div>
+            </div>
+            <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" value="" class="sr-only peer" checked="">
+                        <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#21b4b9]"></div>
+                    </label>
+        </button><button class="w-full bg-white p-[0.6rem] rounded-xl shadow-sm border border-[#dedede87] flex items-center justify-between active:scale-[0.98] transition-transform duration-100 relative overflow-hidden">
+            <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#00a6a6]"></div>
+            <div class="flex items-center gap-4 pl-1">
+                <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-cyan-800" 5="">
+                    <i class="fa-solid fa-info-circle"></i>
+                </div>
+                <div class="text-left">
+                    <p class="font-semibold text-gray-800">Ketentuan &amp; Kebijakan</p>
+                    
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                
+                <div class="flex items-center gap-[0rem]">
+                
+                <i class="fa-solid fa-chevron-right text-gray-300 text-sm"></i>
+            </div>
+            </div>
+        </button><!-- Logout Button -->
+        <button class="w-full mt-4 p-3 rounded-xl flex items-center justify-center gap-2 text-red-500 font-medium hover:bg-red-50 transition border border-orange-600" 7="">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            Log Out
+        </button><!-- Logout Button -->
+        
+        <!-- Logout Button --><!-- Logout Button --><div class="text-center mt-4 mb-8">
+            <p class="text-xs text-gray-400">MAXI_Affiliate v2.0.26</p>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation Bar -->
+    
+
+    <!-- ===== Modal Popup: Ubah Foto Profil ===== -->
+    <div id="photoModalOverlay" onclick="if(event.target===this) closePhotoModal()" class="fixed inset-0 z-50 hidden items-end sm:items-center justify-center bg-black/50 backdrop-blur-sm">
+        <div id="photoModalSheet" class="w-full sm:w-[380px] bg-white rounded-t-3xl sm:rounded-3xl p-5 pb-8 sm:pb-5 translate-y-full sm:translate-y-0 sm:scale-95 sm:opacity-0 transition-all duration-300 ease-out">
+            <!-- Drag handle (mobile) -->
+            <div class="w-10 h-1.5 bg-gray-200 rounded-full mx-auto mb-4 sm:hidden"></div>
+
+            <div class="flex items-center justify-between mb-1">
+                <h2 class="text-base font-bold text-gray-900">Ubah Foto Profil</h2>
+                <button onclick="closePhotoModal()" class="w-8 h-8 flex items-center justify-center rounded-full text-gray-400 hover:bg-gray-100 active:bg-gray-200 transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <p class="text-xs text-gray-400 mb-5">Pilih foto dari galeri atau ambil selfie langsung dari kamera.</p>
+
+            <!-- Preview foto saat ini -->
+            <div class="flex justify-center mb-5">
+                <img id="photoModalPreview" src="https://i.ibb.co.com/93wsTGfM/Biru-Dan-Putih-Modern-Selamat-dan-Sukses-Instagram-Post-10.png" class="w-20 h-20 rounded-full object-cover border-4 border-[#fff6d0] shadow-sm">
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+                <!-- Pilihan: Galeri -->
+                <button onclick="triggerGallery()" class="flex flex-col items-center justify-center gap-2 py-5 rounded-2xl bg-orange-50 border border-[#dedede87] active:scale-[0.97] transition-transform">
+                    <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-cyan-800 shadow-sm">
+                        <i class="fa-solid fa-images text-lg"></i>
+                    </div>
+                    <span class="text-sm font-semibold text-gray-700">Galeri</span>
+                </button>
+
+                <!-- Pilihan: Kamera -->
+                <button onclick="triggerCamera()" class="flex flex-col items-center justify-center gap-2 py-5 rounded-2xl bg-orange-50 border border-[#dedede87] active:scale-[0.97] transition-transform">
+                    <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-cyan-800 shadow-sm">
+                        <i class="fa-solid fa-camera text-lg"></i>
+                    </div>
+                    <span class="text-sm font-semibold text-gray-700">Kamera</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Input file tersembunyi -->
+    <input type="file" id="galleryInput" accept="image/*" class="hidden" onchange="handlePhotoSelected(event)">
+    <input type="file" id="cameraInput" accept="image/*" capture="user" class="hidden" onchange="handlePhotoSelected(event)">
+
+    <script>
+        function openPhotoModal() {
+            const overlay = document.getElementById('photoModalOverlay');
+            const sheet = document.getElementById('photoModalSheet');
+            const current = document.getElementById('profilePhotoImg').src;
+            document.getElementById('photoModalPreview').src = current;
+
+            overlay.classList.remove('hidden');
+            overlay.classList.add('flex');
+            // beri jeda 1 frame agar transisi animasi jalan
+            requestAnimationFrame(() => {
+                sheet.classList.remove('translate-y-full', 'sm:scale-95', 'sm:opacity-0');
+            });
+        }
+
+        function closePhotoModal() {
+            const overlay = document.getElementById('photoModalOverlay');
+            const sheet = document.getElementById('photoModalSheet');
+            sheet.classList.add('translate-y-full', 'sm:scale-95', 'sm:opacity-0');
+            setTimeout(() => {
+                overlay.classList.add('hidden');
+                overlay.classList.remove('flex');
+            }, 300);
+        }
+
+        function triggerGallery() {
+            document.getElementById('galleryInput').click();
+        }
+
+        function triggerCamera() {
+            document.getElementById('cameraInput').click();
+        }
+
+        function handlePhotoSelected(event) {
+            const file = event.target.files && event.target.files[0];
+            if (!file) return;
+
+            if (!file.type.startsWith('image/')) {
+                alert('File yang dipilih bukan gambar.');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const dataUrl = e.target.result;
+                document.getElementById('profilePhotoImg').src = dataUrl;
+                document.getElementById('photoModalPreview').src = dataUrl;
+                closePhotoModal();
+            };
+            reader.readAsDataURL(file);
+
+            // reset value supaya bisa pilih file yang sama lagi di lain waktu
+            event.target.value = '';
+        }
+    </script>
+</div>
+        
+      
+    </body></html>
