@@ -1,0 +1,271 @@
+<html lang="id"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+
+</head>
+<body class="bg-gray-100 min-h-screen">
+
+    <div class="sticky top-0 z-50 bg-[#00a6a6] shadow-md px-4 py-4 flex items-center">
+        <button onclick="history.back()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/20 transition">
+    <i class="fa-solid fa-arrow-left text-white"></i>
+</button>
+        <h1 class="text-white text-lg font-bold flex-1 text-center pr-10">Upgrade</h1>
+    </div>
+
+    <div class="p-4 space-y-4 pb-28">
+        
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-1">
+            <div class="divide-y divide-gray-100">
+                <div class="p-4 flex justify-between"><span class="text-gray-500 text-sm">Nama Paket Upgrade</span><span class="font-semibold">Agent Affiliate</span></div>
+                <div class="p-4 flex justify-between"><span class="text-gray-500 text-sm">Nama Produk</span><span class="font-bold text-[#006cf2]">Bio Ocean Salt</span></div><div class="p-4 flex justify-between"><span class="text-gray-500 text-sm">Harga</span><span class="font-bold text-[#FF5722]">Rp 99.000</span></div><div class="p-4 flex justify-between"><span class="text-gray-500 text-sm">Berat (gram)</span><span class="font-semibold">60</span></div>
+            </div>
+        </div>
+
+     <!-- Shipping Address Input -->
+			
+        <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
+               <h2 class="text-lg font-bold text-gray-900 mb-4">Alamat Pengiriman</h2>
+        
+        <form class="space-y-4">
+            <div>
+                <label class="block text-xs font-medium text-gray-500 mb-1">Nama Lengkap</label>
+                <input type="text" class="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#00a6a6] focus:ring-1 focus:ring-[#00a6a6] hover:border-[#00a6a6] hover:bg-gray-100 transition-all duration-200 cursor-pointer">
+            </div>
+
+            <div class="space-y-3">
+                <div>
+                    <label class="block text-xs font-medium text-gray-500 mb-1">Propinsi</label>
+                    <select id="provinsi" class="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#00a6a6] focus:ring-1 focus:ring-[#00a6a6] hover:border-[#00a6a6] hover:bg-gray-100 transition-all duration-200 cursor-pointer">
+                        <option value="">Pilih Provinsi</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-gray-500 mb-1">Kota/ Kabupaten</label>
+                    <select id="kota" class="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#00a6a6] focus:ring-1 focus:ring-[#00a6a6] hover:border-[#00a6a6] hover:bg-gray-100 transition-all duration-200 cursor-pointer">
+                        <option value="">Pilih Kota/Kabupaten</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-gray-500 mb-1">Kecamatan</label>
+                    <select id="kecamatan" class="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#00a6a6] focus:ring-1 focus:ring-[#00a6a6] hover:border-[#00a6a6] hover:bg-gray-100 transition-all duration-200 cursor-pointer">
+                        <option value="">Pilih Kecamatan</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-gray-500 mb-1">Kelurahan/ Desa</label>
+                    <select id="kelurahan" class="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#00a6a6] focus:ring-1 focus:ring-[#00a6a6] hover:border-[#00a6a6] hover:bg-gray-100 transition-all duration-200 cursor-pointer">
+                        <option value="">Pilih Kelurahan/Desa</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-xs font-medium text-gray-500 mb-1">Alamat Lengkap</label>
+                <textarea rows="2" class="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#00a6a6] focus:ring-1 focus:ring-[#00a6a6] hover:border-[#00a6a6] hover:bg-gray-100 transition-all duration-200 cursor-pointer"></textarea>
+            </div>
+        </form>
+    </div>
+	
+	
+	<!-- EKSPEDISI -->
+	
+	<div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
+            <h2 class="text-base font-bold text-gray-900 mb-4">Pilih Ekspedisi</h2>
+            
+            <!-- Custom Dropdown / Radio Group -->
+            <div class="space-y-3" id="shippingList">
+                
+                <!-- Option 1: Selected -->
+                <label class="shipping-option relative flex items-center p-3 border-2 border-[#FF5722] bg-blue-50 rounded-xl cursor-pointer transition-all">
+                    <input type="radio" name="shipping" class="peer sr-only" checked="">
+                    <div class="shipping-icon w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-sm text-[#FF5722] text-xl mr-3">
+                        <i class="fa-solid fa-truck-fast"></i>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-gray-900">J&amp;T Express</span>
+                            <span class="shipping-price font-bold text-[#FF5722]">Rp.45.000</span>
+                        </div>
+                        <div class="flex justify-between items-center mt-0.5">
+                            <span class="text-xs text-gray-500">Next Day Delivery</span>
+                            <span class="text-xs font-medium text-green-700">Harga / Kg</span>
+                        </div>
+                    </div>
+                </label>
+
+                <!-- Option 2 -->
+                <label class="shipping-option relative flex items-center p-3 border border-gray-200 rounded-xl cursor-pointer hover:border-gray-300 transition-all">
+                    <input type="radio" name="shipping" class="peer sr-only">
+                    <div class="shipping-icon w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center text-gray-500 text-xl mr-3">
+                        <i class="fa-solid fa-bolt-lightning"></i>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-gray-900">Si CEPAT</span>
+                            <span class="shipping-price font-bold text-gray-900">Rp.75.000</span>
+                        </div>
+                        <div class="flex justify-between items-center mt-0.5">
+                            <span class="text-xs text-gray-500">Standard Shipping</span>
+                            <span class="text-xs font-medium text-gray-500">Harga / Kg</span>
+                        </div>
+                    </div>
+                </label><label class="shipping-option relative flex items-center p-3 border border-gray-200 rounded-xl cursor-pointer hover:border-gray-300 transition-all">
+                    <input type="radio" name="shipping" class="peer sr-only">
+                    <div class="shipping-icon w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center text-gray-500 text-xl mr-3">
+                        <i class="fa-solid fa-truck-moving"></i>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-gray-900">JNE Regular</span>
+                            <span class="shipping-price font-bold text-gray-900">Rp.75.000</span>
+                        </div>
+                        <div class="flex justify-between items-center mt-0.5">
+                            <span class="text-xs text-gray-500">Standard Shipping</span>
+                            <span class="text-xs font-medium text-gray-500">Harga / Kg</span>
+                        </div>
+                    </div>
+                </label>
+
+                <label class="shipping-option relative flex items-center p-3 border border-gray-200 rounded-xl cursor-pointer hover:border-gray-300 transition-all">
+                    <input type="radio" name="shipping" class="peer sr-only">
+                    <div class="shipping-icon w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center text-gray-500 text-xl mr-3">
+                        <i class="fa-solid fa-box"></i>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-gray-900">Lion Parcel</span>
+                            <span class="shipping-price font-bold text-gray-900">Rp.75.000</span>
+                        </div>
+                        <div class="flex justify-between items-center mt-0.5">
+                            <span class="text-xs text-gray-500">Standard Shipping</span>
+                            <span class="text-xs font-medium text-gray-500">Harga / Kg</span>
+                        </div>
+                    </div>
+                </label><!-- Option 3 -->
+                <label class="shipping-option relative flex items-center p-3 border border-gray-200 rounded-xl cursor-pointer hover:border-gray-300 transition-all">
+                    <input type="radio" name="shipping" class="peer sr-only">
+                    <div class="shipping-icon w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center text-gray-500 text-xl mr-3">
+                        <i class="fa-solid fa-dolly"></i>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-gray-900">Indah Kargo</span>
+                            <span class="shipping-price font-bold text-gray-900">Rp.12.000</span>
+                        </div>
+                        <div class="flex justify-between items-center mt-0.5">
+                            <span class="text-xs text-gray-500">Bulk Shipping</span>
+                            <span class="text-xs font-medium text-gray-500">Min.  10 Kg</span>
+                        </div>
+                    </div>
+                </label>
+
+            </div>
+        </div>
+
+    <div class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-100 p-4 z-40">
+        <button class="w-full bg-[#00a6a6] text-white font-bold py-4 rounded-xl shadow-lg active:scale-95 transition-transform">
+            Selanjutnya
+        </button>
+    </div>
+
+   <script>
+        const BASE_URL = "https://www.emsifa.com/api-wilayah-indonesia/api";
+
+        const elProv = document.getElementById('provinsi');
+        const elKota = document.getElementById('kota');
+        const elKec  = document.getElementById('kecamatan');
+        const elKel  = document.getElementById('kelurahan');
+
+        // Fetch Provinsi
+        fetch(`${BASE_URL}/provinces.json`)
+            .then(res => res.json())
+            .then(data => {
+                data.forEach(p => elProv.innerHTML += `<option value="${p.id}">${p.name}</option>`);
+            });
+
+        // Event Provinsi -> Kota
+        elProv.addEventListener('change', (e) => {
+            elKota.innerHTML = '<option>Memuat...</option>';
+            fetch(`${BASE_URL}/regencies/${e.target.value}.json`)
+                .then(res => res.json())
+                .then(data => {
+                    elKota.innerHTML = '<option value="">Pilih Kota/Kabupaten</option>';
+                    data.forEach(r => elKota.innerHTML += `<option value="${r.id}">${r.name}</option>`);
+                });
+        });
+
+        // Event Kota -> Kecamatan
+        elKota.addEventListener('change', (e) => {
+            elKec.innerHTML = '<option>Memuat...</option>';
+            fetch(`${BASE_URL}/districts/${e.target.value}.json`)
+                .then(res => res.json())
+                .then(data => {
+                    elKec.innerHTML = '<option value="">Pilih Kecamatan</option>';
+                    data.forEach(d => elKec.innerHTML += `<option value="${d.id}">${d.name}</option>`);
+                });
+        });
+
+        // Event Kecamatan -> Kelurahan
+        elKec.addEventListener('change', (e) => {
+            elKel.innerHTML = '<option>Memuat...</option>';
+            fetch(`${BASE_URL}/villages/${e.target.value}.json`)
+                .then(res => res.json())
+                .then(data => {
+                    elKel.innerHTML = '<option value="">Pilih Kelurahan/Desa</option>';
+                    data.forEach(v => elKel.innerHTML += `<option value="${v.id}">${v.name}</option>`);
+                });
+        });
+    </script>
+
+    <script>
+        // Fungsi untuk mengubah tampilan opsi ekspedisi saat dipilih
+        function updateShippingSelection() {
+            const options = document.querySelectorAll('.shipping-option');
+
+            options.forEach(option => {
+                const input = option.querySelector('input[type="radio"]');
+                const icon  = option.querySelector('.shipping-icon');
+                const price = option.querySelector('.shipping-price');
+
+                if (input.checked) {
+                    // Style aktif (terpilih)
+                    option.classList.remove('border', 'border-gray-200', 'hover:border-gray-300');
+                    option.classList.add('border-2', 'border-[#FF5722]', 'bg-blue-50');
+
+                    icon.classList.remove('bg-gray-100', 'text-gray-500');
+                    icon.classList.add('bg-white', 'shadow-sm', 'text-[#FF5722]');
+
+                    price.classList.remove('text-gray-900');
+                    price.classList.add('text-[#FF5722]');
+                } else {
+                    // Style tidak aktif (default)
+                    option.classList.remove('border-2', 'border-[#FF5722]', 'bg-blue-50');
+                    option.classList.add('border', 'border-gray-200', 'hover:border-gray-300');
+
+                    icon.classList.remove('bg-white', 'shadow-sm', 'text-[#FF5722]');
+                    icon.classList.add('bg-gray-100', 'text-gray-500');
+
+                    price.classList.remove('text-[#FF5722]');
+                    price.classList.add('text-gray-900');
+                }
+            });
+        }
+
+        // Jalankan saat halaman dimuat (agar state awal sesuai default checked)
+        document.addEventListener('DOMContentLoaded', updateShippingSelection);
+
+        // Jalankan setiap kali user memilih opsi ekspedisi lain
+        document.querySelectorAll('input[name="shipping"]').forEach(input => {
+            input.addEventListener('change', updateShippingSelection);
+        });
+    </script>
+
+
+</body></html>
