@@ -18,7 +18,7 @@
                 <i class="fa-solid fa-arrow-left text-lg"></i>
             </button>
             <h1 class="text-lg font-bold text-gray-800">Upgrade Akun</h1>
-            <button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-600 transition">
+            <button onClick="openHelpModal()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-600 transition">
                 <i class="fa-regular fa-circle-question text-lg"></i>
             </button>
         </div>
@@ -31,11 +31,11 @@
         <!-- Tab Switcher -->
         <div class="px-5 mt-6">
             <div class="bg-gray-200 p-1.5 rounded-xl flex relative">
-                <button id="tabAgentBtn" onclick="switchTab('agent')" class="tab-btn flex-1 py-2.5 text-sm rounded-lg text-center flex items-center justify-center gap-2 transition-all">
+                <button id="tabAgentBtn" onClick="switchTab('agent')" class="tab-btn flex-1 py-2.5 text-sm rounded-lg text-center flex items-center justify-center gap-2 transition-all">
                     Agent
                     <span class="tab-badge bg-orange-100 text-[#FF5722] text-[10px] px-1.5 py-0.5 rounded-full uppercase tracking-wide hidden">Affiliate</span>
                 </button>
-                <button id="tabPartnerBtn" onclick="switchTab('partner')" class="tab-btn flex-1 py-2.5 text-sm rounded-lg text-center flex items-center justify-center gap-2 transition-all">
+                <button id="tabPartnerBtn" onClick="switchTab('partner')" class="tab-btn flex-1 py-2.5 text-sm rounded-lg text-center flex items-center justify-center gap-2 transition-all">
                     Partner
                     <span class="tab-badge bg-orange-100 text-[#FF5722] text-[10px] px-1.5 py-0.5 rounded-full uppercase tracking-wide hidden">Affiliate</span>
                 </button>
@@ -306,6 +306,68 @@
         </div>
     </div>
 
+    <!-- ================= MODAL AGENT ================= -->
+    <div id="agentModal" class="hidden fixed inset-0 z-50 flex items-center justify-center px-4 bg-[#0000005c] backdrop-blur-[2.3px]">
+
+        <!-- Confetti Background Layer (Inside Overlay) -->
+
+        <!-- MODAL CARD -->
+        <div class="zoom-in relative w-full max-w-sm bg-[#00000099] rounded-3xl overflow-hidden animate-pop flex flex-col items-center text-center p-[1.3rem] border border-yellow-100">
+
+            <!-- Decorative Background Glow -->
+            <div class="absolute top-0 left-0 w-full h-48 bg-gradient-to-b from-transparant to-transparent -z-10"></div>
+            <div class="absolute -top-10 left-1/2 transform -translate-x-1/2 w-64 h-64 bg-[#00000099] rounded-full blur-3xl -z-10"></div>
+            <!-- Close Button -->
+            <button onClick="closeHelpModal('agentModal')" class="absolute top-4 right-4 text-orange-300 hover:text-gray-600 transition-colors w-8 h-8 flex items-center justify-center rounded-full hover:bg-orange-300">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <!-- Trophy Icon Section -->
+
+            <!-- Text Content -->
+            <h2 class="text-2xl font-extrabold text-gray-100 mb-2">Upgrade Agent</h2>
+            <p class="text-gray-100 text-sm leading-relaxed mb-6 px-[0rem]">Upgrade ke Agent sekarang dan buka peluang mendapatkan komisi tanpa batas serta <span class="font-semibold text-yellow-200">Reward Eksklusif </span>hanya untuk member yang siap naik level!</p>
+            <!-- Reward Box -->
+
+            <button onClick="closeHelpModal('agentModal')" class="w-full bg-[#b7993e] hover:bg-[#b7993e] text-white font-bold py-4 rounded-xl shadow-lg shadow-blue-600/20 transition-all transform active:scale-[0.98] mt-[-0.6rem] flex items-center justify-center gap-2">
+                <span>OK</span>
+
+            </button>
+
+            <!-- Actions -->
+        </div>
+    </div>
+
+    <!-- ================= MODAL PARTNER ================= -->
+    <div id="partnerModal" class="hidden fixed inset-0 z-50 flex items-center justify-center px-4 bg-[#0000005c] backdrop-blur-[2.3px]">
+
+        <!-- Confetti Background Layer (Inside Overlay) -->
+
+        <!-- MODAL CARD -->
+        <div class="zoom-in relative w-full max-w-sm bg-[#00000099] rounded-3xl overflow-hidden animate-pop flex flex-col items-center text-center p-[1.3rem] border border-yellow-100">
+
+            <!-- Decorative Background Glow -->
+            <div class="absolute top-0 left-0 w-full h-48 bg-gradient-to-b from-transparant to-transparent -z-10"></div>
+            <div class="absolute -top-10 left-1/2 transform -translate-x-1/2 w-64 h-64 bg-[#00000099] rounded-full blur-3xl -z-10"></div>
+            <!-- Close Button -->
+            <button onClick="closeHelpModal('partnerModal')" class="absolute top-4 right-4 text-orange-300 hover:text-gray-600 transition-colors w-8 h-8 flex items-center justify-center rounded-full hover:bg-orange-300">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <!-- Trophy Icon Section -->
+
+            <!-- Text Content -->
+            <h2 class="text-2xl font-extrabold text-gray-100 mb-2">Upgrade Partner</h2>
+            <p class="text-gray-100 text-sm leading-relaxed mb-6 px-[0rem]">Upgrade ke Partner sekarang dan nikmati peluang keuntungan yang jauh lebih besar dari agent biasa serta , <span class="font-semibold text-yellow-200">Benefit Eksklusif </span>dan potensi penghasilan tanpa batas!</p>
+            <!-- Reward Box -->
+
+            <button onClick="closeHelpModal('partnerModal')" class="w-full bg-[#b7993e] hover:bg-[#b7993e] text-white font-bold py-4 rounded-xl shadow-lg shadow-blue-600/20 transition-all transform active:scale-[0.98] mt-[-0.6rem] flex items-center justify-center gap-2">
+                <span>OK</span>
+
+            </button>
+
+            <!-- Actions -->
+        </div>
+    </div>
+
     <script>
         const tabAgentBtn = document.getElementById('tabAgentBtn');
         const tabPartnerBtn = document.getElementById('tabPartnerBtn');
@@ -342,6 +404,34 @@
 
         // Set state awal: Agent aktif
         switchTab('agent');
+
+        // ================= MODAL HELP (fa-circle-question) =================
+        const agentModal = document.getElementById('agentModal');
+        const partnerModal = document.getElementById('partnerModal');
+
+        function openHelpModal() {
+            // Cek konten mana yang sedang aktif (tidak hidden)
+            const isAgentActive = !agentContent.classList.contains('hidden');
+
+            if (isAgentActive) {
+                agentModal.classList.remove('hidden');
+            } else {
+                partnerModal.classList.remove('hidden');
+            }
+        }
+
+        function closeHelpModal(modalId) {
+            document.getElementById(modalId).classList.add('hidden');
+        }
+
+        // Tutup modal jika klik di area overlay (luar kartu modal)
+        [agentModal, partnerModal].forEach((modal) => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.add('hidden');
+                }
+            });
+        });
     </script>
 </body>
 </html>
