@@ -95,7 +95,7 @@
                         </div>
                         <div class="flex justify-between items-center mt-0.5">
                             <span class="text-xs text-gray-500">Next Day Delivery</span>
-                            <span class="text-xs font-medium text-green-700">Harga / Kg</span>
+                            <span class="shipping-kg text-xs font-medium text-green-700">Harga / Kg</span>
                         </div>
                     </div>
                 </label>
@@ -113,7 +113,7 @@
                         </div>
                         <div class="flex justify-between items-center mt-0.5">
                             <span class="text-xs text-gray-500">Standard Shipping</span>
-                            <span class="text-xs font-medium text-gray-500">Harga / Kg</span>
+                            <span class="shipping-kg text-xs font-medium text-gray-500">Harga / Kg</span>
                         </div>
                     </div>
                 </label><label class="shipping-option relative flex items-center p-3 border border-gray-200 rounded-xl cursor-pointer hover:border-gray-300 transition-all">
@@ -128,7 +128,7 @@
                         </div>
                         <div class="flex justify-between items-center mt-0.5">
                             <span class="text-xs text-gray-500">Standard Shipping</span>
-                            <span class="text-xs font-medium text-gray-500">Harga / Kg</span>
+                            <span class="shipping-kg text-xs font-medium text-gray-500">Harga / Kg</span>
                         </div>
                     </div>
                 </label>
@@ -145,7 +145,7 @@
                         </div>
                         <div class="flex justify-between items-center mt-0.5">
                             <span class="text-xs text-gray-500">Standard Shipping</span>
-                            <span class="text-xs font-medium text-gray-500">Harga / Kg</span>
+                            <span class="shipping-kg text-xs font-medium text-gray-500">Harga / Kg</span>
                         </div>
                     </div>
                 </label><!-- Option 3 -->
@@ -161,7 +161,7 @@
                         </div>
                         <div class="flex justify-between items-center mt-0.5">
                             <span class="text-xs text-gray-500">Bulk Shipping</span>
-                            <span class="text-xs font-medium text-gray-500">Min.  10 Kg</span>
+                            <span class="shipping-kg text-xs font-medium text-gray-500">Min.  10 Kg</span>
                         </div>
                     </div>
                 </label>
@@ -233,6 +233,7 @@
                 const input = option.querySelector('input[type="radio"]');
                 const icon  = option.querySelector('.shipping-icon');
                 const price = option.querySelector('.shipping-price');
+				 const price = option.querySelector('.shipping-kg');
 
                 if (input.checked) {
                     // Style aktif (terpilih)
