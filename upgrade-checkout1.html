@@ -228,12 +228,14 @@
         // Fungsi untuk mengubah tampilan opsi ekspedisi saat dipilih
         function updateShippingSelection() {
             const options = document.querySelectorAll('.shipping-option');
-
-            options.forEach(option => {
+				 
+				  options.forEach(option => {
                 const input = option.querySelector('input[type="radio"]');
                 const icon  = option.querySelector('.shipping-icon');
                 const price = option.querySelector('.shipping-price');
-				 const price = option.querySelector('.shipping-kg');
+                const kg    = option.querySelector('.shipping-kg');
+				
+				
 
                 if (input.checked) {
                     // Style aktif (terpilih)
