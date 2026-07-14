@@ -7,174 +7,578 @@
     <style>
         body { font-family: 'Inter', sans-serif; }
         ::-webkit-scrollbar { display: none; }
-    </style>
 
+        @keyframes slide-up {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+        .animate-slide-up { animation: slide-up 0.3s ease-out; }
+
+        .custom-scrollbar::-webkit-scrollbar { display: none; }
+        .custom-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
 </head>
 <body class="h-screen w-screen overflow-hidden bg-white">
-          <div class="w-full h-full bg-gray-50 overflow-y-auto relative font-sans pb-24">
-    <!-- Header -->
-    <div class="sticky top-0 z-50 bg-white px-5 py-4 flex items-center justify-between shadow-sm">
-        <button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-600 transition">
-            <i class="fa-solid fa-arrow-left text-lg"></i>
-        </button>
-        <h1 class="text-lg font-bold text-gray-800">Upgrade Akun</h1>
-        <button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-600 transition">
-            <i class="fa-regular fa-circle-question text-lg"></i>
-        </button>
-    </div>
+    <div class="w-full h-full bg-gray-50 overflow-y-auto relative font-sans pb-24">
 
-    <!-- Tab Switcher -->
-    <div class="px-5 mt-6">
-        
-        </div><!-- Tab Switcher --><div class="px-5 mt-6">
-        <p class="text-sm text-gray-800 mt-1 leading-relaxed">Halo, Rizky Pratama <br>Berikut perkiraan pendapatan anda di MAXI</p>
-    </div>
-
-    <div class="px-5 mt-6">
-        <div class="bg-gray-200 p-1.5 rounded-xl flex relative">
-            <!-- Agent Tab (Inactive) -->
-            <button class="flex-1 py-2.5 text-sm font-bold text-[#FF5722] bg-white rounded-lg shadow-sm text-center flex items-center justify-center gap-2">Agent<span class="bg-orange-100 text-[#FF5722] text-[10px] px-1.5 py-0.5 rounded-full uppercase tracking-wide">Affiliate</span>
-            </button><!-- Partner Tab (Active) --><button class="flex-1 py-2.5 text-sm font-semibold text-gray-500 rounded-lg text-center">Partner</button>
-            
-            
+        <!-- Header -->
+        <div class="sticky top-0 z-50 bg-white px-5 py-4 flex items-center justify-between shadow-sm">
+            <button onClick="history.back()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-600 transition">
+                <i class="fa-solid fa-arrow-left text-lg"></i>
+            </button>
+            <h1 class="text-lg font-bold text-gray-800">Upgrade Akun</h1>
+            <button onClick="openHelpModal()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-600 transition">
+                <i class="fa-regular fa-circle-question text-lg"></i>
+            </button>
         </div>
-    </div><!-- Membership Card Preview -->
-    <div class="px-5 mt-6">
-        <div class="w-full aspect-[1.8/1] bg-gradient-to-br from-[#878787] to-[#999999] rounded-2xl shadow-xl shadow-orange-200 relative overflow-hidden p-[1.8rem] flex flex-col justify-between">
-            <!-- Decorative Circles -->
-            <div class="absolute -top-10 -right-10 w-40 h-40 bg-white opacity-10 rounded-full blur-2xl"></div>
-            <div class="absolute bottom-0 left-0 w-32 h-32 bg-black opacity-5 rounded-full blur-xl"></div>
-            
-            <div class="flex justify-between items-start z-10">
-                <div>
-                    <p class="text-orange-100 text-xs font-bold tracking-wider uppercase">MAXI</p>
-                    <h2 class="text-white text-2xl font-bold mt-1">Agent Affiliate</h2>
-                </div>
-                <img src="images/logo-agent.png" alt="User" class="mt-[-0.4rem] w-[6.3rem] h-[6rem] rounded-full border-[0px] border-white">
-            </div>
 
-            <div class="z-10">
-                <p class="text-orange-100 text-xs mb-1">Affiliate ID</p>
-                <p class="text-white font-mono tracking-widest text-lg">MAXI2026</p>
-            </div>
+        <!-- Greeting -->
+        <div class="px-5 mt-6">
+            <p class="text-sm text-gray-800 mt-1 leading-relaxed">Halo, Rizky Pratama <br>Berikut perkiraan pendapatan anda di MAXI</p>
         </div>
-    </div>
 
-    <!-- Pricing Section -->
-    <div class="px-5 mt-8 text-center">
-        <p class="text-gray-500 text-sm decoration-red-500">Perkiraan Pendapatan Tahunan</p>
-        <div class="flex items-center justify-center gap-2 mt-1">
-            <p class="text-gray-500 text-sm decoration-red-500">Rp</p>
-            <h3 class="text-[2.5rem] font-extrabold text-gray-900">150.000.000</h3>          <!-- Custom Logo SVG -->
-          <svg class="w-[1rem] h-12 text-[#E63946]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
-          </svg>
-        </div>
-        <div class="inline-block bg-green-100 text-green-700 text-xs font-bold px-3 py-1 rounded-full mt-3">Estimasi pendapatan berbeda setiap orang</div>
-    </div>
-
-    <!-- Benefits List -->
-    <div class="mt-8 bg-white rounded-t-3xl px-6 py-8 shadow-[0_-4px_20px_rgba(0,0,0,0.03)] min-h-[400px]">
-        <h3 class="text-lg font-bold text-gray-900 mb-6">Peluang Besar Untuk Agent</h3>
-        
-        <div class="space-y-6">
-            <!-- Benefit 1 -->
-            <div class="flex items-start gap-4">
-                <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center flex-shrink-0 mt-1">
-                    <i class="fa-solid fa-percent text-[#FF5722]"></i>
-                </div>
-                <div>
-                    <h4 class="font-bold text-gray-900">Komisi Cashback</h4>
-                    <p class="text-sm text-gray-500 mt-1 leading-relaxed">Dapatkan <span class="text-[#FF5722] font-bold">Penghasilan </span>untuk setiap transaksi ecommerce dari team anda</p>
-                </div>
-            </div>
-
-            <!-- Benefit 2 -->
-            <div class="flex items-start gap-4">
-                <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center flex-shrink-0 mt-1">
-                    <i class="fa-solid fa-users text-[#FF5722]"></i>
-                </div>
-                <div>
-                    <h4 class="font-bold text-gray-900">Referral Bonus</h4>
-                    <p class="text-sm text-gray-500 mt-1 leading-relaxed">Dapatkan komisi refferal dari sponsor langsung anda yang checkout produk di merchant partner</p>
-                </div>
-            </div>
-
-            <!-- Benefit 3 -->
-            <div class="flex items-start gap-4">
-                <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center flex-shrink-0 mt-1">
-                    <i class="fa-solid fa-graduation-cap text-[#FF5722]"></i>
-                </div>
-                <div>
-                    <h4 class="font-bold text-gray-900">Premium Training</h4>
-                    <p class="text-sm text-gray-500 mt-1 leading-relaxed">Akses ke webinar mingguan dan pelatihan khusus agent strategy booster income</p>
-                </div>
-            </div>
-
-            <!-- Benefit 4 -->
-            <div class="flex items-start gap-4">
-                <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center flex-shrink-0 mt-1">
-                    <i class="fa-solid fa-check-to-slot text-[#FF5722]"></i>
-                </div>
-                <div>
-                    <h4 class="font-bold text-gray-900">Checkout Pass</h4>
-                    <p class="text-sm text-gray-500 mt-1 leading-relaxed">Dapatkan Fasilitas Akses untuk masuk kedalam akun secara bersamaan untuk melakukan checkout Misi Reward secara serentak fungsi ini meningkatkan kecepatan checkout agar tidak kehabisan kuota Flash Sale.! </p>
-                </div>
+        <!-- Tab Switcher -->
+        <div class="px-5 mt-6">
+            <div class="bg-gray-200 p-1.5 rounded-xl flex relative">
+                <button id="tabAgentBtn" onClick="switchTab('agent')" class="tab-btn flex-1 py-2.5 text-sm rounded-lg text-center flex items-center justify-center gap-2 transition-all">
+                    Agent
+                    <span class="tab-badge bg-orange-100 text-[#FF5722] text-[10px] px-1.5 py-0.5 rounded-full uppercase tracking-wide hidden">Affiliate</span>
+                </button>
+                <button id="tabPartnerBtn" onClick="switchTab('partner')" class="tab-btn flex-1 py-2.5 text-sm rounded-lg text-center flex items-center justify-center gap-2 transition-all">
+                    Partner
+                    <span class="tab-badge bg-orange-100 text-[#FF5722] text-[10px] px-1.5 py-0.5 rounded-full uppercase tracking-wide hidden">Affiliate</span>
+                </button>
             </div>
         </div>
 
-        <!-- Comparison Mini Table -->
-        <div class="mt-10 border border-gray-100 rounded-xl overflow-hidden">
-            <div class="bg-gray-50 px-4 py-3 border-b border-gray-100">
-                <h4 class="text-sm font-bold text-gray-700">Perbandingan Agent vs Partner</h4>
+        <!-- ================= AGENT CONTENT ================= -->
+        <div id="agentContent">
+
+            <!-- Membership Card -->
+            <div class="px-5 mt-6">
+                <div class="w-full aspect-[1.8/1] bg-gradient-to-br from-[#878787] to-[#999999] rounded-2xl shadow-xl shadow-orange-200 relative overflow-hidden p-[1.8rem] flex flex-col justify-between">
+                    <div class="absolute -top-10 -right-10 w-40 h-40 bg-white opacity-10 rounded-full blur-2xl"></div>
+                    <div class="absolute bottom-0 left-0 w-32 h-32 bg-black opacity-5 rounded-full blur-xl"></div>
+
+                    <div class="flex justify-between items-start z-10">
+                        <div>
+                            <p class="text-orange-100 text-xs font-bold tracking-wider uppercase">MAXI</p>
+                            <h2 class="text-white text-2xl font-bold mt-1">Agent Affiliate</h2>
+                        </div>
+                        <img src="images/logo-agent.png" alt="User" class="mt-[-0.4rem] w-[6.3rem] h-[6rem] rounded-full border-[0px] border-white">
+                    </div>
+
+                    <div class="z-10">
+                        <p class="text-orange-100 text-xs mb-1">Affiliate ID</p>
+                        <p class="text-white font-mono tracking-widest text-lg">MAXI2026</p>
+                    </div>
+                </div>
             </div>
-            <div class="grid grid-cols-3 text-xs divide-x divide-gray-100">
-                <div class="p-3 text-gray-500 font-medium">Feature</div>
-                <div class="p-3 text-center text-gray-500">Agent</div>
-                <div class="p-3 text-center font-bold text-[#FF5722] bg-orange-50">Partner</div>
+
+            <!-- Pricing -->
+            <div class="px-5 mt-8 text-center">
+                <p class="text-gray-500 text-sm decoration-red-500">Perkiraan Pendapatan Tahunan</p>
+                <div class="flex items-center justify-center gap-2 mt-1">
+                    <p class="text-gray-500 text-sm decoration-red-500">Rp</p>
+                    <h3 class="text-[2.5rem] font-extrabold text-gray-900">150.000.000</h3>
+                    <svg class="w-[1rem] h-12 text-[#E63946]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                    </svg>
+                </div>
+                <div class="inline-block bg-green-100 text-green-700 text-xs font-bold px-3 py-1 rounded-full mt-3">Estimasi pendapatan berbeda setiap orang</div>
             </div>
-            <div class="grid grid-cols-3 text-xs divide-x divide-gray-100 border-t border-gray-100">
-                <div class="p-3 text-gray-700">Komisi Cashback</div>
-                <div class="p-3 text-center text-gray-600">1 Level</div>
-                <div class="p-3 text-center font-bold text-gray-900 bg-orange-50">Semua Level</div>
+
+            <!-- Benefits -->
+            <div class="mt-8 bg-white rounded-t-3xl px-6 py-8 shadow-[0_-4px_20px_rgba(0,0,0,0.03)] min-h-[400px]">
+                <h3 class="text-lg font-bold text-gray-900 mb-6">Peluang Besar Untuk Agent</h3>
+
+                <div class="space-y-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center flex-shrink-0 mt-1">
+                            <i class="fa-solid fa-percent text-[#FF5722]"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">Komisi Cashback</h4>
+                            <p class="text-sm text-gray-500 mt-1 leading-relaxed">Dapatkan <span class="text-[#FF5722] font-bold">Penghasilan </span>untuk setiap transaksi ecommerce dari team anda</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center flex-shrink-0 mt-1">
+                            <i class="fa-solid fa-users text-[#FF5722]"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">Referral Bonus</h4>
+                            <p class="text-sm text-gray-500 mt-1 leading-relaxed">Dapatkan komisi refferal dari sponsor langsung anda yang checkout produk di merchant partner</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center flex-shrink-0 mt-1">
+                            <i class="fa-solid fa-graduation-cap text-[#FF5722]"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">Premium Training</h4>
+                            <p class="text-sm text-gray-500 mt-1 leading-relaxed">Akses ke webinar mingguan dan pelatihan khusus agent strategy booster income</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center flex-shrink-0 mt-1">
+                            <i class="fa-solid fa-check-to-slot text-[#FF5722]"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">Checkout Pass</h4>
+                            <p class="text-sm text-gray-500 mt-1 leading-relaxed">Dapatkan Fasilitas Akses untuk masuk kedalam akun secara bersamaan untuk melakukan checkout Misi Reward secara serentak fungsi ini meningkatkan kecepatan checkout agar tidak kehabisan kuota Flash Sale.! </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comparison Table -->
+                <div class="mt-10 border border-gray-100 rounded-xl overflow-hidden">
+                    <div class="bg-gray-50 px-4 py-3 border-b border-gray-100">
+                        <h4 class="text-sm font-bold text-gray-700">Perbandingan Agent vs Partner</h4>
+                    </div>
+                    <div class="grid grid-cols-3 text-xs divide-x divide-gray-100">
+                        <div class="p-3 text-gray-500 font-medium">Feature</div>
+                        <div class="p-3 text-center text-gray-500">Agent</div>
+                        <div class="p-3 text-center font-bold text-[#FF5722] bg-orange-50">Partner</div>
+                    </div>
+                    <div class="grid grid-cols-3 text-xs divide-x divide-gray-100 border-t border-gray-100">
+                        <div class="p-3 text-gray-700">Komisi Cashback</div>
+                        <div class="p-3 text-center text-gray-600">1 Level</div>
+                        <div class="p-3 text-center font-bold text-gray-900 bg-orange-50">Semua Level</div>
+                    </div>
+                    <div class="grid grid-cols-3 text-xs divide-x divide-gray-100 border-t border-gray-100">
+                        <div class="p-3 text-gray-700">Komisi Generasi</div>
+                        <div class="p-3 text-center text-gray-600">2 Level</div>
+                        <div class="p-3 text-center font-bold text-gray-900 bg-orange-50">Semua Level</div>
+                    </div>
+                    <div class="grid grid-cols-3 text-xs divide-x divide-gray-100 border-t border-gray-100">
+                        <div class="p-3 text-gray-700">Komisi Refferal</div>
+                        <div class="p-3 text-center text-gray-600">1 Level</div>
+                        <div class="p-3 text-center font-bold text-gray-900 bg-orange-50">Semua Level</div>
+                    </div>
+                    <div class="grid grid-cols-3 text-xs divide-x divide-gray-100 border-t border-gray-100">
+                        <div class="p-3 text-gray-700">Komisi Sultan</div>
+                        <div class="p-3 text-center text-gray-600">1 Level</div>
+                        <div class="p-3 text-center font-bold text-gray-900 bg-orange-50">Unlimited</div>
+                    </div>
+                    <div class="grid grid-cols-3 text-xs divide-x divide-gray-100 border-t border-gray-100">
+                        <div class="p-3 text-gray-700">Checkout Pass</div>
+                        <div class="p-3 text-center text-gray-600">3 Slot</div>
+                        <div class="p-3 text-center font-bold text-gray-900 bg-orange-50">Unlimited</div>
+                    </div>
+                    <div class="grid grid-cols-3 text-xs divide-x divide-gray-100 border-t border-gray-100">
+                        <div class="p-3 text-gray-700">Support</div>
+                        <div class="p-3 text-center text-gray-600">Standard</div>
+                        <div class="p-3 text-center font-bold text-gray-900 bg-orange-50">24/7 VIP</div>
+                    </div>
+                </div>
             </div>
-            <div class="grid grid-cols-3 text-xs divide-x divide-gray-100 border-t border-gray-100">
-                <div class="p-3 text-gray-700">Komisi Generasi</div>
-                <div class="p-3 text-center text-gray-600">2 Level</div>
-                <div class="p-3 text-center font-bold text-gray-900 bg-orange-50">Semua Level</div>
+        </div>
+        <!-- ================= END AGENT CONTENT ================= -->
+
+        <!-- ================= PARTNER CONTENT ================= -->
+        <div id="partnerContent" class="hidden">
+
+            <!-- Membership Card -->
+            <div class="px-5 mt-6">
+                <div class="w-full aspect-[1.8/1] bg-gradient-to-br from-[#211915] to-[#000000] rounded-2xl shadow-xl shadow-orange-200 relative overflow-hidden p-6 flex flex-col justify-between">
+                    <div class="absolute -top-10 -right-10 w-40 h-40 bg-white opacity-10 rounded-full blur-2xl"></div>
+                    <div class="absolute bottom-0 left-0 w-32 h-32 bg-black opacity-5 rounded-full blur-xl"></div>
+
+                    <div class="flex justify-between items-start z-10">
+                        <div>
+                            <p class="text-orange-100 text-xs font-bold tracking-wider uppercase">MAXI</p>
+                            <h2 class="text-white text-2xl font-bold mt-1">Partner Affiliate</h2>
+                        </div>
+                        <img src="https://image2url.com/r2/default/images/1773463898840-db289b3c-1f52-478a-8fa7-00c8cf53a809.png" alt="User" class="mt-[-0.4rem] w-[6.3rem] h-[7.5rem] rounded-full border-[0px] border-white">
+                    </div>
+
+                    <div class="z-10 mt-[-2rem]">
+                        <p class="text-orange-100 text-xs mb-1">Affiliate ID</p>
+                        <p class="text-white font-mono tracking-widest text-lg">MAXI2026</p>
+                    </div>
+                </div>
             </div>
-        <div class="grid grid-cols-3 text-xs divide-x divide-gray-100 border-t border-gray-100">
-                <div class="p-3 text-gray-700">Komisi Refferal</div>
-                <div class="p-3 text-center text-gray-600">1 Level</div>
-                <div class="p-3 text-center font-bold text-gray-900 bg-orange-50">Semua Level</div>
-            </div><div class="grid grid-cols-3 text-xs divide-x divide-gray-100 border-t border-gray-100">
-                <div class="p-3 text-gray-700">Komisi Sultan</div>
-                <div class="p-3 text-center text-gray-600">1 Level</div>
-                <div class="p-3 text-center font-bold text-gray-900 bg-orange-50">Unlimited</div>
-            </div><div class="grid grid-cols-3 text-xs divide-x divide-gray-100 border-t border-gray-100">
-                <div class="p-3 text-gray-700">Checkout Pass</div>
-                <div class="p-3 text-center text-gray-600">3 Slot</div>
-                <div class="p-3 text-center font-bold text-gray-900 bg-orange-50">Unlimited</div>
-            </div><div class="grid grid-cols-3 text-xs divide-x divide-gray-100 border-t border-gray-100">
-                <div class="p-3 text-gray-700">Support</div>
-                <div class="p-3 text-center text-gray-600">Standard</div>
-                <div class="p-3 text-center font-bold text-gray-900 bg-orange-50">24/7 VIP</div>
-            </div></div>
+
+            <!-- Pricing -->
+            <div class="px-5 mt-8 text-center">
+                <p class="text-gray-500 text-sm decoration-red-500">Perkiraan Pendapatan Tahunan</p>
+                <div class="flex items-center justify-center gap-2 mt-1">
+                    <p class="text-gray-500 text-sm decoration-red-500">Rp</p>
+                    <h3 class="text-[2.5rem] font-extrabold text-gray-900">300.000.000</h3>
+                    <svg class="w-[1rem] h-12 text-[#E63946]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                    </svg>
+                </div>
+                <div class="inline-block bg-green-100 text-green-700 text-xs font-bold px-3 py-1 rounded-full mt-3">Estimasi pendapatan berbeda setiap orang</div>
+            </div>
+
+            <!-- Benefits -->
+            <div class="mt-8 bg-white rounded-t-3xl px-6 py-8 shadow-[0_-4px_20px_rgba(0,0,0,0.03)] min-h-[400px]">
+                <h3 class="text-lg font-bold text-gray-900 mb-6">Peluang Besar Untuk Partner</h3>
+
+                <div class="space-y-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center flex-shrink-0 mt-1">
+                            <i class="fa-solid fa-percent text-[#FF5722]"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">Komisi Cashback</h4>
+                            <p class="text-sm text-gray-500 mt-1 leading-relaxed">Dapatkan <span class="text-[#FF5722] font-bold">Penghasilan </span>untuk setiap transaksi ecommerce dari team anda</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center flex-shrink-0 mt-1">
+                            <i class="fa-solid fa-users text-[#FF5722]"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">Referral Bonus</h4>
+                            <p class="text-sm text-gray-500 mt-1 leading-relaxed">Dapatkan komisi refferal dari sponsor langsung anda yang checkout produk di merchant partner</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center flex-shrink-0 mt-1">
+                            <i class="fa-solid fa-graduation-cap text-[#FF5722]"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">Premium Training</h4>
+                            <p class="text-sm text-gray-500 mt-1 leading-relaxed">Akses ke webinar mingguan dan pelatihan khusus partner strategy booster income</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center flex-shrink-0 mt-1">
+                            <i class="fa-solid fa-check-to-slot text-[#FF5722]"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">Checkout Pass</h4>
+                            <p class="text-sm text-gray-500 mt-1 leading-relaxed">Dapatkan Fasilitas Akses untuk masuk kedalam akun secara bersamaan untuk melakukan checkout Misi Reward secara serentak fungsi ini meningkatkan kecepatan checkout agar tidak kehabisan kuota Flash Sale.! </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comparison Table -->
+                <div class="mt-10 border border-gray-100 rounded-xl overflow-hidden">
+                    <div class="bg-gray-50 px-4 py-3 border-b border-gray-100">
+                        <h4 class="text-sm font-bold text-gray-700">Perbandingan Agent vs Partner</h4>
+                    </div>
+                    <div class="grid grid-cols-3 text-xs divide-x divide-gray-100">
+                        <div class="p-3 text-gray-500 font-medium">Feature</div>
+                        <div class="p-3 text-center text-gray-500">Agent</div>
+                        <div class="p-3 text-center font-bold text-[#FF5722] bg-orange-50">Partner</div>
+                    </div>
+                    <div class="grid grid-cols-3 text-xs divide-x divide-gray-100 border-t border-gray-100">
+                        <div class="p-3 text-gray-700">Komisi Cashback</div>
+                        <div class="p-3 text-center text-gray-600">1 Level</div>
+                        <div class="p-3 text-center font-bold text-gray-900 bg-orange-50">Semua Level</div>
+                    </div>
+                    <div class="grid grid-cols-3 text-xs divide-x divide-gray-100 border-t border-gray-100">
+                        <div class="p-3 text-gray-700">Komisi Generasi</div>
+                        <div class="p-3 text-center text-gray-600">2 Level</div>
+                        <div class="p-3 text-center font-bold text-gray-900 bg-orange-50">Semua Level</div>
+                    </div>
+                    <div class="grid grid-cols-3 text-xs divide-x divide-gray-100 border-t border-gray-100">
+                        <div class="p-3 text-gray-700">Komisi Refferal</div>
+                        <div class="p-3 text-center text-gray-600">1 Level</div>
+                        <div class="p-3 text-center font-bold text-gray-900 bg-orange-50">Semua Level</div>
+                    </div>
+                    <div class="grid grid-cols-3 text-xs divide-x divide-gray-100 border-t border-gray-100">
+                        <div class="p-3 text-gray-700">Komisi Sultan</div>
+                        <div class="p-3 text-center text-gray-600">1 Level</div>
+                        <div class="p-3 text-center font-bold text-gray-900 bg-orange-50">Unlimited</div>
+                    </div>
+                    <div class="grid grid-cols-3 text-xs divide-x divide-gray-100 border-t border-gray-100">
+                        <div class="p-3 text-gray-700">Checkout Pass</div>
+                        <div class="p-3 text-center text-gray-600">3 Slot</div>
+                        <div class="p-3 text-center font-bold text-gray-900 bg-orange-50">Unlimited</div>
+                    </div>
+                    <div class="grid grid-cols-3 text-xs divide-x divide-gray-100 border-t border-gray-100">
+                        <div class="p-3 text-gray-700">Support</div>
+                        <div class="p-3 text-center text-gray-600">Standard</div>
+                        <div class="p-3 text-center font-bold text-gray-900 bg-orange-50">24/7 VIP</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ================= END PARTNER CONTENT ================= -->
+
+        <!-- Sticky Footer CTA -->
+        <div class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-100 p-5 shadow-[0_-4px_10px_rgba(0,0,0,0.05)] z-50">
+            <button id="ctaBtn" onClick="openPackageModal()" class="w-full bg-[#00a6a6] hover:bg-[#00a6a6] text-white font-bold text-lg py-3.5 rounded-xl shadow-lg shadow-orange-200 transition active:scale-[0.98] flex items-center justify-center gap-2">
+                Gabung Agent Sekarang
+            </button>
+        </div>
     </div>
 
-    <!-- Sticky Footer CTA -->
-    <div class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-100 p-5 shadow-[0_-4px_10px_rgba(0,0,0,0.05)] z-50">
-        
-        <button class="w-full bg-[#00a6a6] hover:bg-[#00a6a6] text-white font-bold text-lg py-3.5 rounded-xl shadow-lg shadow-orange-200 transition active:scale-[0.98] flex items-center justify-center gap-2">Gabung Agent Sekarang<!-- <i class="fa-solid fa-arrow-right text-sm"></i> -->
-        </button>
+    <!-- ================= MODAL AGENT ================= -->
+    <div id="agentModal" class="hidden fixed inset-0 z-50 flex items-center justify-center px-4 bg-[#0000005c] backdrop-blur-[2.3px]">
+
+        <!-- Confetti Background Layer (Inside Overlay) -->
+
+        <!-- MODAL CARD -->
+        <div class="zoom-in relative w-full max-w-sm bg-[#00000099] rounded-3xl overflow-hidden animate-pop flex flex-col items-center text-center p-[1.3rem] border border-yellow-100">
+
+            <!-- Decorative Background Glow -->
+            <div class="absolute top-0 left-0 w-full h-48 bg-gradient-to-b from-transparant to-transparent -z-10"></div>
+            <div class="absolute -top-10 left-1/2 transform -translate-x-1/2 w-64 h-64 bg-[#00000099] rounded-full blur-3xl -z-10"></div>
+            <!-- Close Button -->
+            <button onClick="closeHelpModal('agentModal')" class="absolute top-4 right-4 text-orange-300 hover:text-gray-600 transition-colors w-8 h-8 flex items-center justify-center rounded-full hover:bg-orange-300">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <!-- Trophy Icon Section -->
+
+            <!-- Text Content -->
+            <h2 class="text-2xl font-extrabold text-gray-100 mb-2">Upgrade Agent</h2>
+            <p class="text-gray-100 text-sm leading-relaxed mb-6 px-[0rem]">Upgrade ke Agent sekarang dan buka peluang mendapatkan komisi tanpa batas serta <span class="font-semibold text-yellow-200">Reward Eksklusif </span>hanya untuk member yang siap naik level!</p>
+            <!-- Reward Box -->
+
+            <button onClick="closeHelpModal('agentModal')" class="w-full bg-[#b7993e] hover:bg-[#b7993e] text-white font-bold py-4 rounded-xl shadow-lg shadow-blue-600/20 transition-all transform active:scale-[0.98] mt-[-0.6rem] flex items-center justify-center gap-2">
+                <span>OK</span>
+
+            </button>
+
+            <!-- Actions -->
+        </div>
     </div>
-</div>
-        
-      
-    
+
+    <!-- ================= MODAL PARTNER ================= -->
+    <div id="partnerModal" class="hidden fixed inset-0 z-50 flex items-center justify-center px-4 bg-[#0000005c] backdrop-blur-[2.3px]">
+
+        <!-- Confetti Background Layer (Inside Overlay) -->
+
+        <!-- MODAL CARD -->
+        <div class="zoom-in relative w-full max-w-sm bg-[#00000099] rounded-3xl overflow-hidden animate-pop flex flex-col items-center text-center p-[1.3rem] border border-yellow-100">
+
+            <!-- Decorative Background Glow -->
+            <div class="absolute top-0 left-0 w-full h-48 bg-gradient-to-b from-transparant to-transparent -z-10"></div>
+            <div class="absolute -top-10 left-1/2 transform -translate-x-1/2 w-64 h-64 bg-[#00000099] rounded-full blur-3xl -z-10"></div>
+            <!-- Close Button -->
+            <button onClick="closeHelpModal('partnerModal')" class="absolute top-4 right-4 text-orange-300 hover:text-gray-600 transition-colors w-8 h-8 flex items-center justify-center rounded-full hover:bg-orange-300">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <!-- Trophy Icon Section -->
+
+            <!-- Text Content -->
+            <h2 class="text-2xl font-extrabold text-gray-100 mb-2">Upgrade Partner</h2>
+            <p class="text-gray-100 text-sm leading-relaxed mb-6 px-[0rem]">Upgrade ke Partner sekarang dan nikmati peluang keuntungan yang jauh lebih besar dari agent biasa serta , <span class="font-semibold text-yellow-200">Benefit Eksklusif </span>dan potensi penghasilan tanpa batas!</p>
+            <!-- Reward Box -->
+
+            <button onClick="closeHelpModal('partnerModal')" class="w-full bg-[#b7993e] hover:bg-[#b7993e] text-white font-bold py-4 rounded-xl shadow-lg shadow-blue-600/20 transition-all transform active:scale-[0.98] mt-[-0.6rem] flex items-center justify-center gap-2">
+                <span>OK</span>
+
+            </button>
+
+            <!-- Actions -->
+        </div>
+    </div>
+
+    <!-- ================= PACKAGE MODAL AGENT ================= -->
+    <div id="agentPackageModal" class="hidden fixed inset-0 z-50">
+        <div class="absolute inset-0 bg-black/40" onClick="closePackageModal('agentPackageModal')"></div>
+
+        <div class="fixed bottom-0 left-0 right-0 bg-white rounded-t-[0.5rem] z-50 h-[39%] flex flex-col shadow-[0_-10px_60px_-15px_rgba(0,0,0,0.3)] animate-slide-up">
+
+            <!-- Drag Handle -->
+            <div class="w-full flex justify-center pt-[0.5rem] pb-2 flex-shrink-0">
+                <div class="w-12 h-1.5 bg-gray-200 rounded-full"></div>
+            </div>
+            <!-- Header -->
+            <div class="px-[3.3rem] justify-center pb-4 flex justify-between items-center flex-shrink-0">
+                <h2 class="text-2xl font-bold text-gray-900 tracking-tight">Paket Upgrade Agent</h2>
+
+            </div>
+            <!-- Scrollable Form Content -->
+            <div class="flex-1 overflow-y-auto px-6 pb-24 space-y-8 custom-scrollbar">
+
+                <!-- Task Name Input -->
+
+                <!-- Description Input -->
+
+                <div class="flex gap-3 p-[0rem]">
+                    <div class="flex items-center">
+
+                    </div>
+                    <div class="w-[6rem] h-[6rem] flex-shrink-0 bg-gray-100 rounded-lg overflow-hidden border border-gray-200">
+                        <img src="images/produk-02.png" alt="Batik Shirt" class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-[0.9rem] font-medium text-gray-900">1 Pcs Produk - Bio Ocean Salt</h3>
+                            <p class="text-[0.7rem] text-gray-500 mt-1 bg-gray-100 inline-block px-1.5 py-0.5 rounded">Qyt : 1</p>
+                        </div>
+                        <div class="flex items-end justify-between mt-2">
+                            <span class="text-[#FF5722] font-bold text-[1rem]">Rp 99.000</span>
+
+                            <!-- Stepper -->
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Horizontal Date Picker -->
+
+                <!-- Team Assignee Scroll -->
 
 
-          
-        
-      
-    </body></html>
+                <!-- Category/Tags (Bonus for completeness) -->
+
+            </div>
+            <!-- Footer Action -->
+            <div class="absolute bottom-0 left-0 right-0 p-[1rem] bg-white border-t border-gray-100">
+                <a href="upgrade-checkout-agent.html" class="w-full bg-cyan-600 text-white font-semibold text-lg py-[0.7rem] rounded-[2rem] shadow-lg shadow-indigo-200 active:scale-[0.98] transition-transform flex items-center justify-center space-x-2">
+                    <span>Selanjutnya</span>
+
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= PACKAGE MODAL PARTNER ================= -->
+    <div id="partnerPackageModal" class="hidden fixed inset-0 z-50">
+        <div class="absolute inset-0 bg-black/40" onClick="closePackageModal('partnerPackageModal')"></div>
+
+        <div class="fixed bottom-0 left-0 right-0 bg-white rounded-t-[0.5rem] z-50 h-[39%] flex flex-col shadow-[0_-10px_60px_-15px_rgba(0,0,0,0.3)] animate-slide-up">
+
+            <!-- Drag Handle -->
+            <div class="w-full flex justify-center pt-[0.5rem] pb-2 flex-shrink-0">
+                <div class="w-12 h-1.5 bg-gray-200 rounded-full"></div>
+            </div>
+            <!-- Header -->
+            <div class="px-[3.3rem] justify-center pb-4 flex justify-between items-center flex-shrink-0">
+                <h2 class="text-2xl font-bold text-gray-900 tracking-tight">Paket Upgrade Partner</h2>
+
+            </div>
+            <!-- Scrollable Form Content -->
+            <div class="flex-1 overflow-y-auto px-6 pb-24 space-y-8 custom-scrollbar">
+
+                <!-- Task Name Input -->
+
+                <!-- Description Input -->
+
+                <div class="flex gap-3 p-[0rem]">
+                    <div class="flex items-center">
+
+                    </div>
+                    <div class="w-[6rem] h-[6rem] flex-shrink-0 bg-gray-100 rounded-lg overflow-hidden border border-gray-200">
+                        <img src="images/produk-02.png" alt="Batik Shirt" class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-[0.9rem] font-medium text-gray-900">1 Pcs Produk - Bio Ocean Salt</h3>
+                            <p class="text-[0.7rem] text-gray-500 mt-1 bg-gray-100 inline-block px-1.5 py-0.5 rounded">Qyt : 1</p>
+                        </div>
+                        <div class="flex items-end justify-between mt-2">
+                            <span class="text-[#FF5722] font-bold text-[1rem]">Rp 99.000</span>
+
+                            <!-- Stepper -->
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Horizontal Date Picker -->
+
+                <!-- Team Assignee Scroll -->
+
+
+                <!-- Category/Tags (Bonus for completeness) -->
+
+            </div>
+            <!-- Footer Action -->
+            <div class="absolute bottom-0 left-0 right-0 p-[1rem] bg-white border-t border-gray-100">
+                <a href="upgrade-checkout-partner.html" class="w-full bg-cyan-600 text-white font-semibold text-lg py-[0.7rem] rounded-[2rem] shadow-lg shadow-indigo-200 active:scale-[0.98] transition-transform flex items-center justify-center space-x-2">
+                    <span>Selanjutnya</span>
+
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const tabAgentBtn = document.getElementById('tabAgentBtn');
+        const tabPartnerBtn = document.getElementById('tabPartnerBtn');
+        const agentContent = document.getElementById('agentContent');
+        const partnerContent = document.getElementById('partnerContent');
+        const ctaBtn = document.getElementById('ctaBtn');
+
+        function switchTab(tab) {
+            const isAgent = tab === 'agent';
+
+            // Toggle konten
+            agentContent.classList.toggle('hidden', !isAgent);
+            partnerContent.classList.toggle('hidden', isAgent);
+
+            // Toggle style tombol tab
+            [tabAgentBtn, tabPartnerBtn].forEach(btn => {
+                const active = btn === (isAgent ? tabAgentBtn : tabPartnerBtn);
+                const badge = btn.querySelector('.tab-badge');
+
+                if (active) {
+                    btn.classList.add('font-bold', 'text-[#FF5722]', 'bg-white', 'shadow-sm');
+                    btn.classList.remove('font-semibold', 'text-gray-500');
+                    badge.classList.remove('hidden');
+                } else {
+                    btn.classList.remove('font-bold', 'text-[#FF5722]', 'bg-white', 'shadow-sm');
+                    btn.classList.add('font-semibold', 'text-gray-500');
+                    badge.classList.add('hidden');
+                }
+            });
+
+            // Update teks tombol CTA
+            ctaBtn.textContent = isAgent ? 'Gabung Agent Sekarang' : 'Gabung Partner Sekarang';
+        }
+
+        // Set state awal: Agent aktif
+        switchTab('agent');
+
+        // ================= MODAL HELP (fa-circle-question) =================
+        const agentModal = document.getElementById('agentModal');
+        const partnerModal = document.getElementById('partnerModal');
+
+        function openHelpModal() {
+            // Cek konten mana yang sedang aktif (tidak hidden)
+            const isAgentActive = !agentContent.classList.contains('hidden');
+
+            if (isAgentActive) {
+                agentModal.classList.remove('hidden');
+            } else {
+                partnerModal.classList.remove('hidden');
+            }
+        }
+
+        function closeHelpModal(modalId) {
+            document.getElementById(modalId).classList.add('hidden');
+        }
+
+        // Tutup modal jika klik di area overlay (luar kartu modal)
+        [agentModal, partnerModal].forEach((modal) => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.add('hidden');
+                }
+            });
+        });
+
+        // ================= PACKAGE MODAL (klik tombol CTA) =================
+        const agentPackageModal = document.getElementById('agentPackageModal');
+        const partnerPackageModal = document.getElementById('partnerPackageModal');
+
+        function openPackageModal() {
+            const isAgentActive = !agentContent.classList.contains('hidden');
+
+            if (isAgentActive) {
+                agentPackageModal.classList.remove('hidden');
+            } else {
+                partnerPackageModal.classList.remove('hidden');
+            }
+        }
+
+        function closePackageModal(modalId) {
+            document.getElementById(modalId).classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
