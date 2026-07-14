@@ -74,7 +74,7 @@
     </div>
 	
 	
-		<!-- EKSPEDISI -->
+	<!-- EKSPEDISI -->
 	
 	<div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
             <h2 class="text-base font-bold text-gray-900 mb-4">Pilih Ekspedisi</h2>
@@ -228,14 +228,12 @@
         // Fungsi untuk mengubah tampilan opsi ekspedisi saat dipilih
         function updateShippingSelection() {
             const options = document.querySelectorAll('.shipping-option');
-				 
-				  options.forEach(option => {
+
+            options.forEach(option => {
                 const input = option.querySelector('input[type="radio"]');
                 const icon  = option.querySelector('.shipping-icon');
                 const price = option.querySelector('.shipping-price');
                 const kg    = option.querySelector('.shipping-kg');
-				
-				
 
                 if (input.checked) {
                     // Style aktif (terpilih)
@@ -247,6 +245,9 @@
 
                     price.classList.remove('text-gray-900');
                     price.classList.add('text-[#00a6a6]');
+
+                    kg.classList.remove('text-gray-900');
+                    kg.classList.add('text-[#00a6a6]');
                 } else {
                     // Style tidak aktif (default)
                     option.classList.remove('border-2', 'border-[#00a6a6]', 'bg-blue-50');
@@ -257,6 +258,9 @@
 
                     price.classList.remove('text-[#00a6a6]');
                     price.classList.add('text-gray-900');
+
+                    kg.classList.remove('text-[#00a6a6]');
+                    kg.classList.add('text-gray-900');
                 }
             });
         }
