@@ -175,7 +175,7 @@
         </div>
 
     <div class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-100 p-4 z-40">
-        <button class="w-full bg-[#ff3e1b] text-white font-bold py-4 rounded-xl shadow-lg active:scale-95 transition-transform">
+        <button id="lanjutInvoiceBtn" onclick="goToInvoice()" class="w-full bg-[#ff3e1b] text-white font-bold py-4 rounded-xl shadow-lg active:scale-95 transition-transform">
             Selanjutnya
         </button>
     </div>
@@ -337,6 +337,47 @@
         document.querySelectorAll('input[name="shipping"]').forEach(input => {
             input.addEventListener('change', updateShippingSelection);
         });
+    </script>
+
+    <script>
+        // ===== Fungsi: Kirim data produk (dari ro-pribadi.html) + ekspedisi terpilih ke ro-invoice.html =====
+        function goToInvoice() {
+            // Ambil data keranjang yang sudah tersimpan sebelumnya (dari ro-pribadi.html)
+            var raw = localStorage.getItem('roCartData');
+            var cartData;
+            try {
+                cartData = raw ? JSON.parse(raw) : { paketName: 'Paket RO Pribadi', items: [], total: 0 };
+            } catch (e) {
+                cartData = { paketName: 'Paket RO Pribadi', items: [], total: 0 };
+            }
+
+            // Ambil ekspedisi yang sedang dipilih
+            var selected = document.querySelector('input[name="shipping"]:checked');
+            if (selected) {
+                var label = selected.closest('.shipping-option');
+                var nameEl = label.querySelector('.flex-1 > div:nth-child(1) > span:first-child');
+                var priceEl = label.querySelector('.shipping-price');
+                var serviceEl = label.querySelector('.flex-1 > div:nth-child(2) > span:first-child');
+
+                var shippingName = nameEl ? nameEl.textContent.trim() : '';
+                var shippingService = serviceEl ? serviceEl.textContent.trim() : '';
+                var shippingPrice = priceEl ? parseInt(priceEl.textContent.replace(/[^0-9]/g, ''), 10) : 0;
+
+                cartData.shipping = {
+                    name: shippingName,
+                    service: shippingService,
+                    price: shippingPrice
+                };
+            }
+
+            try {
+                localStorage.setItem('roCartData', JSON.stringify(cartData));
+            } catch (e) {
+                console.error('Gagal menyimpan data ke localStorage:', e);
+            }
+
+            window.location.href = 'ro-invoice.html';
+        }
     </script>
 
 
