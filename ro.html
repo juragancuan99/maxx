@@ -1,7 +1,7 @@
 <html><head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
-<title>Pendapatan - Maxi Affiliate</title>
+<title>Repeat Order - Maxi Affiliate</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
@@ -51,10 +51,42 @@
             </div>
            
 <div class="relative">
-                <div class="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center active:scale-95 transition-transform">
+                <button id="bellBtn" onClick="toggleNotif(event)" class="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center active:scale-95 transition-transform">
                     <i class="fa-solid fa-bell text-white"></i>
+                </button>
+                <div id="bellDot" class="absolute top-0 right-0 w-3 h-3 bg-red-500 border-2 border-[#FF5722] rounded-full"></div>
+
+                <!-- Dropdown Notifikasi -->
+                <div id="notifPanel" class="hidden zoom-in absolute right-0 top-12 w-72 bg-white rounded-xl shadow-2xl border border-gray-100 text-gray-800 z-50 overflow-hidden">
+                    <div class="px-4 py-3 border-b border-gray-100 flex items-center justify-between">
+                        <span class="font-semibold text-sm">Notifikasi</span>
+                        <button onClick="toggleNotif(event)" class="text-gray-400 hover:text-gray-600 text-xs">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+                    <div class="max-h-72 overflow-y-auto hide-scrollbar">
+                        <div class="px-4 py-3 flex items-start gap-3 border-b border-gray-50 bg-red-50/40">
+                            <div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-triangle-exclamation text-red-500 text-xs"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-semibold text-gray-800">Anda belum melakukan R.O pribadi</p>
+                                <p class="text-[11px] text-gray-500 mt-0.5">Segera lakukan Repeat Order agar poin dan presentase R.O team anda tetap maksimal.</p>
+                                <p class="text-[10px] text-gray-400 mt-1">Baru saja</p>
+                            </div>
+                        </div>
+                        <div class="px-4 py-3 flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-users text-[#2962FF] text-xs"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-semibold text-gray-800">Team update</p>
+                                <p class="text-[11px] text-gray-500 mt-0.5">Beberapa member di team anda sudah melakukan R.O hari ini.</p>
+                                <p class="text-[10px] text-gray-400 mt-1">2 jam lalu</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="absolute top-0 right-0 w-3 h-3 bg-red-500 border-2 border-[#FF5722] rounded-full"></div>
             </div>
         </div>
     </div>
@@ -87,17 +119,17 @@
 
 <div class="sticky top-0 bg-gray-50 z-20 pt-6 pb-2 px-4">
         <div class="flex bg-white p-1 rounded-xl shadow-sm border border-gray-200">
-            <button class="flex-1 py-2 text-sm font-semibold rounded-lg bg-[#00a6a6] text-white shadow-md active:scale-95 transition-transform">Generasi 1</button>
-            <button class="flex-1 py-2 text-sm font-medium rounded-lg text-gray-500 hover:bg-gray-50 transition-all">Generasi 2</button>
-            <button class="flex-1 py-2 text-sm font-medium rounded-lg text-gray-500 hover:bg-gray-50 transition-all">Generasi 3</button>
+            <button id="tabGen1" onClick="switchGen(1)" class="gen-tab flex-1 py-2 text-sm font-semibold rounded-lg bg-[#00a6a6] text-white shadow-md active:scale-95 transition-transform">Generasi 1</button>
+            <button id="tabGen2" onClick="switchGen(2)" class="gen-tab flex-1 py-2 text-sm font-medium rounded-lg text-gray-500 hover:bg-gray-50 transition-all">Generasi 2</button>
+            <button id="tabGen3" onClick="switchGen(3)" class="gen-tab flex-1 py-2 text-sm font-medium rounded-lg text-gray-500 hover:bg-gray-50 transition-all">Generasi 3</button>
         </div>
         <div class="flex justify-between items-center mt-4 px-1">
-            <span class="text-xs font-semibold text-gray-500">Showing 10 Team</span>
+            <span id="genLabel" class="text-xs font-semibold text-gray-500">Showing 10 Team</span>
             <button class="text-[#2962FF] text-xs font-semibold flex items-center">
                 Filter <i class="fas fa-filter ml-1"></i>
             </button>
         </div>
-    </div><!-- Action Button --><div class="px-4 pb-24 space-y-3 mt-2">
+    </div><!-- Action Button --><div id="memberList" class="px-4 pb-24 space-y-3 mt-2">
         
         <!-- Member Card 1 (Top Performer) -->
         <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between relative overflow-hidden">
@@ -170,6 +202,113 @@
     </div>
      
 </div>
-        
+
+    <script>
+        // Data contoh tiap generasi (silakan ganti dengan data asli/dari API)
+        const genData = {
+            1: {
+                label: "Showing 10 Team",
+                members: [
+                    { name: "Budi Santoso", ro: true,  count: "10x" },
+                    { name: "Budi Santoso", ro: true,  count: "1X" },
+                    { name: "Budi Santoso", ro: false, count: "0X" },
+                ]
+            },
+            2: {
+                label: "Showing 6 Team",
+                members: [
+                    { name: "Siti Aminah", ro: true,  count: "4x" },
+                    { name: "Andi Wijaya", ro: false, count: "0X" },
+                    { name: "Rina Kartika", ro: true,  count: "2x" },
+                ]
+            },
+            3: {
+                label: "Showing 3 Team",
+                members: [
+                    { name: "Dedi Kurniawan", ro: false, count: "0X" },
+                    { name: "Maya Puspita", ro: false, count: "0X" },
+                ]
+            }
+        };
+
+        function renderMember(m) {
+            const statusBadge = m.ro
+                ? `<span class="bg-blue-50 text-[#2962FF] text-[10px] px-2 py-0.5 rounded-md font-medium">Sudah R.O</span>`
+                : `<span class="bg-blue-50 text-gray-500 text-[10px] px-2 py-0.5 rounded-md font-medium">Belum R.O</span>
+                   <button onclick="ingatkan('${m.name}')" class="bg-[#FF0000] hover:bg-red-600 active:scale-55 transition-all text-white px-1 py-1 rounded-lg text-[0.7rem] font-semibold shadow-md shadow-blue-200">Ingatkan</button>`;
+
+            const trendIcon = m.ro
+                ? `<p class="text-[10px] text-green-500 font-medium"><i class="fas fa-arrow-up"></i>R.O</p>`
+                : `<p class="text-[10px] text-gray-500 font-medium"><i class="fas fa-arrow-down"></i>R.O</p>`;
+
+            return `
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between relative overflow-hidden gen-card">
+                <div class="absolute top-0 right-0 bg-yellow-400 w-16 h-16 transform translate-x-8 -translate-y-8 rotate-45 opacity-20"></div>
+                <div class="flex items-center gap-4 z-10">
+                    <div>
+                        <h3 class="font-bold text-gray-800 text-sm">${m.name}</h3>
+                        <div class="flex items-center mt-1 gap-2">
+                            ${statusBadge}
+                        </div>
+                    </div>
+                </div>
+                <div class="text-right z-10">
+                    <p class="text-[10px] text-blue-600 uppercase">Omset R.O</p>
+                    <p class="font-bold text-[#000000] text-sm">${m.count}</p>
+                    ${trendIcon}
+                </div>
+            </div>`;
+        }
+
+        function switchGen(genNumber) {
+            // Update tampilan tombol aktif
+            document.querySelectorAll('.gen-tab').forEach((btn) => {
+                btn.classList.remove('bg-[#00a6a6]', 'text-white', 'shadow-md', 'font-semibold');
+                btn.classList.add('text-gray-500', 'font-medium');
+            });
+            const activeBtn = document.getElementById('tabGen' + genNumber);
+            activeBtn.classList.add('bg-[#00a6a6]', 'text-white', 'shadow-md', 'font-semibold');
+            activeBtn.classList.remove('text-gray-500', 'font-medium');
+
+            // Efek klik
+            activeBtn.classList.add('scale-95');
+            setTimeout(() => activeBtn.classList.remove('scale-95'), 150);
+
+            // Update label jumlah team
+            document.getElementById('genLabel').textContent = genData[genNumber].label;
+
+            // Render ulang list member dengan efek fade
+            const list = document.getElementById('memberList');
+            list.style.opacity = 0;
+            setTimeout(() => {
+                list.innerHTML = genData[genNumber].members.map(renderMember).join('');
+                list.style.transition = 'opacity 0.25s ease';
+                list.style.opacity = 1;
+            }, 150);
+        }
+
+        function ingatkan(name) {
+            alert('Pengingat R.O telah dikirim ke ' + name + '.');
+        }
+
+        function toggleNotif(e) {
+            e.stopPropagation();
+            const panel = document.getElementById('notifPanel');
+            panel.classList.toggle('hidden');
+            // Hilangkan titik merah begitu notifikasi dibuka
+            if (!panel.classList.contains('hidden')) {
+                document.getElementById('bellDot').classList.add('hidden');
+            }
+        }
+
+        // Tutup panel notifikasi jika klik di luar area
+        document.addEventListener('click', function (e) {
+            const panel = document.getElementById('notifPanel');
+            const bell = document.getElementById('bellBtn');
+            if (!panel.classList.contains('hidden') && !panel.contains(e.target) && e.target !== bell) {
+                panel.classList.add('hidden');
+            }
+        });
+    </script>
       
     </body></html>
