@@ -18,6 +18,23 @@
             to { opacity: 1; transform: scale(1); }
         }
         .zoom-in { animation: zoomIn 0.2s ease-out forwards; }
+
+        /* State tab Generasi - pakai CSS statis, bukan class Tailwind arbitrary
+           yang di-inject lewat JS, supaya warna langsung berubah tanpa delay */
+        .gen-tab {
+            background-color: transparent;
+            color: #6b7280; /* text-gray-500 */
+            font-weight: 500;
+        }
+        .gen-tab:hover {
+            background-color: #f9fafb; /* hover:bg-gray-50 */
+        }
+        .gen-tab.gen-tab-active {
+            background-color: #00a6a6;
+            color: #ffffff;
+            font-weight: 600;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+        }
     </style>
 	
 	  <style>
@@ -119,9 +136,9 @@
 
 <div class="sticky top-0 bg-gray-50 z-20 pt-6 pb-2 px-4">
         <div class="flex bg-white p-1 rounded-xl shadow-sm border border-gray-200">
-            <button id="tabGen1" onClick="switchGen(1)" class="gen-tab flex-1 py-2 text-sm font-semibold rounded-lg bg-[#00a6a6] text-white shadow-md active:scale-95 transition-transform">Generasi 1</button>
-            <button id="tabGen2" onClick="switchGen(2)" class="gen-tab flex-1 py-2 text-sm font-medium rounded-lg text-gray-500 hover:bg-gray-50 transition-all">Generasi 2</button>
-            <button id="tabGen3" onClick="switchGen(3)" class="gen-tab flex-1 py-2 text-sm font-medium rounded-lg text-gray-500 hover:bg-gray-50 transition-all">Generasi 3</button>
+            <button id="tabGen1" onClick="switchGen(1)" class="gen-tab gen-tab-active flex-1 py-2 text-sm rounded-lg active:scale-95 transition-all">Generasi 1</button>
+            <button id="tabGen2" onClick="switchGen(2)" class="gen-tab flex-1 py-2 text-sm rounded-lg active:scale-95 transition-all">Generasi 2</button>
+            <button id="tabGen3" onClick="switchGen(3)" class="gen-tab flex-1 py-2 text-sm rounded-lg active:scale-95 transition-all">Generasi 3</button>
         </div>
         <div class="flex justify-between items-center mt-4 px-1">
             <span id="genLabel" class="text-xs font-semibold text-gray-500">Showing 10 Team</span>
@@ -261,18 +278,12 @@
         }
 
         function switchGen(genNumber) {
-            // Update tampilan tombol aktif
+            // Update tampilan tombol aktif (cukup toggle 1 class, warnanya diatur CSS statis)
             document.querySelectorAll('.gen-tab').forEach((btn) => {
-                btn.classList.remove('bg-[#00a6a6]', 'text-white', 'shadow-md', 'font-semibold');
-                btn.classList.add('text-gray-500', 'font-medium');
+                btn.classList.remove('gen-tab-active');
             });
             const activeBtn = document.getElementById('tabGen' + genNumber);
-            activeBtn.classList.add('bg-[#00a6a6]', 'text-white', 'shadow-md', 'font-semibold');
-            activeBtn.classList.remove('text-gray-500', 'font-medium');
-
-            // Efek klik
-            activeBtn.classList.add('scale-95');
-            setTimeout(() => activeBtn.classList.remove('scale-95'), 150);
+            activeBtn.classList.add('gen-tab-active');
 
             // Update label jumlah team
             document.getElementById('genLabel').textContent = genData[genNumber].label;
