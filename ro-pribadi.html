@@ -1,0 +1,492 @@
+<html><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<title>Pendapatan - Maxi Affiliate</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  
+  
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; margin: 0; padding: 0; }
+        ::-webkit-scrollbar { display: none; } 
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Animasi Zoom In untuk Pop-Up Modal Info */
+        @keyframes zoomIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .zoom-in { animation: zoomIn 0.2s ease-out forwards; }
+
+        /* Animasi Slide Up untuk Modal Paket */
+        @keyframes slideUp {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+        .animate-slide-up { animation: slideUp 0.25s ease-out forwards; }
+    </style>
+	
+	  <style>
+    .hide-scrollbar::-webkit-scrollbar { display: none; }
+    .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+  
+  
+<script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#D4FF00',
+                    }
+                }
+            }
+        }
+    </script>
+
+</head>
+<body class="h-screen w-screen overflow-hidden bg-white" style="">
+          <div class="w-full h-full bg-gray-50 overflow-y-auto relative font-sans text-gray-800">
+  
+  <!-- Header -->
+  <div class="sticky top-[9px] z-30 bg-white shadow-sm">
+    <div class="flex items-center justify-between px-4 py-4">
+      <div class="flex items-center gap-3">
+        <button class="text-gray-600 hover:text-[#FF5722] transition-colors">
+          <i class="fa-solid fa-arrow-left text-xl"></i>
+        </button>
+        <h1 class="text-lg font-bold text-gray-900">Belanja R.O</h1>
+      </div>
+      
+    </div>
+    
+    <!-- Location Bar -->
+    <div class="bg-[#FF5722]/10 px-4 py-2 flex items-center gap-2 text-xs text-gray-700">
+      <i class="fa-solid fa-cart-shopping text-[#FF5722]"></i>
+      <span class="truncate">Paket Belanja<span class="font-semibold"> RO </span>Pribadi</span>
+      
+    </div>
+  </div>
+
+  <!-- Cart Content -->
+  <div class="pb-32 pt-2">
+    
+    <!-- Merchant Group 1 -->
+    <div class="bg-white mb-3 shadow-sm">
+      <!-- Merchant Header -->
+      <div class="flex items-center gap-3 p-4 border-b border-gray-100">
+        <input type="checkbox" checked="" id="merchant-1-checkbox" class="merchant-checkbox w-5 h-5 rounded border-gray-300 text-[#FF5722] focus:ring-[#FF5722] accent-[#FF5722]" data-merchant="1">
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-store text-gray-400 text-sm"></i>
+          <span class="font-bold text-sm text-gray-900">Merchant Partner By : Glow Indonesia Sejahtera</span>
+          <!-- <i class="fa-solid fa-chevron-right text-gray-400 text-xs"></i> ->-->
+        </div>
+      </div>
+
+      <!-- Item 1 -->
+      <div class="flex gap-3 p-4 cart-item" data-item="1" data-merchant="1" data-price="200000">
+        <div class="flex items-center">
+          <input type="checkbox" checked="" id="item-1-checkbox" class="item-checkbox w-5 h-5 rounded border-gray-300 text-[#FF5722] focus:ring-[#FF5722] accent-[#FF5722]" data-item="1">
+        </div>
+        <div class="w-20 h-20 flex-shrink-0 bg-gray-100 rounded-lg overflow-hidden border border-gray-200">
+          <img src="images/produk-01-B.png" alt="Batik Shirt" class="w-full h-full object-cover">
+        </div>
+        <div class="flex-1 flex flex-col justify-between">
+          <div>
+            <h3 class="text-sm font-medium text-gray-900 line-clamp-2">Limugreen healthy Drink</h3>
+            <p class="text-xs text-gray-500 mt-1 bg-gray-100 inline-block px-1.5 py-0.5 rounded">Qyt: <span id="item-1-qty-label">1</span></p>
+          </div>
+          <div class="flex items-end justify-between mt-2">
+            <span class="text-[#FF5722] font-bold text-sm" id="item-1-price">Rp 200.000</span>
+            
+            <!-- Stepper -->
+            <div class="flex items-center border border-gray-300 rounded-md h-7">
+              <button type="button" class="qty-minus w-7 h-full flex items-center justify-center text-gray-500 hover:bg-gray-50 rounded-l-md" data-item="1">
+                <i class="fa-solid fa-minus text-[10px]"></i>
+              </button>
+              <input type="text" value="1" id="item-1-qty-input" class="w-8 h-full text-center text-xs font-medium border-x border-gray-300 focus:outline-none text-gray-900" readonly="">
+              <button type="button" class="qty-plus w-7 h-full flex items-center justify-center text-[#FF5722] hover:bg-gray-50 rounded-r-md" data-item="1">
+                <i class="fa-solid fa-plus text-[10px]"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="flex gap-3 p-4 border-t border-gray-50 cart-item" data-item="2" data-merchant="1" data-price="100000">
+        <div class="flex items-center">
+          <input type="checkbox" checked="" id="item-2-checkbox" class="item-checkbox w-5 h-5 rounded border-gray-300 text-[#FF5722] focus:ring-[#FF5722] accent-[#FF5722]" data-item="2">
+        </div>
+        <div class="w-20 h-20 flex-shrink-0 bg-gray-100 rounded-lg overflow-hidden border border-gray-200">
+          <img class="w-full h-full object-cover" alt="Batik Shirt" src="images/produk-02.png">
+        </div>
+        <div class="flex-1 flex flex-col justify-between">
+          <div>
+            <h3 class="text-sm font-medium text-gray-900 line-clamp-2">Bio Ocean Salt</h3>
+            <p class="text-xs text-gray-500 mt-1 bg-gray-100 inline-block px-1.5 py-0.5 rounded">Qyt: <span id="item-2-qty-label">2</span></p>
+          </div>
+          <div class="flex items-end justify-between mt-2">
+            <span class="text-[#FF5722] font-bold text-sm" id="item-2-price">Rp 200.000</span>
+            
+            <!-- Stepper -->
+            <div class="flex items-center border border-gray-300 rounded-md h-7">
+              <button type="button" class="qty-minus w-7 h-full flex items-center justify-center text-gray-500 hover:bg-gray-50 rounded-l-md" data-item="2">
+                <i class="fa-solid fa-minus text-[10px]"></i>
+              </button>
+              <input type="text" value="2" id="item-2-qty-input" class="w-8 h-full text-center text-xs font-medium border-x border-gray-300 focus:outline-none text-gray-900" readonly="">
+              <button type="button" class="qty-plus w-7 h-full flex items-center justify-center text-[#FF5722] hover:bg-gray-50 rounded-r-md" data-item="2">
+                <i class="fa-solid fa-plus text-[10px]"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Merchant Group 2 -->
+    <!-- <div class="bg-white mb-3 shadow-sm">
+      <!-- Merchant Header -->
+      <!-- <div class="flex items-center gap-3 p-4 border-b border-gray-100">
+        <input type="checkbox" class="w-5 h-5 rounded border-gray-300 text-[#FF5722] focus:ring-[#FF5722] accent-[#FF5722]">
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-store text-gray-400 text-sm"></i>
+          <span class="font-bold text-sm text-gray-900">Nusantara Spices &amp; Co.</span>
+          <i class="fa-solid fa-chevron-right text-gray-400 text-xs"></i>
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+     <!--  <div class="flex gap-3 p-4">
+        <div class="flex items-center">
+          <input type="checkbox" class="w-5 h-5 rounded border-gray-300 text-[#FF5722] focus:ring-[#FF5722] accent-[#FF5722]">
+        </div>
+        <div class="w-20 h-20 flex-shrink-0 bg-gray-100 rounded-lg overflow-hidden border border-gray-200 relative">
+           <!-- Out of stock overlay example -->
+         <!--   <div class="absolute inset-0 bg-white/60 flex items-center justify-center">
+             <span class="text-[10px] font-bold bg-gray-800 text-white px-2 py-1 rounded-full">Low Stock</span>
+           </div>
+          <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=300&amp;q=80" alt="Spices" class="w-full h-full object-cover">
+        </div>
+        <div class="flex-1 flex flex-col justify-between">
+          <div>
+            <h3 class="text-sm font-medium text-gray-900 line-clamp-2">Premium Balinese Sea Salt - Organic 250g</h3>
+            <p class="text-xs text-gray-500 mt-1 bg-gray-100 inline-block px-1.5 py-0.5 rounded">Pack: Jar</p>
+          </div>
+          <div class="flex items-end justify-between mt-2">
+            <span class="text-[#FF5722] font-bold text-sm">Rp 35.000</span>
+            
+            <div class="flex gap-3">
+                <button class="text-gray-400 hover:text-red-500">
+                    <i class="fa-regular fa-trash-can"></i>
+                </button>
+                <!-- Stepper -->
+               <!--  <div class="flex items-center border border-gray-300 rounded-md h-7">
+                  <button class="w-7 h-full flex items-center justify-center text-gray-500 hover:bg-gray-50 rounded-l-md">
+                    <i class="fa-solid fa-minus text-[10px]"></i>
+                  </button>
+                  <input type="text" value="1" class="w-8 h-full text-center text-xs font-medium border-x border-gray-300 focus:outline-none text-gray-900" readonly="">
+                  <button class="w-7 h-full flex items-center justify-center text-[#FF5722] hover:bg-gray-50 rounded-r-md">
+                    <i class="fa-solid fa-plus text-[10px]"></i>
+                  </button>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+    
+    <!-- Voucher Section -->
+    <!-- <div class="bg-white p-4 mb-3 shadow-sm flex items-center justify-between">
+        <div class="flex items-center gap-2 text-sm font-medium text-gray-700">
+            <i class="fa-solid fa-ticket text-[#FF5722]"></i>
+            <span>Platform Vouchers</span>
+        </div>
+        <div class="flex items-center gap-2 text-gray-400 text-xs">
+            <span>Select Voucher</span>
+            <i class="fa-solid fa-chevron-right"></i>
+        </div>
+    </div> -->
+
+  </div>
+
+  <!-- Bottom Summary Bar -->
+  <div class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] z-40">
+    <div class="flex flex-col">
+        <!-- Savings Banner (Optional) -->
+        <!-- <div class="bg-[#FF5722]/10 px-4 py-1.5 text-center">
+            <p class="text-[10px] text-[#FF5722] font-medium">You saved <span class="font-bold">Rp 15.000</span> on this order!</p>
+        </div> -->
+        
+        <div class="flex items-center justify-between p-4">
+            <div class="flex items-center gap-2">
+                <input type="checkbox" id="selectAll" class="w-5 h-5 rounded border-gray-300 text-[#FF5722] focus:ring-[#FF5722] accent-[#FF5722]">
+                <label for="selectAll" class="text-sm text-gray-500">All</label>
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <div class="text-right">
+                    <p class="text-xs text-gray-500">Total</p>
+                    <p class="text-lg font-bold text-[#FF5722]" id="totalPrice">Rp 200.000</p>
+                </div>
+                <button id="checkoutBtn" onclick="openPackageModal('partnerPackageModal')" class="bg-[#FF5722] hover:bg-[#e64a19] text-white font-bold py-2.5 px-6 rounded-lg shadow-lg shadow-[#FF5722]/30 active:scale-95 transition-transform">Checkout (1)</button>
+            </div>
+        </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Modal: Paket Upgrade Partner -->
+<div id="partnerPackageModal" class="fixed inset-0 z-50 hidden">
+    <div class="absolute inset-0 bg-black/40" onclick="closePackageModal('partnerPackageModal')"></div>
+
+    <div class="fixed bottom-0 left-0 right-0 bg-white rounded-t-[0.5rem] z-50 h-[68%] flex flex-col shadow-[0_-10px_60px_-15px_rgba(0,0,0,0.3)] animate-slide-up">
+
+        <!-- Drag Handle -->
+        <div class="w-full flex justify-center pt-[0.5rem] pb-2 flex-shrink-0">
+            <div class="w-12 h-1.5 bg-gray-200 rounded-full"></div>
+        </div>
+        <!-- Header -->
+        <div class="w-full pb-4 flex justify-center items-center flex-shrink-0 relative">
+    <h2 class="text-2xl font-bold text-gray-900 tracking-tight text-center">
+        Ringkasan Belanja R.O
+    </h2>
+</div>
+
+        <!-- Scrollable Form Content -->
+        <div class="flex-1 overflow-y-auto px-[0.5rem] pb-24 space-y-8 custom-scrollbar">
+
+            <div class="px-4 mt-6 pb-[3rem]">
+                <div class="flex justify-between items-end px-2 mb-4">
+                    <h3 class="font-bold text-gray-800 text-lg">Produk Dipilih</h3>
+                </div>
+
+                <!-- Diisi otomatis via JS dari item yang dicentang di halaman Belanja R.O -->
+                <div id="roItemsList" class="grid grid-cols-2 gap-3"><div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col"><div class="relative aspect-square bg-gray-100"><img src="images/produk-01-B.png" class="w-full h-full object-cover"></div><div class="p-3 flex flex-col flex-1"><h4 class="text-sm text-gray-700 line-clamp-2 mb-1">Limugreen healthy Drink</h4><div class="mt-auto"><div class="flex items-center justify-between"><span class="text-[#FF5722] font-bold">Rp 200.000</span><div class="flex items-center text-[10px] text-gray-500"><i class="fa fa-shopping-cart text-yellow-700 mr-0.5"></i>1X</div></div></div></div></div></div>
+
+                <p id="roItemsEmpty" class="text-center text-sm text-gray-400 py-8 hidden">Belum ada produk yang dipilih.</p>
+            </div>
+        </div>
+
+        <!-- Footer Action -->
+        <div class="absolute bottom-0 left-0 right-0 p-[1rem] bg-white border-t border-gray-100">
+            <div class="flex items-center justify-between mb-3 px-1">
+                <span class="text-sm text-gray-500">Total Belanja</span>
+                <span id="packageTotal" class="text-lg font-bold text-[#FF5722]">Rp 200.000</span>
+            </div>
+            <button type="button" onclick="goToCheckout('partner')" class="w-full bg-cyan-600 text-white font-semibold text-lg py-[0.7rem] rounded-[2rem] shadow-lg shadow-indigo-200 active:scale-[0.98] transition-transform flex items-center justify-center space-x-2">
+                <span>Selanjutnya</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+(function () {
+  function formatRupiah(num) {
+    return 'Rp ' + num.toLocaleString('id-ID');
+  }
+
+  function getItemEls(itemId) {
+    return {
+      wrapper: document.querySelector('.cart-item[data-item="' + itemId + '"]'),
+      checkbox: document.getElementById('item-' + itemId + '-checkbox'),
+      qtyInput: document.getElementById('item-' + itemId + '-qty-input'),
+      qtyLabel: document.getElementById('item-' + itemId + '-qty-label'),
+      priceLabel: document.getElementById('item-' + itemId + '-price')
+    };
+  }
+
+  function updateItemPrice(itemId) {
+    var els = getItemEls(itemId);
+    var unitPrice = parseInt(els.wrapper.getAttribute('data-price'), 10);
+    var qty = parseInt(els.qtyInput.value, 10);
+    els.priceLabel.textContent = formatRupiah(unitPrice * qty);
+  }
+
+  function changeQty(itemId, delta) {
+    var els = getItemEls(itemId);
+    var qty = parseInt(els.qtyInput.value, 10) || 1;
+    qty += delta;
+    if (qty < 1) qty = 1; // minimal Qyt = 1
+    els.qtyInput.value = qty;
+    els.qtyLabel.textContent = qty;
+    updateItemPrice(itemId);
+    recalcTotal();
+  }
+
+  function recalcTotal() {
+    var total = 0;
+    var checkedCount = 0;
+    document.querySelectorAll('.cart-item').forEach(function (item) {
+      var itemId = item.getAttribute('data-item');
+      var checkbox = document.getElementById('item-' + itemId + '-checkbox');
+      var qtyInput = document.getElementById('item-' + itemId + '-qty-input');
+      var unitPrice = parseInt(item.getAttribute('data-price'), 10);
+      if (checkbox.checked) {
+        var qty = parseInt(qtyInput.value, 10);
+        total += unitPrice * qty;
+        checkedCount += 1;
+      }
+    });
+
+    document.getElementById('totalPrice').textContent = formatRupiah(total);
+    document.getElementById('checkoutBtn').textContent = 'Checkout (' + checkedCount + ')';
+
+    // Sinkronkan checkbox merchant (checked hanya jika semua item merchant tsb tercentang)
+    document.querySelectorAll('.merchant-checkbox').forEach(function (mCheckbox) {
+      var merchantId = mCheckbox.getAttribute('data-merchant');
+      var items = document.querySelectorAll('.cart-item[data-merchant="' + merchantId + '"]');
+      var allChecked = Array.from(items).every(function (item) {
+        var id = item.getAttribute('data-item');
+        return document.getElementById('item-' + id + '-checkbox').checked;
+      });
+      mCheckbox.checked = allChecked;
+    });
+
+    // Sinkronkan checkbox "All"
+    var allItemCheckboxes = document.querySelectorAll('.item-checkbox');
+    var allSelected = Array.from(allItemCheckboxes).every(function (cb) { return cb.checked; });
+    document.getElementById('selectAll').checked = allSelected;
+  }
+
+  // Event: tombol tambah (+) dan kurang (-)
+  document.querySelectorAll('.qty-plus').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      changeQty(btn.getAttribute('data-item'), 1);
+    });
+  });
+  document.querySelectorAll('.qty-minus').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      changeQty(btn.getAttribute('data-item'), -1);
+    });
+  });
+
+  // Event: checklist per item
+  document.querySelectorAll('.item-checkbox').forEach(function (cb) {
+    cb.addEventListener('change', recalcTotal);
+  });
+
+  // Event: checklist per merchant (centang/hapus centang semua item di merchant tsb)
+  document.querySelectorAll('.merchant-checkbox').forEach(function (mCheckbox) {
+    mCheckbox.addEventListener('change', function () {
+      var merchantId = mCheckbox.getAttribute('data-merchant');
+      var items = document.querySelectorAll('.cart-item[data-merchant="' + merchantId + '"]');
+      items.forEach(function (item) {
+        var id = item.getAttribute('data-item');
+        document.getElementById('item-' + id + '-checkbox').checked = mCheckbox.checked;
+      });
+      recalcTotal();
+    });
+  });
+
+  // Event: checklist "All"
+  document.getElementById('selectAll').addEventListener('change', function () {
+    var checked = this.checked;
+    document.querySelectorAll('.item-checkbox').forEach(function (cb) { cb.checked = checked; });
+    document.querySelectorAll('.merchant-checkbox').forEach(function (cb) { cb.checked = checked; });
+    recalcTotal();
+  });
+
+  // Inisialisasi awal (hitung harga per item & total)
+  document.querySelectorAll('.cart-item').forEach(function (item) {
+    updateItemPrice(item.getAttribute('data-item'));
+  });
+  recalcTotal();
+})();
+</script>
+
+<!-- Script: Modal Ringkasan Belanja R.O -->
+<script>
+(function () {
+  function formatRupiahPkg(num) {
+    return 'Rp ' + num.toLocaleString('id-ID');
+  }
+
+  // Bangun kartu produk untuk satu cart-item yang sedang tercentang
+  function buildRoCard(cartItem) {
+    var name = cartItem.querySelector('h3').textContent.trim();
+    var imgSrc = cartItem.querySelector('img').getAttribute('src');
+    var unitPrice = parseInt(cartItem.getAttribute('data-price'), 10);
+    var qtyInput = cartItem.querySelector('input[type="text"]');
+    var qty = parseInt(qtyInput.value, 10);
+    var subtotal = unitPrice * qty;
+
+    var card = document.createElement('div');
+
+    card.className = 'bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col';
+    card.innerHTML =
+      '<div class="relative aspect-square bg-gray-100">' +
+        '<img src="' + imgSrc + '" class="w-full h-full object-cover">' +
+      '</div>' +
+      '<div class="p-3 flex flex-col flex-1">' +
+        '<h4 class="text-sm text-gray-700 line-clamp-2 mb-1">' + name + '</h4>' +
+        '<div class="mt-auto">' +
+          '<div class="flex items-center justify-between">' +
+            '<span class="text-[#FF5722] font-bold">' + formatRupiahPkg(subtotal) + '</span>' +
+            '<div class="flex items-center text-[10px] text-gray-500">' +
+              '<i class="fa fa-shopping-cart text-yellow-700 mr-0.5"></i>' + qty + 'X' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+    return card;
+  }
+
+  // Render ulang daftar produk & total di modal, diambil dari item yang dicentang di halaman Belanja R.O
+  function renderRoSummary() {
+    var listEl = document.getElementById('roItemsList');
+    var emptyEl = document.getElementById('roItemsEmpty');
+    listEl.innerHTML = '';
+
+    var total = 0;
+    var checkedItems = document.querySelectorAll('.cart-item');
+    var hasChecked = false;
+
+    checkedItems.forEach(function (cartItem) {
+      var itemId = cartItem.getAttribute('data-item');
+      var checkbox = document.getElementById('item-' + itemId + '-checkbox');
+      if (checkbox && checkbox.checked) {
+        hasChecked = true;
+        var unitPrice = parseInt(cartItem.getAttribute('data-price'), 10);
+        var qtyInput = cartItem.querySelector('input[type="text"]');
+        var qty = parseInt(qtyInput.value, 10);
+        total += unitPrice * qty;
+
+        listEl.appendChild(buildRoCard(cartItem));
+      }
+    });
+
+    emptyEl.classList.toggle('hidden', hasChecked);
+    document.getElementById('packageTotal').textContent = formatRupiahPkg(total);
+  }
+
+  // Buka modal ringkasan (dipanggil dari tombol Checkout)
+  window.openPackageModal = function (modalId) {
+    var modal = document.getElementById(modalId);
+    if (!modal) return;
+    renderRoSummary(); // ambil data terbaru dari checklist tiap kali modal dibuka
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  };
+
+  // Tutup modal
+  window.closePackageModal = function (modalId) {
+    var modal = document.getElementById(modalId);
+    if (!modal) return;
+    modal.classList.add('hidden');
+    document.body.style.overflow = '';
+  };
+
+  // Aksi tombol "Selanjutnya" di footer modal
+  window.goToCheckout = function (type) {
+    var total = document.getElementById('packageTotal').textContent;
+    alert('Melanjutkan checkout dengan total ' + total);
+    // Ganti alert() di atas dengan redirect/proses checkout sesuai kebutuhan
+  };
+})();
+</script>
+
+    </body></html>
