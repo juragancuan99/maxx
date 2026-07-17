@@ -481,10 +481,50 @@
   };
 
   // Aksi tombol "Selanjutnya" di footer modal
+  // Mengumpulkan data produk yang dicentang (nama, qty, harga satuan, subtotal, gambar),
+  // menyimpannya ke localStorage, lalu mengarahkan user ke halaman ro-checkout.html
   window.goToCheckout = function (type) {
-    var total = document.getElementById('packageTotal').textContent;
-    alert('Melanjutkan checkout dengan total ' + total);
-    // Ganti alert() di atas dengan redirect/proses checkout sesuai kebutuhan
+    var items = [];
+    var total = 0;
+
+    document.querySelectorAll('.cart-item').forEach(function (cartItem) {
+      var itemId = cartItem.getAttribute('data-item');
+      var checkbox = document.getElementById('item-' + itemId + '-checkbox');
+      if (checkbox && checkbox.checked) {
+        var name = cartItem.querySelector('h3').textContent.trim();
+        var imgEl = cartItem.querySelector('img');
+        var img = imgEl ? imgEl.getAttribute('src') : '';
+        var unitPrice = parseInt(cartItem.getAttribute('data-price'), 10);
+        var qtyInput = cartItem.querySelector('input[type="text"]');
+        var qty = parseInt(qtyInput.value, 10);
+        var subtotal = unitPrice * qty;
+
+        total += subtotal;
+        items.push({
+          name: name,
+          qty: qty,
+          price: unitPrice,
+          subtotal: subtotal,
+          img: img
+        });
+      }
+    });
+
+    var cartData = {
+      paketName: 'Paket RO Pribadi',
+      items: items,
+      total: total,
+      savedAt: Date.now()
+    };
+
+    try {
+      localStorage.setItem('roCartData', JSON.stringify(cartData));
+    } catch (e) {
+      console.error('Gagal menyimpan data keranjang ke localStorage:', e);
+    }
+
+    // Redirect ke halaman checkout, datanya akan dibaca dari localStorage
+    window.location.href = 'ro-checkout.html';
   };
 })();
 </script>
