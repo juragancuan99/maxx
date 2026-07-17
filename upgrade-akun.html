@@ -909,6 +909,21 @@
         </div>
     </div>
 
+    <!-- ================= HALAMAN PEMBAYARAN SEDANG DIPROSES ================= -->
+    <div id="processingView" class="hidden w-full h-full bg-white fixed inset-0 z-[60] flex flex-col items-center justify-center px-8 text-center">
+        <div class="relative mb-6">
+            <div class="absolute inset-0 bg-cyan-400 rounded-full opacity-20 animate-ping"></div>
+            <div class="relative w-28 h-28 bg-cyan-50 rounded-full flex items-center justify-center shadow-sm">
+                <img id="processingImg" src="images/logo-agent.png" alt="Proses" class="w-20 h-20 rounded-full object-cover animate-pulse">
+            </div>
+        </div>
+        <div class="flex items-center gap-2 mb-3">
+            <i class="fa-solid fa-circle-notch fa-spin text-cyan-600 text-lg"></i>
+            <h1 class="text-lg font-bold text-[#2D3436]">Pembayaran Sedang Diproses</h1>
+        </div>
+        <p class="text-gray-500 text-sm max-w-xs">Mohon tunggu sebentar, kami sedang memverifikasi pembayaran <span id="processingPaket" class="font-semibold text-gray-700">Upgrade Akun</span> Anda...</p>
+    </div>
+
     <script>
         const tabAgentBtn = document.getElementById('tabAgentBtn');
         const tabPartnerBtn = document.getElementById('tabPartnerBtn');
@@ -1217,10 +1232,35 @@
         }
 
         function confirmPayment() {
-            alert('Pembayaran berhasil diproses! Upgrade akun ' + PAKET_LABEL[invoiceState.type] + ' Anda sedang diproses.');
+            const type = invoiceState.type;
+            const totalQty = invoiceState.produkList.reduce(function (sum, item) { return sum + item.qty; }, 0);
+
+            // Simpan data transaksi supaya bisa dibaca oleh halaman upgrade-akun-sukses-bayar.html
+            const trxData = {
+                type: type,
+                paketLabel: PAKET_LABEL[type],
+                paketKey: invoiceState.paketKey,
+                total: invoiceState.finalTotal,
+                qty: totalQty,
+                produkList: invoiceState.produkList,
+                img: type === 'partner' ? 'images/logo-partner.png' : 'images/logo-agent.png',
+                metode: 'VA',
+                waktu: new Date().toISOString()
+            };
+            localStorage.setItem('maxi_upgrade_trx', JSON.stringify(trxData));
+
             closePaymentModal();
             invoiceView.classList.add('hidden');
-            mainView.classList.remove('hidden');
+
+            // Tampilkan halaman "Pembayaran Sedang Diproses"
+            document.getElementById('processingImg').src = trxData.img;
+            document.getElementById('processingPaket').textContent = 'Upgrade Akun ' + trxData.paketLabel;
+            document.getElementById('processingView').classList.remove('hidden');
+
+            // Setelah beberapa saat, arahkan ke halaman sukses bayar
+            setTimeout(function () {
+                window.location.href = 'upgrade-akun-sukses-bayar.html';
+            }, 2200);
         }
 
         // Update total setiap kali ekspedisi berbeda dipilih

@@ -18,6 +18,13 @@
             to { opacity: 1; transform: scale(1); }
         }
         .zoom-in { animation: zoomIn 0.2s ease-out forwards; }
+
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.8); }
+            70% { opacity: 1; transform: scale(1.03); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        .animate-pop { animation: popIn 0.3s ease-out forwards; }
     </style>
 	
 	  <style>
@@ -769,7 +776,34 @@
         };
         reader.readAsDataURL(file);
     }
+
+    // ================= POPUP "SELAMAT..!" SETELAH UPGRADE AGENT =================
+    document.addEventListener('DOMContentLoaded', function () {
+        try {
+            const notif = localStorage.getItem('maxi_upgrade_notif');
+            if (notif === 'agent') {
+                document.getElementById('infoModal').classList.remove('hidden');
+                localStorage.removeItem('maxi_upgrade_notif');
+            }
+        } catch (e) {}
+    });
 </script>
 
+<!-- ================= MODAL INFO: SELAMAT UPGRADE AGENT AFFILIATE ================= -->
+<div id="infoModal" class="hidden fixed inset-0 z-50 flex items-center justify-center px-4 bg-[#0000005c] backdrop-blur-[2.3px]">
+    <div class="mt-[-2rem] zoom-in relative w-full max-w-sm bg-[#00000099] rounded-3xl overflow-hidden animate-pop flex flex-col items-center text-center p-[1.3rem] border border-yellow-100">
+        <div class="absolute top-0 left-0 w-full h-48 bg-gradient-to-b from-transparent to-transparent -z-10"></div>
+        <div class="absolute -top-10 left-1/2 transform -translate-x-1/2 w-64 h-64 bg-[#00000099] rounded-full blur-3xl -z-10"></div>
+        <button onclick="document.getElementById('infoModal').classList.add('hidden')" class="absolute top-4 right-4 text-orange-300 hover:text-gray-600 transition-colors w-8 h-8 flex items-center justify-center rounded-full hover:bg-orange-300">
+            <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+        <img src="images/logo-agent.png" alt="User" class="mt-[-0.4rem] w-[4.8rem] h-[6rem] rounded-full border-[0px] border-white">
+        <h2 class="text-2xl font-extrabold text-gray-100 mb-2">Selamat..!</h2>
+        <p class="text-gray-100 text-sm leading-relaxed mb-6 px-[0rem]">Anda sekarang resmi menjadi<span class="font-semibold text-yellow-200"> Agent Affiliate</span> dan berhak atas bonus ekslusif dengan promo menarik lainya.!</p>
+        <button onclick="document.getElementById('infoModal').classList.add('hidden')" class="w-full bg-[#b7993e] hover:bg-[#a3872f] text-white font-bold py-4 rounded-xl shadow-lg shadow-blue-600/20 transition-all transform active:scale-[0.98] mt-[-0.6rem] flex items-center justify-center gap-2">
+            <span>OK</span>
+        </button>
+    </div>
+</div>
 
 </body></html>
