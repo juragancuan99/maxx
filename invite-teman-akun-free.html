@@ -1,0 +1,346 @@
+<html><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<title>Pendapatan - Maxi Affiliate</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  
+  
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; margin: 0; padding: 0; }
+        ::-webkit-scrollbar { display: none; } 
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Animasi Zoom In untuk Pop-Up Modal Info */
+        @keyframes zoomIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .zoom-in { animation: zoomIn 0.2s ease-out forwards; }
+    </style>
+	
+	  <style>
+    .hide-scrollbar::-webkit-scrollbar { display: none; }
+    .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+  
+  
+<script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#D4FF00',
+                    }
+                }
+            }
+        }
+    </script>
+
+</head>
+<body class="h-screen w-screen overflow-hidden bg-white">
+          <div class="w-full h-full bg-gray-50 overflow-y-auto relative font-sans text-gray-800">
+    <!-- FontAwesome CDN (Included for rendering icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Header -->
+    <div class="absolute top-0 left-0 w-full z-20 p-4 flex justify-between items-center text-white">
+        <button class="w-10 h-10 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-sm hover:bg-white/30 transition">
+            <i class="fa-solid fa-arrow-left"></i>
+        </button>
+        <h1 class="text-lg font-semibold tracking-wide">Undang &amp; Hasilkan</h1>
+        <button class="w-10 h-10 flex items-center justify-center rounded-full bg-transparant backdrop-blur-sm hover:bg-transparant transition">
+            
+        </button>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="relative w-full bg-[#00a6a6] pt-24 pb-32 px-6 rounded-b-[3rem] shadow-lg overflow-hidden">
+        <!-- Decorative Background Circles -->
+        <div class="absolute top-[-20%] left-[-10%] w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-[10%] right-[-10%] w-48 h-48 bg-white/10 rounded-full blur-2xl"></div>
+
+        <div class="relative z-10 text-center text-white">
+            <div class="inline-flex items-center justify-center w-20 h-20 bg-white/20 backdrop-blur-md rounded-full mb-4 shadow-inner border border-white/30">
+                <i class="fa-solid fa-gift text-4xl text-yellow-300 drop-shadow-md"></i>
+            </div>
+            <h2 class="text-3xl font-bold mb-2">Undang Teman,<br>Dapatkan $Komisi</h2>
+            <p class="text-white/80 text-sm">Dapatkan komisi untuk setiap teman yang anda undang dan melakukan pembelian pertamanya</p>
+        </div>
+    </div>
+
+    <!-- Main Content Card (Overlapping Hero) -->
+    <div class="relative z-10 px-5 -mt-20 pb-24">
+        
+        <!-- Progress Card -->
+        <div class="bg-white rounded-3xl shadow-xl p-6 mb-6">
+            <div class="flex justify-between items-end mb-2">
+                <div>
+                    <p class="text-xs font-bold text-gray-400 uppercase tracking-wider">STATUS ANDA : PENGGUNA BIASA</p>
+                    <h3 class="text-lg font-bold text-gray-500">AKSES TERBATAS!</h3>
+                </div>
+                
+            </div>
+            
+            <!-- Progress Bar -->
+            <div class="w-full bg-gray-100 rounded-full h-3 mb-3 overflow-hidden">
+                <div class="bg-[#6C5CE7] h-3 rounded-full relative" style="width: 0%">
+                    <div class="absolute top-0 right-0 bottom-0 w-full bg-gradient-to-r from-transparent to-white/30"></div>
+                </div>
+            </div>
+            
+            <p class="text-xs text-gray-500 flex items-center gap-2">
+                <i class="fa-solid fa-circle-info text-[#6C5CE7]"></i>Segera Upgrade akun agar bisa berbagi link dan menghasilkan
+            </p>
+        </div>
+
+        <!-- Invite Code Section -->
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 mb-6">
+            <p class="text-center text-gray-500 text-sm mb-3">Your Unique Invite Code</p>
+            <div class="flex items-center justify-between bg-gray-50 border-2 border-dashed border-[#6C5CE7]/30 rounded-xl p-3">
+                <span class="font-mono text-xl font-bold text-gray-400 tracking-widest pl-2">NULL</span>
+                <button class="text-gray-400 px-3 py-1.5 rounded-lg cursor-not-allowed text-sm font-semibold transition flex items-center gap-2">
+                    <i class="fa-regular fa-copy"></i> Copy
+                </button>
+            </div>
+        </div>
+
+        <!-- How it works -->
+        <div class="mb-8">
+            <h3 class="font-bold text-gray-800 mb-4 text-lg">Cara Kerja</h3>
+            <div class="flex justify-between gap-2">
+                <!-- Step 1 -->
+                <div class="flex-1 flex flex-col items-center text-center">
+                    <div class="w-12 h-12 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center mb-2 text-lg">
+                        <i class="fa-solid fa-share-nodes"></i>
+                    </div>
+                    <p class="text-xs font-semibold text-gray-700">Undang dan bagikan link</p>
+                </div>
+                <!-- Line -->
+                <div class="w-8 h-px bg-gray-200 mt-6"></div>
+                <!-- Step 2 -->
+                <div class="flex-1 flex flex-col items-center text-center">
+                    <div class="w-12 h-12 rounded-full bg-purple-50 text-[#6C5CE7] flex items-center justify-center mb-2 text-lg">
+                        <i class="fa-solid fa-user-plus"></i>
+                    </div>
+                    <p class="text-xs font-semibold text-gray-700">Teman join dan belanja di merchant</p>
+                </div>
+                <!-- Line -->
+                <div class="w-8 h-px bg-gray-200 mt-6"></div>
+                <!-- Step 3 -->
+                <div class="flex-1 flex flex-col items-center text-center">
+                    <div class="w-12 h-12 rounded-full bg-green-50 text-green-500 flex items-center justify-center mb-2 text-lg">
+                        <i class="fa-solid fa-coins"></i>
+                    </div>
+                    <p class="text-xs font-semibold text-gray-700">Anda terima $komisi</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Referrals -->
+        
+    </div>
+
+    <!-- Sticky Bottom Action Bar -->
+    <div class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-100 p-4 pb-6 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] z-30">
+        <div class="flex gap-3">
+            <button class="flex-1 bg-[#6C5CE7] hover:bg-[#5a4ad1] text-white font-bold py-3.5 rounded-xl shadow-lg shadow-indigo-200 transition transform active:scale-[0.98] flex items-center justify-center gap-2">
+                <i class="fa-solid fa-arrow-right"></i>Gabung Sekarang</button>
+            <button class="w-14 bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold rounded-xl flex items-center justify-center transition">
+                <i class="fa-solid fa-qrcode text-xl"></i>
+            </button>
+        </div>
+    </div>
+</div>
+        
+		  
+		  <div class="w-full h-full bg-gray-50 overflow-y-auto relative font-sans text-gray-800">
+    <!-- Header -->
+    <div class="sticky top-0 z-50 bg-white shadow-sm px-4 py-4 flex items-center justify-between">
+        <button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition">
+            <i class="fa-solid fa-arrow-left text-gray-600 text-lg"></i>
+        </button>
+        <h1 class="text-lg font-bold text-gray-900">Undang Teman</h1>
+        <button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition">
+            <i class="fa-regular fa-circle-question text-gray-600 text-lg"></i>
+        </button>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="bg-gradient-to-br from-[#FFD700] to-yellow-500 px-6 py-8 text-gray-900 rounded-b-[2.5rem] shadow-lg relative overflow-hidden">
+        <!-- Decorative Circles -->
+        <div class="absolute top-0 right-0 -mr-8 -mt-8 w-32 h-32 bg-white opacity-20 rounded-full blur-xl"></div>
+        <div class="absolute bottom-0 left-0 -ml-8 -mb-8 w-24 h-24 bg-white opacity-20 rounded-full blur-xl"></div>
+
+        <div class="relative z-10 text-center">
+            <div class="inline-block bg-white/30 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold mb-3 border border-white/20">
+                <i class="fa-solid fa-star mr-1"></i> MAXI AFFILIATE PROGRAM
+</div>
+            <h2 class="text-3xl font-extrabold mb-2">Invite &amp; Earn</h2>
+            <p class="text-gray-900/80 text-sm mb-6 max-w-[80%] mx-auto">
+Bangun jaringan Anda dan raih tingkatan komisi yang lebih tinggi dari setiap teman yang Anda undang.</p>
+            
+            <div class="flex justify-center gap-4">
+                <div class="bg-white/90 backdrop-blur rounded-xl p-3 w-1/2 shadow-sm">
+                    <p class="text-xs text-gray-500 uppercase font-semibold">Total REFFERAL</p>
+                    <p class="text-xl font-bold text-gray-900">1,680</p>
+                </div>
+                <div class="bg-white/90 backdrop-blur rounded-xl p-3 w-1/2 shadow-sm">
+                    <p class="text-xs text-gray-500 uppercase font-semibold">ACTIVATED</p>
+                    <p class="text-xl font-bold text-gray-900">68</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <!-- Main Content --><div class="px-5 py-6 pb-40 space-y-8">
+
+        <!-- How it Works (Infographic Style) -->
+        <!-- Tier System --><section>
+            <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center">
+                <i class="fa-solid fa-envelope-open text-[#FFD700] mr-2"></i>Kode Undangan</h3>
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 mb-6">
+            <p class="text-center text-gray-500 text-sm mb-3">Your Unique Invite Code</p>
+            <div class="flex items-center justify-between bg-gray-50 border-2 border-dashed border-[#6C5CE7]/30 rounded-xl p-3">
+                <span class="font-mono text-xl font-bold text-gray-800 tracking-widest pl-2">1KHD56</span>
+                <button class="text-[#6C5CE7] hover:bg-[#6C5CE7]/10 px-3 py-1.5 rounded-lg text-sm font-semibold transition flex items-center gap-2">
+                    <i class="fa-regular fa-copy"></i> Copy
+                </button>
+            </div>
+        </div>
+        </section><!-- Tier System -->
+
+        
+        <section>
+            <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center">
+                <i class="fa-solid fa-bolt text-[#FFD700] mr-2"></i>Cara Kerja</h3>
+            <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-100">
+                <div class="flex items-center justify-between relative">
+                    <!-- Connecting Line -->
+                    <div class="absolute top-1/2 left-0 w-full h-0.5 bg-gray-200 -z-0 transform -translate-y-1/2"></div>
+                    
+                    <!-- Step 1 -->
+                    <div class="relative z-10 flex flex-col items-center bg-white px-2">
+                        <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center border-2 border-blue-100 mb-2">
+                            <i class="fa-solid fa-share-nodes text-blue-500"></i>
+                        </div>
+                        <span class="text-[10px] font-bold text-gray-600 uppercase">Share</span>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="relative z-10 flex flex-col items-center bg-white px-2">
+                        <div class="w-12 h-12 bg-purple-50 rounded-full flex items-center justify-center border-2 border-purple-100 mb-2">
+                            <i class="fa-solid fa-user-plus text-purple-500"></i>
+                        </div>
+                        <span class="text-[10px] font-bold text-gray-600 uppercase">Join &amp; Checkout</span>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="relative z-10 flex flex-col items-center bg-white px-2">
+                        <div class="w-12 h-12 bg-[#FFF9C4] rounded-full flex items-center justify-center border-2 border-[#FFD700] mb-2 shadow-[0_0_10px_rgba(255,215,0,0.3)]">
+                            <i class="fa-solid fa-sack-dollar text-yellow-600"></i>
+                        </div>
+                        <span class="text-[10px] font-bold text-gray-800 uppercase">Earn</span>
+                    </div>
+                </div>
+                <p class="text-xs text-center text-gray-500 mt-4 bg-gray-50 p-2 rounded-lg">Anda akan mendapatkan persentase dari setiap transaksi yang dilakukan oleh referensi Anda, selamanya!</p>
+            </div>
+        </section><!-- Tier System --><section>
+            <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center">
+                <i class="fa-solid fa-medal text-[#FFD700] mr-2"></i>Rank Status</h3>
+            <div class="bg-white rounded-2xl shadow-xl p-5">
+            <div class="flex justify-between items-end mb-2">
+                <div>
+                    <p class="text-xs font-bold text-gray-400 uppercase tracking-wider">Current Tier</p>
+                    <h3 class="text-lg font-bold text-gray-800">Silver Rank</h3>
+                </div>
+                <div class="text-right">
+                    <span class="text-[#6C5CE7] font-bold text-xl">1<span class="text-gray-400 text-sm font-normal">/2</span></span>
+                </div>
+            </div>
+            
+            <!-- Progress Bar -->
+            <div class="w-full bg-gray-100 rounded-full h-3 mb-3 overflow-hidden">
+                <div class="bg-[#6C5CE7] h-3 rounded-full relative" style="width: 40%">
+                    <div class="absolute top-0 right-0 bottom-0 w-full bg-gradient-to-r from-transparent to-white/30"></div>
+                </div>
+            </div>
+            
+            <p class="text-xs text-gray-500 flex items-center gap-2">
+                <i class="fa-solid fa-circle-info text-[#6C5CE7]"></i>Butuh 2 partner untuk naik ke...<span class="font-bold text-[#6C5CE7]">Gold</span>
+            </p>
+        </div>
+        </section><!-- Tier System --><section>
+            <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center">
+                <i class="fa-solid fa-users text-[#FFD700] mr-2"></i>Direct Line</h3>
+                        <div class="flex justify-between items-center p-4">
+                <h3 class="font-bold text-gray-800 text-lg">Refferal Anda</h3>
+                <a href="#" class="text-[#6C5CE7] text-sm font-medium">View All</a>
+            </div>
+
+            <div class="space-y-3">
+                <!-- Item 1 -->
+                <div class="flex items-center justify-between bg-white p-3 rounded-xl shadow-sm border border-gray-50">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center font-bold text-sm">
+                            <img src="https://i.pravatar.cc/150?img=59" alt="User" class="w-10 h-10 rounded-full border-2 border-white shadow-sm mx-3">
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold text-gray-800">Alan Walker</p>
+                            <p class="text-xs text-gray-400">Joined 2 hrs ago</p>
+                        </div>
+                    </div>
+                    <span class="px-2 py-1 bg-yellow-100 text-yellow-700 text-[10px] font-bold uppercase rounded-md tracking-wide">PENGGUNA BIASA</span>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="flex items-center justify-between bg-white p-3 rounded-xl shadow-sm border border-gray-50">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center font-bold text-sm">
+                            JD
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold text-gray-800">John Doe</p>
+                            <p class="text-xs text-gray-400">Joined Yesterday</p>
+                        </div>
+                    </div>
+                    <span class="px-2 py-1 bg-green-100 text-green-700 text-[10px] font-bold uppercase rounded-md tracking-wide">AGENT</span>
+                </div>
+                
+                <!-- Item 3 -->
+                <div class="flex items-center justify-between bg-white p-3 rounded-xl shadow-sm border border-gray-50">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center font-bold text-sm">
+                            AL
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold text-gray-800">Amy Lee</p>
+                            <p class="text-xs text-gray-400">Joined 3 days ago</p>
+                        </div>
+                    </div>
+                    <span class="px-2 py-1 bg-green-100 text-green-700 text-[10px] font-bold uppercase rounded-md tracking-wide">PARTNER</span>
+                </div>
+            </div>
+        
+        </section><!-- Tier System -->
+    </div>
+
+    <!-- Fixed Bottom Action Area -->
+ <div class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-100 p-4 pb-6 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] z-30">
+    <div class="flex gap-3">
+        <!-- Membungkus button dengan tag <a> -->
+        <a href="https://link-tujuan-anda.com" class="flex-1 flex">
+            <button class="flex-1 bg-[#00a6a6] hover:bg-[#00a6a6] text-white font-bold py-3.5 rounded-xl shadow-lg shadow-indigo-200 transition transform active:scale-[0.98] flex items-center justify-center gap-2">
+                Upgrade Sekarang
+            </button>
+        </a>
+   	 </div>
+   </div>
+</div>
+
+
+        
+      
+    </body></html>
