@@ -1,0 +1,396 @@
+<html lang="id"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+
+</head>
+<body class="h-screen w-screen overflow-hidden bg-white">
+          <div class="w-full h-full bg-gray-50 overflow-y-auto relative font-sans text-gray-800">
+  <!-- FontAwesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Top Navigation / Close -->
+  <div class="absolute top-0 left-0 w-full p-6 flex justify-end z-10">
+    <button class="w-10 h-10 bg-white rounded-full shadow-sm flex items-center justify-center text-gray-400 hover:text-gray-600 transition">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+
+  <!-- Success Animation Section -->
+  <div class="sticky top-0 z-20 bg-white shadow-sm px-4 py-4 flex items-center justify-between">
+        <button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition">
+            <i class="fas fa-arrow-left text-cyan-600 text-lg"></i>
+        </button>
+        <h1 class="text-lg font-bold text-[#2D3436]">Rincian Pesanan</h1>
+        <button id="notifBellBtn" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition relative">
+            <i class="fas fa-bell text-cyan-600 text-xl"></i>
+            <span id="notifBadge" class="hidden absolute top-1.5 right-1.5 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-white"></span>
+        </button>
+    </div>
+
+    <!-- Notification Panel -->
+    <div id="notifPanel" class="hidden absolute top-16 right-3 w-72 bg-white rounded-2xl shadow-xl border border-gray-100 z-30 overflow-hidden">
+        <div class="px-4 py-3 border-b border-gray-100 flex items-center justify-between">
+            <span class="font-bold text-sm text-gray-800">Notifikasi</span>
+            <button id="notifMarkAllBtn" class="text-xs text-cyan-600 font-medium hover:underline">Tandai dibaca</button>
+        </div>
+        <div id="notifList" class="max-h-80 overflow-y-auto divide-y divide-gray-100">
+            <div class="px-4 py-6 text-center text-xs text-gray-400">Belum ada notifikasi</div>
+        </div>
+    </div>
+
+  <!-- Receipt Card -->
+  <div class="mx-[0.25rem] mb-[1rem] relative drop-shadow-xl">
+    <!-- Receipt Top (Theme Color) -->
+    <div class="bg-[#00a6a6] rounded-t-2xl p-[0.8rem] text-white relative overflow-hidden">
+      <!-- Decorative circles for visual texture -->
+      <div class="absolute -top-6 -right-6 w-24 h-24 bg-white opacity-5 rounded-full"></div>
+      <div class="absolute top-10 -left-6 w-16 h-16 bg-white opacity-5 rounded-full"></div>
+      
+      <div class="flex justify-between items-end">
+        <div>
+          <p class="text-bold text-gray-100 tracking-wider mb-1">*Pesanan Selesai.!</p>
+          
+        </div>
+        
+      </div>
+    </div>
+
+    <!-- Receipt Body (White) -->
+    <div class="bg-white rounded-b-2xl p-6 relative">
+      <!-- Perforated Line Effect -->
+      <div class="absolute top-0 left-0 w-full -mt-3 h-6 flex justify-between items-center px-2 overflow-hidden">
+        <!-- Using a pseudo-element approach via simple divs for the 'cut' look -->
+        <div class="w-4 h-4 bg-gray-50 rounded-full -ml-2"></div>
+        <div class="flex-1 border-b-2 border-dashed border-gray-300 mx-2 opacity-50"></div>
+        <div class="w-4 h-4 bg-gray-50 rounded-full -mr-2"></div>
+      </div>
+
+      <!-- Invoice Meta -->
+      <div class="bg-transparant p-[0rem] rounded-xl shadow-sm flex items-start gap-3">
+            <div class="mt-1 text-gray-500">
+                <i class="fas fa-truck text-lg"></i>
+            </div>
+            <div class="flex-1">
+                <div class="flex justify-between items-center mb-1">
+                    <span class="font-bold text-cyan-600">Pesanan Anda telah diproses. Hubungi Admin untuk cek status pengiriman.</span>
+                    
+                </div>
+                <p class="text-sm text-gray-600 leading-snug">Paket Belanja RO<br><br></p>
+            </div>
+        </div>
+<br>
+
+      <div class="bg-transparant p-[0rem] rounded-xl shadow-sm flex items-start gap-3">
+            <div class="mt-1 text-gray-500">
+                <i class="fas fa-map-marker-alt text-lg"></i>
+            </div>
+            <div class="flex-1">
+                <div class="flex justify-between items-center mb-1">
+                    <span class="font-bold text-gray-900">Alamat Pengiriman</span>
+                    
+                </div>
+                <p class="text-sm text-gray-600 leading-snug">Efendi Gusasi, SH<br>Jln. Rambutan Kelurahan Tomsel, Kecamatan Dungingi, Kota Gorontalo<br><br></p>
+            </div>
+        </div>
+<br><!-- Product Item -->
+      <p class="text-xs text-gray-500 mb-2" id="lacakOrderId">Order ID: #SLS-883920</p>
+      <div id="lacakItemsList">
+      <div class="bg-white rounded-2xl p-[0rem] flex gap-4 items-center py-2">
+      <div class="w-16 h-16 bg-white rounded-3xl shadow-xl shadow-orange-500/20 flex items-center justify-center transform rotate-3 border border-orange-50 flex-shrink-0">
+                    <i class="fas fa-shopping-basket text-3xl text-[#FF5722]"></i>
+                </div>
+      <div class="flex-1">
+        <div class="flex justify-between items-start">
+          <h2 class="font-bold text-sm leading-tight mb-1">Limugreen Healthy Drink</h2>
+        </div>
+        <div class="flex justify-between items-center">
+          <span class="text-xs text-gray-500">Qty: 1</span>
+          <span class="font-bold text-[#2D3436]">Rp399.000</span>
+        </div>
+      </div>
+    </div>
+      <div class="bg-white rounded-2xl p-[0rem] flex gap-4 items-center py-2">
+      <div class="w-16 h-16 bg-white rounded-3xl shadow-xl shadow-orange-500/20 flex items-center justify-center transform rotate-3 border border-orange-50 flex-shrink-0">
+                    <i class="fas fa-shopping-basket text-3xl text-[#FF5722]"></i>
+                </div>
+      <div class="flex-1">
+        <div class="flex justify-between items-start">
+          <h2 class="font-bold text-sm leading-tight mb-1">Bio Ocean Salt</h2>
+        </div>
+        <div class="flex justify-between items-center">
+          <span class="text-xs text-gray-500">Qty: 1</span>
+          <span class="font-bold text-[#2D3436]">Rp200.000</span>
+        </div>
+      </div>
+    </div>
+      </div>
+<br>
+
+      <!-- Cost Breakdown -->
+      <div class="space-y-3 pt-4 border-t border-dashed border-gray-200 mt-2">
+        <div class="flex justify-between text-sm">
+          <span class="text-gray-500">Subtotal Produk</span>
+          <span class="font-medium text-gray-800" id="lacakSubtotalProduk">Rp599.000</span>
+        </div>
+        <div class="flex justify-between text-sm">
+          <span class="text-gray-500" id="lacakShippingLabel">Subtotal Pengiriman (JNE)</span>
+          <span class="font-medium text-gray-800" id="lacakShippingPrice">Rp75.000</span>
+        </div><!-- <div class="flex justify-between text-sm">
+          <span class="text-gray-500">Pajak (11%)</span>
+          <span class="font-medium text-green-600">Free</span>
+        </div> -->
+        <div class="flex justify-between text-sm">
+          <span class="text-gray-500" id="lacakAdminFeeLabel">QRIS Admin Fee</span>
+          <span class="font-medium text-gray-800" id="lacakAdminFeeValue">0.7%</span>
+        </div>
+      </div>
+
+      <!-- Grand Total -->
+      <div class="flex justify-between items-center mt-6 pt-4 border-t border-gray-200">
+        <span class="text-base font-bold text-gray-800">Total Pesanan</span>
+        <span class="text-xl font-bold text-[#2D3436]" id="lacakGrandTotal">Rp678.718</span>
+      </div>
+      
+      <!-- Download PDF Link -->
+      <div class="mt-6 text-center">
+        <button class="text-xs font-medium text-gray-400 hover:text-[#2D3436] flex items-center justify-center gap-2 mx-auto transition">
+          <i class="fas fa-download"></i> Download PDF Receipt
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fixed Bottom Actions -->
+  <div class="sticky bottom-0 bg-white border-t border-gray-100 p-4 pb-[1rem] shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
+    <div class="flex gap-3">
+        <button onclick="window.location.href='beranda.html';" class="flex-1 py-3.5 rounded-xl border border-gray-200 text-cyan-600 font-semibold text-sm hover:bg-gray-50 transition">Beranda</button>
+        
+<button onclick="window.location.href='misireward.html';" class="flex-1 py-3.5 rounded-xl border border-orange-600 text-orange-600 font-semibold text-sm hover:bg-gray-50 transition">Cek Misi Lainya</button>
+    </div>
+
+        
+      
+    </div></div>
+
+    <script>
+        (function () {
+            var STORAGE_KEY = 'roPaymentResult';
+
+            function formatRupiahDot(num) {
+                return 'Rp.' + Math.round(num || 0).toLocaleString('id-ID');
+            }
+            function formatRupiahNoSpace(num) {
+                return 'Rp' + Math.round(num || 0).toLocaleString('id-ID');
+            }
+
+            var data = null;
+            try {
+                var raw = localStorage.getItem(STORAGE_KEY);
+                data = raw ? JSON.parse(raw) : null;
+            } catch (e) {
+                data = null;
+            }
+
+            if (!data) { return; } // biarkan tampilan default jika belum ada data pesanan
+
+            // Order ID / Invoice No
+            var elOrderId = document.getElementById('lacakOrderId');
+            if (elOrderId) elOrderId.textContent = 'Order ID: ' + (data.invoiceNo || '#SLS-000000');
+
+            // Daftar produk: nama & qty (dibangun ulang sesuai data invoice)
+            var listEl = document.getElementById('lacakItemsList');
+            if (listEl && Array.isArray(data.items) && data.items.length) {
+                var html = '';
+                data.items.forEach(function (it) {
+                    html +=
+                        '<div class="bg-white rounded-2xl p-[0rem] flex gap-4 items-center py-2">' +
+                            '<div class="w-16 h-16 bg-white rounded-3xl shadow-xl shadow-orange-500/20 flex items-center justify-center transform rotate-3 border border-orange-50 flex-shrink-0">' +
+                                '<i class="fas fa-shopping-basket text-3xl text-[#FF5722]"></i>' +
+                            '</div>' +
+                            '<div class="flex-1">' +
+                                '<div class="flex justify-between items-start">' +
+                                    '<h2 class="font-bold text-sm leading-tight mb-1">' + (it.name || '-') + '</h2>' +
+                                '</div>' +
+                                '<div class="flex justify-between items-center">' +
+                                    '<span class="text-xs text-gray-500">Qty: ' + (it.qty || 1) + '</span>' +
+                                    '<span class="font-bold text-[#2D3436]">' + formatRupiahDot(it.subtotal) + '</span>' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>';
+                });
+                listEl.innerHTML = html;
+            }
+
+            // Ekspedisi / pengiriman
+            var shippingName = (data.shipping && data.shipping.name) ? data.shipping.name : 'JNE';
+            var elShippingLabel = document.getElementById('lacakShippingLabel');
+            if (elShippingLabel) elShippingLabel.textContent = 'Subtotal Pengiriman (' + shippingName + ')';
+
+            var elShippingPrice = document.getElementById('lacakShippingPrice');
+            if (elShippingPrice) elShippingPrice.textContent = formatRupiahNoSpace(data.shipping ? data.shipping.price : 0);
+
+            // Subtotal produk
+            var elSubtotal = document.getElementById('lacakSubtotalProduk');
+            if (elSubtotal) elSubtotal.textContent = formatRupiahNoSpace(data.subtotal);
+
+            // Admin fee
+            var elAdminFeeLabel = document.getElementById('lacakAdminFeeLabel');
+            if (elAdminFeeLabel) elAdminFeeLabel.textContent = (data.paymentMethod === 'Virtual Account' ? 'VA' : 'QRIS') + ' Admin Fee';
+
+            var elAdminFeeValue = document.getElementById('lacakAdminFeeValue');
+            if (elAdminFeeValue) elAdminFeeValue.textContent = data.adminFeeLabel || '-';
+
+            // Grand total
+            var elGrandTotal = document.getElementById('lacakGrandTotal');
+            if (elGrandTotal) elGrandTotal.textContent = formatRupiahNoSpace(data.grandTotal);
+        })();
+    </script>
+
+    <script>
+        (function () {
+            var NOTIF_KEY = 'roNotifications';       // daftar notifikasi tersimpan
+            var STATUS_KEY = 'roOrderStatus';         // status pesanan saat ini: diproses | dikirim | diterima
+            var LAST_NOTIFIED_KEY = 'roLastNotifiedStatus'; // status terakhir yg sudah dibuatkan notifnya
+
+            var STATUS_MESSAGES = {
+                diproses: {
+                    title: 'Pesanan Diproses',
+                    message: 'Pesanan Anda sedang disiapkan oleh penjual.'
+                },
+                dikirim: {
+                    title: 'Pesanan Dikirim',
+                    message: 'Paket Anda sedang dalam perjalanan menuju alamat tujuan.'
+                },
+                diterima: {
+                    title: 'Pesanan Diterima',
+                    message: 'Paket Anda telah sampai di tujuan. Terima kasih telah berbelanja!'
+                }
+            };
+
+            function loadNotifications() {
+                try {
+                    var raw = localStorage.getItem(NOTIF_KEY);
+                    return raw ? JSON.parse(raw) : [];
+                } catch (e) {
+                    return [];
+                }
+            }
+
+            function saveNotifications(list) {
+                try {
+                    localStorage.setItem(NOTIF_KEY, JSON.stringify(list));
+                } catch (e) {}
+            }
+
+            function formatTime(ts) {
+                var d = new Date(ts);
+                return d.toLocaleDateString('id-ID', { day: 'numeric', month: 'short' }) + ', ' +
+                       d.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
+            }
+
+            function addNotification(title, message) {
+                var list = loadNotifications();
+                list.unshift({
+                    id: Date.now(),
+                    title: title,
+                    message: message,
+                    time: Date.now(),
+                    read: false
+                });
+                saveNotifications(list);
+                renderNotifications();
+            }
+
+            function renderNotifications() {
+                var list = loadNotifications();
+                var listEl = document.getElementById('notifList');
+                var badgeEl = document.getElementById('notifBadge');
+                if (!listEl) return;
+
+                if (!list.length) {
+                    listEl.innerHTML = '<div class="px-4 py-6 text-center text-xs text-gray-400">Belum ada notifikasi</div>';
+                } else {
+                    listEl.innerHTML = list.map(function (n) {
+                        return (
+                            '<div class="px-4 py-3 flex gap-3 items-start ' + (n.read ? '' : 'bg-cyan-50/60') + '">' +
+                                '<div class="mt-0.5 text-cyan-600"><i class="fas fa-box text-sm"></i></div>' +
+                                '<div class="flex-1">' +
+                                    '<p class="text-sm font-semibold text-gray-800">' + n.title + '</p>' +
+                                    '<p class="text-xs text-gray-500 leading-snug mt-0.5">' + n.message + '</p>' +
+                                    '<p class="text-[10px] text-gray-400 mt-1">' + formatTime(n.time) + '</p>' +
+                                '</div>' +
+                                (n.read ? '' : '<span class="w-2 h-2 bg-red-500 rounded-full mt-1 flex-shrink-0"></span>') +
+                            '</div>'
+                        );
+                    }).join('');
+                }
+
+                var unreadCount = list.filter(function (n) { return !n.read; }).length;
+                if (badgeEl) badgeEl.classList.toggle('hidden', unreadCount === 0);
+            }
+
+            function markAllRead() {
+                var list = loadNotifications().map(function (n) {
+                    n.read = true;
+                    return n;
+                });
+                saveNotifications(list);
+                renderNotifications();
+            }
+
+            function checkOrderStatus() {
+                var status = null;
+                try { status = localStorage.getItem(STATUS_KEY); } catch (e) {}
+                if (!status) return;
+
+                var lastNotified = null;
+                try { lastNotified = localStorage.getItem(LAST_NOTIFIED_KEY); } catch (e) {}
+
+                if (status !== lastNotified && STATUS_MESSAGES[status]) {
+                    var msg = STATUS_MESSAGES[status];
+                    addNotification(msg.title, msg.message);
+                    try { localStorage.setItem(LAST_NOTIFIED_KEY, status); } catch (e) {}
+                }
+            }
+
+            // Toggle panel saat lonceng diklik
+            var bellBtn = document.getElementById('notifBellBtn');
+            var panel = document.getElementById('notifPanel');
+            if (bellBtn && panel) {
+                bellBtn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    panel.classList.toggle('hidden');
+                });
+                document.addEventListener('click', function (e) {
+                    if (!panel.contains(e.target) && !bellBtn.contains(e.target)) {
+                        panel.classList.add('hidden');
+                    }
+                });
+            }
+
+            var markAllBtn = document.getElementById('notifMarkAllBtn');
+            if (markAllBtn) {
+                markAllBtn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    markAllRead();
+                });
+            }
+
+            checkOrderStatus();
+            renderNotifications();
+
+            // Cek ulang tiap kali tab ini aktif kembali (mis. status diupdate dari halaman/tab lain)
+            window.addEventListener('focus', function () {
+                checkOrderStatus();
+                renderNotifications();
+            });
+        })();
+    </script>
+    </body></html>
