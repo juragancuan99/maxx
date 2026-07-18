@@ -1,4 +1,4 @@
-<html lang="id"><head>
+<html lang="id" style="background: transparent;"><head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -89,24 +89,11 @@
     }
   </style>
 
-
 </head>
 
 <body class="overflow-hidden flex items-center justify-center" style="background:transparent;min-height:100dvh;">
 
-<div id="screen-splash2" class="fixed inset-0 z-[9999] flex flex-col justify-between items-center bg-[#00a6a6] transition-opacity duration-500">
-    <div class="absolute top-0 left-0 w-72 h-72 bg-white/20 rounded-full mix-blend-overlay filter blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
-    <div class="absolute bottom-0 right-0 w-96 h-96 bg-orange-500/10 rounded-full mix-blend-overlay filter blur-3xl translate-x-1/3 translate-y-1/3"></div>
 
-    <div class="flex-1 flex flex-col justify-center items-center w-full px-8">
-        <div class="relative mb-[3.5rem]">
-            <div class="absolute inset-0 bg-white/30 rounded-full animate-ping opacity-75"></div>
-            <div class="relative w-[23rem] h-[11rem] flex items-center justify-center">
-                <img src="images/logo-screan1.png" alt="Batik Shirt" class="w-full h-full object-cover">
-            </div>
-        </div>
-    </div>
-</div>
 
 
    
@@ -178,7 +165,7 @@
                                 <span class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-800">78.595.568,60</span>
                             </div>
                         </div>
-                        <a href="#" onClick="openModal(); return false;" class="group w-14 h-14 flex items-center justify-center bg-slate-50 border-2 border-slate-100 rounded-full shadow-inner hover:bg-teal-500 hover:border-teal-500 transition-all duration-300">
+                        <a href="#" onclick="openModal(); return false;" class="group w-14 h-14 flex items-center justify-center bg-slate-50 border-2 border-slate-100 rounded-full shadow-inner hover:bg-teal-500 hover:border-teal-500 transition-all duration-300">
         <div class="text-center">
           <span class="text-[0.6rem] font-black uppercase text-slate-400 group-hover:text-white leading-none block">Info</span>
           <span class="text-[0.5rem] font-bold text-slate-600 group-hover:text-white leading-none">M-Poin</span>
@@ -237,80 +224,101 @@
             </div>
 
             <div class="bg-white py-4 px-4">
-                <div class="grid grid-cols-4 gap-y-6 gap-x-2">
-                    <div class="flex flex-col items-center gap-2 cursor-pointer group">
-                        <a href="misireward.html" class="group block">
-    <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center text-[#FF5722] group-hover:bg-[#FF5722] group-hover:text-white transition-colors">
-        <i class="fa-solid fa-list-check text-lg"></i>
-    </div>
-</a>
-                        <span class="text-xs text-gray-600 font-medium text-center">Misi Reward</span>
-                    </div>
-                    <div class="flex flex-col items-center gap-2 cursor-pointer group">
-                        <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center text-[#FF5722] group-hover:bg-[#FF5722] group-hover:text-white transition-colors">
-                            <i class="fa-solid fa-store text-lg"></i>
-                        </div>
-                        <span class="text-xs text-gray-600 font-medium text-center">Brands</span>
-                    </div>
-                    <div class="flex flex-col items-center gap-2 cursor-pointer group">
-                        <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center text-[#FF5722] group-hover:bg-[#FF5722] group-hover:text-white transition-colors">
-                            <i class="fa-solid fa-bolt text-lg"></i>
-                        </div>
-                        <span class="text-xs text-gray-600 font-medium text-center">Flash Sale 9.9</span>
-                    </div>
-                    <div class="flex flex-col items-center gap-2 cursor-pointer group">
-                        <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center text-[#FF5722] group-hover:bg-[#FF5722] group-hover:text-white transition-colors">
-                            <i class="fa-solid fa-star text-lg"></i>
-                        </div>
-                        <span class="text-xs text-gray-600 font-medium text-center">List Daftar Sultan</span>
-                    </div>
-                    <div class="flex flex-col items-center gap-2 cursor-pointer group">
-                        <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center text-[#FF5722] group-hover:bg-[#FF5722] group-hover:text-white transition-colors">
-                            <i class="fa-solid fa-users text-lg"></i>
-                        </div>
-                        <span class="text-xs text-gray-600 font-medium text-center">Team</span>
-                    </div>
-                    <div class="flex flex-col items-center gap-2 cursor-pointer group">
-                        <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center text-[#FF5722] group-hover:bg-[#FF5722] group-hover:text-white transition-colors">
-                            <i class="fa-solid fa-shopping-bag text-lg"></i>
-                        </div>
-                        <span class="text-xs text-gray-600 font-medium text-center">R.O Pribadi</span>
-                    </div>
-                    <div class="flex flex-col items-center gap-2 cursor-pointer group">
-                        <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center text-[#FF5722] group-hover:bg-[#FF5722] group-hover:text-white transition-colors">
-                            <i class="fa-solid fa-ticket text-lg"></i>
-                        </div>
-                        <span class="text-xs text-gray-600 font-medium text-center">Kupon Undian</span>
-                    </div>
-                    <div class="flex flex-col items-center gap-2 cursor-pointer group">
-                        <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center text-[#FF5722] group-hover:bg-[#FF5722] group-hover:text-white transition-colors">
-                            <i class="fa-solid fa-user text-lg"></i>
-                        </div>
-                        <span class="text-xs text-gray-600 font-medium text-center">Undang Teman</span>
-                    </div>
-                </div>
+    <div class="grid grid-cols-4 gap-y-6 gap-x-2">
+        
+        <!-- Misi Reward -->
+        <a href="misireward.html" class="flex flex-col items-center gap-2 cursor-pointer group">
+            <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center text-[#FF5722] group-hover:bg-[#FF5722] group-hover:text-white transition-colors">
+                <i class="fa-solid fa-list-check text-lg"></i>
             </div>
+            <span class="text-xs text-gray-600 font-medium text-center">Misi Reward</span>
+        </a>
+
+        <!-- Brands -->
+        <a href="brands.html" class="flex flex-col items-center gap-2 cursor-pointer group">
+            <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center text-[#FF5722] group-hover:bg-[#FF5722] group-hover:text-white transition-colors">
+                <i class="fa-solid fa-store text-lg"></i>
+            </div>
+            <span class="text-xs text-gray-600 font-medium text-center">Brands</span>
+        </a>
+
+        <!-- Flash Sale 9.9 -->
+        <a href="info-flashsale.html" class="flex flex-col items-center gap-2 cursor-pointer group">
+            <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center text-[#FF5722] group-hover:bg-[#FF5722] group-hover:text-white transition-colors">
+                <i class="fa-solid fa-bolt text-lg"></i>
+            </div>
+            <span class="text-xs text-gray-600 font-medium text-center">Flash Sale 9.9</span>
+        </a>
+
+        <!-- List Daftar Sultan -->
+        <a href="daftarsultan.html" class="flex flex-col items-center gap-2 cursor-pointer group">
+            <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center text-[#FF5722] group-hover:bg-[#FF5722] group-hover:text-white transition-colors">
+                <i class="fa-solid fa-star text-lg"></i>
+            </div>
+            <span class="text-xs text-gray-600 font-medium text-center">List Daftar Sultan</span>
+        </a>
+
+        <!-- Team -->
+        <a href="team.html" class="flex flex-col items-center gap-2 cursor-pointer group">
+            <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center text-[#FF5722] group-hover:bg-[#FF5722] group-hover:text-white transition-colors">
+                <i class="fa-solid fa-users text-lg"></i>
+            </div>
+            <span class="text-xs text-gray-600 font-medium text-center">Team</span>
+        </a>
+
+        <!-- R.O Pribadi -->
+        <a href="ro.html" class="flex flex-col items-center gap-2 cursor-pointer group">
+            <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center text-[#FF5722] group-hover:bg-[#FF5722] group-hover:text-white transition-colors">
+                <i class="fa-solid fa-shopping-bag text-lg"></i>
+            </div>
+            <span class="text-xs text-gray-600 font-medium text-center">R.O Team</span>
+        </a>
+
+        <!-- Kupon Undian -->
+        <a href="kupon.html" class="flex flex-col items-center gap-2 cursor-pointer group">
+            <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center text-[#FF5722] group-hover:bg-[#FF5722] group-hover:text-white transition-colors">
+                <i class="fa-solid fa-ticket text-lg"></i>
+            </div>
+            <span class="text-xs text-gray-600 font-medium text-center">Kupon Undian</span>
+        </a>
+
+        <!-- Undang Teman -->
+        <a href="invite-teman-akun-free.html" class="flex flex-col items-center gap-2 cursor-pointer group">
+
+<!-- Sesuaikan file html itu jika akun sudah upgrade ke agent atau partner maka ubah menjadi : invite-teman-akun-premium.html -->
+            <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center text-[#FF5722] group-hover:bg-[#FF5722] group-hover:text-white transition-colors">
+                <i class="fa-solid fa-user text-lg"></i>
+            </div>
+            <span class="text-xs text-gray-600 font-medium text-center">Undang Teman</span>
+        </a>
+
+    </div>
+</div>
 
             <div class="px-5 mb-[0rem] mt-[1rem] relative select-none">
                 <div id="carousel-container" class="flex overflow-x-hidden rounded-[0.5rem] relative w-full h-[8rem] shadow-md touch-pan-y cursor-grab active:cursor-grabbing bg-transparent">
-                    <div class="carousel-slide flex-shrink-0 w-full h-full active:scale-95" style="transform: translateX(-300%); position: absolute; top: 0px; width: 100%; height: 100%; transition: transform 0.5s ease-in-out;">
-                        <img src="images/banner-beranda2.png" class="w-full h-full object-cover" draggable="false">
-                    </div><div class="carousel-slide flex-shrink-0 w-full h-full active:scale-95" style="transform: translateX(-200%); position: absolute; top: 0px; width: 100%; height: 100%; transition: transform 0.5s ease-in-out;">
+                    <div class="carousel-slide flex-shrink-0 w-full h-full active:scale-95" style="transform: translateX(-700%); position: absolute; top: 0px; width: 100%; height: 100%; transition: transform 0.5s ease-in-out;">
                         <img src="images/banner-beranda1.png" class="w-full h-full object-cover" draggable="false">
-                    </div><div class="carousel-slide flex-shrink-0 w-full h-full active:scale-95" style="transform: translateX(-100%); position: absolute; top: 0px; width: 100%; height: 100%; transition: transform 0.5s ease-in-out;">
+                    </div><div class="carousel-slide flex-shrink-0 w-full h-full active:scale-95" style="transform: translateX(-600%); position: absolute; top: 0px; width: 100%; height: 100%; transition: transform 0.5s ease-in-out;">
                         <img src="images/banner-beranda2.png" class="w-full h-full object-cover" draggable="false">
+                    </div><div class="carousel-slide flex-shrink-0 w-full h-full active:scale-95" style="transform: translateX(-500%); position: absolute; top: 0px; width: 100%; height: 100%; transition: transform 0.5s ease-in-out;">
+                        <img src="images/banner-beranda1.png" class="w-full h-full object-cover" draggable="false">
+                    </div><div class="carousel-slide flex-shrink-0 w-full h-full active:scale-95" style="transform: translateX(-400%); position: absolute; top: 0px; width: 100%; height: 100%; transition: transform 0.5s ease-in-out;">
+                        <img src="images/banner-beranda2.png" class="w-full h-full object-cover" draggable="false">
+                    </div><div class="carousel-slide flex-shrink-0 w-full h-full active:scale-95" style="transform: translateX(-300%); position: absolute; top: 0px; width: 100%; height: 100%; transition: transform 0.5s ease-in-out;">
+                        <img src="images/banner-beranda1.png" class="w-full h-full object-cover" draggable="false">
+                    </div>
+                    <div class="carousel-slide flex-shrink-0 w-full h-full active:scale-95" style="transform: translateX(-200%); position: absolute; top: 0px; width: 100%; height: 100%; transition: transform 0.5s ease-in-out;">
+                        <img src="images/banner-beranda2.png" class="w-full h-full object-cover" draggable="false">
+                    </div>
+                <div class="carousel-slide flex-shrink-0 w-full h-full active:scale-95" style="transform: translateX(-100%); position: absolute; top: 0px; width: 100%; height: 100%; transition: transform 0.5s ease-in-out;">
+                        <img src="images/banner-beranda1.png" class="w-full h-full object-cover" draggable="false">
                     </div><div class="carousel-slide flex-shrink-0 w-full h-full active:scale-95" style="transform: translateX(0%); position: absolute; top: 0px; width: 100%; height: 100%; transition: transform 0.5s ease-in-out;">
-                        <img src="images/banner-beranda1.png" class="w-full h-full object-cover" draggable="false">
-                    </div>
-                    <div class="carousel-slide flex-shrink-0 w-full h-full active:scale-95" style="transform: translateX(100%); position: absolute; top: 0px; width: 100%; height: 100%; transition: transform 0.5s ease-in-out;">
                         <img src="images/banner-beranda2.png" class="w-full h-full object-cover" draggable="false">
-                    </div>
-                <div class="carousel-slide flex-shrink-0 w-full h-full active:scale-95" style="transform: translateX(200%); position: absolute; top: 0px; width: 100%; height: 100%; transition: transform 0.5s ease-in-out;">
+                    </div><div class="carousel-slide flex-shrink-0 w-full h-full active:scale-95" style="transform: translateX(100%); position: absolute; top: 0px; width: 100%; height: 100%; transition: transform 0.5s ease-in-out;">
                         <img src="images/banner-beranda1.png" class="w-full h-full object-cover" draggable="false">
-                    </div><div class="carousel-slide flex-shrink-0 w-full h-full active:scale-95" style="transform: translateX(300%); position: absolute; top: 0px; width: 100%; height: 100%; transition: transform 0.5s ease-in-out;">
+                    </div><div class="carousel-slide flex-shrink-0 w-full h-full active:scale-95" style="transform: translateX(200%); position: absolute; top: 0px; width: 100%; height: 100%; transition: transform 0.5s ease-in-out;">
                         <img src="images/banner-beranda2.png" class="w-full h-full object-cover" draggable="false">
-                    </div><div class="carousel-slide flex-shrink-0 w-full h-full active:scale-95" style="transform: translateX(400%); position: absolute; top: 0px; width: 100%; height: 100%; transition: transform 0.5s ease-in-out;">
-                        <img src="images/banner-beranda1.png" class="w-full h-full object-cover" draggable="false">
                     </div></div>
 
                 <div class="flex justify-center gap-1.5 mt-2">
@@ -578,13 +586,13 @@
         </main>
 
        <div class="fixed bottom-0 left-0 right-0 mx-auto w-full max-w-[430px] bg-white border-t border-gray-100 px-6 py-[0.5rem] flex justify-between items-end z-40 shadow-lg" style="padding-bottom:max(env(safe-area-inset-bottom),12px);">
-    <a id="nav-beranda" href="index.html" class="flex flex-col items-center gap-0 text-gray-500 hover:text-[#00a6a6] transition-colors no-underline">
+    <a id="nav-beranda" href="index.html" class="flex flex-col items-center gap-0 hover:text-[#00a6a6] transition-colors no-underline text-[#00a6a6]">
         <i class="fa-solid fa-house text-xl mb-[-0.1rem]"></i>
-        <span class="text-[10px] font-medium">Beranda</span>
+        <span class="text-[10px] font-medium font-bold">Beranda</span>
     </a>
-     <a id="nav-misi" href="misireward.html" class="flex flex-col items-center gap-0 hover:text-[#00a6a6] transition-colors no-underline text-[#00a6a6]">
+     <a id="nav-misi" href="misireward.html" class="flex flex-col items-center gap-0 hover:text-[#00a6a6] transition-colors no-underline text-gray-500">
         <i class="fa-solid fa-gift text-xl mb-[-0.1rem]"></i>
-        <span class="text-[10px] font-medium font-bold">Misi Reward</span>
+        <span class="text-[10px] font-medium">Misi Reward</span>
     </a>
     <a id="nav-team" href="team.html" class="flex flex-col items-center gap-0 text-gray-500 hover:text-[#00a6a6] transition-colors no-underline">
         <i class="fa-solid fa-users text-xl mb-[-0.1rem]"></i>
@@ -594,9 +602,10 @@
         <i class="fa-solid fa-wallet text-xl mb-[-0.1rem]"></i>
         <span class="text-[10px] font-medium">Pendapatan</span>
     </a>
-    <a id="nav-saya" href="saya.html" class="flex flex-col items-center gap-0 text-gray-500 hover:text-[#00a6a6] transition-colors no-underline">
+    <a id="nav-saya" href="saya-free.html" class="flex flex-col items-center gap-0 text-gray-500 hover:text-[#00a6a6] transition-colors no-underline">
+<!-- arahkan link tersebut jika akun sudah status agent atau status partner maka disesuaikan dengan file html saya-agent.html atau saya-partner.html -->
         <i class="fa-solid fa-user text-xl mb-[-0.1rem]"></i>
-        <span class="text-[10px] font-bold">Saya</span>
+        <span class="text-[10px]">Saya</span>
     </a>
 	
 	
@@ -608,7 +617,7 @@
           <div class="absolute top-0 left-0 w-full h-48 bg-gradient-to-b from-transparent to-transparent -z-10"></div>
           <div class="absolute -top-10 left-1/2 transform -translate-x-1/2 w-64 h-64 bg-[#00000099] rounded-full blur-3xl -z-10"></div>
 
-          <button onClick="closeModal()" class="absolute top-4 right-4 text-orange-300 hover:text-white transition-colors w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10 cursor-pointer">
+          <button onclick="closeModal()" class="absolute top-4 right-4 text-orange-300 hover:text-white transition-colors w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10 cursor-pointer">
             <i class="fa-solid fa-xmark text-lg"></i>
           </button>
 
@@ -616,7 +625,7 @@
           <p class="text-gray-100 text-sm leading-relaxed mb-6 px-[0rem]"><span class="font-semibold text-yellow-200"> Maxi Poin </span>adalah program loyalitas dan penghargaan (reward system) dalam ekosistem MAXI yang dirancang berbasis komunitas gotong-royong. Di sistem ini, kesuksesan mendapatkan reward tidak hanya bergantung pada transaksi individu, melainkan didorong oleh pertumbuhan dan aktivitas seluruh pengguna MAXI secara nasional.</p>
 
           <a href="maxipoin-info.html" class="w-full block">
-            <button onClick="closeModal()" class="w-full bg-[#b7993e] hover:bg-[#a38531] text-white font-bold py-4 rounded-xl shadow-lg transition-all transform active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer">
+            <button onclick="closeModal()" class="w-full bg-[#b7993e] hover:bg-[#a38531] text-white font-bold py-4 rounded-xl shadow-lg transition-all transform active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer">
                 <span>Detail Maxipoin</span>
             </button>
           </a>
@@ -875,6 +884,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.onload = setActiveMenu;
 </script>
+
 
 
 </body></html>
