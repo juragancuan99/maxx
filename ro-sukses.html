@@ -96,7 +96,7 @@
         <div class="flex-1">
           <div class="flex justify-between items-start">
             <div>
-              <span class="text-[10px] font-bold text-white bg-[#021c8a] px-2 py-0.5 rounded-full mb-1 inline-block">Bio Ocean Salt</span>
+              <span class="text-[10px] font-bold text-white bg-[#aba009] px-2 py-0.5 rounded-full mb-1 inline-block">Bio Ocean Salt</span>
               <h3 class="text-sm font-bold text-gray-800 leading-tight">Peeling Spray</h3>
             </div>
             <p class="text-sm font-bold text-gray-800">Rp.200.000</p>
@@ -114,7 +114,7 @@
         <div class="flex-1">
           <div class="flex justify-between items-start">
             <div>
-              <span class="text-[10px] font-bold text-white bg-[#ff2f2f] px-2 py-0.5 rounded-full mb-1 inline-block">Limugreen Healthy Drink</span>
+              <span class="text-[10px] font-bold text-white bg-[#aba009] px-2 py-0.5 rounded-full mb-1 inline-block">Limugreen Healthy Drink</span>
               <h3 class="text-sm font-bold text-gray-800 leading-tight">Imun Booster Nutrition</h3>
             </div>
             <p class="text-sm font-bold text-gray-800">Rp.200.000</p>
@@ -210,14 +210,14 @@
             // Daftar item produk (dibangun ulang sesuai data invoice)
             var listEl = document.getElementById('sukItemsList');
             if (listEl && Array.isArray(data.items) && data.items.length) {
-                var palette = ['#021c8a', '#ff2f2f', '#00a6a6', '#7c3aed', '#ea580c'];
+                var palette = ['#aba009', '#aba009', '#00a6a6', '#7c3aed', '#ea580c'];
                 var html = '';
                 data.items.forEach(function (it, idx) {
                     var color = palette[idx % palette.length];
                     html +=
                         '<div class="flex gap-4 py-4 border-t border-gray-100">' +
                             '<div class="w-[3rem] h-[3rem] bg-gray-100 rounded-xl overflow-hidden flex-shrink-0 relative flex items-center justify-center">' +
-                                '<i class="fas fa-box text-gray-400"></i>' +
+                                '<i class="fas fa-shopping-basket text-gray-400"></i>' +
                             '</div>' +
                             '<div class="flex-1">' +
                                 '<div class="flex justify-between items-start">' +
