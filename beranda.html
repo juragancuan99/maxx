@@ -309,27 +309,9 @@
 
             <div class="px-5 mb-[0rem] mt-[1rem] relative select-none">
                 <div id="carousel-container" class="flex overflow-x-hidden rounded-[0.5rem] relative w-full h-[8rem] shadow-md touch-pan-y cursor-grab active:cursor-grabbing bg-transparent">
-                    <div class="carousel-slide flex-shrink-0 w-full h-full active:scale-95" style="transform: translateX(-700%); position: absolute; top: 0px; width: 100%; height: 100%; transition: transform 0.5s ease-in-out;">
+                    <div class="carousel-slide flex-shrink-0 w-full h-full active:scale-95" style="transform: translateX(0%); position: absolute; top: 0px; width: 100%; height: 100%; transition: transform 0.5s ease-in-out;">
                         <img src="images/banner-beranda1.png" class="w-full h-full object-cover" draggable="false">
-                    </div><div class="carousel-slide flex-shrink-0 w-full h-full active:scale-95" style="transform: translateX(-600%); position: absolute; top: 0px; width: 100%; height: 100%; transition: transform 0.5s ease-in-out;">
-                        <img src="images/banner-beranda2.png" class="w-full h-full object-cover" draggable="false">
-                    </div><div class="carousel-slide flex-shrink-0 w-full h-full active:scale-95" style="transform: translateX(-500%); position: absolute; top: 0px; width: 100%; height: 100%; transition: transform 0.5s ease-in-out;">
-                        <img src="images/banner-beranda1.png" class="w-full h-full object-cover" draggable="false">
-                    </div><div class="carousel-slide flex-shrink-0 w-full h-full active:scale-95" style="transform: translateX(-400%); position: absolute; top: 0px; width: 100%; height: 100%; transition: transform 0.5s ease-in-out;">
-                        <img src="images/banner-beranda2.png" class="w-full h-full object-cover" draggable="false">
-                    </div><div class="carousel-slide flex-shrink-0 w-full h-full active:scale-95" style="transform: translateX(-300%); position: absolute; top: 0px; width: 100%; height: 100%; transition: transform 0.5s ease-in-out;">
-                        <img src="images/banner-beranda1.png" class="w-full h-full object-cover" draggable="false">
-                    </div>
-                    <div class="carousel-slide flex-shrink-0 w-full h-full active:scale-95" style="transform: translateX(-200%); position: absolute; top: 0px; width: 100%; height: 100%; transition: transform 0.5s ease-in-out;">
-                        <img src="images/banner-beranda2.png" class="w-full h-full object-cover" draggable="false">
-                    </div>
-                <div class="carousel-slide flex-shrink-0 w-full h-full active:scale-95" style="transform: translateX(-100%); position: absolute; top: 0px; width: 100%; height: 100%; transition: transform 0.5s ease-in-out;">
-                        <img src="images/banner-beranda1.png" class="w-full h-full object-cover" draggable="false">
-                    </div><div class="carousel-slide flex-shrink-0 w-full h-full active:scale-95" style="transform: translateX(0%); position: absolute; top: 0px; width: 100%; height: 100%; transition: transform 0.5s ease-in-out;">
-                        <img src="images/banner-beranda2.png" class="w-full h-full object-cover" draggable="false">
                     </div><div class="carousel-slide flex-shrink-0 w-full h-full active:scale-95" style="transform: translateX(100%); position: absolute; top: 0px; width: 100%; height: 100%; transition: transform 0.5s ease-in-out;">
-                        <img src="images/banner-beranda1.png" class="w-full h-full object-cover" draggable="false">
-                    </div><div class="carousel-slide flex-shrink-0 w-full h-full active:scale-95" style="transform: translateX(200%); position: absolute; top: 0px; width: 100%; height: 100%; transition: transform 0.5s ease-in-out;">
                         <img src="images/banner-beranda2.png" class="w-full h-full object-cover" draggable="false">
                     </div></div>
 
@@ -777,9 +759,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         dots.forEach((dot, idx) => {
             if (idx === activeDotIndex) {
-                dot.classList.replace('bg-transparent', 'bg-cyan-500');
+                dot.style.backgroundColor = '#00a6a6';
+                dot.style.borderColor = '#00a6a6';
             } else {
-                dot.classList.replace('bg-cyan-500', 'bg-transparent');
+                dot.style.backgroundColor = 'transparent';
+                dot.style.borderColor = '';
             }
         });
     }
