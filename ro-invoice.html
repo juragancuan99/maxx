@@ -149,12 +149,12 @@
 
         <!-- Action Buttons -->
         <div class="w-full mt-8 space-y-3">
-            <button id="bayarSekarangBtn" onclick="openPayModal()" class="w-full bg-[#00a6a6] hover:bg-[#00a6a6] text-white font-semibold py-4 rounded-xl shadow-lg shadow-blue-200 transition duration-200 flex items-center justify-center gap-2 active:scale-[0.98] transition-all duration-200">
+            <button id="bayarSekarangBtn" onClick="openPayModal()" class="w-full bg-[#00a6a6] hover:bg-[#00a6a6] text-white font-semibold py-4 rounded-xl shadow-lg shadow-blue-200 transition duration-200 flex items-center justify-center gap-2 active:scale-[0.98] transition-all duration-200">
                 <span>Bayar Sekarang</span>
                 
             </button>
             
-            <button class="w-full bg-gray-300 border border-gray-200 text-gray-700 font-semibold py-4 rounded-xl hover:bg-gray-75 transition duration-200 flex items-center justify-center gap-2">
+            <button onclick="history.back()" class="w-full bg-gray-300 border border-gray-200 text-gray-700 font-semibold py-4 rounded-xl hover:bg-gray-75 transition duration-200 flex items-center justify-center gap-2">
                 <!-- <i class="fa-solid fa-download"></i> -->
                 <span>Cancel</span>
             </button>
@@ -165,7 +165,7 @@
 
     <!-- Modal: Konfirmasi Bayar -->
     <div id="payModal" class="fixed inset-0 z-50 hidden">
-        <div class="absolute inset-0 bg-black/40" onclick="closePayModal()"></div>
+        <div class="absolute inset-0 bg-black/40" onClick="closePayModal()"></div>
 
         <div class="fixed bottom-0 left-0 right-0 bg-white rounded-t-[0.5rem] z-50 h-[39%] flex flex-col shadow-[0_-10px_60px_-15px_rgba(0,0,0,0.3)] animate-slide-up">
 
@@ -202,7 +202,7 @@
 
             <!-- Footer Action -->
             <div class="absolute bottom-0 left-0 right-0 p-[1rem] bg-white border-t border-gray-100">
-                <button id="payModalConfirmBtn" onclick="confirmPayment()" class="w-full bg-[#ff371b] text-white font-semibold text-lg py-[0.7rem] rounded-[2rem] shadow-lg shadow-indigo-200 active:scale-[0.98] transition-transform flex items-center justify-center space-x-2">
+                <button id="payModalConfirmBtn" onClick="confirmPayment()" class="w-full bg-[#ff371b] text-white font-semibold text-lg py-[0.7rem] rounded-[2rem] shadow-lg shadow-indigo-200 active:scale-[0.98] transition-transform flex items-center justify-center space-x-2">
                     <span>Bayar</span>
                 </button>
             </div>
