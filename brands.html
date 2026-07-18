@@ -9,50 +9,231 @@
         ::-webkit-scrollbar { display: none; }
     </style>
 
+
 </head>
 <body class="h-screen w-screen overflow-hidden bg-white">
-          <div class="w-full h-full bg-gray-50 overflow-y-auto relative font-['Inter'] text-slate-800 pb-[1rem]">
+          <div class="w-full h-full bg-gray-50 overflow-y-auto relative font-sans text-gray-800 pb-24">
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Hero Image Section -->
-    <div class="relative w-full h-[9rem]">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Xiaomi_logo.svg/960px-Xiaomi_logo.svg.png" alt="Product Image" class="w-full h-full object-cover">
+    <!-- Custom Scrollbar Hide Style -->
+    <style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+
+    <!-- Header -->
+           
         
-        <!-- Top Navigation Overlay -->
-        <div class="absolute top-0 left-[-18px] w-full p-6 flex justify-between items-center z-10 pt-[1rem]">
-            <button onclick="history.back()" class="w-10 h-10 bg-gray-700/25 backdrop-blur-sm rounded-full flex items-center justify-center shadow-md active:scale-95 transition-transform">
-                <i class="fa-solid fa-arrow-left text-gray-100"></i>
-            </button>
+        <header class="bg-white px-4 py-[1.5rem] sticky top-0 z-30 shadow-sm flex items-center justify-between">
+        <div class="flex items-center gap-3">
+            
+            <div class="flex flex-col">
+                <h1 class="text-lg font-bold text-slate-900 leading-none">Brands</h1>
+                
+            </div>
+        </div>
+        
+    </header>
+    
+
+    <!-- Main Content -->
+    <main class="flex flex-col gap-2">
+        
+        <!-- Hero Carousel -->
+        <div class="w-full overflow-x-auto no-scrollbar snap-x snap-mandatory flex gap-4 px-4 pt-4 pb-2">
+            <!-- Banner 1 -->
+            
+            <!-- Banner 2 -->
             
         </div>
 
-        <!-- Gradient Overlay for text readability if needed, though card covers it -->
-        <div class="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-black/30 to-transparent"></div>
+        <!-- Categories Grid -->
+        <div class="px-4 mt-[-1rem]">
+        <div class="bg-yellow-50 border border-[#FFD700]/30 rounded-lg p-3 flex items-center gap-3 shadow-sm">
+            <div class="w-8 h-8 rounded-full bg-[#FFD700]/20 flex items-center justify-center flex-shrink-0">
+                <i class="fa-solid fa-bullhorn text-yellow-700 text-sm"></i>
+            </div>
+            <p class="text-sm text-slate-700 font-medium leading-snug">Dapatkan Cashback Dari Setiap Transaksi Anda Sekarang.!</p>
+        </div>
+    </div><!-- Categories Grid --><div class="mb-8">
+        <div class="flex justify-between items-center px-6 mb-4">
+            <h3 class="text-lg font-bold text-gray-800">Hot Selling Brands</h3>
+            <!-- <button class="text-[#6C5CE7] text-sm font-semibold">See All</button>-->
+        </div>
+
+        <div class="flex overflow-x-auto px-[0.5rem] pb-4 gap-4 scrollbar-hide" style="-ms-overflow-style: none; scrollbar-width: none;">
+            <!-- Store 1 -->
+            
+
+            <!-- Store 2 -->
+            <a href="brands1.html" class="block w-28 no-underline">
+  <div class="flex-shrink-0 w-full bg-white p-3 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center gap-2 active:scale-95 transition-transform">
+    <div class="w-20 h-20 rounded-xl bg-gray-100 overflow-hidden flex-shrink-0">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPZrnskv3RP956FMe37Nwd49FXpJpbnnbn4w&amp;s" alt="Shoes" class="w-full h-full object-cover">
     </div>
+    <div class="text-center">
+      <p class="font-bold text-gray-600 text-[0.7rem]">Cashback s/d</p>
+      <span class="text-xs text-[#6C5CE7] font-bold bg-indigo-50 px-2 py-0.5 rounded-md mt-1 inline-block">3%</span>
+    </div>
+  </div>
+</a>
 
-    <!-- Main Content Card -->
-    <div class="relative -mt-10 z-10 bg-white rounded-t-[1rem] px-[0.5rem] pt-8 pb-[-5rem] shadow-sm min-h-[500px]">
-        
-        <!-- Drag Handle (Visual cue) -->
-        
+            <a href="brands2.html" class="block w-28 no-underline">
+  <div class="flex-shrink-0 w-full bg-white p-3 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center gap-2 active:scale-95 transition-transform">
+    <div class="w-20 h-20 rounded-xl bg-gray-100 overflow-hidden flex-shrink-0">
+      <img src="https://down-id.img.susercontent.com/file/438821368e8739191ff5195fae3aa263" alt="Shoes" class="w-full h-full object-cover">
+    </div>
+    <div class="text-center">
+      <p class="font-bold text-gray-600 text-[0.7rem]">Cashback s/d</p>
+      <span class="text-xs text-[#6C5CE7] font-bold bg-indigo-50 px-2 py-0.5 rounded-md mt-1 inline-block">8.3%</span>
+    </div>
+  </div>
+</a><div class="flex-shrink-0 w-28 bg-white p-3 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center gap-2 active:scale-95 transition-transform">
+                <div class="w-20 h-20 rounded-xl bg-gray-100 overflow-hidden flex-shrink-0">
+                    <img src="https://storage.googleapis.com/bosshire-public/job-portal/companies/image/a772b0bb-ec40-4c00-9d55-25e968a24a75-Logo%20Midea%201080x1080-01.jpg" alt="Shoes" class="w-full h-full object-cover">
+                </div>
+                <div class="text-center">
+                    <p class="font-bold text-gray-600 text-[0.7rem]">Cashback s/d</p>
+                    <span class="text-xs text-[#6C5CE7] font-bold bg-indigo-50 px-2 py-0.5 rounded-md mt-1 inline-block">2.5%</span>
+                </div>
+            </div><!-- Store 3 -->
+            
 
-        <!-- Header Info -->
-        <div class="flex items-center gap-3 p-[0rem] mt-[-3rem] border-b border-gray-100">
-        
-        <div class="flex items-center gap-2">
-          <div class="w-[3.5rem] h-[3.8rem] flex-shrink-0 bg-gray-100 rounded-[1.5rem] overflow-hidden border border-gray-200">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Xiaomi_logo.svg/960px-Xiaomi_logo.svg.png" alt="Batik Shirt" class="w-full h-full object-cover">
+            <!-- Store 4 -->
+            
         </div>
-          <div class="mt-[1.3rem]">
-            <h3 class="text-[1rem] font-bold text-gray-900 line-clamp-2">Xiaomi Official Store</h3>
-            <p class="text-[0.7rem] text-gray-500 mt-[-0.1rem] px-[0rem] py-0.5 rounded">6 Produk</p>
-          </div>
+    <div class="flex overflow-x-auto px-[0.5rem] pb-4 gap-4 scrollbar-hide" style="-ms-overflow-style: none; scrollbar-width: none;">
+            <!-- Store 1 -->
+            
 
-          
+            <!-- Store 2 -->
+            
+
+            <div class="flex-shrink-0 w-28 bg-white p-3 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center gap-2 active:scale-95 transition-transform">
+                <div class="w-20 h-20 rounded-xl bg-gray-100 overflow-hidden flex-shrink-0">
+                    <img src="https://sg-test-11.slatic.net/other/shop/3ead534f2465403981af2c0a047c5a72.jpg" alt="Shoes" class="w-full h-full object-cover">
+                </div>
+                <div class="text-center">
+                    <p class="font-bold text-gray-600 text-[0.7rem]">Cashback s/d</p>
+                    <span class="text-xs text-[#6C5CE7] font-bold bg-indigo-50 px-2 py-0.5 rounded-md mt-1 inline-block">7.8%</span>
+                </div>
+            </div><div class="flex-shrink-0 w-28 bg-white p-3 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center gap-2 active:scale-95 transition-transform">
+                <div class="w-20 h-20 rounded-xl bg-gray-100 overflow-hidden flex-shrink-0">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Logo_kahf.png" alt="Shoes" class="w-full h-full object-cover">
+                </div>
+                <div class="text-center">
+                    <p class="font-bold text-gray-600 text-[0.7rem]">Cashback s/d</p>
+                    <span class="text-xs text-[#6C5CE7] font-bold bg-indigo-50 px-2 py-0.5 rounded-md mt-1 inline-block">7.8%</span>
+                </div>
+            </div><div class="flex-shrink-0 w-28 bg-white p-3 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center gap-2 active:scale-95 transition-transform">
+                <div class="w-20 h-20 rounded-xl bg-gray-100 overflow-hidden flex-shrink-0">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSm_gZPsebC_wyGxulNe94_8NtoElCxVBiXsQ&amp;s" alt="Shoes" class="w-full h-full object-cover">
+                </div>
+                <div class="text-center">
+                    <p class="font-bold text-gray-600 text-[0.7rem]">Cashback s/d</p>
+                    <span class="text-xs text-[#6C5CE7] font-bold bg-indigo-50 px-2 py-0.5 rounded-md mt-1 inline-block">1.9%</span>
+                </div>
+            </div><!-- Store 3 -->
+            
+
+            <!-- Store 4 -->
+            
+        </div></div>
+
+        <!-- Tiktok Section --><div class="mt-[-1rem] px-6 pb-28">
+        <h3 class="text-lg font-bold text-gray-900 mb-4">TikTok Hot Selling Brands</h3>
+        
+        <div class="grid grid-cols-2 gap-4">
+            <!-- Offer 1 -->
+            
+
+            <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center text-center active:scale-95 transition duration-200">
+                <div class="w-[8rem] h-20 rounded-xl bg-gray-100 overflow-hidden flex-shrink-0">
+                    <img src="https://images.glints.com/unsafe/glints-dashboard.oss-ap-southeast-1.aliyuncs.com/company-logo/9718809bbb594c32734596df33e96b8b.png" alt="Shoes" class="w-full h-full object-cover">
+                </div>
+                
+                
+                <div class="mt-[0.7rem] text-center">
+                    <p class="font-bold text-gray-600 text-[0.7rem]">Cashback s/d</p>
+                    <span class="text-xs text-[#6C5CE7] font-bold bg-indigo-50 px-2 py-0.5 rounded-md mt-1 inline-block">5.6%</span>
+                </div>
+            </div><div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center text-center active:scale-95 transition duration-200">
+                <div class="w-[8rem] h-20 rounded-xl bg-gray-100 overflow-hidden flex-shrink-0">
+                    <img src="https://awsimages.detik.net.id/community/media/visual/2019/02/13/e40a4cb2-83be-4d5e-afe8-90b22e089a4e.jpeg?w=1200" alt="Shoes" class="w-full h-full object-cover">
+                </div>
+                
+                
+                <div class="mt-[0.7rem] text-center">
+                    <p class="font-bold text-gray-600 text-[0.7rem]">Cashback s/d</p>
+                    <span class="text-xs text-[#6C5CE7] font-bold bg-indigo-50 px-2 py-0.5 rounded-md mt-1 inline-block">2.5%</span>
+                </div>
+            </div><div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center text-center active:scale-95 transition duration-200">
+                <div class="w-[8rem] h-20 rounded-xl bg-gray-100 overflow-hidden flex-shrink-0">
+                    <img src="https://static.vecteezy.com/system/resources/previews/021/496/381/non_2x/toshiba-logo-brand-computer-symbol-white-design-french-laptop-illustration-with-black-background-free-vector.jpg" alt="Shoes" class="w-full h-full object-cover">
+                </div>
+                
+                
+                <div class="mt-[0.7rem] text-center">
+                    <p class="font-bold text-gray-600 text-[0.7rem]">Cashback s/d</p>
+                    <span class="text-xs text-[#6C5CE7] font-bold bg-indigo-50 px-2 py-0.5 rounded-md mt-1 inline-block">5.6%</span>
+                </div>
+            </div><div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center text-center active:scale-95 transition duration-200">
+                <div class="w-[8rem] h-20 rounded-xl bg-gray-100 overflow-hidden flex-shrink-0">
+                    <img src="https://mms.img.susercontent.com/ab0141c0a4c4ec3d7558506d965b5415" alt="Shoes" class="w-full h-full object-cover">
+                </div>
+                
+                
+                <div class="mt-[0.7rem] text-center">
+                    <p class="font-bold text-gray-600 text-[0.7rem]">Cashback s/d</p>
+                    <span class="text-xs text-[#6C5CE7] font-bold bg-indigo-50 px-2 py-0.5 rounded-md mt-1 inline-block">3%</span>
+                </div>
+            </div><!-- Offer 2 -->
+            
+
+            <!-- Offer 3 -->
+            
+
+            <!-- Offer 4 -->
+            
         </div>
-      </div>
+    </div>
+        
 
-        <!-- Points Cost -->
-        <div class="mt-[1.5rem] bg-white p-[0rem] mb-2">
+        
+        <!-- Shopee Section --><div class="mt-[-5rem] px-6 pb-28">
+        <h3 class="text-lg font-bold text-gray-900 mb-4">Shopee Hot Selling Brands</h3>
+        
+        <div class="grid grid-cols-2 gap-4">
+            <!-- Offer 1 -->
+            <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center text-center active:scale-95 transition duration-200">
+                <div class="w-[8rem] h-20 rounded-xl bg-gray-100 overflow-hidden flex-shrink-0">
+                    <img src="https://1000logos.net/wp-content/uploads/2018/08/Huawei-Logo.png" alt="Shoes" class="w-full h-full object-cover">
+                </div>
+                
+                
+                <div class="mt-[0.7rem] text-center">
+                    <p class="font-bold text-gray-600 text-[0.7rem]">Cashback s/d </p>
+                    <span class="text-xs text-[#6C5CE7] font-bold bg-indigo-50 px-2 py-0.5 rounded-md mt-1 inline-block">1.28%</span>
+                </div>
+            </div>
+
+            <!-- Offer 2 -->
+            
+
+            <!-- Offer 3 -->
+            
+
+            <!-- Offer 4 -->
+            
+        </div>
+    </div><!-- Recommended For You --><div class="mt-[-5rem] px-4 pb-4">
+            <h3 class="text-lg font-bold text-gray-800 mb-3">Produk Ecommerce Lainya</h3>
             
             <div class="grid grid-cols-2 gap-3">
                 <!-- Product Card 1 -->
@@ -99,127 +280,11 @@
                 <!-- Product Card 3 -->
                 
 
-                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col active:scale-95 transition-transform">
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col active:scale-95 transition duration-200">
                     <div class="relative aspect-square bg-gray-100">
-                        <img src="https://down-id.img.susercontent.com/file/id-11134207-822wt-mlfvmkkmdj4115@resize_w450_nl.webp" class="w-full h-full object-cover">
+                        <img src="https://image2url.com/r2/default/images/1771865212727-f2786430-72ee-486f-a8be-e1ad937f3f1d.jpg" class="w-full h-full object-cover">
                         
-                    <div class="absolute top-0 right-0 bg-[#ff0000] text-white text-[8px] font-bold px-1.5 py-0.5 rounded-bl-lg">Subsidi</div></div>
-                    <div class="p-3 flex flex-col flex-1">
-                        <h4 class="text-[0.7rem] text-gray-700 line-clamp-2 mb-1">Xiaomi Redmi Note 15 (6/128 GB) (8/128 GB) (8/256 GB) | Baterai besar 6000mAh | Kaca layar dengan daya tahan tinggi | IP64 Ketahanan</h4>
-                        <div class="mt-auto">
-                            <div class="flex items-center gap-1 mb-1">
-                                <span class="bg-orange-600 text-[#FFFFFF] text-[10px] px-1 rounded">Shopee</span>
-                            </div>
-                            <!-- Decorative background circle --><div class="text-[12px] text-gray-600 mt-1">Rp4.526.135</div> <!-- Decorative background circle --><div class="relative overflow-hidden rounded-xl bg-gradient-to-r from-orange-50 to-white border border-[#FF5722]/30 shadow-sm p-{0rem]">
-            
-            
-            
-            <!-- Decorative background circle --><div class="flex items-center justify-between relative z-10">
-                <div class="flex items-center gap-[0.3rem]">
-                    <div class="w-[1.5rem] h-[1.5rem] rounded-full bg-[#FF5722] flex items-center justify-center shadow-md text-white">
-                        <img src="https://image2url.com/r2/default/images/1771864131973-69464962-d8b3-4c39-b093-1c30d8c676d0.jpg" alt="User" class="w-[1.5rem] h-[1.5rem] rounded-full border-2 border-white shadow-sm mx-3">
-                    </div>
-                    <div>
-                        <p class="text-[0.5rem] font-sm text-gray-700 tracking-wide">Est. Cashback</p>
-                        <p class="text-sm font-bold text-[#ff0000]">Rp358.568</p>
-                    </div>
-                </div>
-                
-            </div>
-            
-      </div>
-                            
-                        </div>
-                    </div>
-                </div><div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col active:scale-95 transition-transform">
-                    <div class="relative aspect-square bg-gray-100">
-                        <img class="w-full h-full object-cover" src="https://down-id.img.susercontent.com/file/id-11134207-8224q-mfulbadn88i2a0.webp">
-                        
-                    <div class="absolute top-0 right-0 bg-[#ff0000] text-white text-[8px] font-bold px-1.5 py-0.5 rounded-bl-lg">Subsidi</div></div>
-                    <div class="p-3 flex flex-col flex-1">
-                        <h4 class="text-[0.7rem] text-gray-700 line-clamp-2 mb-1">Xiaomi Redmi Watch 5 Lite | 1.96" AMOLED Display | Built-in GNSS | Baterai hingga 18 hari | 150+ mode olahraga [Official Store]</h4>
-                        <div class="mt-auto">
-                            <div class="flex items-center gap-1 mb-1">
-                                <span class="bg-orange-600 text-[#FFFFFF] text-[10px] px-1 rounded">Shopee</span>
-                            </div>
-                            <!-- Decorative background circle --><div class="text-[12px] text-gray-600 mt-1">Rp4.526.135</div> <!-- Decorative background circle --><div class="relative overflow-hidden rounded-xl bg-gradient-to-r from-orange-50 to-white border border-[#FF5722]/30 shadow-sm p-{0rem]">
-            
-            
-            
-            <!-- Decorative background circle --><div class="flex items-center justify-between relative z-10">
-                <div class="flex items-center gap-[0.3rem]">
-                    <div class="w-[1.5rem] h-[1.5rem] rounded-full bg-[#FF5722] flex items-center justify-center shadow-md text-white">
-                        <img src="https://image2url.com/r2/default/images/1771864131973-69464962-d8b3-4c39-b093-1c30d8c676d0.jpg" alt="User" class="w-[1.5rem] h-[1.5rem] rounded-full border-2 border-white shadow-sm mx-3">
-                    </div>
-                    <div>
-                        <p class="text-[0.5rem] font-sm text-gray-700 tracking-wide">Est. Cashback</p>
-                        <p class="text-sm font-bold text-[#ff0000]">Rp358.568</p>
-                    </div>
-                </div>
-                
-            </div>
-            
-      </div>
-                            
-                        </div>
-                    </div>
-                </div><!-- Product Card 4 -->
-                
-            </div>
-        </div>
-
-        <div class="mt-[1.5rem] bg-white p-[0rem] mb-2">
-            
-            <div class="grid grid-cols-2 gap-3">
-                <!-- Product Card 1 -->
-                <!-- <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col">
-                    <div class="relative aspect-square bg-gray-100">
-                        <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=400&amp;q=80" class="w-full h-full object-cover">
-                        <button class="absolute top-2 right-2 w-7 h-7 bg-white/80 backdrop-blur rounded-full flex items-center justify-center text-gray-400 hover:text-red-500">
-                            <i class="fa-regular fa-heart text-xs"></i>
-                        </button>
-                    </div>
-                    <div class="p-3 flex flex-col flex-1">
-                        <h4 class="text-[0.7rem] text-gray-700 line-clamp-2 mb-1">Premium Arabica Coffee Beans 250g - Local Roast</h4>
-                        <div class="mt-auto">
-                            <div class="flex items-center gap-1 mb-1">
-                                <span class="bg-orange-100 text-[#FF5722] text-[10px] px-1 rounded">Shopee</span>
-                            </div>
-                            <!-- Decorative background circle --><!-- <div class="text-[12px] text-gray-600 mt-1">Rp4.526.135</div> <!-- Decorative background circle --><!-- <div class="relative overflow-hidden rounded-xl bg-gradient-to-r from-orange-50 to-white border border-[#FF5722]/30 shadow-sm p-{0rem]">
-            
-            
-            
-            <!-- Decorative background circle -->
-<!-- <div class="flex items-center justify-between relative z-10">
-                <div class="flex items-center gap-[0.3rem]">
-                    <div class="w-[1.5rem] h-[1.5rem] rounded-full bg-[#FF5722] flex items-center justify-center shadow-md text-white">
-                        <i class="fas fa-coins text-lg"></i>
-                    </div>
-                    <div>
-                        <p class="text-[0.5rem] font-sm text-gray-700 tracking-wide">Est. Cashback</p>
-                        <p class="text-sm font-bold text-[#FF5722]">Rp358.568</p>
-                    </div>
-                </div>
-                
-            </div>
-            
-      </div>
-                            
-                        </div>
-                    </div>
-                </div> </div> -->
-
-                <!-- Product Card 2 -->
-                
-
-                <!-- Product Card 3 -->
-                
-
-                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col active:scale-95 transition-transform">
-                    <div class="relative aspect-square bg-gray-100">
-                        <img src="https://down-id.img.susercontent.com/file/id-11134207-82251-mfvywafoge8f63@resize_w450_nl.webp" class="w-full h-full object-cover">
-                        
-                    <div class="absolute top-0 right-0 bg-[#ff0000] text-white text-[8px] font-bold px-1.5 py-0.5 rounded-bl-lg">Subsidi</div></div>
+                    <div class="absolute top-0 right-0 bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-bl-lg">Subsidi</div></div>
                     <div class="p-3 flex flex-col flex-1">
                         <h4 class="text-[0.7rem] text-gray-700 line-clamp-2 mb-1">Sanken Mesin Cuci 2 Dua Tabung TW-882GY Twin Tub 9Kg Silver</h4>
                         <div class="mt-auto">
@@ -237,7 +302,7 @@
                     </div>
                     <div>
                         <p class="text-[0.5rem] font-sm text-gray-700 tracking-wide">Est. Cashback</p>
-                        <p class="text-sm font-bold text-[#ff0000]">Rp358.568</p>
+                        <p class="text-sm font-bold text-[#FF5722]">Rp358.568</p>
                     </div>
                 </div>
                 
@@ -247,16 +312,16 @@
                             
                         </div>
                     </div>
-                </div><div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col active:scale-95 transition-transform">
+                </div><div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col active:scale-95 transition duration-200">
                     <div class="relative aspect-square bg-gray-100">
-                        <img class="w-full h-full object-cover" src="https://down-id.img.susercontent.com/file/id-11134207-8224u-mfukszxywpop9a.webp">
+                        <img class="w-full h-full object-cover" src="https://image2url.com/r2/default/images/1771865243607-230f88cc-0b3b-4b56-bf74-2c8116dc7af5.jpg">
                         
-                    <div class="absolute top-0 right-0 bg-[#ff0000] text-white text-[8px] font-bold px-1.5 py-0.5 rounded-bl-lg">Subsidi</div></div>
+                    <div class="absolute top-0 right-0 bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-bl-lg">Subsidi</div></div>
                     <div class="p-3 flex flex-col flex-1">
-                        <h4 class="text-[0.7rem] text-gray-700 line-clamp-2 mb-1">Xiaomi Redmi Buds 6 Play | Bluetooth 5.4 | Baterai Hingga 36 Jam | Xiaomi Earbuds App Support | Nyaman Digunakan [Official Store]</h4>
+                        <h4 class="text-[0.7rem] text-gray-700 line-clamp-2 mb-1">Soundcore R60i NC (R50i NC Upgrade) by Anker, Real-Time Adaptive Noise Cancellation, Hi-Res Sound, AI Translation Earbuds, 50H</h4>
                         <div class="mt-auto">
                             <div class="flex items-center gap-1 mb-1">
-                                <span class="bg-orange-600 text-[#FFFFFF] text-[10px] px-1 rounded">Shopee</span>
+                                <span class="bg-[#000000] text-[#FFFFFF] text-[10px] px-1 rounded">Tiktok</span>
                             </div>
                             <!-- Decorative background circle --><div class="text-[12px] text-gray-600 mt-1">Rp4.526.135</div> <!-- Decorative background circle --><div class="relative overflow-hidden rounded-xl bg-gradient-to-r from-orange-50 to-white border border-[#FF5722]/30 shadow-sm p-{0rem]">
             
@@ -265,49 +330,7 @@
             <!-- Decorative background circle --><div class="flex items-center justify-between relative z-10">
                 <div class="flex items-center gap-[0.3rem]">
                     <div class="w-[1.5rem] h-[1.5rem] rounded-full bg-[#FF5722] flex items-center justify-center shadow-md text-white">
-                        <img src="https://image2url.com/r2/default/images/1771864131973-69464962-d8b3-4c39-b093-1c30d8c676d0.jpg" alt="User" class="w-[1.5rem] h-[1.5rem] rounded-full border-2 border-white shadow-sm mx-3">
-                    </div>
-                    <div>
-                        <p class="text-[0.5rem] font-sm text-gray-700 tracking-wide">Est. Cashback</p>
-                        <p class="text-sm font-bold text-[#ff0000]">Rp358.568</p>
-                    </div>
-                </div>
-                
-            </div>
-            
-      </div>
-                            
-                        </div>
-                    </div>
-                </div><!-- Product Card 4 -->
-                
-            </div>
-        </div><div class="mt-[1.5rem] bg-white p-[0rem] mb-2">
-            
-            <div class="grid grid-cols-2 gap-3">
-                <!-- Product Card 1 -->
-                <!-- <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col">
-                    <div class="relative aspect-square bg-gray-100">
-                        <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=400&amp;q=80" class="w-full h-full object-cover">
-                        <button class="absolute top-2 right-2 w-7 h-7 bg-white/80 backdrop-blur rounded-full flex items-center justify-center text-gray-400 hover:text-red-500">
-                            <i class="fa-regular fa-heart text-xs"></i>
-                        </button>
-                    </div>
-                    <div class="p-3 flex flex-col flex-1">
-                        <h4 class="text-[0.7rem] text-gray-700 line-clamp-2 mb-1">Premium Arabica Coffee Beans 250g - Local Roast</h4>
-                        <div class="mt-auto">
-                            <div class="flex items-center gap-1 mb-1">
-                                <span class="bg-orange-100 text-[#FF5722] text-[10px] px-1 rounded">Shopee</span>
-                            </div>
-                            <!-- Decorative background circle --><!-- <div class="text-[12px] text-gray-600 mt-1">Rp4.526.135</div> <!-- Decorative background circle --><!-- <div class="relative overflow-hidden rounded-xl bg-gradient-to-r from-orange-50 to-white border border-[#FF5722]/30 shadow-sm p-{0rem]">
-            
-            
-            
-            <!-- Decorative background circle -->
-<!-- <div class="flex items-center justify-between relative z-10">
-                <div class="flex items-center gap-[0.3rem]">
-                    <div class="w-[1.5rem] h-[1.5rem] rounded-full bg-[#FF5722] flex items-center justify-center shadow-md text-white">
-                        <i class="fas fa-coins text-lg"></i>
+                        <img src="https://image2url.com/r2/default/images/1771864375157-7f84d4d2-96a3-4417-ad07-7bdb454c809d.png" alt="User" class="w-[1.5rem] h-[1.5rem] rounded-full border-2 border-white shadow-sm mx-3">
                     </div>
                     <div>
                         <p class="text-[0.5rem] font-sm text-gray-700 tracking-wide">Est. Cashback</p>
@@ -321,21 +344,13 @@
                             
                         </div>
                     </div>
-                </div> </div> -->
-
-                <!-- Product Card 2 -->
-                
-
-                <!-- Product Card 3 -->
-                
-
-                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col active:scale-95 transition-transform">
+                </div><div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col active:scale-95 transition duration-200">
                     <div class="relative aspect-square bg-gray-100">
-                        <img src="https://down-id.img.susercontent.com/file/id-11134207-822wk-mmpjkafvva4iac.webp" class="w-full h-full object-cover">
+               <img class="w-full h-full object-cover" src="https://image2url.com/r2/default/images/1771865004191-ec5b9896-a9fa-4e91-83ef-a928efa037db.jpg">         
                         
-                    <div class="absolute top-0 right-0 bg-[#ff0000] text-white text-[8px] font-bold px-1.5 py-0.5 rounded-bl-lg">Subsidi</div></div>
+                    <div class="absolute top-0 right-0 bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-bl-lg">Subsidi</div></div>
                     <div class="p-3 flex flex-col flex-1">
-                        <h4 class="text-[0.7rem] text-gray-700 line-clamp-2 mb-1">Xiaomi Redmi Pad 2 Series | Redmi Pad 2 4G (6/128G) SIM Card | Redmi Pad 2 (4/128G) Wi-Fi Only | 11" 2.5K Layar Super-jernih | Baterai</h4>
+                        <h4 class="text-[0.7rem] text-gray-700 line-clamp-2 mb-1">KAMIFA - Sandal Selop Beruang Terbuka Terbaru</h4>
                         <div class="mt-auto">
                             <div class="flex items-center gap-1 mb-1">
                                 <span class="bg-orange-600 text-[#FFFFFF] text-[10px] px-1 rounded">Shopee</span>
@@ -351,7 +366,7 @@
                     </div>
                     <div>
                         <p class="text-[0.5rem] font-sm text-gray-700 tracking-wide">Est. Cashback</p>
-                        <p class="text-sm font-bold text-[#ff0000]">Rp358.568</p>
+                        <p class="text-sm font-bold text-[#FF5722]">Rp358.568</p>
                     </div>
                 </div>
                 
@@ -361,13 +376,45 @@
                             
                         </div>
                     </div>
-                </div><div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col active:scale-95 transition-transform">
+                </div><div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col active:scale-95 transition duration-200">
                     <div class="relative aspect-square bg-gray-100">
-                        <img class="w-full h-full object-cover" src="https://down-id.img.susercontent.com/file/id-11134207-8224z-mfw0dau3mi2y87.webp">
+                        <img src="https://image2url.com/r2/default/images/1771865505007-2bfcb418-2594-450d-9daf-e1b52c310c46.webp" class="w-full h-full object-cover">
                         
-                    <div class="absolute top-0 right-0 bg-[#ff0000] text-white text-[8px] font-bold px-1.5 py-0.5 rounded-bl-lg">Subsidi</div></div>
+                    <div class="absolute top-0 right-0 bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-bl-lg">Subsidi</div></div>
                     <div class="p-3 flex flex-col flex-1">
-                        <h4 class="text-[0.7rem] text-gray-700 line-clamp-2 mb-1">Xiaomi Smart Band 10 | 1.72" AMOLED display in a sleek design | Premium style with colorful and ceramic frame edition | 150+ sports</h4>
+                        <h4 class="text-[0.7rem] text-gray-700 line-clamp-2 mb-1">Samsung A26 5G 8/256GB, Exynos 1380 (5 nm) 6.7 inches Super AMOLED 120Hz 5000 mAh | Garansi Resmi SEIN 1 Tahun</h4>
+                        <div class="mt-auto">
+                            <div class="flex items-center gap-1 mb-1">
+                                <span class="bg-[#000000] text-[#FFFFFF] text-[10px] px-1 rounded">Tiktok</span>
+                            </div>
+                            <!-- Decorative background circle --><div class="text-[12px] text-gray-600 mt-1">Rp4.526.135</div> <!-- Decorative background circle --><div class="relative overflow-hidden rounded-xl bg-gradient-to-r from-orange-50 to-white border border-[#FF5722]/30 shadow-sm p-{0rem]">
+            
+            
+            
+            <!-- Decorative background circle --><div class="flex items-center justify-between relative z-10">
+                <div class="flex items-center gap-[0.3rem]">
+                    <div class="w-[1.5rem] h-[1.5rem] rounded-full bg-[#FF5722] flex items-center justify-center shadow-md text-white">
+                        <img src="https://image2url.com/r2/default/images/1771864375157-7f84d4d2-96a3-4417-ad07-7bdb454c809d.png" alt="User" class="w-[1.5rem] h-[1.5rem] rounded-full border-2 border-white shadow-sm mx-3">
+                    </div>
+                    <div>
+                        <p class="text-[0.5rem] font-sm text-gray-700 tracking-wide">Est. Cashback</p>
+                        <p class="text-sm font-bold text-[#FF5722]">Rp358.568</p>
+                    </div>
+                </div>
+                
+            </div>
+            
+      </div>
+                            
+                        </div>
+                    </div>
+                </div><div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col active:scale-95 transition duration-200">
+                    <div class="relative aspect-square bg-gray-100">
+                        <img src="https://image2url.com/r2/default/images/1771865672162-e71c62bc-b064-4dda-8343-2dfd08465413.jpg" class="w-full h-full object-cover">
+                        
+                    <div class="absolute top-0 right-0 bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-bl-lg">Subsidi</div></div>
+                    <div class="p-3 flex flex-col flex-1">
+                        <h4 class="text-[0.7rem] text-gray-700 line-clamp-2 mb-1">TCL HD QLED Google TV 32 inch V4C - HDR 10 - Dolby Audio - Google Play/Netflix/Youtube/Disney+Hotstar - Smart Android 24 LED</h4>
                         <div class="mt-auto">
                             <div class="flex items-center gap-1 mb-1">
                                 <span class="bg-orange-600 text-[#FFFFFF] text-[10px] px-1 rounded">Shopee</span>
@@ -383,7 +430,39 @@
                     </div>
                     <div>
                         <p class="text-[0.5rem] font-sm text-gray-700 tracking-wide">Est. Cashback</p>
-                        <p class="text-sm font-bold text-[#ff0000]">Rp358.568</p>
+                        <p class="text-sm font-bold text-[#FF5722]">Rp358.568</p>
+                    </div>
+                </div>
+                
+            </div>
+            
+      </div>
+                            
+                        </div>
+                    </div>
+                </div><div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col active:scale-95 transition duration-200">
+                    <div class="relative aspect-square bg-gray-100">
+                        <img src="https://image2url.com/r2/default/images/1771865891840-116cdd04-b62b-40f6-ac72-f2771e3e88ae.jpg" class="w-full h-full object-cover">
+                        
+                    <div class="absolute top-0 right-0 bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-bl-lg">Subsidi</div></div>
+                    <div class="p-3 flex flex-col flex-1">
+                        <h4 class="text-[0.7rem] text-gray-700 line-clamp-2 mb-1">Kompor gas Rinnai Kompor Gas 2 Tungku Teflon Kuningan Kompor Rinnai RI522C RI 522C RI-522C</h4>
+                        <div class="mt-auto">
+                            <div class="flex items-center gap-1 mb-1">
+                                <span class="bg-[#000000] text-[#FFFFFF] text-[10px] px-1 rounded">Tiktok</span>
+                            </div>
+                            <!-- Decorative background circle --><div class="text-[12px] text-gray-600 mt-1">Rp4.526.135</div> <!-- Decorative background circle --><div class="relative overflow-hidden rounded-xl bg-gradient-to-r from-orange-50 to-white border border-[#FF5722]/30 shadow-sm p-{0rem]">
+            
+            
+            
+            <!-- Decorative background circle --><div class="flex items-center justify-between relative z-10">
+                <div class="flex items-center gap-[0.3rem]">
+                    <div class="w-[1.5rem] h-[1.5rem] rounded-full bg-[#FF5722] flex items-center justify-center shadow-md text-white">
+                        <img src="https://image2url.com/r2/default/images/1771864375157-7f84d4d2-96a3-4417-ad07-7bdb454c809d.png" alt="User" class="w-[1.5rem] h-[1.5rem] rounded-full border-2 border-white shadow-sm mx-3">
+                    </div>
+                    <div>
+                        <p class="text-[0.5rem] font-sm text-gray-700 tracking-wide">Est. Cashback</p>
+                        <p class="text-sm font-bold text-[#FF5722]">Rp358.568</p>
                     </div>
                 </div>
                 
@@ -396,23 +475,81 @@
                 </div><!-- Product Card 4 -->
                 
             </div>
-        </div><!-- Progress Bar Section -->
-        
+            
+            <!-- Loading Spinner -->
+            <div class="py-6 flex justify-center">
+                <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-[#FF5722]"></div>
+            </div>
+        </div>
+    </main>
 
-        <!-- Description -->
-        
-
-        <!-- Specifications -->
-        
-
-        <!-- Terms -->
-        
-    </div>
-
-    <!-- Sticky Bottom Action Bar -->
-    
-
+    <div class="fixed bottom-0 left-0 right-0 mx-auto w-full max-w-[430px] bg-white border-t border-gray-100 px-6 py-[0.5rem] flex justify-between items-end z-40 shadow-lg" style="padding-bottom:max(env(safe-area-inset-bottom),12px);">
+    <a id="nav-beranda" href="index.html" class="flex flex-col items-center gap-[3px] hover:text-[#00a6a6] transition-colors no-underline text-gray-500">
+        <i class="fa-solid fa-house text-xl mb-[-0.1rem]"></i>
+        <span class="text-[10px] font-medium">Beranda</span>
+    </a>
+     <a id="nav-brands" href="brands.html" class="flex flex-col items-center gap-[3px] hover:text-[#00a6a6] transition-colors no-underline text-[#00a6a6]">
+        <i class="fa-solid fa-tags text-xl mb-[-0.1rem]"></i>
+        <span class="text-[10px] font-medium font-bold">Brands</span>
+    </a>
+    <a id="nav-team" href="team.html" class="flex flex-col items-center gap-[3px] text-gray-500 hover:text-[#00a6a6] transition-colors no-underline">
+        <i class="fa-solid fa-users text-xl mb-[-0.1rem]"></i>
+        <span class="text-[10px] font-medium">Team</span>
+    </a>
+     <a id="nav-pendapatan" href="pendapatan.html" class="flex flex-col items-center gap-[3px] text-gray-500 hover:text-[#00a6a6] transition-colors no-underline">
+        <i class="fa-solid fa-wallet text-xl mb-[-0.1rem]"></i>
+        <span class="text-[10px] font-medium">Pendapatan</span>
+    </a>
+    <a id="nav-saya" href="saya-free.html" class="flex flex-col items-center gap-[3px] text-gray-500 hover:text-[#00a6a6] transition-colors no-underline">
+<!-- arahkan link tersebut jika akun sudah status agent atau status partner maka disesuaikan dengan file html saya-agent.html atau saya-partner.html -->
+        <i class="fa-solid fa-user text-xl mb-[-0.1rem]"></i>
+        <span class="text-[10px]">Saya</span>
+    </a>
+	
+	
 </div>
+</div>
+
+
+<!-- Set Navigasi Menu Bawah Aktif Berwarna -->
+			<!-- Set Navigasi Menu Bawah Aktif Berwarna -->
+		<script>
+    function setActiveMenu() {
+        const path = window.location.pathname.split("/").pop() || 'index.html';
+        
+        const menuMap = {
+            'index.html': 'nav-beranda',
+            'beranda.html': 'nav-beranda',
+            'brands.html': 'nav-brands',
+            'team.html': 'nav-team',
+            'pendapatan.html': 'nav-pendapatan',
+            'saya-free.html': 'nav-saya'
+        };
+
+        const activeId = menuMap[path];
+        
+        // 1. Reset semua menu ke default (gray)
+        document.querySelectorAll('a[id^="nav-"]').forEach(el => {
+            el.classList.remove('text-[#00a6a6]');
+            el.classList.add('text-gray-500');
+            const span = el.querySelector('span');
+            if (span) span.classList.remove('font-bold');
+        });
+
+        // 2. Berikan style aktif ke menu yang benar
+        if (activeId) {
+            const activeElement = document.getElementById(activeId);
+            if (activeElement) {
+                activeElement.classList.remove('text-gray-500');
+                activeElement.classList.add('text-[#00a6a6]');
+                const span = activeElement.querySelector('span');
+                if (span) span.classList.add('font-bold');
+            }
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', setActiveMenu);
+</script>
         
       
     </body></html>
