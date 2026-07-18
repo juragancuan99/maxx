@@ -309,6 +309,7 @@
                 </div>
             </div>
 
+
             <div class="bg-white py-4 pl-4 mb-2">
                 <div class="flex items-center justify-between pr-4 mb-3">
                     <div class="flex items-center gap-2">
@@ -746,11 +747,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         dots.forEach((dot, idx) => {
             if (idx === activeDotIndex) {
-                dot.style.backgroundColor = '#00a6a6';
-                dot.style.borderColor = '#00a6a6';
+                dot.classList.replace('bg-transparent', 'bg-cyan-500');
             } else {
-                dot.style.backgroundColor = 'transparent';
-                dot.style.borderColor = '';
+                dot.classList.replace('bg-cyan-500', 'bg-transparent');
             }
         });
     }
