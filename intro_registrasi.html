@@ -9,6 +9,8 @@
         /* Menyembunyikan scrollbar di area slide agar tampak bersih */
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        /* Nonaktifkan smooth-scroll sesaat saat melompat antar clone, supaya loop tidak terlihat "patah" */
+        .no-smooth { scroll-behavior: auto !important; }
     </style>
     <script>
         tailwind.config = {
@@ -30,18 +32,17 @@
         <div class="relative w-full h-[55%] bg-indigo-50 rounded-b-[3rem] overflow-hidden shrink-0">
             <div class="absolute top-[-10%] left-[-10%] w-72 h-72 bg-[#4F46E5] opacity-10 rounded-full blur-3xl pointer-events-none"></div>
             <div class="absolute top-[30%] right-[-20%] w-64 h-64 bg-purple-400 opacity-10 rounded-full blur-3xl pointer-events-none"></div>
-            
+
+            <!-- Tombol panah kiri/kanan supaya bisa digeser terus-menerus -->
+            <button id="prevBtn" aria-label="Sebelumnya" class="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-white/80 backdrop-blur shadow-md flex items-center justify-center text-gray-600 hover:text-[#00a6a6] active:scale-95 transition-all">
+                <i class="fa-solid fa-chevron-left text-sm"></i>
+            </button>
+            <button id="nextBtn" aria-label="Berikutnya" class="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-white/80 backdrop-blur shadow-md flex items-center justify-center text-gray-600 hover:text-[#00a6a6] active:scale-95 transition-all">
+                <i class="fa-solid fa-chevron-right text-sm"></i>
+            </button>
+
             <div id="slider" class="w-full h-full flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar">
-                
-                <div class="w-full h-full shrink-0 snap-start relative flex items-end justify-center pb-4">
-                    <img style="mask-image: linear-gradient(to bottom, black 80%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);" class="w-full h-full object-cover object-center opacity-90 mix-blend-multiply" alt="Friends celebrating 1" src="images/intro1.png">
-                </div>
-
-               
-                <div class="w-full h-full shrink-0 snap-start relative flex items-end justify-center pb-4">
-                    <img style="mask-image: linear-gradient(to bottom, black 80%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);" class="w-full h-full object-cover object-center opacity-90 mix-blend-multiply" alt="Friends celebrating 3" src="images/intro2.png">
-                </div>
-
+                <!-- Slide-slide asli & clone akan disisipkan lewat JavaScript di bawah -->
             </div>
 
             <div class="absolute bottom-6 right-8 bg-white p-3 rounded-2xl shadow-xl z-20 animate-bounce" style="animation-duration: 3s;">
@@ -103,26 +104,114 @@
     </div>
 
     <script>
+        // ---- Daftar gambar asli slide ----
+        const images = [
+            { src: 'images/intro1.png', alt: 'Friends celebrating 1' },
+            { src: 'images/intro2.png', alt: 'Friends celebrating 3' }
+        ];
+        const n = images.length;
+
         const slider = document.getElementById('slider');
-        const dots = document.querySelectorAll('#pagination-dots .dot');
+        const dotsContainer = document.getElementById('pagination-dots');
 
-        slider.addEventListener('scroll', () => {
-            // Menghitung indeks gambar yang sedang aktif berdasarkan posisi scroll
-            const slideWidth = slider.clientWidth;
-            const activeIndex = Math.round(slider.scrollLeft / slideWidth);
+        // Bangun markup satu slide
+        function slideHTML(img) {
+            return `
+                <div class="slide w-full h-full shrink-0 snap-start relative flex items-end justify-center pb-4">
+                    <img
+                        style="mask-image: linear-gradient(to bottom, black 80%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);"
+                        class="w-full h-full object-cover object-top opacity-90 mix-blend-multiply"
+                        alt="${img.alt}"
+                        src="${img.src}">
+                </div>`;
+        }
 
-            // Loop untuk mengatur ulang ukuran dan warna setiap dot secara otomatis
-            dots.forEach((dot, index) => {
-                if (index === activeIndex) {
-                    // Dot aktif: memanjang dan berwarna cyan
+        // ---- Susun slide dengan clone di awal & akhir agar loop terlihat mulus ----
+        // Urutan: [clone slide terakhir, slide 1, slide 2, ..., slide n, clone slide 1]
+        const track = [images[n - 1], ...images, images[0]];
+        slider.innerHTML = track.map(slideHTML).join('');
+
+        // Bangun titik pagination sesuai jumlah slide asli
+        dotsContainer.innerHTML = images.map((_, i) =>
+            `<div class="dot ${i === 0 ? 'w-8 bg-[#00a6a6]' : 'w-2 bg-gray-200'} h-2 rounded-full transition-all duration-300"></div>`
+        ).join('');
+        const dots = dotsContainer.querySelectorAll('.dot');
+
+        function setActiveDot(realIndex) {
+            dots.forEach((dot, i) => {
+                if (i === realIndex) {
                     dot.classList.remove('w-2', 'bg-gray-200');
                     dot.classList.add('w-8', 'bg-[#00a6a6]');
                 } else {
-                    // Dot tidak aktif: mengecil dan berwarna abu-abu
                     dot.classList.remove('w-8', 'bg-[#00a6a6]');
                     dot.classList.add('w-2', 'bg-gray-200');
                 }
             });
+        }
+
+        // Posisi awal: index 1 di track (= slide asli pertama), tanpa animasi
+        let slideWidth = slider.clientWidth;
+        function jumpTo(trackIndex, smooth = false) {
+            slider.scrollTo({ left: trackIndex * slideWidth, behavior: smooth ? 'smooth' : 'auto' });
+        }
+        jumpTo(1, false);
+
+        let currentTrackIndex = 1;
+        let isJumping = false;
+
+        function goTo(trackIndex, smooth = true) {
+            currentTrackIndex = trackIndex;
+            slideWidth = slider.clientWidth;
+            jumpTo(trackIndex, smooth);
+        }
+
+        document.getElementById('nextBtn').addEventListener('click', () => goTo(currentTrackIndex + 1));
+        document.getElementById('prevBtn').addEventListener('click', () => goTo(currentTrackIndex - 1));
+
+        // Deteksi akhir scroll (swipe manual maupun tombol), lalu tentukan slide aktif
+        let scrollEndTimer;
+        slider.addEventListener('scroll', () => {
+            clearTimeout(scrollEndTimer);
+            scrollEndTimer = setTimeout(onScrollEnd, 90);
+        });
+
+        function onScrollEnd() {
+            if (isJumping) return;
+            slideWidth = slider.clientWidth;
+            const trackIndex = Math.round(slider.scrollLeft / slideWidth);
+            currentTrackIndex = trackIndex;
+
+            if (trackIndex === 0) {
+                // Berada di clone slide terakhir -> lompat diam-diam ke slide asli terakhir
+                isJumping = true;
+                slider.classList.add('no-smooth');
+                requestAnimationFrame(() => {
+                    jumpTo(n, false);
+                    currentTrackIndex = n;
+                    setActiveDot(n - 1);
+                    slider.classList.remove('no-smooth');
+                    isJumping = false;
+                });
+            } else if (trackIndex === n + 1) {
+                // Berada di clone slide pertama -> lompat diam-diam ke slide asli pertama
+                isJumping = true;
+                slider.classList.add('no-smooth');
+                requestAnimationFrame(() => {
+                    jumpTo(1, false);
+                    currentTrackIndex = 1;
+                    setActiveDot(0);
+                    slider.classList.remove('no-smooth');
+                    isJumping = false;
+                });
+            } else {
+                setActiveDot(trackIndex - 1);
+            }
+        }
+
+        // Jaga posisi tetap benar saat ukuran layar berubah (misal rotasi layar)
+        window.addEventListener('resize', () => {
+            slideWidth = slider.clientWidth;
+            jumpTo(currentTrackIndex, false);
         });
     </script>
 
