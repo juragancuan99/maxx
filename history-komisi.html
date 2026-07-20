@@ -1,7 +1,7 @@
 <html lang="id"><head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Pendapatan - Maxi Affiliate</title>
+    <title>History Komisi - Maxi Affiliate</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
@@ -22,27 +22,28 @@
     <div class="w-full h-full bg-white overflow-y-auto relative flex flex-col font-sans">
         <div class="px-6 mt-[0rem] sticky top-0 z-20 bg-white shadow-sm">
             <div class="flex items-center justify-between px-4 py-4">
-                <button onclick="history.back()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition">
+                <button onClick="history.back()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition">
     <i class="fa-solid fa-arrow-left text-gray-800 text-lg"></i>
 </button>
                 <h1 class="text-lg font-bold text-gray-900">History Komisi</h1>
                 <button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition"><i class="fa-solid fa-filter text-gray-800"></i></button>
             </div>
         <div class="flex px-4 border-b border-gray-100">
-                <button class="flex-1 pb-3 text-sm font-semibold text-gray-900 border-b-2 border-[#FFD700]">All</button>
-                <button class="flex-1 pb-3 text-sm font-medium text-gray-500 hover:text-gray-700">Pending</button>
-                <button class="flex-1 pb-3 text-sm font-medium text-gray-500 hover:text-gray-700">Selesai</button>
+                <button class="status-tab-btn flex-1 pb-3 text-sm font-semibold text-gray-900 border-b-2 border-[#FFD700] transition-colors" onClick="filterStatus('all', this)">All</button>
+                <button class="status-tab-btn flex-1 pb-3 text-sm font-medium text-gray-500 border-b-2 border-transparent hover:text-gray-700 transition-colors" onClick="filterStatus('pending', this)">Pending</button>
+                <button class="status-tab-btn flex-1 pb-3 text-sm font-medium text-gray-500 border-b-2 border-transparent hover:text-gray-700 transition-colors" onClick="filterStatus('selesai', this)">Selesai</button>
             </div></div>
 
         <div class="px-6 mt-6">
             <div class="px-4 pb-3 flex gap-3 overflow-x-auto no-scrollbar">
                 
 
-<button class="tab-btn flex-shrink-0 px-4 py-1.5 text-sm font-medium rounded-full btn-active" onclick="showTab('all', this)">Semua Komisi</button>
-                <button class="tab-btn flex-shrink-0 px-4 py-1.5 text-sm font-medium rounded-full bg-white border border-gray-200 text-gray-600" onclick="showTab('referral', this)">Komisi Refferal</button>
-                <button class="tab-btn flex-shrink-0 px-4 py-1.5 text-sm font-medium rounded-full bg-white border border-gray-200 text-gray-600" onclick="showTab('generasi', this)">Komisi Generasi</button>
-                <button class="tab-btn flex-shrink-0 px-4 py-1.5 text-sm font-medium rounded-full bg-white border border-gray-200 text-gray-600" onclick="showTab('cashback', this)">Cashback Team</button>
-                <button class="tab-btn flex-shrink-0 px-4 py-1.5 text-sm font-medium rounded-full bg-white border border-gray-200 text-gray-600" onclick="showTab('pribadi', this)">Cashback Pribadi</button>
+<button class="tab-btn flex-shrink-0 px-4 py-1.5 text-sm font-medium rounded-full btn-active" onClick="showTab('all', this)">Semua Komisi</button>
+                <button class="tab-btn flex-shrink-0 px-4 py-1.5 text-sm font-medium rounded-full bg-white border border-gray-200 text-gray-600" onClick="showTab('referral', this)">Komisi Refferal</button>
+                <button class="tab-btn flex-shrink-0 px-4 py-1.5 text-sm font-medium rounded-full bg-white border border-gray-200 text-gray-600" onClick="showTab('generasi', this)">Komisi Generasi</button>
+                <button class="tab-btn flex-shrink-0 px-4 py-1.5 text-sm font-medium rounded-full bg-white border border-gray-200 text-gray-600" onClick="showTab('sultan', this)">Komisi Sultan</button>
+                <button class="tab-btn flex-shrink-0 px-4 py-1.5 text-sm font-medium rounded-full bg-white border border-gray-200 text-gray-600" onClick="showTab('cashback', this)">Cashback Team</button>
+                <button class="tab-btn flex-shrink-0 px-4 py-1.5 text-sm font-medium rounded-full bg-white border border-gray-200 text-gray-600" onClick="showTab('pribadi', this)">Cashback Pribadi</button>
             </div>
         </div>
 
@@ -51,31 +52,23 @@
                 <h3 class="text-slate-900 font-bold text-lg">Semua Komisi</h3>
                 <div class="flex gap-2">
                     <div class="relative">
-                        <button id="btnYear-all" onclick="toggleMenu('menuYear-all')" class="text-xs font-semibold text-[#6C5CE7] flex items-center bg-[#6C5CE7]/10 px-2 py-1 rounded-md">Tahun<i class="fa-solid fa-chevron-down ml-1 text-[10px]"></i></button>
-                        <div id="menuYear-all" class="absolute right-0 mt-2 bg-white border rounded shadow z-30 hidden">
-                            <button onclick="selectOption('menuYear-all', 'btnYear-all', '2026')" class="block px-4 py-2 text-xs">2026</button>
-                            <button onclick="selectOption('menuYear-all', 'btnYear-all', '2025')" class="block px-4 py-2 text-xs">2025</button>
-                        </div>
-                    </div>
-                    <div class="relative">
-                        <button id="btnFilter-all" onclick="toggleMenu('menuFilter-all')" class="text-xs font-semibold text-[#6C5CE7] flex items-center bg-[#6C5CE7]/10 px-2 py-1 rounded-md">Bulan<i class="fa-solid fa-chevron-down ml-1 text-[10px]"></i></button>
-                        <div id="menuFilter-all" class="absolute right-0 mt-2 bg-white border rounded shadow z-30 hidden">
-                            <button onclick="selectOption('menuFilter-all', 'btnFilter-all', 'Januari')" class="block px-4 py-2 text-xs">Januari</button>
-                            <button onclick="selectOption('menuFilter-all', 'btnFilter-all', 'Februari')" class="block px-4 py-2 text-xs">Februari</button>
-                        </div>
+                        <button id="btnDate-all" onClick="openDatePicker('dateFilter-all')" class="relative w-8 h-8 flex items-center justify-center text-[#6C5CE7] bg-[#6C5CE7]/10 rounded-md hover:bg-[#6C5CE7]/20 transition">
+                            <i class="fa-solid fa-calendar-days text-sm"></i>
+                        </button>
+                        <input type="date" id="dateFilter-all" class="sr-only" onChange="handleDateFilter(this, 'btnDate-all')">
                     </div>
                 </div>
             </div>
             <div class="space-y-4">
         <!-- Item 1 -->
-        <div class="flex items-center justify-between">
+        <div class="flex items-center justify-between" data-status="selesai">
           <div class="flex items-center gap-4">
             <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
               <i class="fa-solid fa-arrow-down"></i>
             </div>
             <div>
               <p class="text-sm font-bold text-slate-900">Komisi Refferal</p>
-              <p class="text-xs text-slate-500">10 Mar 2023 � 14:30</p>
+              <p class="text-xs text-slate-500">10 Mar 2023 • 14:30</p>
             </div>
           </div>
           
@@ -86,14 +79,14 @@
                 </div>
         </div>
 
-        <div class="flex items-center justify-between">
+        <div class="flex items-center justify-between" data-status="pending">
           <div class="flex items-center gap-4">
             <div class="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center text-gray-600">
               <i class="fa-solid fa-arrow-down"></i>
             </div>
             <div>
               <p class="text-sm font-bold text-slate-900">Komisi Refferal</p>
-              <p class="text-xs text-slate-500">10 Mar 2023 � 14:30</p>
+              <p class="text-xs text-slate-500">10 Mar 2023 • 14:30</p>
             </div>
           </div>
           
@@ -110,14 +103,14 @@
         </div><!-- Item 1 --><!-- Item 2 -->
          
 
-        <div class="flex items-center justify-between">
+        <div class="flex items-center justify-between" data-status="selesai">
           <div class="flex items-center gap-4">
             <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
               <i class="fa-solid fa-arrow-down"></i>
             </div>
             <div>
               <p class="text-sm font-bold text-slate-900">Komisi Generasi 1</p>
-              <p class="text-xs text-slate-500">08 Mar 2023 � 10:00</p>
+              <p class="text-xs text-slate-500">08 Mar 2023 • 10:00</p>
             </div>
           </div>
           <div class="text-right">
@@ -126,56 +119,56 @@
                 </div>
         </div> <!-- Item 3 -->
         
-      <div class="flex items-center justify-between">
+      <div class="flex items-center justify-between" data-status="selesai">
           <div class="flex items-center gap-4">
             <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
               <i class="fa-solid fa-arrow-down"></i>
             </div>
             <div>
               <p class="text-sm font-bold text-slate-900">Komisi Generasi 2</p>
-              <p class="text-xs text-slate-500">08 Mar 2023 � 10:00</p>
+              <p class="text-xs text-slate-500">08 Mar 2023 • 10:00</p>
             </div>
           </div>
           <div class="text-right">
                     <p class="text-green-600 font-bold text-sm">+Rp 800.000</p>
                     <span class="inline-block px-2 py-0.5 bg-green-50 text-green-600 text-[10px] rounded-full mt-1">Selesai</span>
                 </div>
-        </div><div class="flex items-center justify-between">
+        </div><div class="flex items-center justify-between" data-status="selesai">
           <div class="flex items-center gap-4">
             <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
               <i class="fa-solid fa-arrow-down"></i>
             </div>
             <div>
               <p class="text-sm font-bold text-slate-900">Komisi Generasi 3</p>
-              <p class="text-xs text-slate-500">08 Mar 2023 � 10:00</p>
+              <p class="text-xs text-slate-500">08 Mar 2023 • 10:00</p>
             </div>
           </div>
           <div class="text-right">
                     <p class="text-green-600 font-bold text-sm">+Rp 300.000</p>
                     <span class="inline-block px-2 py-0.5 bg-green-50 text-green-600 text-[10px] rounded-full mt-1">Selesai</span>
                 </div>
-        </div><div class="flex items-center justify-between">
+        </div><div class="flex items-center justify-between" data-status="selesai">
           <div class="flex items-center gap-4">
             <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
               <i class="fa-solid fa-arrow-down"></i>
             </div>
             <div>
               <p class="text-sm font-bold text-slate-900">Cashback Team</p>
-              <p class="text-xs text-slate-500">08 Mar 2023 � 10:00</p>
+              <p class="text-xs text-slate-500">08 Mar 2023 • 10:00</p>
             </div>
           </div>
           <div class="text-right">
                     <p class="text-green-600 font-bold text-sm">+Rp 725.000</p>
                     <span class="inline-block px-2 py-0.5 bg-green-50 text-green-600 text-[10px] rounded-full mt-1">Selesai</span>
                 </div>
-        </div><div class="flex items-center justify-between">
+        </div><div class="flex items-center justify-between" data-status="selesai">
           <div class="flex items-center gap-4">
             <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
               <i class="fa-solid fa-arrow-down"></i>
             </div>
             <div>
               <p class="text-sm font-bold text-slate-900">Cashback Pribadi</p>
-              <p class="text-xs text-slate-500">08 Mar 2023 � 10:00</p>
+              <p class="text-xs text-slate-500">08 Mar 2023 • 10:00</p>
             </div>
           </div>
           <div class="text-right">
@@ -190,22 +183,14 @@
                 <h3 class="text-slate-900 font-bold text-lg">Komisi Refferal</h3>
                 <div class="flex gap-2">
                     <div class="relative">
-                        <button id="btnYear-ref2" onclick="toggleMenu('menuYear-ref2')" class="text-xs font-semibold text-[#6C5CE7] flex items-center bg-[#6C5CE7]/10 px-2 py-1 rounded-md">Tahun<i class="fa-solid fa-chevron-down ml-1 text-[10px]"></i></button>
-                        <div id="menuYear-ref2" class="absolute right-0 mt-2 bg-white border rounded shadow z-30 hidden">
-                            <button onclick="selectOption('menuYear-ref2', 'btnYear-ref2', '2026')" class="block px-4 py-2 text-xs">2026</button>
-                            <button onclick="selectOption('menuYear-ref2', 'btnYear-ref2', '2025')" class="block px-4 py-2 text-xs">2025</button>
-                        </div>
-                    </div>
-                   <div class="relative">
-                        <button id="btnFilter-all2" onclick="toggleMenu('menuFilter-all2')" class="text-xs font-semibold text-[#6C5CE7] flex items-center bg-[#6C5CE7]/10 px-2 py-1 rounded-md">Bulan<i class="fa-solid fa-chevron-down ml-1 text-[10px]"></i></button>
-                        <div id="menuFilter-all2" class="absolute right-0 mt-2 bg-white border rounded shadow z-30 hidden">
-                            <button onclick="selectOption('menuFilter-all2', 'btnFilter-all2', 'Januari')" class="block px-4 py-2 text-xs">Januari</button>
-                            <button onclick="selectOption('menuFilter-all2', 'btnFilter-all2', 'Februari')" class="block px-4 py-2 text-xs">Februari</button>
-                        </div>
+                        <button id="btnDate-ref2" onClick="openDatePicker('dateFilter-ref2')" class="relative w-8 h-8 flex items-center justify-center text-[#6C5CE7] bg-[#6C5CE7]/10 rounded-md hover:bg-[#6C5CE7]/20 transition">
+                            <i class="fa-solid fa-calendar-days text-sm"></i>
+                        </button>
+                        <input type="date" id="dateFilter-ref2" class="sr-only" onChange="handleDateFilter(this, 'btnDate-ref2')">
                     </div>
                 </div>
             </div>
-            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between" data-status="selesai">
             <div class="flex items-center gap-4">
                 <div class="relative">
                     <img src="https://cdn-icons-png.flaticon.com/512/6543/6543006.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
@@ -214,7 +199,7 @@
                     <h3 class="font-bold text-gray-800 text-sm">Komisi Refferal</h3><p class="text-xs text-gray-500">Dari Siti Aminah</p>
                     
                     <div class="flex items-center mt-1 gap-2">
-                        <p class="text-xs text-slate-500">10 Mar 2023 � 14:30</p>
+                        <p class="text-xs text-slate-500">10 Mar 2023 • 14:30</p>
                     </div>
                 </div>
             </div>
@@ -224,7 +209,7 @@
                 <p class="text-[10px] text-green-500 font-medium"><i class="fas fa-arrow-up"></i> Done</p>
             </div>
         </div>
-        <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
+        <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between" data-status="selesai">
             <div class="flex items-center gap-4">
                 <div class="relative">
                     <img src="https://cdn-icons-png.flaticon.com/512/6543/6543006.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
@@ -233,7 +218,7 @@
                     <h3 class="font-bold text-gray-800 text-sm">Komisi Refferal</h3><p class="text-xs text-gray-500">Dari Siti Aminah</p>
                     
                     <div class="flex items-center mt-1 gap-2">
-                        <p class="text-xs text-slate-500">10 Mar 2023 � 14:30</p>
+                        <p class="text-xs text-slate-500">10 Mar 2023 • 14:30</p>
                     </div>
                 </div>
             </div>
@@ -242,7 +227,7 @@
                 <p class="font-bold text-green-500 text-sm">Rp 5.000.000</p>
                 <p class="text-[10px] text-green-500 font-medium"><i class="fas fa-arrow-up"></i> Done</p>
             </div>
-        </div><div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
+        </div><div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between" data-status="selesai">
             <div class="flex items-center gap-4">
                 <div class="relative">
                     <img src="https://cdn-icons-png.flaticon.com/512/6543/6543006.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
@@ -251,7 +236,7 @@
                     <h3 class="font-bold text-gray-800 text-sm">Komisi Refferal</h3><p class="text-xs text-gray-500">Dari Siti Aminah</p>
                     
                     <div class="flex items-center mt-1 gap-2">
-                        <p class="text-xs text-slate-500">10 Mar 2023 � 14:30</p>
+                        <p class="text-xs text-slate-500">10 Mar 2023 • 14:30</p>
                     </div>
                 </div>
             </div>
@@ -267,22 +252,14 @@
                 <h3 class="text-slate-900 font-bold text-lg">Komisi Generasi</h3>
                 <div class="flex gap-2">
                     <div class="relative">
-                        <button id="btnYear-all3" onclick="toggleMenu('menuYear-all3')" class="text-xs font-semibold text-[#6C5CE7] flex items-center bg-[#6C5CE7]/10 px-2 py-1 rounded-md">Tahun<i class="fa-solid fa-chevron-down ml-1 text-[10px]"></i></button>
-                        <div id="menuYear-all3" class="absolute right-0 mt-2 bg-white border rounded shadow z-30 hidden">
-                            <button onclick="selectOption('menuYear-all3', 'btnYear-all3', '2026')" class="block px-4 py-2 text-xs">2026</button>
-                            <button onclick="selectOption('menuYear-all3', 'btnYear-all3', '2025')" class="block px-4 py-2 text-xs">2025</button>
-                        </div>
-                    </div>
-                    <div class="relative">
-                        <button id="btnFilter-all3" onclick="toggleMenu('menuFilter-all3')" class="text-xs font-semibold text-[#6C5CE7] flex items-center bg-[#6C5CE7]/10 px-2 py-1 rounded-md">Bulan<i class="fa-solid fa-chevron-down ml-1 text-[10px]"></i></button>
-                        <div id="menuFilter-all3" class="absolute right-0 mt-2 bg-white border rounded shadow z-30 hidden">
-                            <button onclick="selectOption('menuFilter-all3', 'btnFilter-all3', 'Januari')" class="block px-4 py-2 text-xs">Januari</button>
-                            <button onclick="selectOption('menuFilter-all3', 'btnFilter-all3', 'Februari')" class="block px-4 py-2 text-xs">Februari</button>
-                        </div>
+                        <button id="btnDate-all3" onClick="openDatePicker('dateFilter-all3')" class="relative w-8 h-8 flex items-center justify-center text-[#6C5CE7] bg-[#6C5CE7]/10 rounded-md hover:bg-[#6C5CE7]/20 transition">
+                            <i class="fa-solid fa-calendar-days text-sm"></i>
+                        </button>
+                        <input type="date" id="dateFilter-all3" class="sr-only" onChange="handleDateFilter(this, 'btnDate-all3')">
                     </div>
                 </div>
             </div>
-            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between" data-status="selesai">
             <div class="flex items-center gap-4">
                 <div class="relative">
                     <img src="https://cdn-icons-png.flaticon.com/512/6543/6543006.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
@@ -291,7 +268,7 @@
                     <h3 class="font-bold text-gray-800 text-sm">Komisi Generasi</h3><p class="text-xs text-gray-500">Dari Siti Aminah</p>
                     
                     <div class="flex items-center mt-1 gap-2">
-                        <p class="text-xs text-slate-500">10 Mar 2023 � 14:30</p>
+                        <p class="text-xs text-slate-500">10 Mar 2023 • 14:30</p>
                     </div>
                 </div>
             </div>
@@ -301,7 +278,7 @@
                 <p class="text-[10px] text-green-500 font-medium"><i class="fas fa-arrow-up"></i> Done</p>
             </div>
         </div>
-        <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
+        <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between" data-status="selesai">
             <div class="flex items-center gap-4">
                 <div class="relative">
                     <img src="https://cdn-icons-png.flaticon.com/512/6543/6543006.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
@@ -310,7 +287,7 @@
                     <h3 class="font-bold text-gray-800 text-sm">Komisi Generasi</h3><p class="text-xs text-gray-500">Dari Siti Aminah</p>
                     
                     <div class="flex items-center mt-1 gap-2">
-                        <p class="text-xs text-slate-500">10 Mar 2023 � 14:30</p>
+                        <p class="text-xs text-slate-500">10 Mar 2023 • 14:30</p>
                     </div>
                 </div>
             </div>
@@ -319,7 +296,7 @@
                 <p class="font-bold text-green-500 text-sm">Rp 5.000.000</p>
                 <p class="text-[10px] text-green-500 font-medium"><i class="fas fa-arrow-up"></i> Done</p>
             </div>
-        </div><div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
+        </div><div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between" data-status="selesai">
             <div class="flex items-center gap-4">
                 <div class="relative">
                     <img src="https://cdn-icons-png.flaticon.com/512/6543/6543006.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
@@ -328,7 +305,76 @@
                     <h3 class="font-bold text-gray-800 text-sm">Komisi Generasi</h3><p class="text-xs text-gray-500">Dari Siti Aminah</p>
                     
                     <div class="flex items-center mt-1 gap-2">
-                        <p class="text-xs text-slate-500">10 Mar 2023 � 14:30</p>
+                        <p class="text-xs text-slate-500">10 Mar 2023 • 14:30</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-right">
+                <p class="text-[10px] text-gray-400 uppercase">Gen 3</p>
+                <p class="font-bold text-green-500 text-sm">Rp 5.000.000</p>
+                <p class="text-[10px] text-green-500 font-medium"><i class="fas fa-arrow-up"></i> Done</p>
+            </div>
+        </div></div>
+
+<div id="sultan" class="tab-content px-6 mt-4">
+            <div class="flex justify-between items-end mb-4">
+                <h3 class="text-slate-900 font-bold text-lg">Komisi Sultan</h3>
+                <div class="flex gap-2">
+                    <div class="relative">
+                        <button id="btnDate-sultan" onClick="openDatePicker('dateFilter-sultan')" class="relative w-8 h-8 flex items-center justify-center text-[#6C5CE7] bg-[#6C5CE7]/10 rounded-md hover:bg-[#6C5CE7]/20 transition">
+                            <i class="fa-solid fa-calendar-days text-sm"></i>
+                        </button>
+                        <input type="date" id="dateFilter-sultan" class="sr-only" onChange="handleDateFilter(this, 'btnDate-sultan')">
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between" data-status="selesai">
+            <div class="flex items-center gap-4">
+                <div class="relative">
+                    <img src="https://cdn-icons-png.flaticon.com/512/6543/6543006.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-800 text-sm">Komisi Sultan</h3><p class="text-xs text-gray-500">Dari Siti Aminah</p>
+                    
+                    <div class="flex items-center mt-1 gap-2">
+                        <p class="text-xs text-slate-500">10 Mar 2023 • 14:30</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-right">
+                <p class="text-[10px] text-gray-400 uppercase">Gen 1</p>
+                <p class="font-bold text-green-500 text-sm">Rp 5.000.000</p>
+                <p class="text-[10px] text-green-500 font-medium"><i class="fas fa-arrow-up"></i> Done</p>
+            </div>
+        </div>
+        <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between" data-status="selesai">
+            <div class="flex items-center gap-4">
+                <div class="relative">
+                    <img src="https://cdn-icons-png.flaticon.com/512/6543/6543006.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-800 text-sm">Komisi Sultan</h3><p class="text-xs text-gray-500">Dari Siti Aminah</p>
+                    
+                    <div class="flex items-center mt-1 gap-2">
+                        <p class="text-xs text-slate-500">10 Mar 2023 • 14:30</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-right">
+                <p class="text-[10px] text-gray-400 uppercase">Gen 2</p>
+                <p class="font-bold text-green-500 text-sm">Rp 5.000.000</p>
+                <p class="text-[10px] text-green-500 font-medium"><i class="fas fa-arrow-up"></i> Done</p>
+            </div>
+        </div><div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between" data-status="selesai">
+            <div class="flex items-center gap-4">
+                <div class="relative">
+                    <img src="https://cdn-icons-png.flaticon.com/512/6543/6543006.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-800 text-sm">Komisi Sultan</h3><p class="text-xs text-gray-500">Dari Siti Aminah</p>
+                    
+                    <div class="flex items-center mt-1 gap-2">
+                        <p class="text-xs text-slate-500">10 Mar 2023 • 14:30</p>
                     </div>
                 </div>
             </div>
@@ -344,22 +390,14 @@
                 <h3 class="text-slate-900 font-bold text-lg">Cashback Team</h3>
                 <div class="flex gap-2">
                     <div class="relative">
-                        <button id="btnYear-all4" onclick="toggleMenu('menuYear-all4')" class="text-xs font-semibold text-[#6C5CE7] flex items-center bg-[#6C5CE7]/10 px-2 py-1 rounded-md">Tahun<i class="fa-solid fa-chevron-down ml-1 text-[10px]"></i></button>
-                        <div id="menuYear-all4" class="absolute right-0 mt-2 bg-white border rounded shadow z-30 hidden">
-                            <button onclick="selectOption('menuYear-all4', 'btnYear-all4', '2026')" class="block px-4 py-2 text-xs">2026</button>
-                            <button onclick="selectOption('menuYear-all4', 'btnYear-all4', '2025')" class="block px-4 py-2 text-xs">2025</button>
-                        </div>
-                    </div>
-                    <div class="relative">
-                        <button id="btnFilter-all4" onclick="toggleMenu('menuFilter-all4')" class="text-xs font-semibold text-[#6C5CE7] flex items-center bg-[#6C5CE7]/10 px-2 py-1 rounded-md">Bulan<i class="fa-solid fa-chevron-down ml-1 text-[10px]"></i></button>
-                        <div id="menuFilter-all4" class="absolute right-0 mt-2 bg-white border rounded shadow z-30 hidden">
-                            <button onclick="selectOption('menuFilter-all4', 'btnFilter-all4', 'Januari')" class="block px-4 py-2 text-xs">Januari</button>
-                            <button onclick="selectOption('menuFilter-all4', 'btnFilter-all4', 'Februari')" class="block px-4 py-2 text-xs">Februari</button>
-                        </div>
+                        <button id="btnDate-all4" onClick="openDatePicker('dateFilter-all4')" class="relative w-8 h-8 flex items-center justify-center text-[#6C5CE7] bg-[#6C5CE7]/10 rounded-md hover:bg-[#6C5CE7]/20 transition">
+                            <i class="fa-solid fa-calendar-days text-sm"></i>
+                        </button>
+                        <input type="date" id="dateFilter-all4" class="sr-only" onChange="handleDateFilter(this, 'btnDate-all4')">
                     </div>
                 </div>
             </div>
-            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between" data-status="selesai">
             <div class="flex items-center gap-4">
                 <div class="relative">
                     <img src="https://cdn-icons-png.flaticon.com/512/6543/6543006.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
@@ -368,7 +406,7 @@
                     <h3 class="font-bold text-gray-800 text-sm">Cashback Team</h3><p class="text-xs text-gray-500">Dari Siti Aminah</p>
                     
                     <div class="flex items-center mt-1 gap-2">
-                        <p class="text-xs text-slate-500">10 Mar 2023 � 14:30</p>
+                        <p class="text-xs text-slate-500">10 Mar 2023 • 14:30</p>
                     </div>
                 </div>
             </div>
@@ -378,7 +416,7 @@
                 <p class="text-[10px] text-green-500 font-medium"><i class="fas fa-arrow-up"></i> Done</p>
             </div>
         </div>
-        <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
+        <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between" data-status="selesai">
             <div class="flex items-center gap-4">
                 <div class="relative">
                     <img src="https://cdn-icons-png.flaticon.com/512/6543/6543006.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
@@ -387,7 +425,7 @@
                     <h3 class="font-bold text-gray-800 text-sm">Cashback Team</h3><p class="text-xs text-gray-500">Dari Siti Aminah</p>
                     
                     <div class="flex items-center mt-1 gap-2">
-                        <p class="text-xs text-slate-500">10 Mar 2023 � 14:30</p>
+                        <p class="text-xs text-slate-500">10 Mar 2023 • 14:30</p>
                     </div>
                 </div>
             </div>
@@ -396,7 +434,7 @@
                 <p class="font-bold text-green-500 text-sm">Rp 5.000.000</p>
                 <p class="text-[10px] text-green-500 font-medium"><i class="fas fa-arrow-up"></i> Done</p>
             </div>
-        </div><div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
+        </div><div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between" data-status="selesai">
             <div class="flex items-center gap-4">
                 <div class="relative">
                     <img src="https://cdn-icons-png.flaticon.com/512/6543/6543006.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
@@ -405,7 +443,7 @@
                     <h3 class="font-bold text-gray-800 text-sm">Cashback Team</h3><p class="text-xs text-gray-500">Dari Siti Aminah</p>
                     
                     <div class="flex items-center mt-1 gap-2">
-                        <p class="text-xs text-slate-500">10 Mar 2023 � 14:30</p>
+                        <p class="text-xs text-slate-500">10 Mar 2023 • 14:30</p>
                     </div>
                 </div>
             </div>
@@ -421,22 +459,14 @@
                 <h3 class="text-slate-900 font-bold text-lg">Cashback Pribadi</h3>
                 <div class="flex gap-2">
                      <div class="relative">
-                        <button id="btnYear-all5" onclick="toggleMenu('menuYear-all5')" class="text-xs font-semibold text-[#6C5CE7] flex items-center bg-[#6C5CE7]/10 px-2 py-1 rounded-md">Tahun<i class="fa-solid fa-chevron-down ml-1 text-[10px]"></i></button>
-                        <div id="menuYear-all5" class="absolute right-0 mt-2 bg-white border rounded shadow z-30 hidden">
-                            <button onclick="selectOption('menuYear-all5', 'btnYear-all5', '2026')" class="block px-4 py-2 text-xs">2026</button>
-                            <button onclick="selectOption('menuYear-all5', 'btnYear-all5', '2025')" class="block px-4 py-2 text-xs">2025</button>
-                        </div>
-                    </div>
-                    <div class="relative">
-                        <button id="btnFilter-all5" onclick="toggleMenu('menuFilter-all5')" class="text-xs font-semibold text-[#6C5CE7] flex items-center bg-[#6C5CE7]/10 px-2 py-1 rounded-md">Bulan<i class="fa-solid fa-chevron-down ml-1 text-[10px]"></i></button>
-                        <div id="menuFilter-all5" class="absolute right-0 mt-2 bg-white border rounded shadow z-30 hidden">
-                            <button onclick="selectOption('menuFilter-all5', 'btnFilter-all5', 'Januari')" class="block px-4 py-2 text-xs">Januari</button>
-                            <button onclick="selectOption('menuFilter-all5', 'btnFilter-all5', 'Februari')" class="block px-4 py-2 text-xs">Februari</button>
-                        </div>
+                        <button id="btnDate-all5" onClick="openDatePicker('dateFilter-all5')" class="relative w-8 h-8 flex items-center justify-center text-[#6C5CE7] bg-[#6C5CE7]/10 rounded-md hover:bg-[#6C5CE7]/20 transition">
+                            <i class="fa-solid fa-calendar-days text-sm"></i>
+                        </button>
+                        <input type="date" id="dateFilter-all5" class="sr-only" onChange="handleDateFilter(this, 'btnDate-all5')">
                     </div>
                 </div>
             </div>
-            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between" data-status="selesai">
             <div class="flex items-center gap-4">
                 <div class="relative">
                     <img src="images/icon-s.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
@@ -445,7 +475,7 @@
                     <h3 class="font-bold text-gray-800 text-sm">Shopee</h3>
                     
                     <div class="flex items-center mt-1 gap-2">
-                        <p class="text-xs text-slate-500">10 Mar 2023 � 14:30</p>
+                        <p class="text-xs text-slate-500">10 Mar 2023 • 14:30</p>
                     </div>
                 </div>
             </div>
@@ -454,7 +484,7 @@
                 <p class="font-bold text-green-500 text-sm">+2.350</p>
                 <p class="text-[10px] text-green-500 font-medium"><i class="fas fa-arrow-up"></i> Done</p>
             </div>
-        </div><div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
+        </div><div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between" data-status="selesai">
             <div class="flex items-center gap-4">
                 <div class="relative">
                     <img src="images/icon-t.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
@@ -463,7 +493,7 @@
                     <h3 class="font-bold text-gray-800 text-sm">Tiktok</h3>
                     
                     <div class="flex items-center mt-1 gap-2">
-                        <p class="text-xs text-slate-500">10 Mar 2023 � 14:30</p>
+                        <p class="text-xs text-slate-500">10 Mar 2023 • 14:30</p>
                     </div>
                 </div>
             </div>
@@ -473,7 +503,7 @@
                 <p class="text-[10px] text-green-500 font-medium"><i class="fas fa-arrow-up"></i> Done</p>
             </div>
         </div>
-        <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
+        <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between" data-status="selesai">
             <div class="flex items-center gap-4">
                 <div class="relative">
                     <img src="images/icon-l.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
@@ -482,7 +512,7 @@
                     <h3 class="font-bold text-gray-800 text-sm">Lazada</h3>
                     
                     <div class="flex items-center mt-1 gap-2">
-                        <p class="text-xs text-slate-500">10 Mar 2023 � 14:30</p>
+                        <p class="text-xs text-slate-500">10 Mar 2023 • 14:30</p>
                     </div>
                 </div>
             </div>
@@ -491,7 +521,7 @@
                 <p class="font-bold text-green-500 text-sm">+950</p>
                 <p class="text-[10px] text-green-500 font-medium"><i class="fas fa-arrow-up"></i> Done</p>
             </div>
-        </div><div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
+        </div><div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between" data-status="selesai">
             <div class="flex items-center gap-4">
                 <div class="relative">
                     <img src="images/icon-traveloka.png" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
@@ -500,7 +530,7 @@
                     <h3 class="font-bold text-gray-800 text-sm">Traveloka</h3>
                     
                     <div class="flex items-center mt-1 gap-2">
-                        <p class="text-xs text-slate-500">10 Mar 2023 � 14:30</p>
+                        <p class="text-xs text-slate-500">10 Mar 2023 • 14:30</p>
                     </div>
                 </div>
             </div>
@@ -525,13 +555,54 @@
             btn.classList.remove('bg-white', 'border', 'border-gray-200', 'text-gray-600');
         }
 
-        function toggleMenu(id) {
-            document.getElementById(id).classList.toggle('hidden');
+        // Filter status All / Pending / Selesai — berlaku untuk seluruh kartu komisi
+        // di semua tab (kartu ditandai lewat atribut data-status)
+        function filterStatus(status, btn) {
+            document.querySelectorAll('.status-tab-btn').forEach(b => {
+                b.classList.remove('text-gray-900', 'font-semibold', 'border-[#FFD700]');
+                b.classList.add('text-gray-500', 'font-medium', 'border-transparent');
+            });
+            btn.classList.remove('text-gray-500', 'font-medium', 'border-transparent');
+            btn.classList.add('text-gray-900', 'font-semibold', 'border-[#FFD700]');
+
+            document.querySelectorAll('[data-status]').forEach(item => {
+                const show = (status === 'all') || (item.getAttribute('data-status') === status);
+                item.style.display = show ? '' : 'none';
+            });
         }
 
-        function selectOption(menuId, btnId, value) {
-            document.getElementById(btnId).innerHTML = value + '<i class="fa-solid fa-chevron-down ml-1 text-[10px]"></i>';
-            toggleMenu(menuId);
+        // Membuka kalender native saat icon diklik
+        function openDatePicker(inputId) {
+            const input = document.getElementById(inputId);
+            if (input.showPicker) {
+                input.showPicker();
+            } else {
+                input.focus();
+                input.click();
+            }
+        }
+
+        // Menandai icon kalender aktif (dot indikator) ketika tanggal sudah dipilih,
+        // tanpa menampilkan teks tanggal pada tombol
+        function handleDateFilter(input, btnId) {
+            const btn = document.getElementById(btnId);
+            if (!btn) return;
+
+            let dot = btn.querySelector('.date-active-dot');
+            if (input.value) {
+                btn.classList.add('ring-2', 'ring-[#6C5CE7]');
+                if (!dot) {
+                    dot = document.createElement('span');
+                    dot.className = 'date-active-dot absolute top-0.5 right-0.5 w-1.5 h-1.5 rounded-full bg-[#FF5722]';
+                    btn.appendChild(dot);
+                }
+            } else {
+                btn.classList.remove('ring-2', 'ring-[#6C5CE7]');
+                if (dot) dot.remove();
+            }
+
+            // TODO: sambungkan ke logika filter data berdasarkan input.value (format YYYY-MM-DD)
+            console.log('Filter tanggal (' + btnId + '):', input.value);
         }
     </script>
 
