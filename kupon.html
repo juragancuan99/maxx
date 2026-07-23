@@ -129,7 +129,7 @@
 
     <!-- Header -->
     <header class="sticky top-0 z-30 bg-ink-900/90 backdrop-blur-md border-b border-gold-500/20 px-4 h-14 flex items-center justify-between">
-        <button onclick="history.back()" class="w-10 h-10 flex items-center justify-center text-gold-300 active:text-gold-500 transition-colors">
+        <button onClick="history.back()" class="w-10 h-10 flex items-center justify-center text-gold-300 active:text-gold-500 transition-colors">
             <i class="fa-solid fa-chevron-left text-lg"></i>
         </button>
         <h1 class="text-lg font-display font-bold tracking-wide text-gold-gradient">Kupon Undian</h1>
@@ -143,21 +143,15 @@
 
         <!-- Hero Carousel -->
         <div class="px-4 pt-4 pb-1 relative select-none">
-            <div id="hero-carousel" class="relative w-full aspect-[2.2/1] overflow-hidden rounded-2xl gold-border glow-gold touch-pan-y cursor-grab active:cursor-grabbing">
-                <div class="carousel-slide absolute inset-0 w-full h-full" style="position: absolute; top: 0px; width: 100%; height: 100%; transform: translateX(-200%); transition: transform 0.5s ease-in-out;">
+            <div id="hero-carousel" class="relative w-full aspect-video overflow-hidden rounded-2xl gold-border glow-gold touch-pan-y cursor-grab active:cursor-grabbing">
+                <div class="carousel-slide absolute inset-0 w-full h-full">
                     <img src="images/banner-kupon2.png" alt="Sale" class="w-full h-full object-cover" draggable="false">
                     <div class="absolute inset-0 ring-1 ring-inset ring-gold-300/20 pointer-events-none"></div>
-                </div><div class="carousel-slide absolute inset-0 w-full h-full" style="position: absolute; top: 0px; width: 100%; height: 100%; transform: translateX(-100%); transition: transform 0.5s ease-in-out;">
+                </div><div class="carousel-slide absolute inset-0 w-full h-full">
                     <img src="images/banner-kupon1.png" alt="Sale" class="w-full h-full object-cover" draggable="false">
-                    <div class="absolute inset-0 ring-1 ring-inset ring-gold-300/20 pointer-events-none"></div>
-                </div><div class="carousel-slide absolute inset-0 w-full h-full" style="position: absolute; top: 0px; width: 100%; height: 100%; transform: translateX(0%); transition: transform 0.5s ease-in-out;">
-                    <img src="images/banner-kupon2.png" alt="Sale" class="w-full h-full object-cover" draggable="false">
                     <div class="absolute inset-0 ring-1 ring-inset ring-gold-300/20 pointer-events-none"></div>
                 </div>
-            <div class="carousel-slide absolute inset-0 w-full h-full" style="position: absolute; top: 0px; width: 100%; height: 100%; transform: translateX(100%); transition: transform 0.5s ease-in-out;">
-                    <img src="images/banner-kupon1.png" alt="Sale" class="w-full h-full object-cover" draggable="false">
-                    <div class="absolute inset-0 ring-1 ring-inset ring-gold-300/20 pointer-events-none"></div>
-                </div></div>
+            </div>
         </div>
 
         <!-- Carousel dots -->
