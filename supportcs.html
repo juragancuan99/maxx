@@ -1,0 +1,449 @@
+<html lang="id"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Bantuan &amp; Support CS</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background: #ffffff;
+    color: #1a1a1a;
+  }
+
+  .screen {
+    max-width: 480px;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+  }
+
+  /* Header */
+  .header {
+    padding: 20px 20px 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .back-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #1a1a1a;
+    border-radius: 50%;
+    transition: background 0.15s ease;
+  }
+  .back-btn:hover { background: #f2f2f2; }
+  .back-btn svg { width: 22px; height: 22px; }
+
+  .header-title {
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+  }
+  .header-spacer { width: 40px; }
+
+  /* Main content */
+  .content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px 24px 40px 24px;
+    text-align: center;
+  }
+
+  .illustration {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    background: #FFE7EC;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 12px 0 18px 0;
+  }
+  .illustration svg { width: 46px; height: 46px; }
+
+  h1.title {
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    margin: 0;
+    color: #111111;
+    letter-spacing: 0.3px;
+  }
+
+  p.subtitle {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: #6b6b6b;
+    max-width: 320px;
+    margin: 10px 0 26px 0;
+  }
+
+  /* Status pill */
+  .status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: #F0FBF4;
+    color: #1E9E56;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 30px;
+    margin-bottom: 26px;
+  }
+  .status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #1E9E56;
+  }
+
+  /* Contact list */
+  .contact-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 30px;
+  }
+  .contact-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    background: #FAFAFA;
+    border: 1px solid #F0F0F0;
+    border-radius: 18px;
+    padding: 14px 16px;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+  .contact-card:active { transform: scale(0.98); }
+  .contact-card:hover { background: #F2F2F2; }
+  .contact-icon {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    border-radius: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .contact-icon svg { width: 22px; height: 22px; }
+  .contact-icon.wa { background: #E4F9EE; color: #1E9E56; }
+  .contact-icon.chat { background: #FFE7EC; color: #F2093B; }
+  .contact-icon.tel { background: #EAF1FF; color: #2D6CF6; }
+  .contact-icon.mail { background: #FFF4E0; color: #E28A00; }
+
+  .contact-text { flex: 1; }
+  .contact-name {
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    margin-bottom: 2px;
+  }
+  .contact-desc {
+    font-size: 12.5px;
+    color: #8a8a8a;
+  }
+  .contact-arrow {
+    color: #c4c4c4;
+  }
+  .contact-arrow svg { width: 18px; height: 18px; }
+
+  /* FAQ */
+  .faq-section {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 30px;
+  }
+  .faq-heading {
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    margin-bottom: 12px;
+    color: #111111;
+  }
+  .faq-item {
+    border-bottom: 1px solid #F0F0F0;
+  }
+  .faq-q {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 2px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .faq-q .plus {
+    color: #F2093B;
+    font-size: 18px;
+    transition: transform 0.2s ease;
+  }
+  .faq-item.open .plus { transform: rotate(45deg); }
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease;
+  }
+  .faq-item.open .faq-a { max-height: 120px; }
+  .faq-a-inner {
+    padding: 0 2px 14px 2px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #8a8a8a;
+  }
+
+  .retry-btn {
+    width: 100%;
+    max-width: 340px;
+    background: #F2093B;
+    color: #ffffff;
+    border: none;
+    padding: 17px 24px;
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    border-radius: 30px;
+    cursor: pointer;
+    letter-spacing: 0.3px;
+    box-shadow: 0 8px 18px rgba(242, 9, 59, 0.25);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .retry-btn:active {
+    transform: scale(0.98);
+    box-shadow: 0 4px 10px rgba(242, 9, 59, 0.25);
+  }
+
+  .footnote {
+    font-size: 12px;
+    color: #b0b0b0;
+    margin-top: 16px;
+  }
+
+  /* Form */
+  .form {
+    width: 100%;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-bottom: 8px;
+  }
+  .field label {
+    display: block;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 600;
+    font-size: 13.5px;
+    color: #333333;
+    margin-bottom: 8px;
+  }
+  .field input,
+  .field textarea {
+    width: 100%;
+    background: #FAFAFA;
+    border: 1.5px solid #F0F0F0;
+    border-radius: 14px;
+    padding: 13px 15px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14.5px;
+    color: #1a1a1a;
+    outline: none;
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+  .field input::placeholder,
+  .field textarea::placeholder { color: #b0b0b0; }
+  .field input:focus,
+  .field textarea:focus {
+    border-color: #F2093B;
+    background: #ffffff;
+  }
+  .field textarea {
+    resize: vertical;
+    min-height: 100px;
+    line-height: 1.5;
+  }
+
+  .submit-btn {
+    width: 100%;
+    margin-top: 6px;
+  }
+
+  /* Modal */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(17, 17, 17, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    z-index: 50;
+  }
+  .modal-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .modal-box {
+    width: 100%;
+    max-width: 340px;
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 32px 26px 26px 26px;
+    text-align: center;
+    transform: translateY(14px) scale(0.97);
+    transition: transform 0.25s ease;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.18);
+  }
+  .modal-overlay.open .modal-box {
+    transform: translateY(0) scale(1);
+  }
+  .modal-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: #F0FBF4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 18px auto;
+  }
+  .modal-icon svg { width: 30px; height: 30px; }
+  .modal-title {
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    margin: 0 0 8px 0;
+    color: #111111;
+  }
+  .modal-text {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: #6b6b6b;
+    margin: 0 0 24px 0;
+  }
+  .modal-close {
+    width: 100%;
+    background: #F2093B;
+    color: #ffffff;
+    border: none;
+    padding: 14px 20px;
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 15.5px;
+    font-weight: 700;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 8px 18px rgba(242, 9, 59, 0.25);
+    transition: transform 0.15s ease;
+  }
+  .modal-close:active { transform: scale(0.98); }
+</style>
+</head>
+<body>
+  <div class="screen">
+
+    <!-- Header -->
+    <div class="header">
+      <button class="back-btn" onclick="history.back()" aria-label="Kembali">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <div class="header-title">Bantuan</div>
+      <div class="header-spacer"></div>
+    </div>
+
+    <!-- Main content -->
+    <div class="content">
+      <div class="illustration">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#F2093B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12c0 1.821.487 3.53 1.338 5L2 22l5-1.338A9.955 9.955 0 0 0 12 22Z"></path>
+          <path d="M9.5 9.5a2.5 2.5 0 0 1 5 0c0 1.5-2.5 2-2.5 3.5"></path>
+          <circle cx="12" cy="17" r="0.6" fill="#F2093B"></circle>
+        </svg>
+      </div>
+
+      <h1 class="title">Butuh Bantuan?</h1>
+      <p class="subtitle">Ada kendala saat pakai aplikasi? Tim CS kami siap membantu kamu kapan saja.</p>
+
+      <div class="status-pill">
+        <span class="status-dot"></span>
+        CS online sekarang
+      </div>
+
+      <!-- Form Keluhan -->
+      <form class="form" id="csForm">
+        <div class="field">
+          <label for="nama">Nama Lengkap</label>
+          <input type="text" id="nama" name="nama" placeholder="Masukkan nama kamu" required="">
+        </div>
+        <div class="field">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" placeholder="Masukkan username akun kamu" required="">
+        </div>
+        <div class="field">
+          <label for="keluhan">Keluhan</label>
+          <textarea id="keluhan" name="keluhan" placeholder="Ceritakan kendala yang kamu alami..." required=""></textarea>
+        </div>
+
+        <button type="submit" class="retry-btn submit-btn">Kirim Keluhan</button>
+      </form>
+      <div class="footnote">Tim kami siap membantu 24 jam setiap hari</div>
+    </div>
+
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-box">
+      <div class="modal-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#1E9E56" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </div>
+      <h2 class="modal-title">Berhasil Terkirim!</h2>
+      <p class="modal-text">Keluhan Anda telah diteruskan ke admin. Tim CS kami akan segera menghubungi kamu.</p>
+      <button class="modal-close" onclick="closeModal()">Oke, Mengerti</button>
+    </div>
+  </div>
+
+<script>
+  const form = document.getElementById('csForm');
+  const modalOverlay = document.getElementById('modalOverlay');
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    modalOverlay.classList.add('open');
+  });
+
+  function closeModal(){
+    modalOverlay.classList.remove('open');
+    form.reset();
+  }
+
+  modalOverlay.addEventListener('click', function(e){
+    if(e.target === modalOverlay) closeModal();
+  });
+</script>
+
+
+</body></html>
